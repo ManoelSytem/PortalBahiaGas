@@ -1,0 +1,388 @@
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\PortalBahiaGas.dll.config
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\PortalBahiaGas.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\PortalBahiaGas.pdb
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Antlr3.Runtime.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\EntityFramework.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\EntityFramework.SqlServer.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.Core.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.Owin.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Host.SystemWeb.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Cookies.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Facebook.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Google.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.OAuth.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Twitter.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Web.Infrastructure.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Newtonsoft.Json.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Owin.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Helpers.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Mvc.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Optimization.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Razor.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.WebPages.Deployment.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.WebPages.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.WebPages.Razor.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\WebGrease.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Helpers.xml
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Mvc.xml
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Optimization.xml
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Razor.xml
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.WebPages.xml
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.WebPages.Deployment.xml
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.WebPages.Razor.xml
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Antlr3.Runtime.pdb
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Newtonsoft.Json.xml
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\EntityFramework.xml
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\EntityFramework.SqlServer.xml
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.Core.xml
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.Owin.xml
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.xml
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Host.SystemWeb.xml
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.xml
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Facebook.xml
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Cookies.xml
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.OAuth.xml
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Google.xml
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Twitter.xml
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.dll
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.pdb
+c:\users\everton.lima\documents\visual studio 2013\Projects\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.csprojResolveAssemblyReference.cache
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\PortalBahiaGas.dll.config
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\PortalBahiaGas.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\PortalBahiaGas.pdb
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Antlr3.Runtime.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\EntityFramework.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\EntityFramework.SqlServer.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Newtonsoft.Json.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Owin.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Helpers.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Mvc.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Optimization.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Razor.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.WebPages.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.WebPages.Razor.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\WebGrease.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Helpers.xml
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Mvc.xml
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Optimization.xml
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Razor.xml
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.WebPages.xml
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.WebPages.Razor.xml
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Antlr3.Runtime.pdb
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Newtonsoft.Json.xml
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\EntityFramework.xml
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\EntityFramework.SqlServer.xml
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.xml
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.xml
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.csprojResolveAssemblyReference.cache
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.dll
+C:\Users\Everton\Desktop\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.pdb
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\PortalBahiaGas.dll.config
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\PortalBahiaGas.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\PortalBahiaGas.pdb
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Antlr3.Runtime.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\EntityFramework.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\EntityFramework.SqlServer.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Newtonsoft.Json.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Oracle.ManagedDataAccess.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Oracle.ManagedDataAccess.EntityFramework.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Owin.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Helpers.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Mvc.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Optimization.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Razor.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.WebPages.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.WebPages.Razor.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\WebGrease.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.ReportViewer.WebForms.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Helpers.xml
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Mvc.xml
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Optimization.xml
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Razor.xml
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.WebPages.xml
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\System.Web.WebPages.Razor.xml
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Antlr3.Runtime.pdb
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Newtonsoft.Json.xml
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\EntityFramework.xml
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\EntityFramework.SqlServer.xml
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.xml
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.xml
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\de\Microsoft.ReportViewer.WebForms.resources.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\es\Microsoft.ReportViewer.WebForms.resources.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\fr\Microsoft.ReportViewer.WebForms.resources.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\it\Microsoft.ReportViewer.WebForms.resources.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\ja\Microsoft.ReportViewer.WebForms.resources.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\ko\Microsoft.ReportViewer.WebForms.resources.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\pt\Microsoft.ReportViewer.WebForms.resources.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\ru\Microsoft.ReportViewer.WebForms.resources.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\zh-CHS\Microsoft.ReportViewer.WebForms.resources.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\bin\zh-CHT\Microsoft.ReportViewer.WebForms.resources.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.csprojResolveAssemblyReference.cache
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.dll
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.pdb
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.Migrations.First.resources
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.csproj.GenerateResource.Cache
+C:\Users\Administrador\Documents\Visual Studio 2015\Projects\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.Migrations.First1.resources
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\PortalBahiaGas.dll.config
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\PortalBahiaGas.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\PortalBahiaGas.pdb
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Antlr3.Runtime.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\EntityFramework.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\EntityFramework.SqlServer.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Newtonsoft.Json.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Oracle.ManagedDataAccess.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Oracle.ManagedDataAccess.EntityFramework.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Owin.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\System.Web.Helpers.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\System.Web.Mvc.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\System.Web.Optimization.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\System.Web.Razor.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\System.Web.WebPages.Deployment.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\System.Web.WebPages.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\System.Web.WebPages.Razor.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\WebGrease.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\System.Web.Helpers.xml
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\System.Web.Mvc.xml
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\System.Web.Optimization.xml
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\System.Web.Razor.xml
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\System.Web.WebPages.xml
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\System.Web.WebPages.Deployment.xml
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\System.Web.WebPages.Razor.xml
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Antlr3.Runtime.pdb
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Newtonsoft.Json.xml
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\EntityFramework.xml
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\EntityFramework.SqlServer.xml
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.xml
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.xml
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\obj\Debug\PortalBahiaGas.Migrations.First.resources
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\obj\Debug\PortalBahiaGas.Migrations.First1.resources
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\obj\Debug\PortalBahiaGas.Migrations.First2.resources
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\obj\Debug\PortalBahiaGas.Migrations.First3.resources
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\obj\Debug\PortalBahiaGas.Migrations.First4.resources
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\obj\Debug\PortalBahiaGas.Migrations.First5.resources
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\obj\Debug\PortalBahiaGas.Migrations.First6.resources
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\obj\Debug\PortalBahiaGas.Migrations.First7.resources
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\obj\Debug\PortalBahiaGas.Migrations.First8.resources
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\obj\Debug\PortalBahiaGas.Migrations.First9.resources
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\obj\Debug\PortalBahiaGas.Migrations.First10.resources
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\obj\Debug\PortalBahiaGas.csproj.GenerateResource.Cache
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\obj\Debug\PortalBahiaGas.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\obj\Debug\PortalBahiaGas.pdb
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\obj\Debug\PortalBahiaGas.csprojResolveAssemblyReference.cache
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\Microsoft.ReportViewer.WebForms.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\de\Microsoft.ReportViewer.WebForms.resources.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\es\Microsoft.ReportViewer.WebForms.resources.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\fr\Microsoft.ReportViewer.WebForms.resources.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\it\Microsoft.ReportViewer.WebForms.resources.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\ja\Microsoft.ReportViewer.WebForms.resources.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\ko\Microsoft.ReportViewer.WebForms.resources.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\pt\Microsoft.ReportViewer.WebForms.resources.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\ru\Microsoft.ReportViewer.WebForms.resources.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\zh-CHS\Microsoft.ReportViewer.WebForms.resources.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\bin\zh-CHT\Microsoft.ReportViewer.WebForms.resources.dll
+C:\Users\evertonalmeida\Documents\Visual Studio 2015\Projects\PortalBahiagas\PortalBahiaGas\obj\Debug\PortalBahiaGas.Migrations.First11.resources
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\PortalBahiaGas.dll.config
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\PortalBahiaGas.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\PortalBahiaGas.pdb
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Antlr3.Runtime.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\EntityFramework.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\EntityFramework.SqlServer.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.Google.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Web.Infrastructure.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Newtonsoft.Json.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Oracle.ManagedDataAccess.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Oracle.ManagedDataAccess.EntityFramework.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Owin.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\System.Web.Helpers.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\System.Web.Mvc.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\System.Web.Optimization.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\System.Web.Razor.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\System.Web.WebPages.Deployment.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\System.Web.WebPages.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\System.Web.WebPages.Razor.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\WebGrease.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\System.Web.Helpers.xml
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\System.Web.Mvc.xml
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\System.Web.Optimization.xml
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\System.Web.Razor.xml
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\System.Web.WebPages.xml
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\System.Web.WebPages.Deployment.xml
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\System.Web.WebPages.Razor.xml
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Antlr3.Runtime.pdb
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Newtonsoft.Json.xml
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\EntityFramework.xml
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\EntityFramework.SqlServer.xml
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.xml
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.xml
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.Google.xml
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\obj\Debug\PortalBahiaGas.dll
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\obj\Debug\PortalBahiaGas.pdb
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\obj\Debug\PortalBahiaGas.csprojResolveAssemblyReference.cache
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\obj\Debug\PortalBahiaGas.Migrations.First.resources
+C:\Desenvolvimento\PortalBahiagas\PortalBahiaGas\obj\Debug\PortalBahiaGas.csproj.GenerateResource.Cache
+C:\Desenvolvimento\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.Migrations.First1.resources
+C:\Desenvolvimento\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.Migrations.First2.resources
+C:\Desenvolvimento\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.Migrations.First3.resources
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\PortalBahiaGas.dll.config
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\PortalBahiaGas.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\PortalBahiaGas.pdb
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Antlr3.Runtime.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\EntityFramework.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\EntityFramework.SqlServer.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Newtonsoft.Json.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Oracle.ManagedDataAccess.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Oracle.ManagedDataAccess.EntityFramework.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Owin.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Helpers.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Mvc.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Optimization.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Razor.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.WebPages.Deployment.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.WebPages.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.WebPages.Razor.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\WebGrease.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Helpers.xml
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Mvc.xml
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Optimization.xml
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.Razor.xml
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.WebPages.xml
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.WebPages.Deployment.xml
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\System.Web.WebPages.Razor.xml
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Antlr3.Runtime.pdb
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Newtonsoft.Json.xml
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\EntityFramework.xml
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\EntityFramework.SqlServer.xml
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.xml
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.xml
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.csprojAssemblyReference.cache
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.Migrations.First.resources
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.Migrations.First1.resources
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.Migrations.First2.resources
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.Migrations.First3.resources
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.csproj.GenerateResource.cache
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.csproj.CoreCompileInputs.cache
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.csproj.CopyComplete
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.dll
+C:\Users\manoelneto\Desktop\PortalBahiaGas\PortalBahiaGas\obj\Debug\PortalBahiaGas.pdb

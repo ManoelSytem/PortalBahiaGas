@@ -1,0 +1,49 @@
+﻿@model PortalBahiaGas.Models.Entidade.RegistroTurno
+<div id="turno" class="tab-pane fade in active container">
+    <h3>Informações do turno</h3>
+    <form class="form-inline" role="form">
+        <div class="form-group row">
+            @Html.Label("Data:")
+            <div class="input-group input-append date" id="data">
+                @Html.TextBoxFor(x => x.Data, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                <span class="input-group-addon add-on">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+            <div class="form-group">
+                @Html.Label("Turno:")
+                @Html.DropDownListFor(x => x.Turno, typeof(PortalBahiaGas.Models.Entidade.Enuns.ETurno).GetDirectionSelectList(), new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="panel panel-default ">
+            <div class="panel-heading">Operadores</div>
+            <div class="panel-body">
+                <div class="container-fluid">
+                    <div class="row-fluid">
+                        <div class="col-sm-1 col-header">
+                            @Html.Label(" ")
+                        </div>
+                        <div class="col-sm-2 col-header">Código</div>
+                        <div class="col-sm-9 col-header">Nome</div>
+                    </div>
+                    @for (int i = 0; i < Model.Operadores.Count() || i < 4; i++)
+                    {
+                        <div class="row-fluid">
+                            <div class="col-sm-1 col-header">
+                                <span class="glyphicon glyphicon-ok"></span>
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </div>
+                            <div class="col-sm-2 col-detail">
+                                @Html.DropDownListFor(x => (x.Operadores.ElementAt(i) != null) ? x.Operadores.ElementAt(i).Id : string.Empty, new List<SelectListItem>())
+                            </div>
+                            <div class="col-sm-9 col-detail">
+                                <span class="grid">@Html.Label("")</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

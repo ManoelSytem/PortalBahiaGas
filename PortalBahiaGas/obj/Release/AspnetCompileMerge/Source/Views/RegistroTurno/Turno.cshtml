@@ -1,0 +1,53 @@
+﻿@model PortalBahiaGas.Models.Entidade.RegistroTurno
+<h3>Informações do turno</h3>
+<form class="form-inline" role="form" id="formTurno">
+    @Html.Hidden("pagina", "turno")
+    @Html.Hidden("IdRegistroTurno", Model.Id)
+    @Html.HiddenFor(x => x.Id)
+    @Html.HiddenFor(x => x.UsuarioCriacao)
+    @Html.HiddenFor(x => x.UsuarioAlteracao)
+    @Html.HiddenFor(x => x.DataCriacao)
+    @Html.HiddenFor(x => x.DataAlteracao)
+    <div class="form-group row">
+        @Html.Label("Data:")
+        <div class="input-group input-append date" id="data">
+            @Html.TextBoxFor(x => x.Data, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+            <span class="input-group-addon add-on">
+                <span class="glyphicon glyphicon-th"></span>
+            </span>
+        </div>
+        <div class="form-group">
+            @Html.Label("Turno:")
+            @Html.DropDownListFor(x => x.Turno, PortalBahiaGas.Models.Entidade.Enuns.ETurno.De7as15.ToSelectList(), new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="panel panel-default ">
+        <div class="panel-heading">Operadores</div>
+        <div class="panel-body">
+            <div class="container-fluid" id="grid">
+                <div class="row">
+                    <div class="col-sm-1 col-header">
+                        &nbsp;
+                    </div>
+                    <div class="col-sm-11 col-header">Operadores</div>
+                </div>
+                @foreach (PortalBahiaGas.Models.Entidade.Operador item in ((List<PortalBahiaGas.Models.Entidade.Operador>)ViewData["Operadores"]).OrderBy(x => x.Nome))
+                {
+                    <div class="row">
+                        <div class="col-sm-1 col-header" style="height:23px;">
+                            @Html.CheckBox("CodigoProtheus", Model.Operadores.Any(x => x.CodigoProtheus == item.CodigoProtheus), new { @value = item.CodigoProtheus })
+                        </div>
+                        <div class="col-sm-11 col-detail">
+                            @item.Nome
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="btn-group pull-right">
+        <button type="button" class="btn btn-success" onclick="Salvar('formTurno');">Salvar</button>
+        <button type="button" class="btn btn-danger" onclick="window.location = '@Url.Action("Index", "Home")';">Voltar</button>
+    </div>
+</form>
+@Scripts.Render("~/Scripts/views/Turno.js")

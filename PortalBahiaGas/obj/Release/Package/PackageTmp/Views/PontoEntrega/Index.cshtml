@@ -1,0 +1,65 @@
+﻿@model System.Collections.Generic.IEnumerable<PortalBahiaGas.Models.Entidade.PontoEntrega>
+@{
+    ViewBag.Title = "Ponto de entrega";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.MenuTurno = "";
+    ViewBag.MenuUsuario = "";
+    ViewBag.MenuCliente = "";
+    ViewBag.MenuPontoEntrega = "active";
+    ViewBag.MenuRegiao = "";
+    ViewBag.MenuGasoduto = "";
+    ViewBag.MenuOperador = "";
+    ViewBag.MenuOdorizador = "";
+}
+
+<form class="form-inline" role="form">
+    <h3>Pontos de entrega</h3>
+    <div class="panel panel-default ">
+        <div class="panel-heading">Pontos de entrega</div>
+        <div class="panel-body">
+            <div class="container-fluid" id="grid">
+                <div class="row">
+                    <div class="col-sm-2 col-header">
+                        <a href="#" id="btnAdd">
+                            <span style="font-weight: bold;">NOVO</span>
+                        </a>
+                    </div>
+                    <div class="col-sm-10 col-header">Nome</div>
+                </div>
+                @if (Model.Count() > 0)
+                {
+                    foreach (PortalBahiaGas.Models.Entidade.PontoEntrega item in Model)
+                    {
+                        <div class="row">
+                            @Html.Hidden("id", item.Id)
+                            <div class="col-sm-2 col-header">
+                                <a href="#" onclick="Salvar(this);" class="invisivel">
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </a>
+                                <a href="#" onclick="Cancelar(this);" class="invisivel">
+                                    <span class="glyphicon glyphicon-remove-circle"></span>
+                                </a>
+                                <a href="#" onclick="Editar(this);" class="visivel">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </a>
+                                <a href="#" onclick="Remover(this);" class="visivel">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </a>
+                            </div>
+                            <div class="col-sm-10 col-detail">
+                                <input type="text" class="input-grid" name="nome" disabled="disabled" value="@item.Nome" />
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="row">
+                        <div class="col-sm-12 text-center empty">Nenhum registro encontrado.</div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</form>
+@Scripts.Render("~/Scripts/views/PontoEntrega.js")

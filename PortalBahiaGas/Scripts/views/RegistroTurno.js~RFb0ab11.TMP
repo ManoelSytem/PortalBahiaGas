@@ -1,0 +1,127 @@
+﻿$(document).ready(function () {
+    $(this).tab('show');
+});
+
+function Salvar(pForm) {
+    $.ajax({
+        url: "RegistroTurno/Cadastrar",
+        data: $("#" + pForm).serializeArray(),
+        type: 'post'
+    }).done(function (data) {
+        if (!data.Erro) {
+            $(document).find("#abaGasoduto").removeClass("not-active");
+            $.get('RegistroTurno/ObterAbas/2', null, function (result) {
+                $('#menu1').html(result);
+            });
+            $(document).find("#abaGasoduto").tab('show');
+        }
+        alert(data.Mensagem);
+    });
+}
+
+function getContentTab(pAba) {
+    var url = 'RegistroTurno/ObterAbas/' + $(pAba).attr('rel');
+    var targetDiv = $(pAba).attr('href');
+    $.get(url, null, function (result) {
+        $(targetDiv).html(result);
+    });
+    $(this).tab('show');
+}
+
+function SalvarGasoduto(pForm) {
+    $.ajax({
+        url: "RegistroTurno/Cadastrar",
+        data: $("#" + pForm).serializeArray(),
+        type: 'post'
+    }).done(function (data) {
+        if (!data.Erro) {
+            $(document).find("#abaPontoEntrega").removeClass("not-active");
+            $.get('RegistroTurno/ObterAbas/2', null, function (result) {
+                $('#menu1').html(result);
+            });
+            $.get('RegistroTurno/ObterAbas/3', null, function (result) {
+                $('#menu2').html(result);
+            });
+            $(document).find("#abaPontoEntrega").tab('show');
+        }
+        alert(data.Mensagem);
+    });
+}
+
+function SalvarPontoEntrega(pForm) {
+    $.ajax({
+        url: "RegistroTurno/Cadastrar",
+        data: $("#" + pForm).serializeArray(),
+        type: 'post'
+    }).done(function (data) {
+        if (!data.Erro) {
+            $(document).find("#abaCliente").removeClass("not-active");
+            $.get('RegistroTurno/ObterAbas/3', null, function (result) {
+                $('#menu2').html(result);
+            });
+            $.get('RegistroTurno/ObterAbas/4', null, function (result) {
+                $('#menu3').html(result);
+            });
+            $(document).find("#abaCliente").tab('show');
+        }
+        alert(data.Mensagem);
+    });
+}
+
+function SalvarCliente(pForm) {
+    $.ajax({
+        url: "RegistroTurno/Cadastrar",
+        data: $("#" + pForm).serializeArray(),
+        type: 'post'
+    }).done(function (data) {
+        if (!data.Erro) {
+            $(document).find("#abaOcorrencia").removeClass("not-active");
+            $.get('RegistroTurno/ObterAbas/4', null, function (result) {
+                $('#menu3').html(result);
+            });
+            $.get('RegistroTurno/ObterAbas/5', null, function (result) {
+                $('#menu4').html(result);
+            });
+            $(document).find("#abaOcorrencia").tab('show');
+        }
+        alert(data.Mensagem);
+    });
+}
+
+function PopUp(pId) {
+    $.ajax({
+        url: 'RegistroTurno/PopUpOcorrencia/' + pId,
+        success: function (data) {
+            $('#modalWrapper').html(data);
+            $('#OcorrenciaModal').modal();
+        }
+    });
+}
+
+function SalvarOcorrencia(pForm) {
+    $.ajax({
+        url: "RegistroTurno/Cadastrar",
+        data: $("#" + pForm).serializeArray(),
+        type: 'post'
+    }).done(function (data) {
+        if (!data.Erro) {
+            ObterAba({
+                id: $("#" + pForm).find("name='IdRegistroTurno'").val(),
+                aba: "Ocorrencia"
+            }, function (data) {
+                $('#menu4').html(result);
+            });
+        }
+        alert(data.Mensagem);
+    });
+}
+
+function ObterAba(dados, funcao) {
+    $.ajax({
+        url: "RegistroTurno/ObterAbas",
+        data: dados,
+        type: 'post'
+    }).done(function (data) {
+        funcao(data);
+    });
+}

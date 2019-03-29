@@ -1,0 +1,99 @@
+﻿@model PortalBahiaGas.Models.Entidade.RegistroTurno
+
+<h3>Ocorrências</h3>
+<form class="form-inline" role="form">
+    @Html.Hidden("IdRegistroTurno", Model.Id)
+    <div class="form-group row">
+        @Html.Label("Data:")
+        <div class="input-group input-append date" id="data">
+            @Html.TextBoxFor(x => x.Data, "{0:dd/MM/yyyy}", new { @class = "form-control", disabled = "disabled" })
+            <span class="input-group-addon add-on">
+                <span class="glyphicon glyphicon-th"></span>
+            </span>
+        </div>
+        <div class="form-group">
+            @Html.Label("Turno:")
+            @Html.DropDownListFor(x => x.Turno, PortalBahiaGas.Models.Entidade.Enuns.ETurno.De7as15.ToSelectList(), new { @class = "form-control", disabled = "disabled" })
+            <a href="#" onclick="PopUp(0, @Model.Id);" class="btn btn-primary" role="button" style="align-content:flex-end">Nova ocorrência</a>
+        </div>
+    </div>
+    <div class="panel panel-default ">
+        <div class="panel-heading">Ocorrências</div>
+        <div class="panel-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-1 col-header">
+                        <!---<a href="#" onclick="PopUp(0, @Model.Id);">-->
+                            <span>&nbsp;</span><!---<span style="font-weight: bold;">NOVO</span>-->
+                        <!---</a>-->
+                    </div>
+                    <div class="col-sm-2 col-header">Origem</div>
+                    <div class="col-sm-2 col-header">Região</div>
+                    <div class="col-sm-2 col-header text-center">Hora da ocorrência</div>
+                    <div class="col-sm-2 col-header text-center">Início de atendimento</div>
+                    <div class="col-sm-2 col-header text-center">Conclusão</div>
+                    <div class="col-sm-1 col-header">Status</div>
+                </div>
+                @foreach (PortalBahiaGas.Models.Entidade.Ocorrencia item in Model.Ocorrencias.OrderByDescending(x => x.Inicio).ThenByDescending(x => x.Hora))
+                {
+                    @Html.Hidden("IdOcorrencia", item.Id)
+                    <div class="row">
+                        <div class="col-sm-1 col-header" style="padding:0;">
+                            <a href="#" onclick="PopUp(@item.Id, @Model.Id);">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                        </div>
+                        <div class="col-sm-2 col-detail" style="padding:0;">
+                            <span class="grid">@item.Origem.ToString()</span>
+                        </div>
+                        <div class="col-sm-2 col-detail" style="padding:0;">
+                            <span class="grid">@((item.Regiao == null) ? "" : item.Regiao.Nome)</span>
+                        </div>
+                        <div class="col-sm-2 col-detail text-center" style="padding:0;">
+                            <span class="grid">@String.Format("{0:dd/MM/yyyy HH:mm}", item.Inicio)</span>
+                        </div>
+                        <div class="col-sm-2 col-detail text-center" style="padding:0;">
+                            <span class="grid">@String.Format("{0:dd/MM/yyyy HH:mm}", item.Atendimento)</span>
+                        </div>
+                        <div class="col-sm-2 col-detail text-center" style="padding:0;">
+                            <span class="grid">@String.Format("{0:dd/MM/yyyy HH:mm}", item.Conclusao)</span>
+                        </div>
+                        <div class="col-sm-1 col-detail" style="padding:0;">
+                            <span class="grid">@item.Status.ToString()</span>
+                        </div>
+                    </div>
+                }
+                @foreach (PortalBahiaGas.Models.Entidade.Ocorrencia item in Model.OutrasOcorrencias.OrderBy(x => x.Inicio).ThenBy(x => x.Hora))
+                {
+                    @Html.Hidden("IdOcorrencia", item.Id)
+                    <div class="row">
+                        <div class="col-sm-1 col-header">
+                            <a href="#" onclick="PopUp(@item.Id);">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                        </div>
+                        <div class="col-sm-2 col-detail">
+                            <span class="grid">@item.Origem.ToString()</span>
+                        </div>
+                        <div class="col-sm-2 col-detail">
+                            <span class="grid">@(((item.Regiao == null) ? "" : item.Regiao.Nome))</span>
+                        </div>
+                        <div class="col-sm-2 col-detail text-center">
+                            <span class="grid">@String.Format("{0:dd/MM/yyyy HH:mm}", item.Inicio)</span>
+                        </div>
+                        <div class="col-sm-2 col-detail text-center">
+                            <span class="grid">@String.Format("{0:dd/MM/yyyy HH:mm}", item.Atendimento)</span>
+                        </div>
+                        <div class="col-sm-2 col-detail text-center">
+                            <span class="grid">@String.Format("{0:dd/MM/yyyy HH:mm}", item.Conclusao)</span>
+                        </div>
+                        <div class="col-sm-1 col-detail">
+                            <span class="grid">@item.Status.ToString()</span>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</form>
+<div id="modalWrapper"></div>

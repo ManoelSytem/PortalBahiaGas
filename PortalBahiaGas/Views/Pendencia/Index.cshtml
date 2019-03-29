@@ -1,0 +1,247 @@
+﻿@model System.Collections.Generic.IEnumerable<PortalBahiaGas.Models.Entidade.Pendencia>
+@{
+    ViewBag.Title = "Registro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.MenuTurno = "";
+    ViewBag.MenuUsuario = "active";
+    ViewBag.MenuCliente = "";
+    ViewBag.MenuPontoEntrega = "";
+    ViewBag.MenuRegiao = "";
+    ViewBag.MenuGasoduto = "";
+    ViewBag.MenuOperador = "";
+    ViewBag.MenuOdorizador = "";
+}
+<h3>Registro Operacional</h3>
+@using (Html.BeginForm("Pesquisar", "Pendencia", FormMethod.Post, new { @class = "form-inline", @role = "form", @id = "form1" }))
+{
+    HtmlHelper.ClientValidationEnabled = false;
+    <div>
+        <fieldset style="display:inline-block; border: 1px solid #ccc; padding: 5px;">
+            <legend style="border:none; font-size:14px;font-weight:bold; width:auto;">Período</legend>
+            <div class="form-group">
+                @Html.Label("Início:")<br />
+                <div class="input-group input-append date" id="data">
+                    @Html.TextBox("DataInicial", ViewData["Inicio"], new { @class = "form-control", @style = "width:100px;" })
+                    <span class="input-group-addon add-on">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Fim:")<br />
+                <div class="input-group input-append date" id="data">
+                    @Html.TextBox("DataFinal", ViewData["Conclusao"], new { @class = "form-control", @style = "width:100px;" })
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
+            </div>
+        </fieldset>
+        <div class="form-group">
+            @Html.Label("Turno:")<br />
+            @Html.DropDownListFor(x => ViewData["Turno"], PortalBahiaGas.Models.Entidade.Enuns.ETurno.De7as15.ToSelectList(), "Selecione", new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelForModel("Cliente:")
+            <div style="display:flex;">
+                <div id="divComboSelect" style="display:none;">
+                    <select id="SelectIdCliente" name="SelectIdCliente" class="form-control" data-style="btn-inverse" data-live-search="true" style="width:339px;"></select>
+                </div>
+                <div id="divComboText" style="display:block; display:flex;">
+                    @Html.TextBox("SelectCliente", ViewData["Cliente"], new { @class = "form-control form-alinhado", style = "width: 294px;" })
+                    <button type="button" class="btn btn-default" onclick="PopularSelect();">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelForModel("Infraestrutura:")
+            <div style="display:flex;">
+                <div id="divComboSelectInfraestrutura" style="display:none;">
+                    <select id="SelectIdInfraestrutura" name="SelectIdInfraestrutura" class="form-control" data-style="btn-inverse" data-live-search="true" style="width:339px;"></select>
+                </div>
+                <div id="divComboTextInfraestrutura" style="display:block; display:flex;">
+                    @Html.TextBox("SelectInfraestrutura", ViewData["Infraestrutura"], new { @class = "form-control form-alinhado", style = "width: 294px;" })
+                    <button type="button" class="btn btn-default" onclick="PopularSelectInfraestrutura();">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelForModel("Atendente:")<br />
+            @Html.TextBox("Atendente", ViewData["Atendente"], new { @class = "form-control form-alinhado", style = "width: 313px;" })
+        </div>
+        <div class="form-group">
+            @Html.LabelForModel("Região:")<br />
+            @Html.DropDownList("Regiao", (SelectList)ViewData["Regioes"], "Selecione", new { @class = "form-control form-alinhado", style = "width: 160px;" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Status:")<br />
+            @Html.DropDownListFor(x => ViewData["Status"], PortalBahiaGas.Models.Entidade.Enuns.EStatus.Concluído.ToSelectList(), "Selecione", new { @class = "form-control", style = "width: 160px;" })
+        </div>
+        <div class="form-group">
+            @Html.LabelForModel("Descrição:")<br />
+            @Html.TextBox("Descricao", ViewData["Descricao"], new { @class = "form-control form-alinhado", style = "width: 400px;" })
+        </div>
+        <div class="form-group">
+            &nbsp;<br />
+            <button type="submit" class="btn btn-default form-alinhado" onclick="return onSubmit();">Pesquisar</button>
+        </div>
+    </div>
+}
+<div class="panel panel-default ">
+    <div class="panel-heading">Pendências</div>
+    <div class="panel-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-1 col-header">
+                    &nbsp;
+                </div>
+                <div class="col-sm-2 col-header">Região</div>
+                <div class="col-sm-2 col-header">Local</div>
+                <div class="col-sm-2 col-header text-center">Atendente</div>
+                <div class="col-sm-2 col-header text-center">Data do Registro</div>
+                <div class="col-sm-2 col-header text-center">Conclusão</div>
+                <div class="col-sm-1 col-header">Status</div>
+            </div>
+            @foreach (PortalBahiaGas.Models.Entidade.Pendencia item in Model.OrderBy(x => x.Inicio))
+            {
+                <div class="row">
+                    <div class="col-sm-1 col-header" style="padding:0;" data-toggle="tooltip" title="@item.Descricao">
+                        <a href="#" onclick="PopUp(@item.Id, @item.RegistroTurno.Id);">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                        </a>
+                    </div>
+                    <div class="col-sm-2 col-detail" style="padding:0;">
+                        <span class="grid">@((item.Regiao == null) ? "" : item.Regiao.Nome)</span>
+                    </div>
+                    <div class="col-sm-2 col-detail" style="padding:0;">
+                        <span class="grid">
+                        @if (item.Local == PortalBahiaGas.Models.Entidade.Enuns.ELocal.Infraestrutura)
+                        {
+                            <span>
+                                @(String.IsNullOrEmpty(item.Infraestrutura) ? "SD" : item.InfraestruturaObj == null ? item.Infraestrutura : item.InfraestruturaObj.Nome)
+                            </span>
+                        }
+                        else
+                        {
+                            <span>
+                                @(String.IsNullOrEmpty(item.Cliente) ? "SD" : item.ClienteObj == null ? item.Cliente : item.ClienteObj.Nome)
+                            </span>
+                        }
+                        </span>
+                    </div>
+                    <div class="col-sm-2 col-detail" style="padding:0;">
+                        <span class="grid">@item.Atendente.ToString()</span>
+                    </div>
+                    <div class="col-sm-2 col-detail text-center" style="padding:0;">
+                        <span class="grid">@String.Format("{0:dd/MM/yyyy}", item.Inicio)</span>
+                    </div>
+                    <div class="col-sm-2 col-detail text-center" style="padding:0;">
+                        <span class="grid">@String.Format("{0:dd/MM/yyyy HH:mm}", item.Conclusao)</span>
+                    </div>
+                    <div class="col-sm-1 col-detail" style="padding:0;">
+                        <span class="grid">@item.Status.ToString()</span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ViewData_Turno_").val('@ViewData["Turno"]');
+    });
+</script>
+<div id="modalWrapperPendencia"></div>
+<script type="text/javascript">
+    function PopularSelect() {
+        if ($("input[name='SelectCliente']").val().length >= 3) {
+            $.ajax({
+                url: "/../Cliente/ObterPorNomeClienteDoProtheus",
+                data: { Nome: $("input[name='SelectCliente']").val() },
+                type: 'post'
+            }).done(function (result) {
+                if (!result.Erro) {
+                    if (result.Objeto != null) {
+                        $('#SelectIdCliente option').remove();
+                        $("#SelectIdCliente").append("<option value=''>Selecione</option>");
+                        for (var i = 0; i < result.Objeto.length; i++) {
+                            $("#SelectIdCliente").append("<option value='" + result.Objeto[i].IdProtheus + "'>" + result.Objeto[i].Nome + "</option>");
+                        }
+                    }
+                    if (result.Objeto.length > 0) {
+                        $("#divComboSelect").show();
+                        $("#divComboText").hide();
+                    }
+                }
+            });
+        } else {
+            alert("O tamanho mínimo para pesquisa é de 3 caracteres.");
+        }
+    }
+
+    function PopularSelectInfraestrutura() {
+        if ($("input[name='SelectInfraestrutura']").val().length >= 3) {
+            $.ajax({
+                url: "/../Infraestrutura/ObterPorNomeInfraestruturaDoProtheus",
+                data: { Nome: $("input[name='SelectInfraestrutura']").val() },
+                type: 'post'
+            }).done(function (result) {
+                if (!result.Erro) {
+                    if (result.Objeto != null) {
+                        $('#SelectIdInfraestrutura option').remove();
+                        $("#SelectIdInfraestrutura").append("<option value=''>Selecione</option>");
+                        for (var i = 0; i < result.Objeto.length; i++) {
+                            $("#SelectIdInfraestrutura").append("<option value='" + result.Objeto[i].IdProtheus + "'>" + result.Objeto[i].Nome + "</option>");
+                        }
+                    }
+                    if (result.Objeto.length > 0) {
+                        $("#divComboSelectInfraestrutura").show();
+                        $("#divComboTextInfraestrutura").hide();
+                    }
+                }
+            });
+        } else {
+            alert("O tamanho mínimo para pesquisa é de 3 caracteres.");
+        }
+    }
+
+    $('#SelectCliente').change(function () { $('#SelectIdCliente option').remove(); });
+    $('#SelectIdCliente').change(function () {
+        $("#divComboSelect").hide();
+        $("#divComboText").show();
+        $("input[name='SelectCliente']").val($('#SelectIdCliente option:selected').text());
+    });
+
+    $('#SelectInfraestrutura').change(function () { $('#SelectIdInfraestrutura option').remove(); });
+    $('#SelectIdInfraestrutura').change(function () {
+        $("#divComboSelectInfraestrutura").hide();
+        $("#divComboTextInfraestrutura").show();
+        $("input[name='SelectInfraestrutura']").val($('#SelectIdInfraestrutura option:selected').text());
+    });
+
+    function PopUp(pIdPendencia, pIdRegistroTurno) {
+        var dados = { id: pIdPendencia, idRegistroTurno: pIdRegistroTurno };
+        $.ajax({
+            url: '../../Pendencia/PopUpPendencia',
+            data: dados,
+            type: 'post'
+        }).done(function (data) {
+            $('#modalWrapperPendencia').html(data);
+            $('#PendenciaModal').modal();
+        });
+    }
+
+    function onSubmit() {
+        var dataInicial = new Date($("#DataFinal").val());
+        var dataFinal = new Date($("#DataInicial").val());
+        if (dataFinal < dataInicial) {
+            alert("Data final não pode ser menor que data inicial.");
+            return;
+        }
+
+        $('#form1').submit();
+        return true;
+    }
+</script>

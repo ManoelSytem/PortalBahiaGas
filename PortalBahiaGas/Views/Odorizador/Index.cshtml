@@ -1,0 +1,74 @@
+﻿@model System.Collections.Generic.IEnumerable<PortalBahiaGas.Models.Entidade.Odorizador>
+@{
+    ViewBag.Title = "Odorizador";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.MenuTurno = "";
+    ViewBag.MenuUsuario = "";
+    ViewBag.MenuCliente = "";
+    ViewBag.MenuPontoEntrega = "";
+    ViewBag.MenuRegiao = "";
+    ViewBag.MenuGasoduto = "";
+    ViewBag.MenuOperador = "";
+    ViewBag.MenuOdorizador = "active";
+}
+
+<form class="form-inline" role="form">
+    <h3>Odorizadores</h3>
+    <div class="panel panel-default ">
+        <div class="panel-heading">Odorizadores</div>
+        <div class="panel-body">
+            <div class="container-fluid" id="grid">
+                <div class="row">
+                    <div class="col-sm-2 col-header">
+                        <a href="#" id="btnAdd">
+                            <span style="font-weight: bold;">NOVO</span>
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-header">Nome</div>
+                    <div class="col-sm-2 col-header">Set Point <span style="font-size:10px;">(CC/STK)</span></div>
+                    <div class="col-sm-2 col-header">Set Point <span style="font-size:10px;">(PSI)</span></div>
+                </div>
+                @if (Model.Count() > 0)
+                {
+                    foreach (PortalBahiaGas.Models.Entidade.Odorizador item in Model)
+                    {
+                        <div class="row">
+                            @Html.Hidden("id", item.Id)
+                            <div class="col-sm-2 col-header">
+                                <a href="#" onclick="Salvar(this);" class="invisivel">
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </a>
+                                <a href="#" onclick="Cancelar(this);" class="invisivel">
+                                    <span class="glyphicon glyphicon-remove-circle"></span>
+                                </a>
+                                <a href="#" onclick="Editar(this);" class="visivel">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </a>
+                                <a href="#" onclick="Remover(this);" class="visivel">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </a>
+                            </div>
+                            <div class="col-sm-6 col-detail">
+                                <input type="text" class="input-grid" name="Nome" disabled="disabled" value="@item.Nome" />
+                            </div>
+                            <div class="col-sm-2 col-detail">
+                                <input type="text" class="input-grid decimal text-right" name="SetPointCcStk" disabled="disabled" value="@(String.Format("{0:n2}",item.SetPointCcStk))" />
+                            </div>
+                            <div class="col-sm-2 col-detail">
+                                <input type="text" class="input-grid intervalo text-right" name="SetPointPsi" disabled="disabled" value="@item.SetPointPsi" />
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="row">
+                        <div class="col-sm-12 text-center empty">Nenhum registro encontrado.</div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</form>
+@Scripts.Render("~/Scripts/views/Odorizador.js")
+@Scripts.Render("~/Scripts/mascaras.js")

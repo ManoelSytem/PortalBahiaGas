@@ -1,0 +1,73 @@
+﻿@model PortalBahiaGas.Models.Entidade.RegistroTurno
+
+<h3>Informações de gasoduto</h3>
+<form class="form-inline" role="form" id="formGasoduto">
+    @Html.Hidden("pagina", "gasoduto")
+    @Html.Hidden("IdRegistroTurno", Model.Id)
+    <div class="form-group row">
+        @Html.Label("Data:")
+        <div class="input-group input-append date" id="data">
+            @Html.TextBoxFor(x => x.Data, "{0:dd/MM/yyyy}", new { @class = "form-control", disabled = "disabled" })
+            <span class="input-group-addon add-on">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+        <div class="form-group">
+            @Html.Label("Turno:")
+            @Html.EnumDropDownListFor(x => x.Turno, "Selecione", new { @class = "form-control", disabled = "disabled" })
+        </div>
+    </div>
+    <div class="panel panel-default ">
+        <div class="panel-heading">Checagem</div>
+        <div class="panel-body">
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="col-sm-1 col-header">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </div>
+                    <div class="col-sm-4 col-header">Gasoduto</div>
+                    <div class="col-sm-4 col-header">Operador</div>
+                    <div class="col-sm-1 col-header">Hora</div>
+                    <div class="col-sm-1 col-header">Vazão</div>
+                    <div class="col-sm-1 col-header">Pressão</div>
+                </div>
+                @foreach (PortalBahiaGas.Models.Entidade.RegistroGasoduto item in Model.RegistrosGasoduto)
+                {
+                    @Html.Hidden("IdGasoduto", item.Id)
+                    <div class="row-fluid">
+                        <div class="col-sm-1 col-header">
+                            <span class="glyphicon glyphicon-ok"></span>
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </div>
+                        <div class="col-sm-4 col-detail">
+                            @Html.Hidden("Gasoduto", item.Gasoduto)
+                            <span class="grid">@item.Gasoduto</span>
+                        </div>
+                        <div class="col-sm-4 col-detail">
+                            @Html.DropDownListFor(x => item.Operador, (List<SelectListItem>)Session["Operadores"], new { @class = "input-grid" })
+                        </div>
+                        <div class="col-sm-1 col-detail">
+                            @Html.TextBox("Hora", (item.Hora.Equals(DateTime.MinValue)) ? item.Hora : DateTime.Now, "{0:HH:mm}", new { @class = "input-grid hora" })
+                        </div>
+                        <div class="col-sm-1 col-detail">
+                            @Html.TextBox("Vazao", item.Vazao, "{0:n2}", new { @class = "input-grid decimal" })
+                        </div>
+                        <div class="col-sm-1 col-detail">
+                            @Html.TextBox("Pressao", item.Pressao, "{0:n2}", new { @class = "input-grid decimal" })
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="btn-group pull-right">
+        <button type="button" class="btn btn-success" onclick="SalvarGasoduto('formGasoduto');">Salvar</button>
+        <button type="button" class="btn btn-danger" onclick="window.location = '@Url.Action("Index","Home")';">Cancelar</button>
+    </div>
+</form>
+
+<script>
+    $('.hora').mask('99:99');
+    $(".decimal").mask("99,99", { autoclear: false, placeholder: "0" });
+</script>

@@ -1,0 +1,81 @@
+﻿@model System.Collections.Generic.IEnumerable<PortalBahiaGas.Models.Entidade.Usuario>
+@{
+    ViewBag.Title = "Usuário";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.MenuTurno = "";
+    ViewBag.MenuUsuario = "active";
+    ViewBag.MenuCliente = "";
+    ViewBag.MenuPontoEntrega = "";
+    ViewBag.MenuRegiao = "";
+    ViewBag.MenuGasoduto = "";
+    ViewBag.MenuOperador = "";
+    ViewBag.MenuOdorizador = "";
+}
+
+@Scripts.Render("~/Scripts/views/Usuario.js")
+<form class="form-inline" role="form">
+    <h3>Usuários</h3>
+    <div class="panel panel-default ">
+        <div class="panel-heading">Usuários</div>
+        <div class="panel-body">
+            <div class="container-fluid" id="grid">
+                <div class="row">
+                    <div class="col-sm-1 col-header">
+                        <a href="#" id="btnAdd">
+                            <span style="font-weight: bold;">NOVO</span>
+                        </a>
+                    </div>
+                    <div class="col-sm-3 col-header">Nome</div>
+                    <div class="col-sm-2 col-header">Perfil</div>
+                    <div class="col-sm-2 col-header">Login</div>
+                    <div class="col-sm-2 col-header">Senha</div>
+                    <div class="col-sm-2 col-header">Comfirma</div>
+                </div>
+                @if (Model.Count() > 0)
+                {
+                    foreach (PortalBahiaGas.Models.Entidade.Usuario item in Model)
+                    {
+                        <div class="row">
+                            @Html.Hidden("id", item.Id)
+                            <div class="col-sm-1 col-header">
+                                <a href="#" onclick="Salvar(this);" class="invisivel">
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </a>
+                                <a href="#" onclick="Cancelar(this);" class="invisivel">
+                                    <span class="glyphicon glyphicon-remove-circle"></span>
+                                </a>
+                                <a href="#" onclick="Editar(this);" class="visivel">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </a>
+                                <a href="#" onclick="Remover(this);" class="visivel">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </a>
+                            </div>
+                            <div class="col-sm-3 col-detail">
+                                <input type="text" class="input-grid" name="nome" disabled="disabled" value="@item.Nome" />
+                            </div>
+                            <div class="col-sm-2 col-detail">
+                                @Html.EnumDropDownListFor(x => item.Perfil, new { @class = "input-grid", disabled = false })
+                            </div>
+                            <div class="col-sm-2 col-detail">
+                                <input type="text" class="input-grid" name="login" disabled="disabled" value="@item.Login" />
+                            </div>
+                            <div class="col-sm-2 col-detail">
+                                <input type="password" class="input-grid" name="senha" disabled="disabled" value="" placeholder="Senha" />
+                            </div>
+                            <div class="col-sm-2 col-detail">
+                                <input type="password" class="input-grid" name="confirma" disabled="disabled" value="" placeholder="Confirma a senha"/>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="row">
+                        <div class="col-sm-12 text-center empty">Nenhum registro encontrado.</div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</form>

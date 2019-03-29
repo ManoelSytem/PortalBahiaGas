@@ -1,0 +1,89 @@
+﻿@model PortalBahiaGas.Models.Entidade.Ocorrencia
+<div id="OcorrenciaModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Ocorrência</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    @using (Html.BeginForm("CadastrarOcorrencia", "RegistroTurno", FormMethod.Post, new { @class = "form-inline", @role = "form" }))
+                    {
+                        <div class="form-group row-formulario">
+                            @Html.LabelForModel("Código", new { @for = "Id" })
+                            @Html.TextBox("Id", Model.Id, new { @class = "input-sm input-pequeno form-control", disabled = true })
+
+                            @Html.LabelForModel("Origem")
+                            @Html.DropDownListFor(x => x.Origem, (List<SelectListItem>)Session["Origens"], "Selecione", new { @class = "form-control", style = "width: 180px;" })
+                            <fieldset style="display: inline-block; border: 1px solid #f5f5f5;">
+                                <legend>Horários</legend>
+                                @Html.LabelForModel("Início")
+                                @Html.TextBox("Inicio", (Model.Inicio == null) ? DateTime.Now : Model.Hora, "{0:HH:mm}", new { @class = "input-sm input-pequeno form-control hora" })
+
+                                @Html.LabelForModel("Atendimento")
+                                @Html.TextBox("Atendimento", (Model.Atendimento == null) ? DateTime.Now : Model.Hora, "{0:HH:mm}", new { @class = "input-sm input-pequeno form-control hora" })
+
+                                @Html.LabelForModel("Conclusão")
+                                @Html.TextBox("Conclusao", (Model.Conclusao == null) ? DateTime.Now : Model.Hora, "{0:HH:mm}", new { @class = "input-sm input-pequeno form-control hora" })
+                            </fieldset>
+                        </div>
+                        <div class="form-group row-formulario">
+                            @Html.LabelForModel("ETC")
+                            @Html.DropDownListFor(x => x.NomeETC, (List<SelectListItem>)Session["ETCs"], "Selecione", new { @class = "form-control", style = "width: 150px;" })
+
+                            @Html.LabelForModel("Atendente")
+                            @Html.DropDownListFor(x => x.Atendente, (List<SelectListItem>)Session["Funcionarios"], "Selecione", new { @class = "form-control", style = "width: 180px;" })
+
+                            @Html.LabelForModel("Cliente")
+                            @Html.DropDownListFor(x => x.Cliente, (List<SelectListItem>)Session["Clientes"], "Selecione", new { @class = "form-control", style = "width: 180px;" })
+
+                            @Html.LabelForModel("Status")
+                            @Html.EnumDropDownListFor(x => x.Status, "Selecione", new { @class = "form-control" })
+                        </div>
+                        <div class="form-group row-formulario operacao" style="border: 1px solid #ccc;">
+                            @Html.LabelForModel("Ponto de entrega")
+                            @Html.DropDownListFor(x => x.ProntoEntrega, (List<SelectListItem>)Session["PontosEntrega"], "Selecione", new { @class = "form-control", style = "width: 180px;" })
+
+                            @Html.LabelForModel("Contato")
+                            @Html.TextBoxFor(x => x.NomeContato, new { @class = "form-control input-sm" })
+
+                            @Html.LabelForModel("Telefone")
+                            @Html.TextBoxFor(x => x.Telefone, new { @class = "form-control input-sm" })
+
+                            @Html.LabelForModel("Pressão")
+                            @Html.TextBoxFor(x => x.Pressao, "{0:n2}", new { @class = "form-control input-sm decimal" })
+
+                            @Html.LabelForModel("Vazão")
+                            @Html.TextBoxFor(x => x.Vazao, "{0:n2}", new { @class = "form-control input-sm decimal" })
+                        </div>
+
+                        <div class="form-group row-formulario programacao">
+                            Modalidade (previamente cadastrada)
+                            Número do Protocolo
+                        </div>
+
+                        <div class="form-group row-formulario medicao">
+                            Técnico (previamente cadastrado)
+                            Tipo (previamente cadastrado)
+                        </div>
+
+                        <div class="form-group row-formulario sac">
+                            Número do Chamado
+                            Quando o número do chamado for informado, a rotina deverá buscar os dados do chamado na base do protheus
+                        </div>
+
+                        <div class="form-group row-formulario">
+                            @Html.LabelFor(x => x.Descricao)
+                            @Html.TextAreaFor(x => x.Descricao, new { @class = "form-control", rows = "5", style = "width: 790px;" })
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Salvar</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/Scripts/mascaras.js")

@@ -1,0 +1,123 @@
+﻿@model System.Collections.Generic.IEnumerable<PortalBahiaGas.Models.Entidade.RegistroTurno>
+@{
+    ViewBag.Title = "Portal Bahiagás";
+    ViewBag.MenuTurno = "";
+    ViewBag.MenuUsuario = "";
+    ViewBag.MenuCliente = "";
+    ViewBag.MenuPontoEntrega = "";
+    ViewBag.MenuRegiao = "";
+    ViewBag.MenuGasoduto = "";
+    ViewBag.MenuOperador = "";
+    ViewBag.MenuOdorizador = "";
+}
+
+@Scripts.Render("~/Scripts/views/Home.js")
+<h3>Registros do turno</h3>
+@using (Html.BeginForm("Pesquisar", "Home", FormMethod.Post, new { @class = "form-inline", @role = "form", @id = "form1" }))
+{
+    HtmlHelper.ClientValidationEnabled = false;
+    <div>
+        <fieldset style="display:inline-block; border: 1px solid #ccc; padding: 5px;">
+            <legend style="border:none; font-size:14px;font-weight:bold; width:auto;">Período</legend>
+            <div class="form-group">
+                @Html.Label("Início:")<br />
+                <div class="input-group input-append date" id="data">
+                    @Html.TextBox("DataInicial", ViewData["Inicio"], new { @class = "form-control", @readonly = "readonly", @style = "width:100px;" })
+                    <span class="input-group-addon add-on">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Fim:")<br />
+                <div class="input-group input-append date" id="data">
+                    @Html.TextBox("DataFinal", ViewData["Conclusao"], new { @class = "form-control", @readonly = "readonly", @style = "width:100px;" })
+                    <span class="input-group-addon add-on">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </span>
+                </div>
+            </div>
+        </fieldset>
+        <div class="form-group">
+            &nbsp;<br />
+            <button type="submit" class="btn btn-default form-alinhado" onclick="return onSubmit();">Pesquisar</button>
+        </div>
+        <div style="text-align:end">
+            @if (((PortalBahiaGas.Models.Entidade.Usuario)Session["UsuarioLogado"]).Perfil != PortalBahiaGas.Models.Entidade.Enuns.EPerfil.Visitante)
+            {
+                <a href="@Url.Action("", "RegistroTurno")" class="btn btn-primary" role="button">Novo turno</a>
+            }
+            else
+            {
+                <span>&nbsp;</span>
+            }
+        </div>
+    </div>
+}
+<div class="panel panel-default ">
+    <div class="panel-heading">Turnos</div>
+    <div class="panel-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-2 col-header">
+                       <span>&nbsp;</span>
+                </div>
+                <div class="col-sm-2 col-header">Data</div>
+                <div class="col-sm-3 col-header">Turno</div>
+                <div class="col-sm-2 col-header">Usuário</div>
+                <div class="col-sm-3 col-header">Última Alteração</div>
+            </div>
+            @if (Model.Count() > 0)
+            {
+                PortalBahiaGas.Models.Entidade.Usuario Usuario = (PortalBahiaGas.Models.Entidade.Usuario)Session["UsuarioLogado"];
+                foreach (PortalBahiaGas.Models.Entidade.RegistroTurno item in Model.OrderByDescending(x => x.Data).ThenByDescending(x => x.Turno))
+                {
+                    <div class="row">
+                        <div class="col-sm-2 col-header-button">
+                            @if ((ViewData["perfil"].Equals(PortalBahiaGas.Models.Entidade.Enuns.EPerfil.Administrador) || ViewData["perfil"].Equals(PortalBahiaGas.Models.Entidade.Enuns.EPerfil.Supervisor)) && item.Bloqueado)
+                            {
+                            <a href="@Url.Action("Liberar", new { id = item.Id })" title="Liberar">
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </a>
+                            }
+                            @if ((!item.Bloqueado && !ViewData["perfil"].Equals(PortalBahiaGas.Models.Entidade.Enuns.EPerfil.Visitante) && PortalBahiaGas.Util.Utilitario.VerificarLimiteEdicaoTurno(item.Turno, item.Data, Usuario)) || (item.UsuarioCriacao == Usuario.Login && DateTime.Now < item.DataCriacao.Value.AddDays(2)))
+                            {
+                            <a href="@Url.Action("Index", "RegistroTurno", new { id = item.Id })" title="Editar">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                            }
+                            <a href="#" title="Imprimir" onclick="window.open('@Url.Action("Relatorio", "Home", new { id = item.Id })', 'relatorio', 'width=811, height=950,scrollbars=1,resizable=0,top=0');">
+                                <span class="glyphicon glyphicon-print"></span>
+                            </a>
+                        </div>
+                        <div class="col-sm-2 col-detail">
+                            <span class="grid">@item.Data.ToShortDateString()</span>
+                        </div>
+                        <div class="col-sm-3 col-detail">
+                            <span class="grid">@item.Turno.ObterDescricao()</span>
+                        </div>
+                        <div class="col-sm-2 col-detail">
+                            @if (item.UsuarioCriacao != null)
+                            {
+                                <span class="grid">@(item.UsuarioAlteracao ?? item.UsuarioCriacao)</span>
+                            }
+                        </div>
+                        <div class="col-sm-3 col-detail">
+                            @if (item.DataCriacao != null)
+                            {
+                                <span class="grid">@((item.DataAlteracao ?? item.DataCriacao).Value.ToString())</span>
+                            }
+                        </div>
+
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="row">
+                    <div class="col-sm-12 text-center empty">Nenhum registro encontrado.</div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

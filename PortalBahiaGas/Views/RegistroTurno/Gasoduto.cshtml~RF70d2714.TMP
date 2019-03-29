@@ -1,0 +1,64 @@
+﻿@model System.Collections.Generic.IEnumerable<PortalBahiaGas.Models.Entidade.RegistroGasoduto>
+<div id="menu1" class="tab-pane fade">
+    <h3>Informações de gasoduto</h3>
+    <form class="form-inline" role="form">
+        <div class="form-group row">
+            @Html.Label("Data:")
+            <div class="input-group input-append date" id="data">
+                @Html.TextBoxFor(x => x.FirstOrDefault().RegistroTurno.Data, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                <span class="input-group-addon add-on">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+            <div class="form-group">
+                @Html.Label("Turno:")
+                @Html.DropDownListFor(x => x.FirstOrDefault().RegistroTurno.Turno, typeof(PortalBahiaGas.Models.Entidade.Enuns.ETurno).GetDirectionSelectList(), new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="panel panel-default ">
+            <div class="panel-heading">Checagem</div>
+            <div class="panel-body">
+                <div class="container-fluid">
+                    <div class="row-fluid">
+                        <div class="col-sm-1 col-header">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </div>
+                        <div class="col-sm-2 col-header">Gasoduto</div>
+                        <div class="col-sm-3 col-header">Operador</div>
+                        <div class="col-sm-2 col-header">Hora</div>
+                        <div class="col-sm-2 col-header">Vazão</div>
+                        <div class="col-sm-2 col-header">Pressão</div>
+                    </div>
+                    @foreach (PortalBahiaGas.Models.Entidade.RegistroGasoduto item in Model)
+                    {
+
+                        <div class="row-fluid">
+                            <div class="col-sm-1 col-header">
+                                <span class="glyphicon glyphicon-ok"></span>
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </div>
+                            <div class="col-sm-2 col-detail">
+                                @Html.TextBox("", item.Gasoduto.Nome, new { @class = "input-grid" })
+
+                                <input type="text" class="input-grid" name="cod" disabled="disabled" value="Sumaré" />
+                            </div>
+                            <div class="col-sm-3 col-detail">
+                                <input type="text" class="input-grid" name="nome" disabled="disabled" value="Everton Rodrigo Lima de Almeida" />
+                            </div>
+                            <div class="col-sm-2 col-detail">
+                                <input type="text" class="input-grid" name="cod" disabled="disabled" value="10:45 h" />
+                            </div>
+                            <div class="col-sm-2 col-detail">
+                                <input type="text" class="input-grid" name="cod" disabled="disabled" value="30 cm³/h" />
+                            </div>
+                            <div class="col-sm-2 col-detail">
+                                <input type="text" class="input-grid" name="cod" disabled="disabled" value="50 atm" />
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

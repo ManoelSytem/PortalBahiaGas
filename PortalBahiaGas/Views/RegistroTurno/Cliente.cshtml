@@ -1,0 +1,131 @@
+﻿@model PortalBahiaGas.Models.Entidade.RegistroTurno
+
+<h3>Medições de clientes</h3>
+<form class="form-inline" role="form" id="formCliente">
+    @Html.Hidden("pagina", "cliente")
+    @Html.Hidden("IdRegistroTurno", Model.Id)
+    <div class="form-group row">
+        @Html.Label("Data:")
+        <div class="input-group input-append date" id="data">
+            @Html.TextBoxFor(x => x.Data, "{0:dd/MM/yyyy}", new { @class = "form-control", disabled = "disabled" })
+            <span class="input-group-addon add-on">
+                <span class="glyphicon glyphicon-th"></span>
+            </span>
+        </div>
+        <div class="form-group">
+            @Html.Label("Turno:")
+            @Html.DropDownListFor(x => x.Turno, PortalBahiaGas.Models.Entidade.Enuns.ETurno.De7as15.ToSelectList(), new { @class = "form-control", disabled = "disabled" })
+        </div>
+    </div>
+    <div class="panel panel-default ">
+        <div class="panel-heading">Informações de medição dos grandes clientes</div>
+        <div class="panel-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-2 col-header">
+                        <div class="row">
+                            <div class="col-md-12">
+                                Nome
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1 col-header text-center">
+                        <div class="row">
+                            <div class="col-md-12">
+                                Hora
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-header text-right">
+                        <div class="row">
+                            <div class="col-md-12">
+                                Pressão entrada
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span style="font-size:10px;">(kgf/cm²)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-header text-right">
+                        <div class="row">
+                            <div class="col-md-12">
+                                Pressão Saída
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span style="font-size:10px;">(kgf/cm²)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-header text-right">
+                        <div class="row">
+                            <div class="col-md-12">
+                                Vazão Instantânea
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span style="font-size:10px;">(m³/dia)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-header text-right">
+                        <div class="row">
+                            <div class="col-md-12">
+                                @(Model.Turno == PortalBahiaGas.Models.Entidade.Enuns.ETurno.De23as7 ? "Vazão Retirada" : "Vazão Acumulada")
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span style="font-size:10px;">(m³/dia)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @foreach (PortalBahiaGas.Models.Entidade.RegistroCliente item in Model.RegistrosCliente.OrderBy(x => x.Cliente.Nome))
+                {
+                    @Html.Hidden("IdCliente", item.Id)
+                    @Html.Hidden("Cliente", item.Cliente.Id)
+                    <div class="row">
+                        <div class="col-sm-2 col-detail" style="height:23px;padding:0;">
+                            <span class="grid">@item.Cliente.Nome</span>
+                        </div>
+                        <div class="col-sm-1 col-detail">
+                            @Html.TextBox("Hora", item.Hora, "{0:HH:mm}", new { @class = "input-grid hora text-center" })
+                        </div>
+                        <div class="col-sm-3 col-detail">
+                            @Html.TextBox("PressaoEntrada", item.PressaoEntrada, "{0:n2}", new { @class = "input-grid decimal text-right" })
+                        </div>
+                        <div class="col-sm-2 col-detail">
+                            @Html.TextBox("PressaoSaida", item.PressaoSaida, "{0:n2}", new { @class = "input-grid decimal text-right" })
+                        </div>
+                        <div class="col-sm-2 col-detail">
+                            @Html.TextBox("VazaoInstantanea", item.VazaoInstantanea, "{0:0,0}", new { @class = "input-grid vazao text-right" })
+                        </div>
+                        <div class="col-sm-2 col-detail">
+                            @Html.TextBox("VazaoAcumulada", item.VazaoAcumulada, "{0:0,0}", new { @class = "input-grid vazao text-right" })
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="btn-group pull-right">
+        <button type="button" class="btn btn-success" onclick="this.disabled = 'true'; SalvarCliente('formCliente');">Salvar</button>
+        <button type="button" class="btn btn-danger" onclick="window.location = '@Url.Action("Index","Home")';">Voltar</button>
+    </div>
+</form>
+@Scripts.Render("~/Scripts/mascaras.js")

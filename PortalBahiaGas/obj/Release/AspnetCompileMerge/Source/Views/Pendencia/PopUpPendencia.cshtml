@@ -1,0 +1,117 @@
+﻿@model PortalBahiaGas.Models.Entidade.Pendencia
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script>
+    $(document).ready(function () {
+        if ($('#Local option:selected').val() == 2) {
+            $("#divInfraestrutura").show();
+            $("#divCliente").hide();
+        } else {
+            $("#divInfraestrutura").hide();
+            $("#divCliente").show();
+        }
+    });
+</script>
+<style>
+    .form-alinhado {
+        display: block !important;
+    }
+</style>
+<div id="PendenciaModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Pendência</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="form-inline" role="form" id="formPendencia">
+                        @Html.Hidden("pagina", "pendencia")
+                        @Html.Hidden("IdRegistroTurno", Model.RegistroTurno.Id)
+                        @Html.HiddenFor(x => x.Id)
+                        <div class="row-formulario">
+                            <div class="form-group hidden">
+                                @Html.LabelForModel("Código:")
+                                @Html.TextBoxFor(x => x.Id, new { @class = "input-sm input-pequeno form-control form-alinhado", disabled = true })
+                            </div>
+                            <div class="form-group">
+                                @Html.Label("Data:")
+                                @Html.TextBoxFor(x => x.RegistroTurno.Data, "{0:dd/MM/yyyy}", new { @class = "form-control form-alinhado", disabled = true, style = "width:98px;" })
+                            </div>
+                            <div class="form-group">
+                                @Html.Label("Turno:")
+                                @Html.DropDownListFor(x => x.RegistroTurno.Turno, PortalBahiaGas.Models.Entidade.Enuns.ETurno.De7as15.ToSelectList(), "Selecione", new { @class = "form-control form-alinhado", disabled = true })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelForModel("Local:")
+                                @Html.EnumDropDownListFor(x => x.Local, "Selecione", new { @class = "form-control form-alinhado", style = "width: 141px;", disabled = true })
+                            </div>
+                        </div>
+                        <div class="row-formulario">
+                            <div>
+                                <div class="form-group">
+                                    @Html.LabelForModel("Operador Bahiagás:")
+                                    @Html.TextBoxFor(x => x.Atendente, new { @class = "form-control form-alinhado", style = "width: 270px;", disabled = true })
+                                </div>
+                            </div>
+                            <fieldset style="display:inline-block; border: 1px solid #ccc; padding: 5px;">
+                                <legend style="border:none; font-size:14px;font-weight:bold; width:auto;">Horários</legend>
+                                <div class="form-group">
+                                    @Html.LabelForModel("Hora pendência:")<br />
+                                    <div class="input-group input-append date" id="data">
+                                        @Html.TextBox("Inicio", Model.Inicio, "{0:dd/MM/yyyy HH:mm}", new { @class = "input-sm form-control form-alinhado dataHora", style = "width: 150px;", @disabled = true })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelForModel("Início atendimento:")<br />
+                                    <div class="input-group input-append date" id="data">
+                                        @Html.TextBox("Atendimento", Model.Atendimento, "{0:dd/MM/yyyy HH:mm}", new { @class = "input-sm form-control form-alinhado dataHora", style = "width: 150px;", @disabled = true })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelForModel("Conclusão:")<br />
+                                    <div class="input-group input-append date" id="data">
+                                        @Html.TextBox("Conclusao", Model.Conclusao, "{0:dd/MM/yyyy HH:mm}", new { @class = "input-sm form-control form-alinhado dataHora", style = "width: 150px;", @disabled = true })
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="row-formulario">
+                            <div class="form-group">
+                                @Html.LabelForModel("Região:")
+                                @Html.DropDownListFor(x => x.Regiao.Id, (SelectList)ViewData["Regioes"], "Selecione", new { @class = "form-control form-alinhado", style = "width: 150px;", disabled = true })
+                            </div>
+                            <div class="form-group">
+                                <div style="display:none;" id="divCliente">
+                                    @Html.LabelForModel("Cliente:")
+                                    <div style="display:flex;">
+                                        <div id="divComboText" style="display:block; display:flex;">
+                                            @Html.TextBox("SelectCliente", (Model.ClienteObj != null) ? Model.ClienteObj.Nome : "", new { @class = "form-control form-alinhado", style = "width: 339px;", disabled = true })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="display:none;" id="divInfraestrutura">
+                                    @Html.LabelForModel("Infraestrutura:")
+                                    <div style="display:flex;">
+                                        <div id="divComboText" style="display:block; display:flex;">
+                                            @Html.TextBox("SelectInfraestrutura", (Model.InfraestruturaObj != null) ? Model.InfraestruturaObj.Nome : "", new { @class = "form-control form-alinhado", style = "width: 339px;", disabled = true })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelForModel("Ponto de entrega:")
+                                @Html.DropDownListFor(x => x.PontoEntrega.Id, (SelectList)ViewData["PontosEntrega"], "Selecione", new { @class = "form-control form-alinhado", style = "width: 180px;", disabled = true })
+                            </div>
+                        </div>
+                        <div class="form-group row-formulario">
+                            @Html.LabelForModel("Descrição:")
+                            @Html.TextAreaFor(x => x.Descricao, new { @class = "form-control", rows = "5", style = "width: 100%;", disabled = true })
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/Scripts/mascaras.js")

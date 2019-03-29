@@ -1,0 +1,34 @@
+﻿@model PortalBahiaGas.Models.Entidade.Usuario
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</head>
+<body>
+    <div class="container">
+        <form class="form-signin">
+            <h2 class="form-signin-heading">
+                <img class="logo" src="~/imagens/bahiagas-cinza.png" alt="logo" />Relatório de turno
+            </h2>
+            @Html.LabelFor(x => x.Login, new { @class = "sr-only", @for = "login" })
+
+            @Html.TextBoxFor(x => x.Login, new { @class = "form-control" })
+
+            <input type="email" id="login" class="form-control" placeholder="Login" required autofocus>
+            <label for="senha" class="sr-only">Senha</label>
+            <input type="password" id="senha" class="form-control" placeholder="Senha" required>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+        </form>
+    </div>
+</body>
+</html>

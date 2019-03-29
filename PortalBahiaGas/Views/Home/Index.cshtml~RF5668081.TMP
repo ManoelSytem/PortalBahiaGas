@@ -1,0 +1,46 @@
+﻿@model System.Collections.Generic.IEnumerable<PortalBahiaGas.Models.Entidade.RegistroTurno>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@Scripts.Render("~/Scripts/views/Home.js")
+<form class="form-inline" role="form">
+    <h3>Registros do turno</h3>
+    <div class="panel panel-default ">
+        <div class="panel-heading">Trunos</div>
+        <div class="panel-body">
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="col-sm-1 col-header">
+                        <a href="@Url.Action("Cadastro", "Adicionar")">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        </a>
+                    </div>
+                    <div class="col-sm-2 col-header">Código</div>
+                    <div class="col-sm-4 col-header">Data</div>
+                    <div class="col-sm-5 col-header">Turno</div>
+                </div>
+                @foreach (PortalBahiaGas.Models.Entidade.RegistroTurno item in Model)
+                {
+                    <div class="row-fluid">
+                        <div class="col-sm-1 col-header-button">
+                            <span class="glyphicon glyphicon-ok"></span>
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span class="glyphicon glyphicon-remove"></span>
+                            <span class="glyphicon glyphicon-print"></span>
+                        </div>
+                        <div class="col-sm-2 col-detail">
+                            <input type="text" class="input-grid" name="cod" disabled="disabled" value="@item.Id" />
+                        </div>
+                        <div class="col-sm-4 col-detail">
+                            <input type="text" class="input-grid" name="nome" disabled="disabled" value="@item.Data" />
+                        </div>
+                        <div class="col-sm-5 col-detail">
+                            <input type="text" class="input-grid" name="nome" disabled="disabled" value="@item.Turno.ToString()" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Registro de turno";
+    ViewBag.MenuTurno = "active";
+    ViewBag.MenuUsuario = "";
+    ViewBag.MenuCliente = "";
+    ViewBag.MenuPontoEntrega = "";
+    ViewBag.MenuRegiao = "";
+    ViewBag.MenuGasoduto = "";
+    ViewBag.MenuOperador = "";
+    ViewBag.MenuOdorizador = "";
+
+    Layout = "~/Views/RegistroTurno/_Abas.cshtml";
+}
+<div class="tab-content">
+    <div id="conteudoTurno" class="tab-pane fade in active container">
+        @Html.Partial("Turno")
+    </div>
+    <div id="conteudoGasoduto" class="tab-pane fade">
+        @Html.Partial("Gasoduto")
+    </div>
+    <div id="conteudoPontoEntrega" class="tab-pane fade">
+        @Html.Partial("PontoEntrega")
+    </div>
+    <div id="conteudoCliente" class="tab-pane fade">
+        @Html.Partial("Cliente")
+    </div>
+    <div id="conteudoOdorizador" class="tab-pane fade">
+        @Html.Partial("Odorizador")
+    </div>
+    <div id="conteudoOcorrencia" class="tab-pane fade">
+        @Html.Partial("Ocorrencia")
+    </div>
+    <div id="conteudoPendencia" class="tab-pane fade">
+        @Html.Partial("Pendencia")
+    </div>
+</div>

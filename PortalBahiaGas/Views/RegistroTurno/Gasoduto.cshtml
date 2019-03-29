@@ -1,0 +1,64 @@
+﻿@model PortalBahiaGas.Models.Entidade.RegistroTurno
+
+<h3>Informações de pontos de entrega Transpetro</h3>
+<form class="form-inline" role="form" id="formGasoduto">
+    @Html.Hidden("pagina", "gasoduto")
+    @Html.Hidden("IdRegistroTurno", Model.Id)
+    <div class="form-group row">
+        @Html.Label("Data:")
+        <div class="input-group input-append date" id="data">
+            @Html.TextBoxFor(x => x.Data, "{0:dd/MM/yyyy}", new { @class = "form-control", disabled = "disabled" })
+            <span class="input-group-addon add-on">
+                <span class="glyphicon glyphicon-th"></span>
+            </span>
+        </div>
+        <div class="form-group">
+            @Html.Label("Turno:")
+            @Html.DropDownListFor(x => x.Turno, PortalBahiaGas.Models.Entidade.Enuns.ETurno.De7as15.ToSelectList(), new { @class = "form-control", disabled = "disabled" })
+        </div>
+    </div>
+    <div class="panel panel-default ">
+        <div class="panel-heading">Informações operacionais da Transpetro</div>
+        <div class="panel-body">
+            <div class="container-fluid">
+                <div class="row-formulario">
+                    <div class="form-group">
+                        @Html.LabelForModel("Operador:")
+                        @Html.TextBoxFor(x => x.OperadorMedicao, new { @class = "form-control form-alinhado", style = "width:250px;" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelForModel("Hora:")
+                        @Html.TextBoxFor(x => x.HoraMedicao, "{0:HH:mm}", new { @class = "input-sm input-pequeno form-control form-alinhado hora" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6 col-header">Ponto de entrega Transpetro</div>
+                    <div class="col-sm-3 col-header text-right">Vazão<span style="font-size:10px;">(m³/d)</span></div>
+                    <div class="col-sm-3 col-header text-right">Pressão <span style="font-size:10px;">(kgf/cm²)</span></div>
+                </div>
+                @foreach (PortalBahiaGas.Models.Entidade.RegistroGasoduto item in Model.RegistrosGasoduto)
+                {
+                    @Html.Hidden("IdGasoduto", item.Id)
+                    @Html.Hidden("Gasoduto", item.Gasoduto.Id)
+                    <div class="row">
+                        <div class="col-sm-6 col-detail" style="height:23px;;padding:0;">
+                            <span class="grid">@item.Gasoduto.Nome</span>
+                        </div>
+                        <div class="col-sm-3 col-detail">
+                            @Html.TextBox("Vazao", item.Vazao, "{0:0,0}", new { @class = "input-grid vazao text-right" })
+                        </div>
+                        <div class="col-sm-3 col-detail">
+                            @Html.TextBox("Pressao", item.Pressao, "{0:n2}", new { @class = "input-grid decimal text-right" })
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="btn-group pull-right">
+        <button type="button" class="btn btn-success" onclick="this.disabled = 'true';SalvarGasoduto('formGasoduto');">Salvar</button>
+        <button type="button" class="btn btn-danger" onclick="window.location = '@Url.Action("Index","Home")';">Voltar</button>
+    </div>
+</form>
+@Scripts.Render("~/Scripts/mascaras.js")

@@ -1,0 +1,170 @@
+﻿@model PortalBahiaGas.Models.Entidade.Ocorrencia
+<script type="text/javascript">
+    $("#Origem").change(function () {
+        var origem = $(this).val();
+        switch (origem) {
+            case '1':
+                ExibirAreas('operacao');
+                break;
+            case '2':
+                ExibirAreas('medicao');
+                break;
+            case '3':
+                ExibirAreas('programacao');
+                break;
+            case '4':
+                ExibirAreas('sac');
+                break;
+            default:
+                ExibirAreas('');
+                break;
+        }
+    });
+
+    function ExibirAreas(classe) {
+        $('.opcional').each(function () {
+            if ($(this).hasClass(classe)) {
+                $(this).removeClass('invisivel');
+            } else {
+                $(this).addClass('invisivel');
+                if ($(this).hasClass('sac')) {
+                    $(this).val("");
+                }
+                $(this).find('input').each(function () {
+                    $(this).val("");
+                });
+                $(this).find("select").each(function () {
+                    $(this).find('option').each(function () {
+                        if ($(this).val() == "") $(this).prop("selected", true);
+                    });
+                });
+            }
+        });
+    }
+
+</script>
+<style>
+    .form-control {
+        display: block !important;
+    }
+</style>
+<div id="OcorrenciaModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Ocorrência</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="form-inline" role="form" id="formOcorrencia">
+                        @Html.Hidden("pagina", "ocorrencia")
+                        @Html.Hidden("IdRegistroTurno", Model.RegistroTurno.Id)
+                        @Html.HiddenFor(x => x.Id)
+                        <div class="form-group">
+                            @Html.LabelForModel("Código:")
+                            @Html.TextBoxFor(x => x.Id, new { @class = "input-sm input-pequeno form-control", disabled = true })
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Data:")
+                            <div class="input-group input-append date" id="data">
+                                @Html.TextBoxFor(x => x.RegistroTurno.Data, "{0:dd/MM/yyyy}", new { @class = "form-control", disabled = "disabled", style = "width:98px;" })
+                                <span class="input-group-addon add-on">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+
+                            @Html.Label("Turno:")
+                            @Html.DropDownListFor(x => x.RegistroTurno.Turno, PortalBahiaGas.Models.Entidade.Enuns.ETurno.De7as15.ToSelectList(), new { @class = "form-control", disabled = "disabled" })
+                        </div>
+                        <div class="row-formulario">
+                            <div>
+                                <div class="form-group">
+                                    @Html.LabelForModel("Origem:")
+                                    @Html.EnumDropDownListFor(x => x.Origem, "Selecione", new { @class = "form-control", style = "width: 180px;" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelForModel("Chamado:", new { @class = "sac opcional invisivel" })
+                                    @Html.TextBoxFor(x => x.Chamado, new { @class = "input-sm input-pequeno form-control sac opcional invisivel" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelForModel("Cliente:")
+                                    @Html.DropDownListFor(x => x.Cliente, (List<SelectListItem>)Session["Clientes"], "Selecione", new { @class = "form-control", style = "width: 180px;" })
+                                </div>
+                            </div>
+                            <fieldset style="display:inline-block; border: 1px solid #ccc; padding: 5px;">
+                                <legend style="border:none; font-size:14px;font-weight:bold; width:auto;">Horários</legend>
+                                @Html.LabelForModel("Início:")
+                                @Html.TextBox("Inicio", (Model.Inicio == null) ? DateTime.Now : Model.Hora, "{0:HH:mm}", new { @class = "input-sm form-control hora input-hora" })
+
+                                @Html.LabelForModel("Atendimento:")
+                                @Html.TextBox("Atendimento", (Model.Atendimento == null) ? DateTime.Now : Model.Hora, "{0:HH:mm}", new { @class = "input-sm form-control hora input-hora" })
+
+                                @Html.LabelForModel("Conclusão:")
+                                @Html.TextBox("Conclusao", (Model.Conclusao == null) ? DateTime.Now : Model.Hora, "{0:HH:mm}", new { @class = "input-sm form-control hora input-hora" })
+                            </fieldset>
+                        </div>
+                        <div class="form-group row-formulario">
+                            @Html.LabelForModel("Status:")
+                            @Html.EnumDropDownListFor(x => x.Status, new { @class = "form-control" })
+
+                            @Html.LabelForModel("Região:")
+                            @Html.DropDownListFor(x => x.Regiao, (List<SelectListItem>)Session["Regioes"], "Selecione", new { @class = "form-control", style = "width: 180px;" })
+
+                            @Html.LabelForModel("Atendente:")
+                            @Html.DropDownListFor(x => x.Atendente, (List<SelectListItem>)Session["Funcionarios"], "Selecione", new { @class = "form-control", style = "width: 180px;" })
+
+                            @Html.LabelForModel("ETC:")
+                            @Html.DropDownListFor(x => x.NomeETC, (List<SelectListItem>)Session["ETCs"], "Selecione", new { @class = "form-control", style = "width: 150px;" })
+                        </div>
+                        <div class="operacao opcional invisivel">
+                            <div class="form-group row-formulario" style="border-top: 1px solid #ccc;padding-top:5px;width: 100%;">
+                                @Html.LabelForModel("Ponto de entrega:")
+                                @Html.DropDownListFor(x => x.ProntoEntrega, (List<SelectListItem>)Session["PontosEntrega"], "Selecione", new { @class = "form-control", style = "width: 180px;" })
+
+                                @Html.LabelForModel("Contato:")
+                                @Html.TextBoxFor(x => x.NomeContato, new { @class = "form-control input-sm" })
+
+                                @Html.LabelForModel("Telefone:")
+                                @Html.TextBoxFor(x => x.Telefone, new { @class = "form-control input-sm telefone" })
+                            </div>
+                            <div class="form-group row-formulario">
+                                @Html.LabelForModel("Pressão:")
+                                @Html.TextBoxFor(x => x.Pressao, "{0:n2}", new { @class = "form-control input-sm decimal" })
+
+                                @Html.LabelForModel("Vazão:")
+                                @Html.TextBoxFor(x => x.Vazao, "{0:n2}", new { @class = "form-control input-sm decimal" })
+                            </div>
+                        </div>
+                        <div class="programacao opcional invisivel">
+                            <div class="form-group row-formulario" style="border-top: 1px solid #ccc;padding-top:5px;width: 100%;">
+                                @Html.LabelForModel("Modalidade:")
+                                @Html.DropDownListFor(x => x.Modalidade, PortalBahiaGas.Models.Entidade.Enuns.EModalidade.FirmeInfléxivel.ToSelectList(), "Selecione", new { @class = "form-control" })
+
+                                @Html.LabelForModel("Protocolo:")
+                                @Html.TextBoxFor(x => x.Protocolo, new { @class = "input-sm form-control" })
+                            </div>
+                        </div>
+                        <div class="medicao opcional invisivel">
+                            <div class="form-group row-formulario" style="border-top: 1px solid #ccc;padding-top:5px; width: 100%;">
+                                @Html.LabelForModel("Tipo:")
+                                @Html.DropDownListFor(x => x.Tipo, PortalBahiaGas.Models.Entidade.Enuns.ETipoOcorrencia.BaixaPressão.ToSelectList(), new { @class = "form-control", style = "width: 180px;" })
+
+                                @Html.LabelForModel("Operador:")
+                                @Html.DropDownListFor(x => x.Operador, (List<SelectListItem>)Session["Operadores"], "Selecione", new { @class = "form-control", style = "width: 200px;" })
+                            </div>
+                        </div>
+                        <div class="form-group row-formulario">
+                            @Html.LabelForModel("Descrição:")
+                            @Html.TextAreaFor(x => x.Descricao, new { @class = "form-control", rows = "5", style = "width: 100%;" })
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="" onclick="SalvarOcorrencia('formOcorrencia');">Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/Scripts/mascaras.js")

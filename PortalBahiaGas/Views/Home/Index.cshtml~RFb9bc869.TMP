@@ -1,0 +1,63 @@
+﻿@model System.Collections.Generic.IEnumerable<PortalBahiaGas.Models.Entidade.RegistroTurno>
+@{
+    ViewBag.Title = "Portal Bahiagás";
+}
+
+@Scripts.Render("~/Scripts/views/Home.js")
+<form class="form-inline" role="form">
+    <h3>Registros do turno</h3>
+    <div class="panel panel-default ">
+        <div class="panel-heading">Turnos</div>
+        <div class="panel-body">
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="col-sm-1 col-header">
+                        <a href="@Url.Action("", "RegistroTurno")">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </a>
+                    </div>
+                    <div class="col-sm-2 col-header">Código</div>
+                    <div class="col-sm-4 col-header">Data</div>
+                    <div class="col-sm-5 col-header">Turno</div>
+                </div>
+                @if (Model.Count() > 0)
+                {
+                    foreach (PortalBahiaGas.Models.Entidade.RegistroTurno item in Model)
+                    {
+                        <div class="row-fluid">
+                            <div class="col-sm-1 col-header-button">
+                                <a href="@Url.Action("", "RegistroTurno", new { id = item.Id })">
+                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                </a>
+                                <a href="@Url.Action("Editar", "RegistroTurno", new { id = item.Id })">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </a>
+                                <a href="@Url.Action("Remover", "RegistroTurno", new { id = item.Id })">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </a>
+                                <a href="@Url.Action("Imprimir", "Cadastro", new { id = item.Id })">
+                                    <span class="glyphicon glyphicon-print"></span>
+                                </a>
+                            </div>
+                            <div class="col-sm-2 col-detail">
+                                <span class="grid">@item.Id</span>
+                            </div>
+                            <div class="col-sm-4 col-detail">
+                                <span class="grid">@item.Data.ToShortDateString()</span>
+                            </div>
+                            <div class="col-sm-5 col-detail">
+                                <span class="grid">@item.Turno</span>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="row-fluid">
+                        <div class="col-sm-12 col-header">Nenhum registro encontrado.</div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</form>

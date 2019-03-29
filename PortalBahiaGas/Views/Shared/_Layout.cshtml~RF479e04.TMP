@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title - Portal Bahiagás</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script>
+        $(document).ready(function () {
+            $('.date').datepicker({
+                format: 'dd/mm/yyyy',
+                autoclose: true,
+                language: 'pt-BR'
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="preloader" style="display:none;">
+        <div id="status">&nbsp;</div>
+    </div>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="@Url.Action("Index","Home")">
+                    <img class="logo" src="~/imagens/bahiagas-cinza.png" alt="logo" />
+                </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="@ViewBag.MenuTurno"><a href="@Url.Action("Index","RegistroTurno")">Registro de turno</a></li>
+                    <li class="@ViewBag.MenuUsuario"><a href="@Url.Action("Index","Usuario")">Usuário</a></li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <span>ViewBag.BoasVindas</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container" style="padding-top: 15px;">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Bahiagás</p>
+        </footer>
+    </div>
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

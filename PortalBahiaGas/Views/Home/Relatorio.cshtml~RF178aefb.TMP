@@ -1,0 +1,233 @@
+﻿
+@model PortalBahiaGas.Models.Entidade.RegistroTurno
+@{
+    Layout = "";
+    ViewBag.Title = "Relatório de turno";
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Relatorio.css" rel="stylesheet" />
+    <title>Relatório de turno</title>
+</head>
+<body>
+    <div class="relatorio" style="overflow: scroll;">
+        <h2 class="text-center">
+            <img class="logo-relat" src="~/imagens/logo-relat.jpg" alt="logo" />RELATÓRIO DE TURNO BAHIAGÁS
+        </h2>
+        <!-- CONTEUDO -->
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="col-xs-1 col-header col-border-top col-border-left text-center">DATA</div>
+                <div class="col-xs-1 col-border-top text-center">@String.Format("{0:dd/MM/yyyy}", Model.Data)</div>
+                <div class="col-xs-2 col-header col-border-top">OPERADORES</div>
+                <div class="col-xs-5 col-border-top">
+                    @{
+                        System.Text.StringBuilder lOperadores = new System.Text.StringBuilder();
+                        foreach (PortalBahiaGas.Models.Entidade.Operador lOperador in Model.Operadores.OrderBy(x => x.Nome))
+                        {
+                            lOperadores.Append(lOperador.Nome + " / ");
+                        }
+                    }
+                    @lOperadores.ToString()
+                </div>
+                <div class="col-xs-1 col-header col-border-top text-center">TURNO</div>
+                <div class="col-xs-2 col-border-top text-center">@Model.Turno.ObterDescricao()</div>
+            </div>
+        </div>
+        <!-- GASODUTO -->
+        @if (Model.RegistrosGasoduto.Count() > 0)
+        {
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="col-xs-12 col-header text-center col-border-top col-border-left">INFORMAÇÕES OPERACIONAIS DA TRANSPETRO</div>
+                </div>
+                <div class="row-fluid">
+                    <div class="col-xs-2 col-header col-border-left">OPERADOR</div>
+                    <div class="col-xs-8">@Model.OperadorMedicao</div>
+                    <div class="col-xs-1 col-header text-center">HORA</div>
+                    <div class="col-xs-1 text-center">@String.Format("{0:HH:mm}", Model.HoraMedicao)</div>
+                </div>
+                <div class="row-fluid">
+                    <div class="col-xs-6 col-header col-border-left">GASODUTO</div>
+                    <div class="col-xs-3 col-header text-right">VAZÃO (m³/d)</div>
+                    <div class="col-xs-3 col-header text-right">PRESSÃO (kgj/cm²)</div>
+                </div>
+                @foreach (PortalBahiaGas.Models.Entidade.RegistroGasoduto item in Model.RegistrosGasoduto.OrderBy(x => x.Gasoduto.Nome))
+                {
+                    <div class="row-fluid">
+                        <div class="col-xs-6 col-border-left">@item.Gasoduto.Nome</div>
+                        <div class="col-xs-3 text-right">@((item.Vazao == null) ? "SD" : String.Format("{0:0,0}", item.Vazao))</div>
+                        <div class="col-xs-3 text-right">@((item.Pressao == null) ? "SD" : String.Format("{0:n2}", item.Pressao))</div>
+                    </div>
+                }
+            </div>
+        }
+        <!-- PONTO DE ENTREGA -->
+        @if (Model.RegistrosPontoEntrega.Count() > 0)
+        {
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="col-xs-12 col-header text-center col-border-top col-border-left">INFORMAÇÕES DOS PONTOS DE ENTREGA</div>
+                </div>
+                <div class="row-fluid">
+                    <div class="col-xs-3 col-header col-border-left">
+                        PONTO DE ENTREGA
+                        <div class="row-fluid">
+                            <div class="col-xs-8 col-filho">&nbsp;</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-1 col-header text-center">
+                        HORA
+                        <div class="row-fluid">
+                            <div class="col-xs-8 col-filho">&nbsp;</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-header text-right">
+                        <center>PRESSÃO (kgj/cm²)</center>
+                        <div class="row-fluid">
+                            <div class="col-xs-8 col-filho col-border-top">ENTRADA</div>
+                            <div class="col-xs-8 col-filho col-border-top">SAIDA</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-header text-right">
+                        <center>VAZÃO (m³/dia)</center>
+                        <div class="row-fluid">
+                            <div class="col-xs-8 col-filho col-border-top">PROGR.</div>
+                            <div class="col-xs-8 col-filho col-border-top">RETIRADA</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-1 col-header text-right">
+                        <center>DESVIO(%)</center>
+                        <div class="row-fluid">
+                            <div class="col-xs-8 col-filho">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                @foreach (PortalBahiaGas.Models.Entidade.RegistroPontoEntrega item in Model.RegistrosPontoEntrega.OrderBy(x => x.PontoEntrega.Nome))
+                {
+                    <div class="row-fluid">
+                        <div class="col-xs-3 col-border-left">@item.PontoEntrega.Nome</div>
+                        <div class="col-xs-1 text-center">@(item.Hora != null ? item.Hora.Value.ToShortTimeString() : "SD")</div>
+                        <div class="col-xs-1 text-right">@((item.PressaoEntrada == null) ? "SD" : String.Format("{0:n2}", item.PressaoEntrada))</div>
+                        <div class="col-xs-2 text-right">@((item.PressaoSaida == null) ? "SD" : String.Format("{0:n2}", item.PressaoSaida))</div>
+                        <div class="col-xs-2 text-right">@((item.VazaoEntrada == null) ? "SD" : String.Format("{0:0,0}", item.VazaoEntrada))</div>
+                        <div class="col-xs-2 text-right">@((item.VazaoSaida == null) ? "SD" : String.Format("{0:0,0}", item.VazaoSaida))</div>
+                        <div class="col-xs-1 text-right">@((item.Desvio == null) ? "SD" : String.Format("{0:n2}", item.Desvio))</div>
+                    </div>
+                }
+                <div class="row-fluid">
+                    <div class="col-xs-7 col-border-left"><span style="float:right;">TOTAL</span></div>
+                    <div class="col-xs-2 text-right">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoEntrada))</div>
+                    <div class="col-xs-2 text-right">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoSaida))</div>
+                    <div class="col-xs-1">&nbsp;</div>
+                </div>
+            </div>
+        }
+        <!-- GRANDES CLIENTES -->
+        @if (Model.RegistrosCliente.Count() > 0)
+        {
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="col-xs-12 col-header text-center col-border-top col-border-left">INFORMAÇÕES DE MEDIÇÃO DOS GRANDES CLIENTES</div>
+                </div>
+                <div class="row-fluid">
+                    <div class="col-xs-3 col-header col-border-left">
+                        NOME
+                        <div class="row-fluid">
+                            <div class="col-xs-8 col-filho col-border-left">&nbsp;</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-1 col-header">
+                        HORA
+                        <div class="row-fluid">
+                            <div class="col-xs-8 col-filho">&nbsp;</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-header">
+                        <center>PRESSÃO (kgf/cm²)</center>
+                        <div class="row-fluid">
+                            <div class="col-xs-8 col-filho col-border-top">ENTRADA</div>
+                            <div class="col-xs-8 col-filho col-border-top">SAIDA</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-header">
+                        <center>VAZÃO</center>
+                        <div class="row-fluid">
+                            <div class="col-xs-8 col-filho col-border-top">INSTANTÂNEA (m³/d)</div>
+                            <div class="col-xs-8 col-filho col-border-top">ACUMULADA (m³)</div>
+                        </div>
+                    </div>
+                </div>
+                @foreach (PortalBahiaGas.Models.Entidade.RegistroCliente item in Model.RegistrosCliente.OrderBy(x => x.Cliente.Nome))
+                {
+                    <div class="row-fluid">
+                        <div class="col-xs-3 col-border-left">@item.Cliente.Nome</div>
+                        <div class="col-xs-1">@((item.Hora != null) ? item.Hora.Value.ToShortTimeString() : "SD")</div>
+                        <div class="col-xs-2">@((item.PressaoEntrada == null) ? "SD" : String.Format("{0:n2}", item.PressaoEntrada))</div>
+                        <div class="col-xs-2">@((item.PressaoSaida == null) ? "SD" : String.Format("{0:n2}", item.PressaoSaida))</div>
+                        <div class="col-xs-2">@((item.VazaoInstantanea == null) ? "SD" : String.Format("{0:0,0}", item.VazaoInstantanea))</div>
+                        <div class="col-xs-2">@((item.VazaoAcumulada == null) ? "SD" : String.Format("{0:0,0}", item.VazaoAcumulada))</div>
+                    </div>
+                }
+            </div>
+        }
+        @if (Model.Ocorrencias.Count() > 0)
+        {
+            <div class="container-fluid">
+                @{
+                    String tipo = string.Empty;
+                    String regiao = string.Empty;
+                    DateTime? hora = DateTime.MinValue;
+
+                    foreach (PortalBahiaGas.Models.Entidade.Ocorrencia item in Model.Ocorrencias.OrderBy(x => x.Origem).ThenBy(x => x.RegiaoStr).ThenBy(x => x.Hora))
+                    {
+                        if (tipo != item.Origem.ToString())
+                        {
+                            <div class="row-fluid">
+                                <div class="col-xs-12 col-header text-center col-border-top col-border-left" style="margin-top:2px!important;">OCORRÊNCIAS DE @item.Origem.ToString().ToUpper()</div>
+                            </div>
+                        }
+                        if (regiao != item.RegiaoStr || tipo != item.Origem.ToString())
+                        {
+                            <div class="col-xs-12 col-header col-border-left col-border-rigth" style="border-bottom:none; border-top:none; padding-left:20px!important;">
+                                REGIÃO: @item.RegiaoStr
+                            </div>
+                        }
+                        <div class="row-fluid">
+                            <div class="row-fluid">
+                                <div class="col-xs-3 col-header col-border-top col-border-left">TIPO</div>
+                                <div class="col-xs-4 col-header col-border-top">ATENDENTE</div>
+                                <div class="col-xs-1 col-header col-border-top">INICIO</div>
+                                <div class="col-xs-1 col-header col-border-top">ATEND.</div>
+                                <div class="col-xs-1 col-header col-border-top">CONC.</div>
+                                <div class="col-xs-2 col-header col-border-top">STATUS</div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="col-xs-3 col-border-left">@item.Tipo.ObterDescricao()</div>
+                                <div class="col-xs-4">@(String.IsNullOrEmpty(item.Atendente) ? "SD" : item.Atendente)</div>
+                                <div class="col-xs-1">@((item.Inicio != null) ? item.Inicio.Value.ToShortTimeString() : "SD")</div>
+                                <div class="col-xs-1">@((item.Atendimento == null) ? "SD" : item.Atendimento.Value.ToShortTimeString())</div>
+                                <div class="col-xs-1">@((item.Conclusao == null) ? "SD" : item.Conclusao.Value.ToShortTimeString())</div>
+                                <div class="col-xs-2">@item.Status.ToString()</div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="col-xs-12 col-border-left">
+                                    Cliente: @(String.IsNullOrEmpty(item.Cliente) ? "SD" : item.Cliente). @item.Descricao
+                                </div>
+                            </div>
+                        </div>
+                        tipo = item.Origem.ToString();
+                        regiao = item.RegiaoStr;
+                        hora = item.Hora;
+                    }
+                }
+            </div>
+                    }
+    </div>
+</body>
+</html>

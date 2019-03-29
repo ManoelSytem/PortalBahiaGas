@@ -1,0 +1,181 @@
+﻿@model PortalBahiaGas.Models.Entidade.RegistroTurno
+<style>
+    .desvio {
+        height: 24px;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $(".readonly").attr("readonly", "readonly");
+    });
+</script>
+<h3>Informações de pontos de entrega Bahiagás</h3>
+<form class="form-inline" role="form" id="formPontoEntrega">
+    @Html.Hidden("pagina", "pontoEntrega")
+    @Html.Hidden("IdRegistroTurno", Model.Id)
+    <div class="form-group row">
+        @Html.Label("Data:")
+        <div class="input-group input-append date" id="data">
+            @Html.TextBoxFor(x => x.Data, "{0:dd/MM/yyyy}", new { @class = "form-control", disabled = "disabled" })
+            <span class="input-group-addon add-on">
+                <span class="glyphicon glyphicon-th"></span>
+            </span>
+        </div>
+        <div class="form-group">
+            @Html.Label("Turno:")
+            @Html.DropDownListFor(x => x.Turno, PortalBahiaGas.Models.Entidade.Enuns.ETurno.De7as15.ToSelectList(), new { @class = "form-control", disabled = "disabled" })
+        </div>
+    </div>
+    <div class="panel panel-default ">
+        <div class="panel-heading">Informações dos pontos de entrega</div>
+        <div class="panel-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-3 col-header">
+                        <div class="row">
+                            <div class="col-md-12">
+                                Ponto de Entrega
+                                <div class="row">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1 col-header text-center">
+                        <div class="row">
+                            <div class="col-md-12">
+                                Hora
+                                <div class="row">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1 col-header text-right">
+                        <div class="row">
+                            <div class="col-md-12">
+                                Pressão Entrada
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span style="font-size:9px;">(kgf/cm²)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1 col-header text-right">
+                        <div class="row">
+                            <div class="col-md-12">
+                                Pressão Saída
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span style="font-size:9px;">(kgf/cm²)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-header text-right">
+                        <div class="row">
+                            <div class="col-md-12">
+                                Vazão Programada
+                                <div class="row">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span style="font-size:10px;">(m³/dia)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-header text-right">
+                        <div class="row">
+                            <div class="col-md-12">
+                                Vazão de Retirada
+                                <div class="row">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span style="font-size:10px;">(m³/dia)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1 col-header text-right">
+                        <div class="row">
+                            <div class="col-md-12">
+                                Desvio
+                                <div class="row">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span style="font-size:10px;">(%)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1 col-header text-center">
+                        <div class="row">
+                            <div class="col-md-12" style="padding:0;">
+                                Penalidade
+                                <div class="row">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span style="font-size:10px;">(Sim / Não)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @foreach (PortalBahiaGas.Models.Entidade.RegistroPontoEntrega item in Model.RegistrosPontoEntrega)
+                {
+                    @Html.Hidden("IdPontoEntrega", item.Id)
+                    @Html.Hidden("PontoEntrega", item.PontoEntrega.Id)
+                    <div class="row">
+                        <div class="col-sm-3 col-detail" style="height:23px;padding:0;">
+                            <span class="grid">@item.PontoEntrega.Nome</span>
+                        </div>
+                        <div class="col-sm-1 col-detail">
+                            @Html.TextBox("Hora", item.Hora, "{0:HH:mm}", new { @class = "input-grid text-center hora" })
+                        </div>
+                        <div class="col-sm-1 col-detail">
+                            @Html.TextBox("PressaoEntrada", item.PressaoEntrada, "{0:n2}", new { @class = "input-grid decimal text-right" })
+                        </div>
+                        <div class="col-sm-1 col-detail">
+                            @Html.TextBox("PressaoSaida", item.PressaoSaida, "{0:n2}", new { @class = "input-grid decimal text-right" })
+                        </div>
+                        <div class="col-sm-2 col-detail">
+                            @Html.TextBox("VazaoEntrada", item.VazaoEntrada, "{0:0,0}", new { @class = "input-grid vazao text-right" + ((item.RegistroTurno.Turno != PortalBahiaGas.Models.Entidade.Enuns.ETurno.De7as15) ? " readonly" : "") })
+                        </div>
+                        <div class="col-sm-2 col-detail">
+                            @Html.TextBox("VazaoSaida", item.VazaoSaida, "{0:0,0}", new { @class = "input-grid vazao text-right" })
+                        </div>
+                        <div class="col-sm-1 col-detail">
+                            @Html.Label("Desvio", String.Format("{0:G}", item.Desvio ?? 0), new { @class = "input-grid text-right", style = "height: 16px;" })
+                        </div>
+                        <div class="col-sm-1 col-detail">
+                            <span class="grid">@(item.Penalidade == null ? "SD" : (item.Penalidade == true ? "Sim" : "Não"))</span>
+                        </div>
+                    </div>
+                }
+                <div class="row">
+                    <div class="col-sm-7 col-header"><span style="float:right;">TOTAL</span></div>
+                    <div class="col-sm-2 col-header">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoEntrada))</div>
+                    <div class="col-sm-3 col-header">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoSaida))</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="btn-group pull-right">
+        <button type="button" class="btn btn-success" onclick="this.disabled = 'true';SalvarPontoEntrega('formPontoEntrega');">Salvar</button>
+        <button type="button" class="btn btn-danger" onclick="window.location = '@Url.Action("Index","Home")';">Voltar</button>
+    </div>
+</form>
+@Scripts.Render("~/Scripts/mascaras.js")

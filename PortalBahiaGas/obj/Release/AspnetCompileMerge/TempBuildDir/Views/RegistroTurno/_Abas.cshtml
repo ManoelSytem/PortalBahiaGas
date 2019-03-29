@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Registro de turno";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.MenuTurno = "active";
+    ViewBag.MenuUsuario = "";
+}
+
+@{
+    String lClasse = ((PortalBahiaGas.Models.Entidade.Enuns.EAcao)ViewData["acao"] == PortalBahiaGas.Models.Entidade.Enuns.EAcao.Editar) ? "" : "not-active";
+}
+
+@Scripts.Render("~/Scripts/views/RegistroTurno.js")
+<ul class="nav nav-tabs">
+    <li class="active">
+        <a href="#conteudoTurno" id="abaTurno" data-toggle="tab" onclick="SelecionarAba(this);">Turno</a>
+    </li>
+    <li>
+        <a href="#conteudoGasoduto" id="abaGasoduto" data-toggle="tab" class="@lClasse" onclick="SelecionarAba(this);">Ponto de entrega Transpetro</a>
+    </li>
+    <li>
+        <a href="#conteudoPontoEntrega" id="abaPontoEntrega" data-toggle="tab" class="@lClasse" onclick="SelecionarAba(this);">Ponto de entrega Bahiagás</a>
+    </li>
+    <li>
+        <a href="#conteudoCliente" id="abaCliente" data-toggle="tab" class="@lClasse" onclick="SelecionarAba(this);">Clientes</a>
+    </li>
+    <li>
+        <a href="#conteudoOdorizador" id="abaOdorizador" data-toggle="tab" class="@lClasse" onclick="SelecionarAba(this);">Odorizadores</a>
+    </li>
+    <li>
+        <a href="#conteudoOcorrencia" id="abaOcorrencia" data-toggle="tab" class="@lClasse" onclick="SelecionarAba(this);">Ocorrências</a>
+    </li>
+    <li>
+        <a href="#conteudoPendencia" id="abaPendencia" data-toggle="tab" class="@lClasse" onclick="SelecionarAba(this);">Registros operacionais</a>
+    </li>
+</ul>
+@RenderBody()

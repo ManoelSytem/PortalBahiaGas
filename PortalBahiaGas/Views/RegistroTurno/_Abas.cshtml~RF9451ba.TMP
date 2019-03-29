@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Registro de turno";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.MenuTurno = "active";
+    ViewBag.MenuUsuario = "";
+}
+
+@{
+    String lClasse = ((PortalBahiaGas.Models.Entidade.Enuns.EAcao)ViewData["acao"] == PortalBahiaGas.Models.Entidade.Enuns.EAcao.Editar) ? "" : "not-active";
+}
+
+@Scripts.Render("~/Scripts/views/RegistroTurno.js")
+<ul class="nav nav-tabs">
+    <li class="active">
+        <a href="#turno" id="abaTurno" rel="1" data-toggle="tab" onclick="getContentTab(this);">Turno</a>
+    </li>
+    <li>
+        <a href="#menu1" id="abaGasoduto" rel="2" data-toggle="tab" class="@lClasse" onclick="getContentTab(this);">Gasoduto</a>
+    </li>
+    <li>
+        <a href="#menu2" id="abaPontoEntrega" rel="3" data-toggle="tab" class="@lClasse" onclick="getContentTab(this);">Ponto de entrega</a>
+    </li>
+    <li>
+        <a href="#menu3" id="abaCliente" rel="4" data-toggle="tab" class="@lClasse" onclick="getContentTab(this);">Clientes</a>
+    </li>
+    <li>
+        <a href="#menu4" id="abaOcorrencia" rel="5" data-toggle="tab" class="@lClasse" onclick="getContentTab(this);">Ocorrências</a>
+    </li>
+</ul>
+@RenderBody()

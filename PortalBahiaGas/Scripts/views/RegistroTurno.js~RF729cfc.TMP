@@ -1,0 +1,47 @@
+﻿$(document).ready(function () {
+    $(this).tab('show');
+});
+
+function Salvar(pForm) {
+    $.ajax({
+        url: "RegistroTurno/Cadastrar",
+        data: $("#" + pForm).serializeArray(),
+        type: 'post'
+    }).done(function (data) {
+        if (!data.Erro) {
+            $(document).find(".not-active").removeClass("not-active");
+        }
+    });
+}
+
+function getContentTab(pAba) {
+    var url = 'RegistroTurno/ObterAbas/' + $(pAba).attr('rel');
+    var targetDiv = $(pAba).attr('href');
+    $.get(url, null, function (result) {
+        $(targetDiv).html(result);
+    });
+    $(this).tab('show');
+}
+
+function EditarGasoduto(pId) {
+    $.ajax({
+        url: 'RegistroTurno/PopUpGasoduto/' + pId,
+        success: function (data) {
+            $('#modalWrapper').html(data);
+            $('#CadastroGasoduto').modal();
+        }
+    });
+}
+
+function SalvarGasoduto() {
+    $.ajax({
+        url: "RegistroTurno/Cadastrar",
+        data: $("#formGasoduto").serializeArray(),
+        type: 'post'
+    }).done(function (data) {
+        if (!data.Erro) {
+            $(document).find(".not-active").removeClass("not-active");
+        }
+    });
+    getContentTab(2);
+}

@@ -1,0 +1,99 @@
+﻿@model PortalBahiaGas.Models.Entidade.RegistroTurno
+<h3>Ocorrências</h3>
+
+@Html.Hidden("pagina", "cliente")
+@Html.Hidden("IdRegistroTurno", Model.Id)
+<div class="form-group row">
+    @Html.Label("Data:")
+    <div class="input-group input-append date" id="data">
+        @Html.TextBoxFor(x => x.Data, "{0:dd/MM/yyyy}", new { @class = "form-control", disabled = "disabled" })
+        <span class="input-group-addon add-on">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+    </div>
+    <div class="form-group">
+        @Html.Label("Turno:")
+        @Html.DropDownListFor(x => x.Turno, PortalBahiaGas.Models.Entidade.Enuns.ETurno.De7as15.ToSelectList(), new { @class = "form-control", disabled = "disabled" })
+    </div>
+</div>
+<div class="panel panel-default ">
+    <div class="panel-heading">Ocorrências</div>
+    <div class="panel-body">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="col-sm-1 col-header">
+                    <a href="#" onclick="PopUp(0);">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </a>
+                </div>
+                <div class="col-sm-2 col-header">Tipo</div>
+                <div class="col-sm-4 col-header">Região</div>
+                <div class="col-sm-1 col-header">Início</div>
+                <div class="col-sm-2 col-header">Atendimento</div>
+                <div class="col-sm-1 col-header">Conclusão</div>
+                <div class="col-sm-1 col-header">Status</div>
+            </div>
+            @foreach (PortalBahiaGas.Models.Entidade.Ocorrencia item in Model.Ocorrencias)
+            {
+                @Html.Hidden("IdOcorrencia", item.Id)
+                <div class="row-fluid">
+                    <div class="col-sm-1 col-header">
+                        <a href="#" onclick="PopUp(@item.Id);">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </div>
+                    <div class="col-sm-2 col-detail">
+                        <span class="grid">@item.Tipo</span>
+                    </div>
+                    <div class="col-sm-4 col-detail">
+                        <span class="grid">@item.Regiao</span>
+                    </div>
+                    <div class="col-sm-1 col-detail">
+                        <span class="grid">@String.Format("{0:HH:mm}", item.Inicio)</span>
+                    </div>
+                    <div class="col-sm-2 col-detail">
+                        <span class="grid">@String.Format("{0:HH:mm}", item.Atendimento)</span>
+                    </div>
+                    <div class="col-sm-1 col-detail">
+                        <span class="grid">@String.Format("{0:HH:mm}", item.Conclusao)</span>
+                    </div>
+                    <div class="col-sm-1 col-detail">
+                        <span class="grid">@item.Status.ToString()</span>
+                    </div>
+                </div>
+            }
+            @foreach (PortalBahiaGas.Models.Entidade.Ocorrencia item in Model.OutrasOcorrencias)
+            {
+                @Html.Hidden("IdOcorrencia", item.Id)
+                <div class="row-fluid">
+                    <div class="col-sm-1 col-header">
+                        <a href="#" onclick="PopUp(@item.Id);">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </div>
+                    <div class="col-sm-2 col-detail">
+                        <span class="grid">@item.Tipo</span>
+                    </div>
+                    <div class="col-sm-4 col-detail">
+                        <span class="grid">@item.Regiao</span>
+                    </div>
+                    <div class="col-sm-1 col-detail">
+                        <span class="grid">@String.Format("{0:HH:mm}", item.Inicio)</span>
+                    </div>
+                    <div class="col-sm-2 col-detail">
+                        <span class="grid">@String.Format("{0:HH:mm}", item.Atendimento)</span>
+                    </div>
+                    <div class="col-sm-1 col-detail">
+                        <span class="grid">@String.Format("{0:HH:mm}", item.Conclusao)</span>
+                    </div>
+                    <div class="col-sm-1 col-detail">
+                        <span class="grid">@item.Status.ToString()</span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div id="modalWrapper"></div>

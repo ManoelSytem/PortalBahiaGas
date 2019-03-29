@@ -1,0 +1,135 @@
+﻿@model PortalBahiaGas.Models.Entidade.RegistroTurno
+<h3>Informações do turno</h3>
+<form class="form-inline" role="form" id="formTurno">
+    @Html.Hidden("pagina", "turno")
+    @Html.Hidden("IdRegistroTurno", Model.Id)
+    @Html.HiddenFor(x => x.Id)
+    <div class="form-group row">
+        @Html.Label("Data:")
+        <div class="input-group input-append date" id="data">
+            @Html.TextBoxFor(x => x.Data, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+            <span class="input-group-addon add-on">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+        <div class="form-group">
+            @Html.Label("Turno:")
+            @Html.DropDownListFor(x => x.Turno, PortalBahiaGas.Models.Entidade.Enuns.ETurno.De7as15.ToSelectList(), new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="panel panel-default ">
+        <div class="panel-heading">Operadores</div>
+        <div class="panel-body">
+            <div class="container-fluid" id="grid">
+                <div class="col-sm-1 col-header">
+                    <a href="#" id="btnAdd">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </a>
+                </div>
+                <div class="row-fluid">
+                    <div class="col-sm-11 col-header">Operadores</div>
+                </div>
+                @foreach (PortalBahiaGas.Models.Entidade.Operador item in Model.Operadores)
+                {
+                    <div class="row-fluid">
+                        <div class="col-sm-1 col-header">
+                            @Html.Hidden("id", item.Id)
+                            <a href="#" onclick="Salvar(this);" class="invisivel">
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </a>
+                            <a href="#" onclick="Cancelar(this);" class="invisivel">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                            </a>
+                            <a href="#" onclick="Editar(this);" class="visivel">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                            <a href="#" onclick="Remover(this);" class="visivel">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </a>
+                        </div>
+                        <div class="col-sm-11 col-detail">
+                            @Html.DropDownListFor(x => x.Operadores.First(y => y == item), (List<SelectListItem>)Session["Operadores"], new { @class = "input-grid" })
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="btn-group pull-right">
+        <button type="button" class="btn btn-success" onclick="Salvar('formTurno');">Salvar</button>
+        <button type="button" class="btn btn-danger" onclick="window.location = '@Url.Action("Index", "Home")';">Voltar</button>
+    </div>
+    <div>
+        <div class="row-fluid">
+            <div class="col-sm-1 col-header">
+                <input type="hidden" name="id" value="0" />
+                <a href="#" onclick="Salvar(this);" class="invisivel">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+                <a href="#" onclick="Cancelar(this);" class="invisivel">
+                    <span class="glyphicon glyphicon-remove-circle"></span>
+                </a>
+                <a href="#" onclick="Editar(this);" class="visivel">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </a>
+                <a href="#" onclick="Remover(this);" class="visivel">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+            <div class="col-sm-11 col-detail">
+                @Html.DropDownList("Operadores", (List<SelectListItem>)Session["Operadores"], new { @class = "input-grid" }).ToString().Replace("\n", "")
+            </div>
+        </div>
+    </div>
+
+</form>
+<script>
+    var linha = ;
+
+    $(document).ready(function () {
+        $("#btnAdd").click(function () {
+            $(".empty").parent().remove();
+            $("#grid").append(linha);
+        });
+    });
+
+    function Cancelar(linha) {
+        $(linha).parent().parent().find('input,select').each(function () {
+            $(this).prop("disabled", true);
+        });
+        MudarBotoes(linha);
+    }
+
+    function MudarBotoes(linha) {
+        var invisivel = $(linha).parent().parent().find('.invisivel');
+        var visivel = $(linha).parent().parent().find('.visivel');
+
+        invisivel.each(function () {
+            $(this).removeClass("invisivel");
+            $(this).addClass("visivel");
+        });
+
+        visivel.each(function () {
+            $(this).removeClass("visivel");
+            $(this).addClass("invisivel");
+        });
+    }
+
+    function Editar(linha) {
+        $(linha).parent().parent().find("input,select").each(function () {
+            $(this).prop('disabled', false);
+        });
+        MudarBotoes(linha);
+    }
+
+    function Salvar(linha) {
+        $(linha).parent().parent().find("input,select").each(function () {
+            $(this).prop('disabled', true);
+        });
+        MudarBotoes(linha);
+    }
+
+    function Remover(linha) {
+        $(linha).parent().parent().remove();
+    }
+</script>

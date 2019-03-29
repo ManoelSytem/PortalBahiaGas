@@ -1,0 +1,44 @@
+﻿@model PortalBahiaGas.Models.Entidade.Usuario
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+</head>
+<body style="height: 100% !important;">
+    <div style="height: 100%; top:50%; position:relative;">
+        <div class="container">
+            @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form-signin login" }))
+            {            <h2 class="form-signin-heading">
+                <img class="logo" src="~/imagens/bahiagas-cinza.png" alt="logo" />Relatório de turno
+            </h2>
+            @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                if (@ViewBag.Message != null)
+                {
+                    <div style="border:1px solid red">
+                        @ViewBag.Message
+                    </div>
+                }
+                @Html.LabelFor(x => x.Login, new { @class = "sr-only", @for = "login" })
+                @Html.TextBoxFor(x => x.Login, new { @class = "form-control", maxlength = 50, placeholder = "Login", required = true, autofocus = true })
+                @Html.ValidationMessageFor(x => x.Login)
+                @Html.LabelFor(x => x.Senha, new { @class = "sr-only", @for = "senha" })
+                @Html.PasswordFor(x => x.Senha, new { @class = "form-control", maxlength = 16, placeholder = "Senha", required = true })
+                @Html.ValidationMessageFor(x => x.Senha)
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+            }
+        </div>
+    </div>
+</body>
+</html>

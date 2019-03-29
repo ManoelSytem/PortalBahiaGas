@@ -1,0 +1,82 @@
+﻿* {
+    font-size: 11px;
+}
+
+body {
+    width: 794px;
+    padding: 0;
+    margin: 0;
+}
+
+.logo-relat {
+    max-height: 65px;
+    margin-right: 15px;
+}
+
+h2 {
+    padding: 0;
+    margin: 0;
+}
+
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+    border-bottom: solid 1px #333;
+    border-right: solid 1px #333;
+    font-size: 11px;
+    padding: 0px 6px 0px 6px !important;
+}
+
+.col-border-top {
+    border-top: solid 1px #333 !important;
+}
+
+.col-border-left {
+    border-left: solid 1px #333;
+}
+
+.col-border-rigth {
+    border-right: solid 1px #333;
+}
+
+.col-header {
+    background-color: #ddd;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+.container-fluid {
+    margin-top: 5px;
+    padding: 0;
+}
+
+.col-filho {
+    padding: 0;
+    margin: 0;
+    border: none;
+    margin-top: -1px !important;
+    width: 50%;
+}
+
+.panel {
+    border: 1px solid #ddd;
+    padding: 0;
+    margin: 0;
+}
+
+.relatorio {
+    min-width: 794px;
+    min-height: 1122px;
+}
+
+.container {
+    max-width: none !important;
+    width: 794px;
+}
+
+.container-fluid {
+    max-width: none !important;
+    width: 794px;
+}
+
+.glyphicon-print {
+    font-size: 30px !important;
+}

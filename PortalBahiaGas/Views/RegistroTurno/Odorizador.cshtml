@@ -1,0 +1,65 @@
+﻿@model PortalBahiaGas.Models.Entidade.RegistroTurno
+
+<h3>Informações de odorizadores</h3>
+<form class="form-inline" role="form" id="formOdorizador">
+    @Html.Hidden("pagina", "odorizador")
+    @Html.Hidden("IdRegistroTurno", Model.Id)
+    <div class="form-group row">
+        @Html.Label("Data:")
+        <div class="input-group input-append date" id="data">
+            @Html.TextBoxFor(x => x.Data, "{0:dd/MM/yyyy}", new { @class = "form-control", disabled = "disabled" })
+            <span class="input-group-addon add-on">
+                <span class="glyphicon glyphicon-th"></span>
+            </span>
+        </div>
+        <div class="form-group">
+            @Html.Label("Turno:")
+            @Html.DropDownListFor(x => x.Turno, PortalBahiaGas.Models.Entidade.Enuns.ETurno.De7as15.ToSelectList(), new { @class = "form-control", disabled = "disabled" })
+        </div>
+    </div>
+    <div class="panel panel-default ">
+        <div class="panel-heading">Informações de odorizadores</div>
+        <div class="panel-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-2 col-header">Nome</div>
+                    <div class="col-sm-2 col-header text-right">Status comunicação</div>
+                    <div class="col-sm-2 col-header text-right">Pump disp <span style="font-size:10px;">(CC/STK)</span></div>
+                    <div class="col-sm-2 col-header text-right">Set Point <span style="font-size:10px;">(CC/STK)</span></div>
+                    <div class="col-sm-2 col-header text-right">Pessão do TQ <span style="font-size:10px;">(PSI)</span></div>
+                    <div class="col-sm-2 col-header text-right">Set Point <span style="font-size:10px;">(PSI)</span></div>
+                </div>
+                @foreach (PortalBahiaGas.Models.Entidade.RegistroOdorizador item in Model.RegistrosOdorizador)
+                {
+                    @Html.Hidden("IdOdorizador", item.Id)
+                    @Html.Hidden("Odorizador", item.Odorizador.Id)
+                    <div class="row">
+                        <div class="col-sm-2 col-detail" style="height:23px;padding:0;">
+                            <span class="grid">@item.Odorizador.Nome</span>
+                        </div>
+                        <div class="col-sm-2 col-detail" style="padding:0;">
+                            @Html.EnumDropDownListFor(x => item.StatusComunicacao, new { @class = "form-control", @style = "height:100%; padding:0; width:100%;" })
+                        </div>
+                        <div class="col-sm-2 col-detail" style="padding:0;">
+                            @Html.TextBox("PumpDisp", item.PumpDisp, new { @class = "input-grid decimal text-right" })
+                        </div>
+                        <div class="col-sm-2 col-detail text-right" style="padding:0;">
+                            <span class="grid">@(String.Format("{0:n2}",item.Odorizador.SetPointCcStk))</span>
+                        </div>
+                        <div class="col-sm-2 col-detail" style="padding:0;">
+                            @Html.TextBox("PressaoTqOdor", item.PressaoTqOdor, new { @class = "input-grid inteiro text-right" })
+                        </div>
+                        <div class="col-sm-2 col-detail text-right" style="padding:0;">
+                            <span class="grid">@item.Odorizador.SetPointPsi</span>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="btn-group pull-right">
+        <button type="button" class="btn btn-success" onclick="SalvarOdorizador('formOdorizador');">Salvar</button>
+        <button type="button" class="btn btn-danger" onclick="window.location = '@Url.Action("Index","Home")';">Voltar</button>
+    </div>
+</form>
+@Scripts.Render("~/Scripts/mascaras.js")
