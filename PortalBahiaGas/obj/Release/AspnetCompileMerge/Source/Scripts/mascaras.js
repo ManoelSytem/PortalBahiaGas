@@ -1,5 +1,7 @@
 ﻿$(document).ready(function () {
     $('.hora').mask('99:99', { autoclear: false, placeholder: " " });
+    $('.intervalo').mask('99-99', { autoclear: false, placeholder: " " });
+    $('.inteiro').mask('99', { autoclear: false, placeholder: " " });
     $('.horaVazia').mask('99:99', { autoclear: false, placeholder: " " });
     $('.dataHora').mask('99/99/9999 99:99', { autoclear: false, placeholder: " " });
     $('.vazao').maskNumber();

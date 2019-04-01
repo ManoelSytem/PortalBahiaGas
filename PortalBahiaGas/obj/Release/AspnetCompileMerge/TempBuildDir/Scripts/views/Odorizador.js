@@ -14,8 +14,14 @@
                         '<span class="glyphicon glyphicon-remove-circle"></span>' +
                     '</a>' +
                 '</div>' +
-                '<div class="col-sm-10 col-detail">' +
-                    '<input type="text" class="input-grid" name="nome" value="" />' +
+                '<div class="col-sm-6 col-detail">' +
+                    '<input type="text" class="input-grid" name="Nome" value="" />' +
+                '</div>' +
+                '<div class="col-sm-2 col-detail">' +
+                    '<input type="text" class="input-grid decimal text-right" name="SetPointCcStk" value="" />' +
+                '</div>' +
+                '<div class="col-sm-2 col-detail">' +
+                    '<input type="text" class="input-grid intervalo text-right" name="SetPointPsi" value="" />' +
                 '</div>' +
             '</div>';
 
@@ -23,6 +29,8 @@ $(document).ready(function () {
     $("#btnAdd").click(function () {
         $(".empty").parent().remove();
         $("#grid").append(linha);
+        $('.intervalo').mask('99-99', { autoclear: false, placeholder: " " });
+        $(".decimal").maskMoney({ thousands: '.', decimal: ',', allowZero: false });
     });
 });
 
@@ -58,7 +66,9 @@ function Editar(linha) {
 function Salvar(linha) {
     var usuario = {
         Id: $(linha).parent().parent().find("input[name='id']").val(),
-        Nome: $(linha).parent().parent().find("input[name='nome']").val()
+        Nome: $(linha).parent().parent().find("input[name='Nome']").val(),
+        SetPointCcStk: $(linha).parent().parent().find("input[name='SetPointCcStk']").val(),
+        SetPointPsi: $(linha).parent().parent().find("input[name='SetPointPsi']").val()
     };
 
     $.ajax({
@@ -76,7 +86,9 @@ function Salvar(linha) {
 function Remover(linha) {
     var usuario = {
         Id: $(linha).parent().parent().find("input[name='id']").val(),
-        Nome: $(linha).parent().parent().find("input[name='nome']").val()
+        Nome: $(linha).parent().parent().find("input[name='Nome']").val(),
+        SetPointCcStk: $(linha).parent().parent().find("input[name='SetPointCcStk']").val(),
+        SetPointPsi: $(linha).parent().parent().find("input[name='SetPointPsi']").val()
     };
     if (usuario.Id == "0") {
         $(linha).parent().parent().remove();

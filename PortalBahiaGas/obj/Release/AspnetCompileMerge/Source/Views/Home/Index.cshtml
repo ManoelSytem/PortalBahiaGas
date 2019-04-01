@@ -42,6 +42,16 @@
             &nbsp;<br />
             <button type="submit" class="btn btn-default form-alinhado" onclick="return onSubmit();">Pesquisar</button>
         </div>
+        <div style="text-align:end">
+            @if (((PortalBahiaGas.Models.Entidade.Usuario)Session["UsuarioLogado"]).Perfil != PortalBahiaGas.Models.Entidade.Enuns.EPerfil.Visitante)
+            {
+                <a href="@Url.Action("", "RegistroTurno")" class="btn btn-primary" role="button">Novo turno</a>
+            }
+            else
+            {
+                <span>&nbsp;</span>
+            }
+        </div>
     </div>
 }
 <div class="panel panel-default ">
@@ -50,20 +60,12 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-2 col-header">
-                    @if (((PortalBahiaGas.Models.Entidade.Usuario)Session["UsuarioLogado"]).Perfil != PortalBahiaGas.Models.Entidade.Enuns.EPerfil.Visitante)
-                    {
-                        <a href="@Url.Action("", "RegistroTurno")">
-                            <span style="font-weight: bold;">NOVO</span>
-                        </a>
-                    }
-                    else
-                    {
-                        <span>&nbsp;</span>
-                    }
+                       <span>&nbsp;</span>
                 </div>
                 <div class="col-sm-2 col-header">Data</div>
                 <div class="col-sm-3 col-header">Turno</div>
-                <div class="col-sm-5 col-header">Última Alteração</div>
+                <div class="col-sm-2 col-header">Usuário</div>
+                <div class="col-sm-3 col-header">Última Alteração</div>
             </div>
             @if (Model.Count() > 0)
             {
@@ -94,12 +96,19 @@
                         <div class="col-sm-3 col-detail">
                             <span class="grid">@item.Turno.ObterDescricao()</span>
                         </div>
-                        <div class="col-sm-5 col-detail">
-                            @if (item.DataCriacao != null && item.UsuarioCriacao != null)
+                        <div class="col-sm-2 col-detail">
+                            @if (item.UsuarioCriacao != null)
                             {
-                                <span class="grid">@((item.UsuarioAlteracao ?? item.UsuarioCriacao) + " - " + (item.DataAlteracao ?? item.DataCriacao).Value.ToString())</span>
+                                <span class="grid">@(item.UsuarioAlteracao ?? item.UsuarioCriacao)</span>
                             }
                         </div>
+                        <div class="col-sm-3 col-detail">
+                            @if (item.DataCriacao != null)
+                            {
+                                <span class="grid">@((item.DataAlteracao ?? item.DataCriacao).Value.ToString())</span>
+                            }
+                        </div>
+
                     </div>
                 }
             }

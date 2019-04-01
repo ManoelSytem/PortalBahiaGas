@@ -14,6 +14,7 @@
         <div class="form-group">
             @Html.Label("Turno:")
             @Html.DropDownListFor(x => x.Turno, PortalBahiaGas.Models.Entidade.Enuns.ETurno.De7as15.ToSelectList(), new { @class = "form-control", disabled = "disabled" })
+            <a href="#" onclick="PopUpPendencia(0, @Model.Id);" class="btn btn-primary" role="button" style="align-self:flex-end">Novo registro operacional</a>
         </div>
     </div>
     <div class="panel panel-default ">
@@ -22,9 +23,9 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-1 col-header">
-                        <a href="#" onclick="PopUpPendencia(0, @Model.Id);">
-                            <span style="font-weight: bold;">NOVO</span>
-                        </a>
+                        <!---  <a href="#" onclick="PopUpPendencia(0, @Model.Id);">-->
+                            <span>&nbsp;</span><!---  <span style="font-weight: bold;">NOVO</span>-->
+                        <!---  </a>-->
                     </div>
                     <div class="col-sm-2 col-header">Região</div>
                     <div class="col-sm-2 col-header">Atendente</div>
@@ -33,31 +34,31 @@
                     <div class="col-sm-2 col-header text-center">Conclusão</div>
                     <div class="col-sm-1 col-header">Status</div>
                 </div>
-                @foreach (PortalBahiaGas.Models.Entidade.Pendencia item in Model.Pendencias.OrderBy(x => x.Inicio))
+                @foreach (PortalBahiaGas.Models.Entidade.Pendencia item in Model.Pendencias.OrderByDescending(x => x.Inicio))
                 {
                     @Html.Hidden("IdPendencia", item.Id)
                     <div class="row">
-                        <div class="col-sm-1 col-header">
+                        <div class="col-sm-1 col-header" style="padding:0;">
                             <a href="#" onclick="PopUpPendencia(@item.Id, @Model.Id);">
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </a>
                         </div>
-                        <div class="col-sm-2 col-detail">
+                        <div class="col-sm-2 col-detail" style="padding:0;">
                             <span class="grid">@((item.Regiao == null) ? "" : item.Regiao.Nome)</span>
                         </div>
-                        <div class="col-sm-2 col-detail">
+                        <div class="col-sm-2 col-detail" style="padding:0;">
                             <span class="grid">@item.Atendente.ToString()</span>
                         </div>
-                        <div class="col-sm-2 col-detail text-center">
+                        <div class="col-sm-2 col-detail text-center" style="padding:0;">
                             <span class="grid">@String.Format("{0:dd/MM/yyyy HH:mm}", item.Inicio)</span>
                         </div>
-                        <div class="col-sm-2 col-detail text-center">
+                        <div class="col-sm-2 col-detail text-center" style="padding:0;">
                             <span class="grid">@String.Format("{0:dd/MM/yyyy HH:mm}", item.Atendimento)</span>
                         </div>
-                        <div class="col-sm-2 col-detail text-center">
+                        <div class="col-sm-2 col-detail text-center" style="padding:0;">
                             <span class="grid">@String.Format("{0:dd/MM/yyyy HH:mm}", item.Conclusao)</span>
                         </div>
-                        <div class="col-sm-1 col-detail">
+                        <div class="col-sm-1 col-detail" style="padding:0;">
                             <span class="grid">@item.Status.ToString()</span>
                         </div>
                     </div>

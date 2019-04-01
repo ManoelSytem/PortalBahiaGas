@@ -72,6 +72,21 @@ function Salvar(pForm) {
     });
 }
 
+function ValidaSelectSalaControle() {
+    var cont = 0;
+    var pacote = document.getElementsByName('CodigoProtheus');
+    for (var i = 0; i < pacote.length; i++) {
+        if (pacote[i].checked) {
+            if (pacote[i].value == "CAMAÇARI") {
+                cont++;
+                if (cont >= 2) {
+                    alert("Atenção! Só é permitido selecionar somente um operador por município. Para CAMAÇARI existe : "+cont+" operadores.");
+                    break;
+                }
+            } 
+        }
+    }
+}
 function SalvarGasoduto(pForm) {
     $(".btn btn-success").attr("disabled", true);
     $.ajax({

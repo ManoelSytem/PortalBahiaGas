@@ -24,6 +24,17 @@
     </style>
 </head>
 <body>
+    @{
+        var alerts = TempData.ContainsKey(Alert.TempDataKey) ? (List<Alert>)TempData[Alert.TempDataKey] : new List<Alert>();
+        foreach (var alert in alerts)
+        {
+            var dismissableClass = alert.Dismissable ? "alert-dismissable" : null;
+            <div class="alert alert-@alert.AlertStyle @dismissableClass">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <center>@Html.Raw(alert.Message)</center>
+            </div>
+        }
+    }
     <div style="top:30%; position:relative;">
         <div class="container">
             @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form-signin login" }))

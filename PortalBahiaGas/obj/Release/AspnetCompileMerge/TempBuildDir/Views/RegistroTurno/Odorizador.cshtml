@@ -22,7 +22,7 @@
         <div class="panel-body">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-sm-2 col-header text-right">Nome</div>
+                    <div class="col-sm-2 col-header">Nome</div>
                     <div class="col-sm-2 col-header text-right">Status comunicação</div>
                     <div class="col-sm-2 col-header text-right">Pump disp <span style="font-size:10px;">(CC/STK)</span></div>
                     <div class="col-sm-2 col-header text-right">Set Point <span style="font-size:10px;">(CC/STK)</span></div>
@@ -34,23 +34,23 @@
                     @Html.Hidden("IdOdorizador", item.Id)
                     @Html.Hidden("Odorizador", item.Odorizador.Id)
                     <div class="row">
-                        <div class="col-sm-2 col-detail" style="height:23px;">
+                        <div class="col-sm-2 col-detail" style="height:23px;padding:0;">
                             <span class="grid">@item.Odorizador.Nome</span>
                         </div>
-                        <div class="col-sm-2 col-detail">
-                            @Html.TextBox("StatusComunicacao", item.StatusComunicacao, new { @class = "input-grid text-right" })
+                        <div class="col-sm-2 col-detail" style="padding:0;">
+                            @Html.EnumDropDownListFor(x => item.StatusComunicacao, new { @class = "form-control", @style = "height:100%; padding:0; width:100%;" })
                         </div>
-                        <div class="col-sm-2 col-detail">
-                            @Html.TextBox("PumpDispCcStk", item.PumpDispCcStk, new { @class = "input-grid text-right" })
+                        <div class="col-sm-2 col-detail" style="padding:0;">
+                            @Html.TextBox("PumpDisp", item.PumpDisp, new { @class = "input-grid decimal text-right" })
                         </div>
-                        <div class="col-sm-2 col-detail">
-                            @Html.TextBox("SetPointCcStk", item.SetPointCcStk, new { @class = "input-grid text-right" })
+                        <div class="col-sm-2 col-detail text-right" style="padding:0;">
+                            <span class="grid">@(String.Format("{0:n2}",item.Odorizador.SetPointCcStk))</span>
                         </div>
-                        <div class="col-sm-2 col-detail">
-                            @Html.TextBox("PressaoPsi", item.PressaoPsi, new { @class = "input-grid text-right" })
+                        <div class="col-sm-2 col-detail" style="padding:0;">
+                            @Html.TextBox("PressaoTqOdor", item.PressaoTqOdor, new { @class = "input-grid inteiro text-right" })
                         </div>
-                        <div class="col-sm-2 col-detail">
-                            @Html.TextBox("SetPointPsi", item.SetPointPsi, new { @class = "input-grid text-right" })
+                        <div class="col-sm-2 col-detail text-right" style="padding:0;">
+                            <span class="grid">@item.Odorizador.SetPointPsi</span>
                         </div>
                     </div>
                 }

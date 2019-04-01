@@ -246,7 +246,7 @@ namespace PortalBahiaGas.Controllers
             //if (pFormulario.GetValues("item") == null) lMensagem.AppendLine("Informe os operadores do turno.");
             if (!pFormulario.GetValues("CodigoProtheus").Any(x => x != "false")) lMensagem.AppendLine("Informe os operadores do turno.");
             if (pFormulario.GetValue("CodigoProtheus").AttemptedValue.Replace(",false", "").Replace("false,", "").Split(',').Count() != 4) lMensagem.AppendLine("O registro de turno deve possuir 4 operadores.");
-            validarPeriodoTurno(lRegistroTurno, lMensagem);
+            validarPeriodoTurno(lRegistroTurno, lMensagem, null);
             if (!String.IsNullOrEmpty(lMensagem.ToString())) throw new Exception(lMensagem.ToString());
 
 
@@ -510,7 +510,8 @@ namespace PortalBahiaGas.Controllers
                 Outro = pFormulario["Outro"]
             };
 
-            ValidarOcorrencia(lModel, pFormulario);
+            
+            ValidarOcorrencia(lModel, pFormulario,lRegistroTurno);
             if (lOcorrencia == null)
             {
                 lModel.RegistroTurno = lRegistroTurno;
@@ -584,7 +585,7 @@ namespace PortalBahiaGas.Controllers
             return lRegistroTurno;
         }
 
-        private void ValidarOcorrencia(Ocorrencia pOcorrencia, FormCollection pFormulario)
+        private void ValidarOcorrencia(Ocorrencia pOcorrencia, FormCollection pFormulario, RegistroTurno lRegistroTurno)
         {
             StringBuilder lMensagem = new StringBuilder();
             if (pOcorrencia.Origem == null) lMensagem.AppendLine("Informe a Origem.");
@@ -597,8 +598,11 @@ namespace PortalBahiaGas.Controllers
             if (pOcorrencia.Inicio == null) lMensagem.AppendLine("Informe a hora de início.");
             if (String.IsNullOrEmpty(pOcorrencia.Descricao)) lMensagem.AppendLine("Informe a Descrição.");
             if (pOcorrencia.Conclusao != null && String.IsNullOrEmpty(pOcorrencia.Justificativa)) lMensagem.AppendLine("Informe a justificativa de conclusão.");
+            validarPeriodoTurno(lRegistroTurno, lMensagem, pOcorrencia);
             validarPeriodoOcorrencia(pOcorrencia, lMensagem);
-            if (!String.IsNullOrEmpty(lMensagem.ToString())) throw new Exception(lMensagem.ToString());
+        
+            
+
         }
         #endregion
 
@@ -746,7 +750,7 @@ namespace PortalBahiaGas.Controllers
             return EStatus.Pendente;
         }
 
-        private void validarPeriodoTurno(RegistroTurno pRegistroTurno, StringBuilder pMensagem)
+        private void validarPeriodoTurno(RegistroTurno pRegistroTurno, StringBuilder pMensagem, Ocorrencia mOcorrencia)
         {
 
             DateTime hoje = DateTime.Now;
@@ -756,7 +760,6 @@ namespace PortalBahiaGas.Controllers
             // Testa se está no modo inclusão
             if (pRegistroTurno.Id == 0)
             {
-
                 inicioTurno = pRegistroTurno.Data;
                 fimTurno = pRegistroTurno.Data;
 
@@ -783,9 +786,37 @@ namespace PortalBahiaGas.Controllers
                     pMensagem.AppendLine("Turno selecionado: " + inicioTurno + " ás " + fimTurno);
                     pMensagem.AppendLine("Data/hora atual   = " + hoje);
                 }
-
             }
+            else
+            {
+                inicioTurno = pRegistroTurno.Data;
+                fimTurno = pRegistroTurno.Data;
 
+                if (pRegistroTurno.Turno.Equals(ETurno.De7as15))
+                {
+                    inicioTurno = inicioTurno.AddHours(7);
+                    fimTurno = fimTurno.AddHours(15);
+                }
+                else if (pRegistroTurno.Turno.Equals(ETurno.De15as23))
+                {
+                    inicioTurno = inicioTurno.AddHours(15);
+                    fimTurno = fimTurno.AddHours(23);
+                }
+                else
+                {
+                    inicioTurno = inicioTurno.AddHours(23);
+                    fimTurno = fimTurno.AddDays(1);
+                    fimTurno = fimTurno.AddHours(7);
+                }
+
+                if (DateTime.Compare(inicioTurno, Convert.ToDateTime(mOcorrencia.Inicio)) == 1 || DateTime.Compare(fimTurno, Convert.ToDateTime(mOcorrencia.Inicio)) == -1)
+                {
+                    pMensagem.AppendLine("A data/ocorrência ou hora/ocorrência é inválida!");
+                    pMensagem.AppendLine("Turno selecionado: " + inicioTurno + " ás " + fimTurno);
+                    pMensagem.AppendLine("Data e hora da ocorrência: " + mOcorrencia.Inicio);
+                }
+            }
+            
         }
 
         private void validarPeriodoOcorrencia(Ocorrencia pOcorrencia, StringBuilder pMensagem)

@@ -73,7 +73,7 @@
                     <div class="col-sm-2 col-header text-right">
                         <div class="row">
                             <div class="col-md-12">
-                                Vazão Iinstantânea
+                                Vazão Instantânea
                             </div>
                         </div>
                         <div class="row">
@@ -100,7 +100,7 @@
                     @Html.Hidden("IdCliente", item.Id)
                     @Html.Hidden("Cliente", item.Cliente.Id)
                     <div class="row">
-                        <div class="col-sm-2 col-detail" style="height:23px;">
+                        <div class="col-sm-2 col-detail" style="height:23px;padding:0;">
                             <span class="grid">@item.Cliente.Nome</span>
                         </div>
                         <div class="col-sm-1 col-detail">
@@ -124,7 +124,7 @@
         </div>
     </div>
     <div class="btn-group pull-right">
-        <button type="button" class="btn btn-success" onclick="SalvarCliente('formCliente');">Salvar</button>
+        <button type="button" class="btn btn-success" onclick="this.disabled = 'true'; SalvarCliente('formCliente');">Salvar</button>
         <button type="button" class="btn btn-danger" onclick="window.location = '@Url.Action("Index","Home")';">Voltar</button>
     </div>
 </form>

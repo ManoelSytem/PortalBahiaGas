@@ -4,7 +4,7 @@ namespace PortalBahiaGas.Models.Entidade.Enuns
 {
     public enum ETurno
     {
-        [Description(" 7:00 às 15:00")]
+        [Description("7:00 às 15:00")]
         De7as15 = 1,
         [Description("15:00 às 23:00")]
         De15as23 = 2,

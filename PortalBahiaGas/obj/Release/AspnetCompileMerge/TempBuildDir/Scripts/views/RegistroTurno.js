@@ -6,11 +6,13 @@
 });
 
 function Salvar(pForm) {
+    $(".btn btn-success").disabled = 'true';
     $.ajax({
         url: "../../RegistroTurno/Cadastrar",
         data: $("#" + pForm).serializeArray(),
         type: 'post'
     }).done(function (data) {
+        $(".btn btn-success").disabled = 'false';
         if (!data.Erro) {
             ObterAba({
                 id: data.Objeto.Id,
@@ -71,6 +73,7 @@ function Salvar(pForm) {
 }
 
 function SalvarGasoduto(pForm) {
+    $(".btn btn-success").attr("disabled", true);
     $.ajax({
         url: "../../RegistroTurno/Cadastrar",
         data: $("#" + pForm).serializeArray(),
@@ -97,6 +100,7 @@ function SalvarGasoduto(pForm) {
 }
 
 function SalvarPontoEntrega(pForm) {
+    $(".btn btn-success").attr("disabled", true);
     $.ajax({
         url: "../../RegistroTurno/Cadastrar",
         data: $("#" + pForm).serializeArray(),
@@ -118,11 +122,13 @@ function SalvarPontoEntrega(pForm) {
                 $(document).find("#abaCliente").tab('show');
             });
         }
+        $(".btn btn-success").disable = 'false';
         alert(data.Mensagem);
     });
 }
 
 function SalvarCliente(pForm) {
+    $(".btn btn-success").attr("disabled", true);
     $.ajax({
         url: "../../RegistroTurno/Cadastrar",
         data: $("#" + pForm).serializeArray(),
@@ -160,6 +166,7 @@ function SalvarCliente(pForm) {
 }
 
 function SalvarOdorizador(pForm) {
+    $(".btn btn-success").attr("disabled", true);
     $.ajax({
         url: "../../RegistroTurno/Cadastrar",
         data: $("#" + pForm).serializeArray(),
@@ -186,11 +193,13 @@ function SalvarOdorizador(pForm) {
 }
 
 function SalvarOcorrencia(pForm) {
+    $(".btn-salvar").attr("disabled", true);
     $.ajax({
         url: "../../RegistroTurno/Cadastrar",
         data: $("#" + pForm).serializeArray(),
         type: 'post'
     }).done(function (data) {
+        $(".btn-salvar").attr("disabled", false);
         alert(data.Mensagem);
         if (!data.Erro) {
             ObterAba({
@@ -206,11 +215,13 @@ function SalvarOcorrencia(pForm) {
 }
 
 function SalvarPendencia(pForm) {
+    $(".btn-salvar").attr("disabled", true);
     $.ajax({
         url: "../../RegistroTurno/Cadastrar",
         data: $("#" + pForm).serializeArray(),
         type: 'post'
     }).done(function (data) {
+        $(".btn-salvar").attr("disabled", false);
         alert(data.Mensagem);
         if (!data.Erro) {
             ObterAba({

@@ -4,13 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@ViewBag.Title - Relatório de Turno</title>
+    <title>@ViewBag.Title - Relatório de Turno V 2.0</title>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
     @Styles.Render("~/Content/css")
     <script>
         $(document).ready(function () {
+
+            //$('.date').datetimepicker();
             $('.date').datetimepicker({
                 todayBtn: 1,
                 autoclose: 1,
@@ -18,14 +20,27 @@
                 startView: 2,
                 minView: 2,
                 forceParse: 0,
-                dateFormat: 'dd/mm/yyyy',
-                startDate: new Date,
-                showClear: true
+                showClear: true,
+                startDate: '01/01/2017'
             });
         });
     </script>
 </head>
 <body>
+    @{
+        var alerts = TempData.ContainsKey(Alert.TempDataKey) ? (List<Alert>)TempData[Alert.TempDataKey] : new List<Alert>();
+        foreach (var alert in alerts)
+        {
+            var dismissableClass = alert.Dismissable ? "alert-dismissable" : null;
+            <div class="alert alert-@alert.AlertStyle @dismissableClass">
+                @if (alert.Dismissable)
+                {
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                }
+                @Html.Raw(alert.Message)
+            </div>
+        }
+    }
     <div id="preloader" style="display:none;">
         <div id="status">&nbsp;</div>
     </div>
@@ -53,7 +68,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="@ViewBag.MenuCliente"><a href="@Url.Action("Index", "Ocorrencia")">Ocorrência</a></li>
-                                <li class="@ViewBag.MenuCliente"><a href="@Url.Action("Index", "Pendencia")">Pendência</a></li>
+                                <li class="@ViewBag.MenuCliente"><a href="@Url.Action("Index", "Pendencia")">Registro Operacional</a></li>
                             </ul>
                         </li>
                     }
@@ -71,7 +86,7 @@
                                 @*<li class="@ViewBag.MenuOperador"><a href="@Url.Action("Index", "MenuOperador")">MenuOperador</a></li>*@
                                 <li class="@ViewBag.MenuPontoEntrega"><a href="@Url.Action("Index", "PontoEntrega")">Ponto de entrega</a></li>
                                 <li class="@ViewBag.MenuRegiao"><a href="@Url.Action("Index", "Regiao")">Região</a></li>
-                                <li class="@ViewBag.MenuTurno"><a href="@Url.Action("Index", "RegistroTurno")">Registro de turno</a></li>
+                                @*<li class="@ViewBag.MenuTurno"><a href="@Url.Action("Index", "RegistroTurno")">Registro de turno</a></li>*@
                                 <li class="@ViewBag.MenuUsuario"><a href="@Url.Action("Index", "Usuario")">Usuário</a></li>
                             </ul>
                         </li>

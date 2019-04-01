@@ -12,89 +12,6 @@
     ViewBag.MenuOdorizador = "";
 }
 <h3>Ocorrências</h3>
-<script type="text/javascript">
-    function PopularSelect() {
-        if ($("input[name='SelectCliente']").val().length >= 3) {
-            $.ajax({
-                url: "/../Cliente/ObterPorNomeClienteDoProtheus",
-                data: { Nome: $("input[name='SelectCliente']").val() },
-                type: 'post'
-            }).done(function (result) {
-                if (!result.Erro) {
-                    if (result.Objeto != null) {
-                        $('#SelectIdCliente option').remove();
-                        $("#SelectIdCliente").append("<option value=''>Selecione</option>");
-                        for (var i = 0; i < result.Objeto.length; i++) {
-                            $("#SelectIdCliente").append("<option value='" + result.Objeto[i].IdProtheus + "'>" + result.Objeto[i].Nome + "</option>");
-                        }
-                    }
-                    if (result.Objeto.length > 0) {
-                        $("#divComboSelect").show();
-                        $("#divComboText").hide();
-                    }
-                }
-            });
-        } else {
-            alert("O tamanho mínimo para pesquisa é de 3 caracteres.");
-        }
-    }
-
-    function PopularSelectInfraestrutura() {
-        if ($("input[name='SelectInfraestrutura']").val().length >= 3) {
-            $.ajax({
-                url: "/../Infraestrutura/ObterPorNomeInfraestruturaDoProtheus",
-                data: { Nome: $("input[name='SelectInfraestrutura']").val() },
-                type: 'post'
-            }).done(function (result) {
-                if (!result.Erro) {
-                    if (result.Objeto != null) {
-                        $('#SelectIdInfraestrutura option').remove();
-                        $("#SelectIdInfraestrutura").append("<option value=''>Selecione</option>");
-                        for (var i = 0; i < result.Objeto.length; i++) {
-                            $("#SelectIdInfraestrutura").append("<option value='" + result.Objeto[i].IdProtheus + "'>" + result.Objeto[i].Nome + "</option>");
-                        }
-                    }
-                    if (result.Objeto.length > 0) {
-                        $("#divComboSelectInfraestrutura").show();
-                        $("#divComboTextInfraestrutura").hide();
-                    }
-                }
-            });
-        } else {
-            alert("O tamanho mínimo para pesquisa é de 3 caracteres.");
-        }
-    }
-
-    $('#SelectIdCliente').change(function () {
-        $("#divComboSelect").hide();
-        $("#divComboText").show();
-        $("input[name='SelectCliente']").val($('#SelectIdCliente option:selected').text());
-    });
-
-    function PopUp(pIdOcorrencia, pIdRegistroTurno) {
-        var dados = { id: pIdOcorrencia, idRegistroTurno: pIdRegistroTurno };
-        $.ajax({
-            url: '../../Ocorrencia/PopUpOcorrencia',
-            data: dados,
-            type: 'post'
-        }).done(function (data) {
-            $('#modalWrapper').html(data);
-            $('#OcorrenciaModal').modal();
-        });
-    }
-
-    function onSubmit() {
-        var dataInicial = new Date($("#DataFinal").val());
-        var dataFinal = new Date($("#DataInicial").val());
-        if (dataFinal < dataInicial) {
-            alert("Data final não pode ser menor que data inicial.");
-            return;
-        }
-
-        $('#form1').submit();
-        return true;
-    }
-</script>
 @using (Html.BeginForm("Pesquisar", "Ocorrencia", FormMethod.Post, new { @class = "form-inline", @role = "form", @id = "form1" }))
 {
     HtmlHelper.ClientValidationEnabled = false;
@@ -152,23 +69,27 @@
         </div>
         <div class="form-group">
             @Html.LabelForModel("Atendente:")<br />
-            @Html.TextBox("Atendente", ViewData["Atendente"], new { @class = "form-control form-alinhado", style = "width: 250px;" })
+            @Html.TextBox("Atendente", ViewData["Atendente"], new { @class = "form-control form-alinhado", style = "width: 243px;" })
         </div>
         <div class="form-group">
             @Html.Label("Tipo:")<br />
-            @Html.DropDownListFor(x => ViewData["Tipo"], PortalBahiaGas.Models.Entidade.Enuns.ETipoOcorrencia.BaixaPressão.ToSelectList(), "Selecione", new { @class = "form-control" })
+            @Html.DropDownListFor(x => ViewData["Tipo"], PortalBahiaGas.Models.Entidade.Enuns.ETipoOcorrencia.BaixaPressão.ToSelectList(), "Selecione", new { @class = "form-control", style = "width: 135px;" })
         </div>
         <div class="form-group">
             @Html.LabelForModel("Origem:")<br />
-            @Html.DropDownListFor(x => ViewData["Origem"], PortalBahiaGas.Models.Entidade.Enuns.EOrigem.Automação.ToSelectList(), "Selecione", new { @class = "form-control" })
+            @Html.DropDownListFor(x => ViewData["Origem"], PortalBahiaGas.Models.Entidade.Enuns.EOrigem.Automação.ToSelectList(), "Selecione", new { @class = "form-control", style = "width: 135px;" })
         </div>
         <div class="form-group">
             @Html.LabelForModel("Região:")<br />
-            @Html.DropDownList("Regiao", (SelectList)ViewData["Regioes"], "Selecione", new { @class = "form-control form-alinhado", style = "width: 150px;" })
+            @Html.DropDownList("Regiao", (SelectList)ViewData["Regioes"], "Selecione", new { @class = "form-control form-alinhado", style = "width: 135px;" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Status:")<br />
+            @Html.DropDownListFor(x => ViewData["Status"], PortalBahiaGas.Models.Entidade.Enuns.EStatus.Concluído.ToSelectList(), "Selecione", new { @class = "form-control", style = "width: 135px;" })
         </div>
         <div class="form-group">
             @Html.LabelForModel("Descrição:")<br />
-            @Html.TextBox("Descricao", ViewData["Descricao"], new { @class = "form-control form-alinhado", style = "width: 301px;" })
+            @Html.TextBox("Descricao", ViewData["Descricao"], new { @class = "form-control form-alinhado", style = "width: 243px;" })
         </div>
         <div class="form-group">
             &nbsp;<br />
@@ -184,8 +105,8 @@
                 <div class="col-sm-1 col-header">
                     &nbsp;
                 </div>
-                <div class="col-sm-2 col-header">Origem</div>
-                <div class="col-sm-2 col-header">Região</div>
+                <div class="col-sm-1 col-header">Origem</div>
+                <div class="col-sm-3 col-header">Turno</div>
                 <div class="col-sm-2 col-header text-center">Hora da ocorrência</div>
                 <div class="col-sm-2 col-header text-center">Início de atendimento</div>
                 <div class="col-sm-2 col-header text-center">Conclusão</div>
@@ -193,28 +114,29 @@
             </div>
             @foreach (PortalBahiaGas.Models.Entidade.Ocorrencia item in Model.OrderBy(x => x.Inicio).ThenBy(x => x.Hora))
             {
-                <div class="row">
-                    <div class="col-sm-1 col-header">
+                <div class="row" style="padding:0;">
+                    <div class="col-sm-1 col-header" data-toggle="tooltip" title="@item.Descricao">
                         <a href="#" onclick="PopUp(@item.Id, @item.RegistroTurno.Id);">
                             <span class="glyphicon glyphicon-eye-open"></span>
                         </a>
                     </div>
-                    <div class="col-sm-2 col-detail">
+                    <div class="col-sm-1 col-detail" style="padding:0;">
                         <span class="grid">@item.Origem.ToString()</span>
                     </div>
-                    <div class="col-sm-2 col-detail">
-                        <span class="grid">@((item.Regiao == null) ? "" : item.Regiao.Nome)</span>
+                    <div class="col-sm-3 col-detail" style="padding:0;">
+                        <span class="grid">@String.Format("{0:dd/MM/yyyy}", item.RegistroTurno.Data) @item.RegistroTurno.Turno.ObterDescricao()</span>
+                       <!--- <span class="grid">@((item.Regiao == null) ? "" : item.Regiao.Nome)</span>-->
                     </div>
-                    <div class="col-sm-2 col-detail text-center">
+                    <div class="col-sm-2 col-detail text-center" style="padding:0;">
                         <span class="grid">@String.Format("{0:dd/MM/yyyy HH:mm}", item.Inicio)</span>
                     </div>
-                    <div class="col-sm-2 col-detail text-center">
+                    <div class="col-sm-2 col-detail text-center" style="padding:0;">
                         <span class="grid">@String.Format("{0:dd/MM/yyyy HH:mm}", item.Atendimento)</span>
                     </div>
-                    <div class="col-sm-2 col-detail text-center">
+                    <div class="col-sm-2 col-detail text-center" style="padding:0;">
                         <span class="grid">@String.Format("{0:dd/MM/yyyy HH:mm}", item.Conclusao)</span>
                     </div>
-                    <div class="col-sm-1 col-detail">
+                    <div class="col-sm-1 col-detail" style="padding:0;">
                         <span class="grid">@item.Status.ToString()</span>
                     </div>
                 </div>
@@ -230,3 +152,94 @@
     });
 </script>
 <div id="modalWrapper"></div>
+<script type="text/javascript">
+    function PopularSelect() {
+        if ($("input[name='SelectCliente']").val().length >= 3) {
+            $.ajax({
+                url: "/../Cliente/ObterPorNomeClienteDoProtheus",
+                data: { Nome: $("input[name='SelectCliente']").val() },
+                type: 'post'
+            }).done(function (result) {
+                if (!result.Erro) {
+                    if (result.Objeto != null) {
+                        $('#SelectIdCliente option').remove();
+                        $("#SelectIdCliente").append("<option value=''>Selecione</option>");
+                        for (var i = 0; i < result.Objeto.length; i++) {
+                            $("#SelectIdCliente").append("<option value='" + result.Objeto[i].IdProtheus + "'>" + result.Objeto[i].Nome + "</option>");
+                        }
+                    }
+                    if (result.Objeto.length > 0) {
+                        $("#divComboSelect").show();
+                        $("#divComboText").hide();
+                    }
+                }
+            });
+        } else {
+            alert("O tamanho mínimo para pesquisa é de 3 caracteres.");
+        }
+    }
+
+    function PopularSelectInfraestrutura() {
+        if ($("input[name='SelectInfraestrutura']").val().length >= 3) {
+            $.ajax({
+                url: "/../Infraestrutura/ObterPorNomeInfraestruturaDoProtheus",
+                data: { Nome: $("input[name='SelectInfraestrutura']").val() },
+                type: 'post'
+            }).done(function (result) {
+                if (!result.Erro) {
+                    if (result.Objeto != null) {
+                        $('#SelectIdInfraestrutura option').remove();
+                        $("#SelectIdInfraestrutura").append("<option value=''>Selecione</option>");
+                        for (var i = 0; i < result.Objeto.length; i++) {
+                            $("#SelectIdInfraestrutura").append("<option value='" + result.Objeto[i].IdProtheus + "'>" + result.Objeto[i].Nome + "</option>");
+                        }
+                    }
+                    if (result.Objeto.length > 0) {
+                        $("#divComboSelectInfraestrutura").show();
+                        $("#divComboTextInfraestrutura").hide();
+                    }
+                }
+            });
+        } else {
+            alert("O tamanho mínimo para pesquisa é de 3 caracteres.");
+        }
+    }
+
+    $('#SelectCliente').change(function () { $('#SelectIdCliente option').remove(); });
+    $('#SelectIdCliente').change(function () {
+        $("#divComboSelect").hide();
+        $("#divComboText").show();
+        $("input[name='SelectCliente']").val($('#SelectIdCliente option:selected').text());
+    });
+
+    $('#SelectInfraestrutura').change(function () { $('#SelectIdInfraestrutura option').remove(); });
+    $('#SelectIdInfraestrutura').change(function () {
+        $("#divComboSelectInfraestrutura").hide();
+        $("#divComboTextInfraestrutura").show();
+        $("input[name='SelectInfraestrutura']").val($('#SelectIdInfraestrutura option:selected').text());
+    });
+
+    function PopUp(pIdOcorrencia, pIdRegistroTurno) {
+        var dados = { id: pIdOcorrencia, idRegistroTurno: pIdRegistroTurno };
+        $.ajax({
+            url: '../../Ocorrencia/PopUpOcorrencia',
+            data: dados,
+            type: 'post'
+        }).done(function (data) {
+            $('#modalWrapper').html(data);
+            $('#OcorrenciaModal').modal();
+        });
+    }
+
+    function onSubmit() {
+        var dataInicial = new Date($("#DataFinal").val());
+        var dataFinal = new Date($("#DataInicial").val());
+        if (dataFinal < dataInicial) {
+            alert("Data final não pode ser menor que data inicial.");
+            return;
+        }
+
+        $('#form1').submit();
+        return true;
+    }
+</script>

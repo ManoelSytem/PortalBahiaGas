@@ -150,11 +150,18 @@
     $("#Local").change(function () {
         if ($('#Local option:selected').val() == 1) {
             $("#divInfraestrutura").hide();
+            $("#divOutro").hide();
             $("#divCliente").show();
         } else if ($('#Local option:selected').val() == 2) {
             $("#divInfraestrutura").show();
             $("#divCliente").hide();
+            $("#divOutro").hide();
+        } else if ($('#Local option:selected').val() == 3) {
+            $("#divInfraestrutura").hide();
+            $("#divCliente").hide();
+            $("#divOutro").show();
         } else {
+            $("#divOutro").hide();
             $("#divInfraestrutura").hide();
             $("#divCliente").hide();
         }
@@ -165,8 +172,30 @@
             format: "dd/mm/yyyy hh:ii",
             autoclose: true,
             todayBtn: true,
-            showClear: true
+            forceParse: 0
         });
+        /*
+                $('.date').datepicker.regional['pt-BR'] = {
+                    closeText: 'Fechar',
+                    prevText: '&#x3c;Anterior',
+                    nextText: 'Pr&oacute;ximo&#x3e;',
+                    currentText: 'Hoje',
+                    monthNames: ['Janeiro', 'Fevereiro', 'Mar&ccedil;o', 'Abril', 'Maio', 'Junho',
+                    'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                    monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
+                    'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                    dayNames: ['Domingo', 'Segunda-feira', 'Ter&ccedil;a-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sabado'],
+                    dayNamesShort: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+                    dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+                    weekHeader: 'Sm',
+                    dateFormat: 'dd/mm/yy hh:ii',
+                    firstDay: 0,
+                    isRTL: false,
+                    showMonthAfterYear: false,
+                    yearSuffix: ''
+                };
+                $('.date').datepicker.setDefaults($.datepicker.regional['pt-BR']);
+          */
         ExibirCampos();
 
         @{
@@ -184,11 +213,18 @@
 
         if ($('#Local option:selected').val() == 1) {
             $("#divInfraestrutura").hide();
+            $("#divOutro").hide();
             $("#divCliente").show();
         } else if ($('#Local option:selected').val() == 2) {
             $("#divInfraestrutura").show();
             $("#divCliente").hide();
+            $("#divOutro").hide();
+        } else if ($('#Local option:selected').val() == 3) {
+            $("#divInfraestrutura").hide();
+            $("#divCliente").hide();
+            $("#divOutro").show();
         } else {
+            $("#divOutro").hide();
             $("#divInfraestrutura").hide();
             $("#divCliente").hide();
         }
@@ -227,7 +263,8 @@
                             </div>
                             <div class="form-group">
                                 @Html.LabelForModel("Origem:")
-                                @Html.EnumDropDownListFor(x => x.Origem, "Selecione", new { @class = "form-control form-alinhado", style = "width: 141px;" })
+                                @*@Html.EnumDropDownListFor(x => x.Origem, "Selecione", new { @class = "form-control form-alinhado", style = "width: 141px;" })*@
+                                @Html.DropDownListFor(x => x.Origem, PortalBahiaGas.Models.Entidade.Enuns.EOrigem.Automação.ToSelectList(PortalBahiaGas.Attribute.TipoFiltro.Ocorrencia), "Selecione", new { @class = "form-control form-alinhado", style = "width: 141px;" })
                             </div>
                             <div class="form-group">
                                 @Html.LabelForModel("Local:")
@@ -293,7 +330,7 @@
                                             <select id="SelectIdCliente" name="SelectIdCliente" class="form-control" data-style="btn-inverse" data-live-search="true" style="width:384px;">
                                                 @if (Model.ClienteObj != null)
                                                 {
-                                                    <option selected="selected" value="@Model.ClienteObj.Id"></option>
+                                                    <option selected="selected" value="@Model.ClienteObj.IdProtheus"></option>
                                                 }
                                             </select>
                                         </div>
@@ -313,7 +350,7 @@
                                             <select id="SelectIdInfraestrutura" name="SelectIdInfraestrutura" class="form-control" data-style="btn-inverse" data-live-search="true" style="width:384px;">
                                                 @if (Model.InfraestruturaObj != null)
                                                 {
-                                                    <option selected="selected" value="@Model.InfraestruturaObj.Id"></option>
+                                                    <option selected="selected" value="@Model.InfraestruturaObj.IdProtheus"></option>
                                                 }
                                             </select>
                                         </div>
@@ -325,6 +362,14 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div style="display:none;" id="divOutro">
+                                    <div class="form-group">
+                                        @Html.LabelForModel("Outro:")
+                                        @Html.TextBoxFor(x => x.Outro, new { @class = "form-control form-alinhado", style = "width: 383px;" })
+                                    </div>
+                                </div>
+
                             </div>
 
                             <div class="form-group">
@@ -385,7 +430,7 @@
                             @Html.TextAreaFor(x => x.Justificativa, new { @class = "form-control", rows = "5", style = "width: 100%;" })
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="" onclick="SalvarOcorrencia('formOcorrencia');">Salvar</button>
+                            <button type="button" class="btn btn-default btn-salvar" data-dismiss="" onclick="SalvarOcorrencia('formOcorrencia');">Salvar</button>
                         </div>
                     </form>
                 </div>

@@ -139,7 +139,7 @@
                     @Html.Hidden("IdPontoEntrega", item.Id)
                     @Html.Hidden("PontoEntrega", item.PontoEntrega.Id)
                     <div class="row">
-                        <div class="col-sm-3 col-detail" style="height:23px;">
+                        <div class="col-sm-3 col-detail" style="height:23px;padding:0;">
                             <span class="grid">@item.PontoEntrega.Nome</span>
                         </div>
                         <div class="col-sm-1 col-detail">
@@ -174,7 +174,7 @@
         </div>
     </div>
     <div class="btn-group pull-right">
-        <button type="button" class="btn btn-success" onclick="SalvarPontoEntrega('formPontoEntrega');">Salvar</button>
+        <button type="button" class="btn btn-success" onclick="this.disabled = 'true';SalvarPontoEntrega('formPontoEntrega');">Salvar</button>
         <button type="button" class="btn btn-danger" onclick="window.location = '@Url.Action("Index","Home")';">Voltar</button>
     </div>
 </form>

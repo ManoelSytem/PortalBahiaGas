@@ -82,10 +82,16 @@
 
     $(document).ready(function () {
         $('.date').datetimepicker({
-            format: "dd/mm/yyyy hh:ii",
-            autoclose: true,
-            todayBtn: true
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0,
+            format: 'dd/mm/yyyy hh:ii',
+            showClear: true
         });
+
         @{
             PortalBahiaGas.Models.Entidade.Usuario Usuario = (PortalBahiaGas.Models.Entidade.Usuario)Session["UsuarioLogado"];
             bool lEdita = !(PortalBahiaGas.Util.Utilitario.VerificarLimiteEdicaoTurno(Model.RegistroTurno.Turno, Model.RegistroTurno.Data, Usuario) || (Model.RegistroTurno.UsuarioCriacao == Usuario.Login && DateTime.Now < Model.RegistroTurno.DataCriacao.Value.AddDays(2)));
@@ -100,11 +106,105 @@
         }
         if ($('#Local option:selected').val() == 1) {
             $("#divInfraestrutura").hide();
+            $("#divOutro").hide();
             $("#divCliente").show();
         } else if ($('#Local option:selected').val() == 2) {
             $("#divInfraestrutura").show();
             $("#divCliente").hide();
+            $("#divOutro").hide();
+        } else if ($('#Local option:selected').val() == 3) {
+            $("#divInfraestrutura").hide();
+            $("#divCliente").hide();
+            $("#divOutro").show();
         } else {
+            $("#divOutro").hide();
+            $("#divInfraestrutura").hide();
+            $("#divCliente").hide();
+        }
+    });
+
+
+    function PopularSelect() {
+        if ($("input[name='SelectCliente']").val().length >= 3) {
+            $.ajax({
+                url: "/../Cliente/ObterPorNomeClienteDoProtheus",
+                data: { Nome: $("input[name='SelectCliente']").val() },
+                type: 'post'
+            }).done(function (result) {
+                if (!result.Erro) {
+                    if (result.Objeto != null) {
+                        $('#SelectIdCliente option').remove();
+                        $("#SelectIdCliente").append("<option value=''>Selecione</option>");
+                        for (var i = 0; i < result.Objeto.length; i++) {
+                            $("#SelectIdCliente").append("<option value='" + result.Objeto[i].IdProtheus + "'>" + result.Objeto[i].Nome + "</option>");
+                        }
+                    }
+                    if (result.Objeto.length > 0) {
+                        $("#divComboSelect").show();
+                        $("#divComboText").hide();
+                    }
+                }
+            });
+        } else {
+            alert("O tamanho mínimo para pesquisa é de 3 caracteres.");
+        }
+    }
+
+    function PopularSelectInfraestrutura() {
+        if ($("input[name='SelectInfraestrutura']").val().length >= 3) {
+            $.ajax({
+                url: "/../Infraestrutura/ObterPorNomeInfraestruturaDoProtheus",
+                data: { Nome: $("input[name='SelectInfraestrutura']").val() },
+                type: 'post'
+            }).done(function (result) {
+                if (!result.Erro) {
+                    if (result.Objeto != null) {
+                        $('#SelectIdInfraestrutura option').remove();
+                        $("#SelectIdInfraestrutura").append("<option value=''>Selecione</option>");
+                        for (var i = 0; i < result.Objeto.length; i++) {
+                            $("#SelectIdInfraestrutura").append("<option value='" + result.Objeto[i].IdProtheus + "'>" + result.Objeto[i].Nome + "</option>");
+                        }
+                    }
+                    if (result.Objeto.length > 0) {
+                        $("#divComboSelectInfraestrutura").show();
+                        $("#divComboTextInfraestrutura").hide();
+                    }
+                }
+            });
+        } else {
+            alert("O tamanho mínimo para pesquisa é de 3 caracteres.");
+        }
+    }
+
+    $('#SelectCliente').change(function () { $('#SelectIdCliente option').remove(); });
+    $('#SelectIdCliente').change(function () {
+        $("#divComboSelect").hide();
+        $("#divComboText").show();
+        $("input[name='SelectCliente']").val($('#SelectIdCliente option:selected').text());
+    });
+
+    $('#SelectInfraestrutura').change(function () { $('#SelectIdInfraestrutura option').remove(); });
+    $('#SelectIdInfraestrutura').change(function () {
+        $("#divComboSelectInfraestrutura").hide();
+        $("#divComboTextInfraestrutura").show();
+        $("input[name='SelectInfraestrutura']").val($('#SelectIdInfraestrutura option:selected').text());
+    });
+
+    $("#Local").change(function () {
+        if ($('#Local option:selected').val() == 1) {
+            $("#divInfraestrutura").hide();
+            $("#divOutro").hide();
+            $("#divCliente").show();
+        } else if ($('#Local option:selected').val() == 2) {
+            $("#divInfraestrutura").show();
+            $("#divCliente").hide();
+            $("#divOutro").hide();
+        } else if ($('#Local option:selected').val() == 3) {
+            $("#divInfraestrutura").hide();
+            $("#divCliente").hide();
+            $("#divOutro").show();
+        } else {
+            $("#divOutro").hide();
             $("#divInfraestrutura").hide();
             $("#divCliente").hide();
         }
@@ -142,8 +242,22 @@
                                 @Html.DropDownListFor(x => x.RegistroTurno.Turno, PortalBahiaGas.Models.Entidade.Enuns.ETurno.De7as15.ToSelectList(), "Selecione", new { @class = "form-control form-alinhado", disabled = "disabled" })
                             </div>
                             <div class="form-group">
-                                @Html.LabelForModel("Operador Bahiagás:")
-                                @Html.TextBoxFor(x => x.Atendente, new { @class = "form-control form-alinhado", style = "width: 270px;" })
+                                @Html.LabelForModel("Origem:")
+                                @Html.EnumDropDownListFor(x => x.Origem, "Selecione", new { @class = "form-control form-alinhado", style = "width: 141px;" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelForModel("Local:")
+                                @Html.EnumDropDownListFor(x => x.Local, "Selecione", new { @class = "form-control form-alinhado", style = "width: 141px;" })
+                            </div>
+                        </div>
+                        <div class="row-formulario">
+                            <div class="form-group">
+                                @Html.LabelForModel("Atendente:")
+                                @Html.TextBoxFor(x => x.Atendente, new { @class = "form-control form-alinhado", style = "width: 384px;" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelForModel("Código SS:")
+                                @Html.TextBoxFor(x => x.CodigoSST, new { @class = "form-control form-alinhado", @style = "width: 150px;" })
                             </div>
                         </div>
                         <div class="row-formulario">
@@ -158,15 +272,15 @@
                                         </span>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    @Html.LabelForModel("Início de atendimento:")<br />
-                                    <div class="input-group input-append date" id="data">
-                                        @Html.TextBox("Atendimento", Model.Atendimento, "{0:dd/MM/yyyy HH:mm}", new { @class = "input-sm form-control form-alinhado dataHora", style = "width: 140px;" })
-                                        <span class="input-group-addon add-on" style="padding: 6px;">
-                                            <span class="glyphicon glyphicon-th"></span>
-                                        </span>
-                                    </div>
-                                </div>
+                                @*<div class="form-group">
+                                        @Html.LabelForModel("Início de atendimento:")<br />
+                                        <div class="input-group input-append date" id="data">
+                                            @Html.TextBox("Atendimento", Model.Atendimento, "{0:dd/MM/yyyy HH:mm}", new { @class = "input-sm form-control form-alinhado dataHora", style = "width: 140px;" })
+                                            <span class="input-group-addon add-on" style="padding: 6px;">
+                                                <span class="glyphicon glyphicon-th"></span>
+                                            </span>
+                                        </div>
+                                    </div>*@
                                 <div class="form-group">
                                     @Html.LabelForModel("Conclusão:")<br />
                                     <div class="input-group input-append date" id="data">
@@ -183,14 +297,7 @@
                                 @Html.LabelForModel("Região:")
                                 @Html.DropDownListFor(x => x.Regiao.Id, (SelectList)ViewData["Regioes"], "Selecione", new { @class = "form-control form-alinhado", style = "width: 150px;" })
                             </div>
-                            <div class="form-group">
-                                @Html.LabelForModel("Ponto de entrega Bahiagás:")
-                                @Html.DropDownListFor(x => x.PontoEntrega.Id, (SelectList)ViewData["PontosEntrega"], "Selecione", new { @class = "form-control form-alinhado", style = "width: 200px;" })
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelForModel("Local:")
-                                @Html.EnumDropDownListFor(x => x.Local, "Selecione", new { @class = "form-control form-alinhado", style = "width: 141px;" })
-                            </div>
+
                             <div class="form-group">
                                 <div style="display:none;" id="divCliente">
                                     @Html.LabelForModel("Cliente:")
@@ -199,7 +306,7 @@
                                             <select id="SelectIdCliente" name="SelectIdCliente" class="form-control" data-style="btn-inverse" data-live-search="true" style="width:384px;">
                                                 @if (Model.ClienteObj != null)
                                                 {
-                                                    <option selected="selected" value="@Model.ClienteObj.Id"></option>
+                                                    <option selected="selected" value="@Model.ClienteObj.IdProtheus"></option>
                                                 }
                                             </select>
                                         </div>
@@ -219,7 +326,7 @@
                                             <select id="SelectIdInfraestrutura" name="SelectIdInfraestrutura" class="form-control" data-style="btn-inverse" data-live-search="true" style="width:384px;">
                                                 @if (Model.InfraestruturaObj != null)
                                                 {
-                                                    <option selected="selected" value="@Model.InfraestruturaObj.Id"></option>
+                                                    <option selected="selected" value="@Model.InfraestruturaObj.IdProtheus"></option>
                                                 }
                                             </select>
                                         </div>
@@ -231,6 +338,18 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div style="display:none;" id="divOutro">
+                                    <div class="form-group">
+                                        @Html.LabelForModel("Outro:")
+                                        @Html.TextBoxFor(x => x.Outro, new { @class = "form-control form-alinhado", style = "width: 383px;" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelForModel("Ponto de entrega Bahiagás:")
+                                @Html.DropDownListFor(x => x.PontoEntrega.Id, (SelectList)ViewData["PontosEntrega"], "Selecione", new { @class = "form-control form-alinhado", style = "width: 200px;" })
                             </div>
                         </div>
                         <div class="operacao opcional invisivel">

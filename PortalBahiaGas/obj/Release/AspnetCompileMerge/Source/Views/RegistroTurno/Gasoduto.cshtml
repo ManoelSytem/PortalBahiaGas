@@ -42,7 +42,7 @@
                     @Html.Hidden("IdGasoduto", item.Id)
                     @Html.Hidden("Gasoduto", item.Gasoduto.Id)
                     <div class="row">
-                        <div class="col-sm-6 col-detail" style="height:23px;">
+                        <div class="col-sm-6 col-detail" style="height:23px;;padding:0;">
                             <span class="grid">@item.Gasoduto.Nome</span>
                         </div>
                         <div class="col-sm-3 col-detail">
@@ -57,7 +57,7 @@
         </div>
     </div>
     <div class="btn-group pull-right">
-        <button type="button" class="btn btn-success" onclick="SalvarGasoduto('formGasoduto');">Salvar</button>
+        <button type="button" class="btn btn-success" onclick="this.disabled = 'true';SalvarGasoduto('formGasoduto');">Salvar</button>
         <button type="button" class="btn btn-danger" onclick="window.location = '@Url.Action("Index","Home")';">Voltar</button>
     </div>
 </form>
