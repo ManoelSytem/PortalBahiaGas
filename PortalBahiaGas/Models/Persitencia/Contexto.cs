@@ -28,6 +28,7 @@ namespace PortalBahiaGas.Models.Persistencia
             modelBuilder.Configurations.Add(new PendenciaMapping());
             modelBuilder.Configurations.Add(new OdorizadorMapping());
             modelBuilder.Configurations.Add(new RegistroOdorizadorMapping());
+            modelBuilder.Configurations.Add(new OperadorRegistroTurnoMapping());
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             base.OnModelCreating(modelBuilder);

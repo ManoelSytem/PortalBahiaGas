@@ -206,11 +206,16 @@
     <Compile Include="Migrations\201707311247480_First3.Designer.cs">
       <DependentUpon>201707311247480_First3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904082023437_OperadorRegistroTurno.cs" />
+    <Compile Include="Migrations\201904082023437_OperadorRegistroTurno.Designer.cs">
+      <DependentUpon>201904082023437_OperadorRegistroTurno.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entidade\Alert.cs" />
     <Compile Include="Models\Entidade\Chamado.cs" />
     <Compile Include="Models\Entidade\Enuns\EOrigemPendencia.cs" />
     <Compile Include="Models\Entidade\Enuns\EStatusComunicacao.cs" />
+    <Compile Include="Models\Entidade\Enuns\ETurma.cs" />
     <Compile Include="Models\Entidade\Infraestrutura.cs" />
     <Compile Include="Models\Entidade\Enuns\EAcao.cs" />
     <Compile Include="Models\Entidade\Enuns\ELocal.cs" />
@@ -222,6 +227,7 @@
     <Compile Include="Models\Entidade\Enuns\ETipoOcorrencia.cs" />
     <Compile Include="Models\Entidade\Enuns\ETurno.cs" />
     <Compile Include="Models\Entidade\AEntidade.cs" />
+    <Compile Include="Models\Entidade\OperadorRegistroTurno.cs" />
     <Compile Include="Models\Entidade\Pendencia.cs" />
     <Compile Include="Models\Entidade\Ocorrencia.cs" />
     <Compile Include="Models\Entidade\Operador.cs" />
@@ -238,6 +244,7 @@
     <Compile Include="Models\Entidade\Usuario.cs" />
     <Compile Include="Models\Mapping\OcorrenciaMapping.cs" />
     <Compile Include="Models\Mapping\ClienteMapping.cs" />
+    <Compile Include="Models\Mapping\OperadorRegistroTurnoMapping.cs" />
     <Compile Include="Models\Mapping\PendenciaMapping.cs" />
     <Compile Include="Models\Mapping\RegistroOdorizadorMapping.cs" />
     <Compile Include="Models\Mapping\OdorizadorMapping.cs" />
@@ -386,6 +393,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707311247480_First3.resx">
       <DependentUpon>201707311247480_First3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904082023437_OperadorRegistroTurno.resx">
+      <DependentUpon>201904082023437_OperadorRegistroTurno.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

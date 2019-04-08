@@ -220,6 +220,10 @@ namespace PortalBahiaGas.Controllers
                 lRegistroTurno.DataCriacao = DateTime.Now;
                 lRegistroTurno.UsuarioCriacao = lUsuario.Login;
                 Operadores.ForEach(x => lRegistroTurno.Operadores.Add(x));
+
+                //Novo código para nova tabela
+                //Operadores.ForEach(x => lRegistroTurno.OperadorRegistroTurno.Add(new OperadorRegistroTurno() { Operador = x }));
+
                 lRegistroTurno = TurnoRepositorio.Adicionar(lRegistroTurno);
             }
             else
@@ -510,8 +514,8 @@ namespace PortalBahiaGas.Controllers
                 Outro = pFormulario["Outro"]
             };
 
-            
-            ValidarOcorrencia(lModel, pFormulario,lRegistroTurno);
+
+            ValidarOcorrencia(lModel, pFormulario, lRegistroTurno);
             if (lOcorrencia == null)
             {
                 lModel.RegistroTurno = lRegistroTurno;
@@ -600,8 +604,8 @@ namespace PortalBahiaGas.Controllers
             if (pOcorrencia.Conclusao != null && String.IsNullOrEmpty(pOcorrencia.Justificativa)) lMensagem.AppendLine("Informe a justificativa de conclusão.");
             validarPeriodoTurno(lRegistroTurno, lMensagem, pOcorrencia);
             validarPeriodoOcorrencia(pOcorrencia, lMensagem);
-        
-            
+
+
 
         }
         #endregion
@@ -816,7 +820,7 @@ namespace PortalBahiaGas.Controllers
                     pMensagem.AppendLine("Data e hora da ocorrência: " + mOcorrencia.Inicio);
                 }
             }
-            
+
         }
 
         private void validarPeriodoOcorrencia(Ocorrencia pOcorrencia, StringBuilder pMensagem)

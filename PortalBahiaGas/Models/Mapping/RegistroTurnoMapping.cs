@@ -21,6 +21,7 @@ namespace PortalBahiaGas.Models.Mapping
             HasMany(x => x.RegistrosOdorizador);
             HasMany(x => x.Ocorrencias);
             HasMany(x => x.Pendencias);
+            HasMany(x => x.OperadorRegistroTurno);
             HasMany<Operador>(x => x.Operadores)
                 .WithMany(x => x.RegistrosTurno)
                 .Map(x =>
@@ -30,6 +31,7 @@ namespace PortalBahiaGas.Models.Mapping
                     x.MapRightKey("ope_int_id");
                 });
             Ignore(x => x.OutrasOcorrencias);
+            Property(x => x.Turma).HasColumnName("rtu_int_turma").IsOptional();
             Property(x => x.UsuarioCriacao).HasColumnName("rtu_str_usuarioCriacao");
             Property(x => x.UsuarioAlteracao).HasColumnName("rtu_str_usuarioAlteracao");
             Property(x => x.DataCriacao).HasColumnName("rtu_dat_criacao");

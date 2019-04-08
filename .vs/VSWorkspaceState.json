@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\PortalBahiaGas",
+    "\\PortalBahiaGas\\Controllers",
+    "\\PortalBahiaGas\\Models",
+    "\\PortalBahiaGas\\Models\\Entidade",
+    "\\PortalBahiaGas\\Models\\Mapping",
+    "\\PortalBahiaGas\\Models\\Persitencia"
+  ],
+  "SelectedNode": "\\PortalBahiaGas\\Controllers\\RegistroTurnoController.cs",
+  "PreviewInSolutionExplorer": false
+}

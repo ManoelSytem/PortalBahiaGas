@@ -16,9 +16,11 @@ namespace PortalBahiaGas.Models.Entidade
             Pendencias = new List<Pendencia>();
             OutrasOcorrencias = new List<Ocorrencia>();
             Operadores = new List<Operador>();
+            OperadorRegistroTurno = new List<OperadorRegistroTurno>();
         }
 
         public ETurno Turno { get; set; }
+        public ETurma Turma { get; set; }
         public virtual ICollection<Operador> Operadores { get; protected set; }
         public virtual ICollection<RegistroGasoduto> RegistrosGasoduto { get; protected set; }
         public virtual ICollection<RegistroPontoEntrega> RegistrosPontoEntrega { get; protected set; }
@@ -26,6 +28,7 @@ namespace PortalBahiaGas.Models.Entidade
         public virtual ICollection<RegistroOdorizador> RegistrosOdorizador { get; protected set; }
         public virtual ICollection<Ocorrencia> Ocorrencias { get; protected set; }
         public virtual ICollection<Pendencia> Pendencias { get; set; }
+        public virtual ICollection<OperadorRegistroTurno> OperadorRegistroTurno { get; set; }
         public List<Ocorrencia> OutrasOcorrencias { get; protected set; }
         public bool Bloqueado { get; set; }
         public String OperadorMedicao { get; set; }
