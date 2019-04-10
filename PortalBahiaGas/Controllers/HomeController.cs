@@ -52,13 +52,13 @@ namespace PortalBahiaGas.Controllers
             List<Operador> lOperadores = new List<Operador>();
             DateTime inicioTurno = GetInicioTurno(lRegistroTurno);
 
-            foreach (Operador item in lRegistroTurno.Operadores)
+            foreach (OperadorRegistroTurno item in lRegistroTurno.OperadorRegistroTurno)
             {
-                lOperadores.Add(OperadorRepositorio.ObterOperadoresDoProtheus(item.CodigoProtheus).FirstOrDefault());
+                lOperadores.Add(OperadorRepositorio.ObterOperadoresDoProtheus(item.Operador.CodigoProtheus).FirstOrDefault());
             }
 
-            lRegistroTurno.Operadores.Clear();
-            lOperadores.ForEach(x => lRegistroTurno.Operadores.Add(x));
+            //lRegistroTurno.Operadores.Clear();
+            //lOperadores.ForEach(x => lRegistroTurno.Operadores.Add(x));
             lRegistroTurno.OutrasOcorrencias.AddRange(OcorrenciaRepositorio.Listar(x => x.Status != EStatus.Concluído && x.RegistroTurno.Id != lRegistroTurno.Id && x.Inicio <= inicioTurno));
 
             foreach (Ocorrencia item in lRegistroTurno.Ocorrencias)

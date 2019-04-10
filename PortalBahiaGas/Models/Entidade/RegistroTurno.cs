@@ -20,7 +20,7 @@ namespace PortalBahiaGas.Models.Entidade
         }
 
         public ETurno Turno { get; set; }
-        public ETurma Turma { get; set; }
+        public ETurma? Turma { get; set; }
         public virtual ICollection<Operador> Operadores { get; protected set; }
         public virtual ICollection<RegistroGasoduto> RegistrosGasoduto { get; protected set; }
         public virtual ICollection<RegistroPontoEntrega> RegistrosPontoEntrega { get; protected set; }
@@ -38,5 +38,25 @@ namespace PortalBahiaGas.Models.Entidade
         public DateTime? DataCriacao { get; set; }
         public String UsuarioAlteracao { get; set; }
         public DateTime? DataAlteracao { get; set; }
+
+        public ETurma? ObterTurma(string codigo)
+        {
+            ETurma turma = ETurma.D;
+            switch (codigo)
+            {
+                case "1":
+                    turma = ETurma.A;
+                    break;
+                case "2":
+                    turma = ETurma.B;
+                    break;
+                case "3":
+                    turma = ETurma.C;
+                    break;
+            }
+
+            return turma;
+        }
     }
+
 }

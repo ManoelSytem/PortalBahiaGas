@@ -60,7 +60,9 @@ namespace PortalBahiaGas.Controllers
                     lRegistroTurno = new RegistroTurno()
                     {
                         Data = lData.Value,
-                        Turno = lTurno.Value
+                        Turno = lTurno.Value,
+                        Turma = ETurma.D
+                        
                     };
                 }
                 else
@@ -207,7 +209,6 @@ namespace PortalBahiaGas.Controllers
 
             ValidarTurno(pFormulario);
 
-
             foreach (var item in OperadorRepositorio.ObterOperadoresDoProtheus(pFormulario.GetValue("CodigoProtheus").AttemptedValue.Replace(",false", "").Replace("false,", "")))
             {
                 lOperador = OperadorRepositorio.Listar(x => x.CodigoProtheus == item.CodigoProtheus).FirstOrDefault();
@@ -219,10 +220,15 @@ namespace PortalBahiaGas.Controllers
             {
                 lRegistroTurno.DataCriacao = DateTime.Now;
                 lRegistroTurno.UsuarioCriacao = lUsuario.Login;
-                Operadores.ForEach(x => lRegistroTurno.Operadores.Add(x));
-
-                //Novo código para nova tabela
-                //Operadores.ForEach(x => lRegistroTurno.OperadorRegistroTurno.Add(new OperadorRegistroTurno() { Operador = x }));
+                lRegistroTurno.Turma = lRegistroTurno.ObterTurma(pFormulario.GetValue("Turma").AttemptedValue);
+                Operadores.ForEach(x => lRegistroTurno.OperadorRegistroTurno.Add(new OperadorRegistroTurno() { Operador = x, Local = x.Localidade}));
+                string[] lSalaControl = pFormulario.GetValues("SalaControle");
+                foreach (var opRegTurno in lRegistroTurno.OperadorRegistroTurno)
+                {
+                    foreach(string slControl in lSalaControl)
+                        if (opRegTurno.Operador.CodigoProtheus == slControl)
+                            opRegTurno.SalaControle = true;
+                }
 
                 lRegistroTurno = TurnoRepositorio.Adicionar(lRegistroTurno);
             }
@@ -232,12 +238,25 @@ namespace PortalBahiaGas.Controllers
                 lRegistroTurno.DataAlteracao = DateTime.Now;
                 lRegistroTurno.UsuarioAlteracao = lUsuario.Login;
                 lRegistroTurno.Bloqueado = true;
-                lRegistroTurno.Operadores.Clear();
-                Operadores.ForEach(x => lRegistroTurno.Operadores.Add(x));
+                lRegistroTurno.Turma =  lRegistroTurno.ObterTurma(pFormulario.GetValue("Turma").AttemptedValue);
+                lRegistroTurno.OperadorRegistroTurno.Clear();
+                Operadores.ForEach(x => lRegistroTurno.OperadorRegistroTurno.Add(new OperadorRegistroTurno() { Operador = x, Local = x.Localidade}));
+                string[] lSalaControl = pFormulario.GetValues("SalaControle");
+                foreach (var opRegTurno in lRegistroTurno.OperadorRegistroTurno)
+                {
+                    foreach (string slControl in lSalaControl)
+                        if (opRegTurno.Operador.CodigoProtheus == slControl)
+                            opRegTurno.SalaControle = true;
+                }
                 lRegistroTurno = TurnoRepositorio.Editar(lRegistroTurno);
             }
 
             return lRegistroTurno;
+        }
+
+        private ETurma? ObterTurma(string attemptedValue)
+        {
+            throw new NotImplementedException();
         }
 
         private void ValidarTurno(FormCollection pFormulario)
@@ -250,6 +269,8 @@ namespace PortalBahiaGas.Controllers
             //if (pFormulario.GetValues("item") == null) lMensagem.AppendLine("Informe os operadores do turno.");
             if (!pFormulario.GetValues("CodigoProtheus").Any(x => x != "false")) lMensagem.AppendLine("Informe os operadores do turno.");
             if (pFormulario.GetValue("CodigoProtheus").AttemptedValue.Replace(",false", "").Replace("false,", "").Split(',').Count() != 4) lMensagem.AppendLine("O registro de turno deve possuir 4 operadores.");
+            if (pFormulario.GetValue("SalaControle").AttemptedValue.Replace(",false", "").Replace("false,", "").Split(',').Count() > 3) lMensagem.AppendLine("O registro de turno deve possuir no máximo 3 operadores para sala de controle.");
+            if (lRegistroTurno.ObterTurma(pFormulario.GetValue("Turma").AttemptedValue).Equals(ETurma.D)) lMensagem.AppendLine("Turma não informada no registro de turno.");
             validarPeriodoTurno(lRegistroTurno, lMensagem, null);
             if (!String.IsNullOrEmpty(lMensagem.ToString())) throw new Exception(lMensagem.ToString());
 
@@ -813,11 +834,13 @@ namespace PortalBahiaGas.Controllers
                     fimTurno = fimTurno.AddHours(7);
                 }
 
+                if(mOcorrencia != null) {
                 if (DateTime.Compare(inicioTurno, Convert.ToDateTime(mOcorrencia.Inicio)) == 1 || DateTime.Compare(fimTurno, Convert.ToDateTime(mOcorrencia.Inicio)) == -1)
                 {
                     pMensagem.AppendLine("A data/ocorrência ou hora/ocorrência é inválida!");
                     pMensagem.AppendLine("Turno selecionado: " + inicioTurno + " ás " + fimTurno);
                     pMensagem.AppendLine("Data e hora da ocorrência: " + mOcorrencia.Inicio);
+                }
                 }
             }
 
