@@ -29,19 +29,20 @@
         </h2>
         <div class="container-fluid">
             <div class="row-fluid">
-                <div class="col-xs-1 col-header col-border-top col-border-left text-center">DATA<div class="row-fluid">&nbsp;</div><div class="row-fluid">&nbsp;</div><div class="row-fluid">&nbsp;</div></div>
-                <div class="col-xs-1 col-border-top text-center">@String.Format("{0:dd/MM/yyyy}", Model.Data)<div class="row-fluid">&nbsp;</div><div class="row-fluid">&nbsp;</div><div class="row-fluid">&nbsp;</div></div>
-                <div class="col-xs-2 col-header col-border-top">OPERADORES<div class="row-fluid">&nbsp;</div><div class="row-fluid">&nbsp;</div><div class="row-fluid">&nbsp;</div></div>
-                <div class="col-xs-5 col-border-top">
+                <div style="height:67px" class="col-xs-1 col-header col-border-top col-border-left text-center">DATA<div class="row-fluid">&nbsp;</div><div class="row-fluid">&nbsp;</div><div class="row-fluid">&nbsp;</div></div>
+                <div style="height:67px" class="col-xs-1 col-border-top text-center">@String.Format("{0:dd/MM/yyyy}", Model.Data)<div class="row-fluid">&nbsp;</div><div class="row-fluid">&nbsp;</div><div class="row-fluid">&nbsp;</div></div>
+                <div style="height:67px;width:auto" class="col-xs-2 col-header col-border-top">OPERADORES<div class="row-fluid">&nbsp;</div><div class="row-fluid">&nbsp;</div><div class="row-fluid">&nbsp;</div></div>
+                <div style="height:67px;width:auto" class="col-xs-5 col-border-top">
                     @foreach (PortalBahiaGas.Models.Entidade.Operador lOperador in Model.Operadores.OrderBy(x => x.Localidade).ThenBy(x => x.Nome))
                     {
                         <div class="row-fluid">
-                            <div class="col-xs-12 noborder"><b>@lOperador.Localidade</b> - @lOperador.Nome</div>
+                            <div class="col-xs-12 noborder"><b>@lOperador.Localidade @if (Model.OperadorRegistroTurno.Any(x => x.Operador.CodigoProtheus == lOperador.CodigoProtheus && x.SalaControle == true))
+                            {@Html.Label("Sala de Controle")}</b> - @lOperador.Nome</div>
                         </div>
                     }
                 </div>
-                <div class="col-xs-1 col-header col-border-top text-center">TURNO<div class="row-fluid">&nbsp;</div><div class="row-fluid">&nbsp;</div><div class="row-fluid">&nbsp;</div></div>
-                <div class="col-xs-2 col-border-top text-center">@Model.Turno.ObterDescricao()<div class="row-fluid">&nbsp;</div><div class="row-fluid">&nbsp;</div><div class="row-fluid">&nbsp;</div></div>
+                <div style="height:67px;" class="col-xs-1 col-header col-border-top text-center">TURNO<div class="row-fluid">&nbsp;</div><div class="row-fluid">&nbsp;</div><div class="row-fluid">TURMA</div></div>
+                <div style="height:67px;" class="col-xs-2 col-border-top text-center">@Model.Turno.ObterDescricao()<div class="row-fluid">&nbsp;</div><div class="row-fluid">&nbsp;</div><div class="row-fluid"><b style="font-size:16px;">@Model.Turma</b></div></div>
             </div>
         </div>
         <!-- GASODUTO -->

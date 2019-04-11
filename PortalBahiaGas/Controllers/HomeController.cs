@@ -57,8 +57,8 @@ namespace PortalBahiaGas.Controllers
                 lOperadores.Add(OperadorRepositorio.ObterOperadoresDoProtheus(item.Operador.CodigoProtheus).FirstOrDefault());
             }
 
-            //lRegistroTurno.Operadores.Clear();
-            //lOperadores.ForEach(x => lRegistroTurno.Operadores.Add(x));
+            lRegistroTurno.Operadores.Clear();
+            lOperadores.ForEach(x => lRegistroTurno.Operadores.Add(x));
             lRegistroTurno.OutrasOcorrencias.AddRange(OcorrenciaRepositorio.Listar(x => x.Status != EStatus.Concluído && x.RegistroTurno.Id != lRegistroTurno.Id && x.Inicio <= inicioTurno));
 
             foreach (Ocorrencia item in lRegistroTurno.Ocorrencias)
