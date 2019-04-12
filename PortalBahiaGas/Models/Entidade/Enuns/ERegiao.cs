@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 
 namespace PortalBahiaGas.Models.Entidade.Enuns
@@ -13,6 +14,11 @@ namespace PortalBahiaGas.Models.Entidade.Enuns
         [Description("Região 2")]
         Reg2 = 2,
         [Description("Região 3")]
-        Reg3 = 3
+        Reg3 = 3,
+        [Description("Região não definida")]
+        Reg4 = 4
     }
+
+
+
 }

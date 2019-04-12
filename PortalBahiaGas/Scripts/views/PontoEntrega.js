@@ -81,7 +81,7 @@ function Remover(linha) {
     if (usuario.Id == "0") {
         $(linha).parent().parent().remove();
     } else {
-        if (confirm("Confirma a excluisão do ponto de entrega: " + usuario.Nome + "?")) {
+        if (confirm("Confirma a exclusão do ponto de entrega: " + usuario.Nome + "?")) {
             $.ajax({
                 url: "PontoEntrega/Remover",
                 data: usuario,

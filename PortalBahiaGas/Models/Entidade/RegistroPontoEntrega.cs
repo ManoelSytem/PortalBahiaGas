@@ -1,4 +1,7 @@
-﻿using System;
+﻿using PortalBahiaGas.Models.Entidade.Enuns;
+using System;
+using System.ComponentModel;
+using System.Reflection;
 
 namespace PortalBahiaGas.Models.Entidade
 {
@@ -13,5 +16,32 @@ namespace PortalBahiaGas.Models.Entidade
         public Decimal? VazaoSaida { get; set; }
         public Decimal? Desvio { get; set; }
         public Boolean? Penalidade { get; set; }
+
+        public static Decimal? CalcularDesvioPorRegisao(Decimal? pVazaoProgramada, Decimal? pVazaoRetirada)
+        {
+            Decimal? lDesvio = 0;
+            lDesvio = (Convert.ToInt32(Convert.ToDecimal(pVazaoRetirada / pVazaoProgramada) * 100)) - 100;
+            return lDesvio;
+        }
+
+        public static string ObterRegiao(int codigo)
+        {
+            string regiaodesc ="";
+            switch (codigo)
+            {
+                case 1:
+                    regiaodesc = ERegiao.Reg1.ObterDescricao();
+                    break;
+                case 2:
+                    regiaodesc = ERegiao.Reg2.ObterDescricao();
+                    break;
+                case 3:
+                    regiaodesc = ERegiao.Reg3.ObterDescricao();
+                    break;
+            }
+
+            return regiaodesc;
+        }
+
     }
 }

@@ -117,12 +117,15 @@ namespace PortalBahiaGas.Controllers
                     PontoEntrega = x,
                     VazaoEntrada = (lRegistrosPontosEntrega != null && lRegistrosPontosEntrega.Any(y => y.PontoEntrega.Id == x.Id)) ? lRegistrosPontosEntrega.FirstOrDefault(y => y.PontoEntrega.Id == x.Id).VazaoEntrada : null
                 }));
-            else
+            else { 
                 foreach (var item in lRegistroTurno.RegistrosPontoEntrega)
                 {
-                    if (item.PontoEntrega != null && lRegistrosPontosEntrega.Any(y => y.PontoEntrega.Id == item.PontoEntrega.Id))
+
+                    if (item.PontoEntrega != null && lRegistrosPontosEntrega.Any(y => y.PontoEntrega.Id == item.PontoEntrega.Id)) {
                         item.VazaoEntrada = lRegistrosPontosEntrega.FirstOrDefault(y => y.PontoEntrega.Id == item.PontoEntrega.Id).VazaoEntrada;
+                    }
                 }
+            }
 
             Repositorio<Cliente> ClienteRepositorio = new Repositorio<Cliente>();
             if (lRegistroTurno.RegistrosCliente.Count() == 0)

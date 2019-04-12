@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 
+
 namespace PortalBahiaGas.Models.Entidade
 {
     public class RegistroTurno : AEntidade
@@ -57,6 +58,10 @@ namespace PortalBahiaGas.Models.Entidade
 
             return turma;
         }
+
+
+
+
     }
 
 }
