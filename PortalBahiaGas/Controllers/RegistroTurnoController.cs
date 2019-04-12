@@ -840,7 +840,8 @@ namespace PortalBahiaGas.Controllers
                     pMensagem.AppendLine("A data/ocorrência ou hora/ocorrência é inválida!");
                     pMensagem.AppendLine("Turno selecionado: " + inicioTurno + " ás " + fimTurno);
                     pMensagem.AppendLine("Data e hora da ocorrência: " + mOcorrencia.Inicio);
-                }
+                        throw new Exception(pMensagem.ToString());
+                    }
                 }
             }
 

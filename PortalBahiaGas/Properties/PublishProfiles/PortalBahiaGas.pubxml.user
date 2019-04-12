@@ -6,29 +6,29 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Users\manoelneto\Desktop\PortalBahiaGas</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\manoelneto\Desktop\Publish PortalBahiaGas</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Antlr3.Runtime.dll">
-      <publishTime>03/27/2019 11:05:45</publishTime>
+      <publishTime>04/08/2019 16:20:12</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.pdb">
-      <publishTime>03/27/2019 11:05:45</publishTime>
+      <publishTime>04/08/2019 16:20:12</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>04/01/2019 09:37:12</publishTime>
+      <publishTime>04/12/2019 16:19:46</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>04/01/2019 09:37:11</publishTime>
+      <publishTime>04/12/2019 16:19:45</publishTime>
     </File>
     <File Include="bin/de/Microsoft.ReportViewer.WebForms.resources.dll">
       <publishTime>06/13/2016 18:24:48</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
-      <publishTime>03/27/2019 11:05:40</publishTime>
+      <publishTime>04/08/2019 16:20:13</publishTime>
     </File>
     <File Include="bin/EntityFramework.SqlServer.dll">
-      <publishTime>03/27/2019 11:05:40</publishTime>
+      <publishTime>04/08/2019 16:20:12</publishTime>
     </File>
     <File Include="bin/es/Microsoft.ReportViewer.WebForms.resources.dll">
       <publishTime>06/13/2016 18:24:47</publishTime>
@@ -46,67 +46,67 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/13/2016 18:24:48</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
-      <publishTime>03/27/2019 11:05:45</publishTime>
+      <publishTime>04/08/2019 16:20:13</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
-      <publishTime>03/27/2019 11:05:56</publishTime>
+      <publishTime>04/08/2019 16:20:14</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
-      <publishTime>03/27/2019 11:05:41</publishTime>
+      <publishTime>04/08/2019 16:20:14</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.dll">
-      <publishTime>03/27/2019 11:05:45</publishTime>
+      <publishTime>04/08/2019 16:20:15</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
-      <publishTime>03/27/2019 11:05:45</publishTime>
+      <publishTime>04/08/2019 16:20:16</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.Cookies.dll">
-      <publishTime>03/27/2019 11:05:45</publishTime>
+      <publishTime>04/08/2019 16:20:16</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.dll">
-      <publishTime>03/27/2019 11:05:36</publishTime>
+      <publishTime>04/08/2019 16:20:16</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.Facebook.dll">
-      <publishTime>03/27/2019 11:05:52</publishTime>
+      <publishTime>04/08/2019 16:20:16</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.Google.dll">
-      <publishTime>03/27/2019 11:05:55</publishTime>
+      <publishTime>04/08/2019 16:20:16</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.MicrosoftAccount.dll">
-      <publishTime>03/27/2019 11:05:41</publishTime>
+      <publishTime>04/08/2019 16:20:17</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.OAuth.dll">
-      <publishTime>03/27/2019 11:05:55</publishTime>
+      <publishTime>04/08/2019 16:20:17</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.Twitter.dll">
-      <publishTime>03/27/2019 11:05:45</publishTime>
+      <publishTime>04/08/2019 16:20:17</publishTime>
     </File>
     <File Include="bin/Microsoft.ReportViewer.WebForms.dll">
       <publishTime>06/13/2016 18:24:49</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
-      <publishTime>03/27/2019 11:05:37</publishTime>
+      <publishTime>04/08/2019 16:20:17</publishTime>
     </File>
     <File Include="bin/MvcReportViewer.dll">
-      <publishTime>03/27/2019 11:05:06</publishTime>
+      <publishTime>04/08/2019 16:19:58</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>03/27/2019 11:05:36</publishTime>
+      <publishTime>04/08/2019 16:20:19</publishTime>
     </File>
     <File Include="bin/Oracle.ManagedDataAccess.dll">
-      <publishTime>03/27/2019 11:05:53</publishTime>
+      <publishTime>04/08/2019 16:20:20</publishTime>
     </File>
     <File Include="bin/Oracle.ManagedDataAccess.EntityFramework.dll">
-      <publishTime>03/27/2019 11:05:51</publishTime>
+      <publishTime>04/08/2019 16:20:21</publishTime>
     </File>
     <File Include="bin/Owin.dll">
-      <publishTime>03/27/2019 11:05:41</publishTime>
+      <publishTime>04/08/2019 16:20:22</publishTime>
     </File>
     <File Include="bin/PortalBahiaGas.dll">
-      <publishTime>04/01/2019 09:36:41</publishTime>
+      <publishTime>04/12/2019 16:19:27</publishTime>
     </File>
     <File Include="bin/PortalBahiaGas.pdb">
-      <publishTime>04/01/2019 09:36:41</publishTime>
+      <publishTime>04/12/2019 16:19:27</publishTime>
     </File>
     <File Include="bin/pt/Microsoft.ReportViewer.WebForms.resources.dll">
       <publishTime>06/13/2016 18:24:49</publishTime>
@@ -115,28 +115,28 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/13/2016 18:24:48</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
-      <publishTime>03/27/2019 11:05:38</publishTime>
+      <publishTime>04/08/2019 16:20:15</publishTime>
     </File>
     <File Include="bin/System.Web.Mvc.dll">
-      <publishTime>03/27/2019 11:05:52</publishTime>
+      <publishTime>04/08/2019 16:20:14</publishTime>
     </File>
     <File Include="bin/System.Web.Optimization.dll">
-      <publishTime>03/27/2019 11:05:53</publishTime>
+      <publishTime>04/08/2019 16:20:15</publishTime>
     </File>
     <File Include="bin/System.Web.Razor.dll">
-      <publishTime>03/27/2019 11:05:38</publishTime>
+      <publishTime>04/08/2019 16:20:15</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.Deployment.dll">
-      <publishTime>03/27/2019 11:05:38</publishTime>
+      <publishTime>04/08/2019 16:20:15</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.dll">
-      <publishTime>03/27/2019 11:05:38</publishTime>
+      <publishTime>04/08/2019 16:20:15</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.Razor.dll">
-      <publishTime>03/27/2019 11:05:38</publishTime>
+      <publishTime>04/08/2019 16:20:15</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
-      <publishTime>03/27/2019 11:05:41</publishTime>
+      <publishTime>04/08/2019 16:20:22</publishTime>
     </File>
     <File Include="bin/zh-CHS/Microsoft.ReportViewer.WebForms.resources.dll">
       <publishTime>06/13/2016 18:24:48</publishTime>
@@ -145,136 +145,136 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/13/2016 18:24:48</publishTime>
     </File>
     <File Include="Content/bootstrap-datetimepicker.css">
-      <publishTime>03/27/2019 11:05:06</publishTime>
+      <publishTime>04/08/2019 16:19:52</publishTime>
     </File>
     <File Include="Content/bootstrap-datetimepicker.min.css">
-      <publishTime>03/27/2019 11:05:07</publishTime>
+      <publishTime>04/08/2019 16:19:52</publishTime>
     </File>
     <File Include="Content/bootstrap-select.css">
-      <publishTime>03/27/2019 11:05:06</publishTime>
+      <publishTime>04/08/2019 16:19:52</publishTime>
     </File>
     <File Include="Content/bootstrap-select.css.map">
-      <publishTime>03/27/2019 11:05:06</publishTime>
+      <publishTime>04/08/2019 16:19:52</publishTime>
     </File>
     <File Include="Content/bootstrap-select.min.css">
-      <publishTime>03/27/2019 11:05:06</publishTime>
+      <publishTime>04/08/2019 16:19:52</publishTime>
     </File>
     <File Include="Content/bootstrap-theme.css">
-      <publishTime>03/27/2019 11:05:07</publishTime>
+      <publishTime>04/08/2019 16:19:52</publishTime>
     </File>
     <File Include="Content/bootstrap-theme.css.map">
-      <publishTime>03/27/2019 11:05:06</publishTime>
+      <publishTime>04/08/2019 16:19:52</publishTime>
     </File>
     <File Include="Content/bootstrap-theme.min.css">
-      <publishTime>03/27/2019 11:05:06</publishTime>
+      <publishTime>04/08/2019 16:19:52</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
-      <publishTime>03/27/2019 11:05:06</publishTime>
+      <publishTime>04/08/2019 16:19:52</publishTime>
     </File>
     <File Include="Content/bootstrap.css.map">
-      <publishTime>03/27/2019 11:05:07</publishTime>
+      <publishTime>04/08/2019 16:19:52</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css">
-      <publishTime>03/27/2019 11:05:06</publishTime>
+      <publishTime>04/08/2019 16:19:52</publishTime>
     </File>
     <File Include="Content/datepicker.css">
-      <publishTime>03/27/2019 11:05:06</publishTime>
+      <publishTime>04/08/2019 16:19:52</publishTime>
     </File>
     <File Include="Content/Relatorio.css">
-      <publishTime>03/27/2019 11:05:07</publishTime>
+      <publishTime>04/08/2019 16:19:52</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>03/27/2019 11:05:06</publishTime>
+      <publishTime>04/08/2019 16:19:52</publishTime>
     </File>
     <File Include="favicon.ico">
-      <publishTime>03/27/2019 11:04:59</publishTime>
+      <publishTime>04/08/2019 16:19:59</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.eot">
-      <publishTime>03/27/2019 11:04:54</publishTime>
+      <publishTime>04/08/2019 16:19:59</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.svg">
-      <publishTime>03/27/2019 11:04:54</publishTime>
+      <publishTime>04/08/2019 16:19:59</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.ttf">
-      <publishTime>03/27/2019 11:04:55</publishTime>
+      <publishTime>04/08/2019 16:19:59</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.woff">
-      <publishTime>03/27/2019 11:04:54</publishTime>
+      <publishTime>04/08/2019 16:19:59</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.woff2">
-      <publishTime>03/27/2019 11:04:55</publishTime>
+      <publishTime>04/08/2019 16:19:59</publishTime>
     </File>
     <File Include="Global.asax">
       <publishTime>05/20/2016 09:25:24</publishTime>
     </File>
     <File Include="imagens/bahiagas-cinza.png">
-      <publishTime>03/27/2019 11:04:49</publishTime>
+      <publishTime>04/08/2019 16:19:59</publishTime>
     </File>
     <File Include="imagens/logo-relat.jpg">
-      <publishTime>03/27/2019 11:04:49</publishTime>
+      <publishTime>04/08/2019 16:19:59</publishTime>
     </File>
     <File Include="imagens/preload.gif">
-      <publishTime>03/27/2019 11:04:49</publishTime>
+      <publishTime>04/08/2019 16:19:59</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>03/27/2019 11:04:48</publishTime>
+      <publishTime>04/08/2019 16:20:12</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>04/01/2019 09:36:45</publishTime>
+      <publishTime>04/12/2019 16:19:30</publishTime>
     </File>
     <File Include="Scripts/bootstrap-datepicker.js">
-      <publishTime>03/27/2019 11:04:54</publishTime>
+      <publishTime>04/08/2019 16:19:53</publishTime>
     </File>
     <File Include="Scripts/bootstrap-datetimepicker.js">
-      <publishTime>03/27/2019 11:04:52</publishTime>
+      <publishTime>04/08/2019 16:19:53</publishTime>
     </File>
     <File Include="Scripts/bootstrap-datetimepicker.min.js">
-      <publishTime>03/27/2019 11:04:54</publishTime>
+      <publishTime>04/08/2019 16:19:53</publishTime>
     </File>
     <File Include="Scripts/bootstrap-select.js">
-      <publishTime>03/27/2019 11:04:55</publishTime>
+      <publishTime>04/08/2019 16:19:53</publishTime>
     </File>
     <File Include="Scripts/bootstrap-select.min.js">
-      <publishTime>03/27/2019 11:04:52</publishTime>
+      <publishTime>04/08/2019 16:19:53</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
-      <publishTime>03/27/2019 11:04:53</publishTime>
+      <publishTime>04/08/2019 16:19:53</publishTime>
     </File>
     <File Include="Scripts/bootstrap.min.js">
-      <publishTime>03/27/2019 11:04:55</publishTime>
+      <publishTime>04/08/2019 16:19:54</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.js">
-      <publishTime>03/27/2019 11:04:54</publishTime>
+      <publishTime>04/08/2019 16:19:54</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.min.js">
-      <publishTime>03/27/2019 11:04:53</publishTime>
+      <publishTime>04/08/2019 16:19:54</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.min.map">
-      <publishTime>03/27/2019 11:04:53</publishTime>
+      <publishTime>04/08/2019 16:19:54</publishTime>
     </File>
     <File Include="Scripts/jquery-2.1.4.min.js">
-      <publishTime>03/27/2019 11:04:54</publishTime>
+      <publishTime>04/08/2019 16:19:54</publishTime>
     </File>
     <File Include="Scripts/jquery.maskedinput.js">
-      <publishTime>03/27/2019 11:04:54</publishTime>
+      <publishTime>04/08/2019 16:19:54</publishTime>
     </File>
     <File Include="Scripts/jquery.maskMoney.js">
-      <publishTime>03/27/2019 11:04:53</publishTime>
+      <publishTime>04/08/2019 16:19:54</publishTime>
     </File>
     <File Include="Scripts/jquery.masknumber.js">
-      <publishTime>03/27/2019 11:04:53</publishTime>
+      <publishTime>04/08/2019 16:19:54</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.js">
-      <publishTime>03/27/2019 11:04:52</publishTime>
+      <publishTime>04/08/2019 16:19:54</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.min.js">
-      <publishTime>03/27/2019 11:04:54</publishTime>
+      <publishTime>04/08/2019 16:19:54</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.unobtrusive.js">
-      <publishTime>03/27/2019 11:04:55</publishTime>
+      <publishTime>04/08/2019 16:19:54</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.unobtrusive.min.js">
-      <publishTime>03/27/2019 11:04:53</publishTime>
+      <publishTime>04/08/2019 16:19:54</publishTime>
     </File>
     <File Include="Scripts/locales/bootstrap-datepicker.bg.js">
       <publishTime>03/11/2015 10:19:31</publishTime>
@@ -343,7 +343,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/11/2015 10:19:32</publishTime>
     </File>
     <File Include="Scripts/locales/bootstrap-datepicker.pt-BR.js">
-      <publishTime>03/27/2019 11:04:53</publishTime>
+      <publishTime>04/08/2019 16:19:54</publishTime>
     </File>
     <File Include="Scripts/locales/bootstrap-datepicker.pt.js">
       <publishTime>03/11/2015 10:19:32</publishTime>
@@ -388,55 +388,55 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/11/2015 10:19:32</publishTime>
     </File>
     <File Include="Scripts/locales/bootstrap-datetimepicker.pt-BR.js">
-      <publishTime>03/27/2019 11:04:53</publishTime>
+      <publishTime>04/08/2019 16:19:54</publishTime>
     </File>
     <File Include="Scripts/mascaras.js">
-      <publishTime>03/27/2019 11:04:54</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Scripts/modernizr-2.6.2.js">
-      <publishTime>03/27/2019 11:04:53</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Scripts/npm.js">
-      <publishTime>03/27/2019 11:04:54</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Scripts/respond.js">
-      <publishTime>03/27/2019 11:04:53</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Scripts/respond.min.js">
-      <publishTime>03/27/2019 11:04:54</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Scripts/views/Cliente.js">
-      <publishTime>03/27/2019 11:04:53</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Scripts/views/Gasoduto.js">
-      <publishTime>03/27/2019 11:04:53</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Scripts/views/Home.js">
-      <publishTime>03/27/2019 11:04:53</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Scripts/views/Odorizador.js">
-      <publishTime>03/27/2019 11:04:53</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Scripts/views/Operador.js">
-      <publishTime>03/27/2019 11:04:53</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Scripts/views/PontoEntrega.js">
-      <publishTime>03/27/2019 11:04:53</publishTime>
+      <publishTime>04/11/2019 13:00:39</publishTime>
     </File>
     <File Include="Scripts/views/Regiao.js">
-      <publishTime>03/27/2019 11:04:53</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Scripts/views/RegistroTurno.js">
-      <publishTime>03/27/2019 11:04:53</publishTime>
+      <publishTime>04/10/2019 14:55:27</publishTime>
     </File>
     <File Include="Scripts/views/Turno.js">
-      <publishTime>03/27/2019 11:04:53</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Scripts/views/Usuario.js">
-      <publishTime>03/27/2019 11:04:53</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>03/27/2019 11:04:53</publishTime>
+      <publishTime>04/08/2019 16:19:53</publishTime>
     </File>
     <File Include="Views/Account/ConfirmEmail.cshtml">
       <publishTime>03/11/2015 09:34:01</publishTime>
@@ -475,13 +475,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/11/2015 09:34:01</publishTime>
     </File>
     <File Include="Views/BemVindo/Index.cshtml">
-      <publishTime>03/27/2019 11:04:59</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Views/Cliente/Index.cshtml">
-      <publishTime>03/27/2019 11:04:56</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Views/Gasoduto/Index.cshtml">
-      <publishTime>03/27/2019 11:04:57</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>03/11/2015 09:33:51</publishTime>
@@ -490,13 +490,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/11/2015 09:33:51</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>03/27/2019 11:04:59</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Views/Home/Relatorio.cshtml">
-      <publishTime>03/27/2019 11:04:57</publishTime>
+      <publishTime>04/12/2019 14:51:13</publishTime>
     </File>
     <File Include="Views/Login/Index.cshtml">
-      <publishTime>03/27/2019 11:04:58</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>03/11/2015 09:34:01</publishTime>
@@ -517,85 +517,85 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/11/2015 09:34:01</publishTime>
     </File>
     <File Include="Views/Ocorrencia/Index.cshtml">
-      <publishTime>03/27/2019 11:04:55</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Views/Ocorrencia/PopUpOcorrencia.cshtml">
-      <publishTime>03/27/2019 11:04:55</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Views/Odorizador/Index.cshtml">
-      <publishTime>03/27/2019 11:04:57</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Views/Operador/Index.cshtml">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Pendencia/Index.cshtml">
-      <publishTime>03/27/2019 11:04:57</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Views/Pendencia/PopUpPendencia.cshtml">
-      <publishTime>03/27/2019 11:04:56</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Views/PontoEntrega/Index.cshtml">
-      <publishTime>03/27/2019 11:04:58</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Views/Regiao/Index.cshtml">
-      <publishTime>03/27/2019 11:04:57</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Views/RegistroTurno/Cliente.cshtml">
-      <publishTime>03/27/2019 11:04:56</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Views/RegistroTurno/Gasoduto.cshtml">
-      <publishTime>03/27/2019 11:04:56</publishTime>
+      <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Views/RegistroTurno/Index.cshtml">
-      <publishTime>03/27/2019 11:04:57</publishTime>
+      <publishTime>04/08/2019 16:19:56</publishTime>
     </File>
     <File Include="Views/RegistroTurno/Ocorrencia.cshtml">
-      <publishTime>03/27/2019 11:04:59</publishTime>
+      <publishTime>04/08/2019 16:19:56</publishTime>
     </File>
     <File Include="Views/RegistroTurno/Odorizador.cshtml">
-      <publishTime>03/27/2019 11:04:56</publishTime>
+      <publishTime>04/08/2019 16:19:56</publishTime>
     </File>
     <File Include="Views/RegistroTurno/Pendencia.cshtml">
-      <publishTime>03/27/2019 11:04:56</publishTime>
+      <publishTime>04/08/2019 16:19:56</publishTime>
     </File>
     <File Include="Views/RegistroTurno/PontoEntrega.cshtml">
-      <publishTime>03/27/2019 11:04:59</publishTime>
+      <publishTime>04/09/2019 14:42:11</publishTime>
     </File>
     <File Include="Views/RegistroTurno/PopUpOcorrencia.cshtml">
-      <publishTime>03/27/2019 11:04:56</publishTime>
+      <publishTime>04/08/2019 16:19:56</publishTime>
     </File>
     <File Include="Views/RegistroTurno/PopUpPendencia.cshtml">
-      <publishTime>03/27/2019 11:04:59</publishTime>
+      <publishTime>04/08/2019 16:19:56</publishTime>
     </File>
     <File Include="Views/RegistroTurno/Turno.cshtml">
-      <publishTime>03/27/2019 11:04:56</publishTime>
+      <publishTime>04/10/2019 13:41:03</publishTime>
     </File>
     <File Include="Views/RegistroTurno/_Abas.cshtml">
-      <publishTime>03/27/2019 11:04:55</publishTime>
+      <publishTime>04/08/2019 16:19:56</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
-      <publishTime>03/27/2019 11:04:57</publishTime>
+      <publishTime>04/08/2019 16:19:56</publishTime>
     </File>
     <File Include="Views/Shared/Lockout.cshtml">
       <publishTime>03/11/2015 09:34:01</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>03/28/2019 14:12:12</publishTime>
+      <publishTime>04/08/2019 16:19:56</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>03/11/2015 09:34:02</publishTime>
     </File>
     <File Include="Views/Usuario/Index.cshtml">
-      <publishTime>03/27/2019 11:04:56</publishTime>
+      <publishTime>04/08/2019 16:19:56</publishTime>
     </File>
     <File Include="Views/Web.config">
-      <publishTime>03/27/2019 11:04:57</publishTime>
+      <publishTime>04/08/2019 16:19:56</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
-      <publishTime>03/27/2019 11:04:55</publishTime>
+      <publishTime>04/08/2019 16:19:56</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/29/2019 16:14:05</publishTime>
+      <publishTime>04/12/2019 14:56:54</publishTime>
     </File>
   </ItemGroup>
 </Project>

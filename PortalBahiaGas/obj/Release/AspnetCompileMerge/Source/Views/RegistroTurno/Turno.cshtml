@@ -20,6 +20,10 @@
             @Html.Label("Turno:")
             @Html.DropDownListFor(x => x.Turno, PortalBahiaGas.Models.Entidade.Enuns.ETurno.De7as15.ToSelectList(), new { @class = "form-control" })
         </div>
+        <div class="form-group">
+            @Html.Label("Turma:")
+            @Html.DropDownListFor(x => x.Turma, PortalBahiaGas.Models.Entidade.Enuns.ETurma.D.ToSelectList(), new { @class = "form-control" })
+        </div>.
     </div>
     <div class="panel panel-default ">
         <div class="panel-heading">Operadores</div>
@@ -29,18 +33,24 @@
                     <div class="col-sm-1 col-header">
                         &nbsp;
                     </div>
-                    <div class="col-sm-11 col-header">Operadores</div>
+                    <div class="col-sm-6 col-header">Operadores</div>
+                    <div class="col-sm-2 col-header">
+                       Sala de Controle
+                    </div>
                 </div>
                 @foreach (PortalBahiaGas.Models.Entidade.Operador item in ((List<PortalBahiaGas.Models.Entidade.Operador>)ViewData["Operadores"]).OrderBy(x => x.Localidade).ThenBy(x => x.Nome))
                 {
-                    <div class="row">
-                        <div class="col-sm-1 col-header" style="height:23px;">
-                            @Html.CheckBox("CodigoProtheus", Model.Operadores.Any(x => x.CodigoProtheus == item.CodigoProtheus), new { @value = item.CodigoProtheus })
-                        </div>
-                        <div class="col-sm-11 col-detail">
-                            <b>[@item.Localidade]</b> @item.Nome
-                        </div>
+                <div class="row">
+                    <div class="col-sm-1 col-header" style="height:23px;">
+                        @Html.CheckBox("CodigoProtheus", Model.OperadorRegistroTurno.Any(x => x.Operador.CodigoProtheus == item.CodigoProtheus), new { @value = item.CodigoProtheus })
                     </div>
+                    <div class="col-sm-6 col-detail">
+                        <b>[@item.Localidade]</b> @item.Nome
+                    </div>
+                    <div class="col-sm-2 col-header" style="height:23px;align-content:center">
+                        @Html.CheckBox("SalaControle", Model.OperadorRegistroTurno.Any(x => x.Operador.CodigoProtheus == item.CodigoProtheus && x.SalaControle == true), new { @onclick = "ValidaSelectSalaControle()", @value = item.CodigoProtheus })
+                    </div>
+                </div>
                 }
             </div>
         </div>
