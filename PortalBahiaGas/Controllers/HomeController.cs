@@ -148,7 +148,6 @@ namespace PortalBahiaGas.Controllers
                     Odorizador = x
                 }));
 
-            ViewData["PenalidadePorGeiao"] = RegistroPontoEntrega.CalcularDesvioEPenalidadePorRegiao(lRegistroTurno.RegistrosPontoEntrega.OrderBy(x => x.PontoEntrega.Regiao));
             return View("Relatorio", lRegistroTurno);
         }
 

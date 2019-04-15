@@ -75,7 +75,12 @@ namespace PortalBahiaGas.Models.Entidade
             return registroPontoEntrega.ToList();
         }
 
-
+        public static decimal CalcularDesvioPorRegiao(decimal pVazaoProgramada, decimal pVazaoRetirada)
+        {
+            decimal lDesvio = 0;
+            lDesvio = (Convert.ToInt32(Convert.ToDecimal(pVazaoRetirada / pVazaoProgramada) * 100)) - 100;
+            return lDesvio;
+        }
         public static bool CalcularPenalidade(decimal? pDesvio)
         {
             bool lPenalidade = false;
