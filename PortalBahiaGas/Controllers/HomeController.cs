@@ -27,7 +27,7 @@ namespace PortalBahiaGas.Controllers
             }
             ViewData.Add("perfil", lUsuario.Perfil);
 
-            return View(RegistroTurno.Listar(x => x.Data >= DateTime.Today.AddDays(-7)));
+            return View(RegistroTurno.Listar(x => x.Data >= DateTime.Today.AddDays(-15)));
         }
 
         public ActionResult Liberar(Int32 Id)
@@ -125,10 +125,11 @@ namespace PortalBahiaGas.Controllers
                     {
                         item.VazaoEntrada = lRegistrosPontosEntrega.FirstOrDefault(y => y.PontoEntrega.Id == item.PontoEntrega.Id).VazaoEntrada;
                     }
+       
                 }
+
                
-                 RegistroPontoEntrega.CalcularDesvioPorRegisao(lRegistroTurno.RegistrosPontoEntrega);
-               
+
             }
 
             Repositorio<Cliente> ClienteRepositorio = new Repositorio<Cliente>();
@@ -147,6 +148,7 @@ namespace PortalBahiaGas.Controllers
                     Odorizador = x
                 }));
 
+            ViewData["PenalidadePorGeiao"] = RegistroPontoEntrega.CalcularDesvioEPenalidadePorRegiao(lRegistroTurno.RegistrosPontoEntrega.OrderBy(x => x.PontoEntrega.Regiao));
             return View("Relatorio", lRegistroTurno);
         }
 

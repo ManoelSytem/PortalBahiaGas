@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Reflection;
 
 namespace PortalBahiaGas.Models.Entidade
@@ -16,51 +17,75 @@ namespace PortalBahiaGas.Models.Entidade
         public Decimal? VazaoEntrada { get; set; }
         public Decimal? VazaoSaida { get; set; }
         public Decimal? Desvio { get; set; }
-        public Decimal? PorRegiao { get; set; }
         public Boolean? Penalidade { get; set; }
-        public Boolean? PenalidadePorRegiao { get; set; }
-     
-        public static RegistroTurno CalcularDesvioEPenalidadePorRegiao(RegistroTurno registroTurno)
+
+
+        public static List<RegistroPontoEntrega> CalcularDesvioEPenalidadePorRegiao(IOrderedEnumerable<RegistroPontoEntrega> registroPontoEntrega)
         {
             int regiao = 0;
             decimal? lDesvio = 0;
             decimal? totalVazaoSaida = 0;
             decimal? totalVazaoEntrada = 0;
-            foreach (RegistroPontoEntrega item in registroTurno.RegistrosPontoEntrega)
+
+            foreach (RegistroPontoEntrega regPontoEntrega in registroPontoEntrega)
             {
-                if (regiao == item.PontoEntrega.Id || regiao == 0)
+                if (regiao == regPontoEntrega.PontoEntrega.Regiao || regiao == 0)
                 {
-                    regiao = item.PontoEntrega.Id;
-                    totalVazaoSaida += item.VazaoSaida;
-                    totalVazaoEntrada += item.VazaoEntrada;
+                    regiao = regPontoEntrega.PontoEntrega.Regiao;
+                    if (regPontoEntrega.VazaoSaida != null && regPontoEntrega.VazaoEntrada != null)
+                    {
+                        totalVazaoSaida += regPontoEntrega.VazaoSaida;
+                        totalVazaoEntrada += regPontoEntrega.VazaoEntrada;
+                    }
                 }
                 else
                 {
                     lDesvio = (Convert.ToInt32(Convert.ToDecimal(totalVazaoSaida / totalVazaoEntrada) * 100)) - 100;
-                    if (CalcularPenalidade(item.RegistroTurno.Turno, lDesvio))
+                    if (CalcularPenalidade(lDesvio))
                     {
-                        foreach (RegistroPontoEntrega itemEntrega in registroTurno.RegistrosPontoEntrega)
+                        var regPtEntrega = registroPontoEntrega.ToList().FindAll(x => x.PontoEntrega.Regiao == regiao);
+                        foreach(RegistroPontoEntrega item in regPtEntrega)
                         {
+                              item.Penalidade = true;
                         }
                     }
-                    break;
-                    
+                    regiao = 0;
+                    totalVazaoSaida = 0;
+                    totalVazaoEntrada = 0;
+                    if (regPontoEntrega.VazaoSaida != null && regPontoEntrega.VazaoEntrada != null)
+                    {
+                        totalVazaoSaida += regPontoEntrega.VazaoSaida;
+                        totalVazaoEntrada += regPontoEntrega.VazaoEntrada;
+                    }
+
+                }
+
+            }
+
+            lDesvio = (Convert.ToInt32(Convert.ToDecimal(totalVazaoSaida / totalVazaoEntrada) * 100)) - 100;
+            if (CalcularPenalidade(lDesvio))
+            {
+                var regPtEntrega = registroPontoEntrega.ToList().FindAll(x => x.PontoEntrega.Regiao == regiao);
+                foreach (RegistroPontoEntrega item in regPtEntrega)
+                {
+                    item.Penalidade = true;
                 }
             }
-            return registroTurno;
+
+            return registroPontoEntrega.ToList();
         }
 
-        public static bool CalcularPenalidade(ETurno pTurno, decimal? pDesvio)
+
+        public static bool CalcularPenalidade(decimal? pDesvio)
         {
             bool lPenalidade = false;
-            if (pTurno == ETurno.De23as7)
-                if (pDesvio < -10 || pDesvio > 5) lPenalidade = true;
-                else lPenalidade = false;
+            if (pDesvio < -10 || pDesvio > 5) lPenalidade = true;
+            else lPenalidade = false;
             return lPenalidade;
         }
         public static string ObterRegiao(int codigo)
         {
-            string regiaodesc ="";
+            string regiaodesc = "";
             switch (codigo)
             {
                 case 1:
