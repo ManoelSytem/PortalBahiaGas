@@ -12,6 +12,8 @@ namespace PortalBahiaGas.Models.Mapping
             Property(x => x.Id).HasColumnName("pte_int_id");
             Property(x => x.Nome).HasColumnName("pte_str_nome").HasColumnType("VARCHAR2").IsRequired();
             Property(x => x.Regiao).HasColumnName("pte_int_regiao");
+           
+          
         }
     }
 

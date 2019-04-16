@@ -1,6 +1,6 @@
 ﻿namespace PortalBahiaGas.Models.Entidade
 {
-    public class OperadorRegistroTurno
+    public class OperadorRegistroTurno 
     {
         public string Local { get; set; }
         public bool SalaControle { get; set; }

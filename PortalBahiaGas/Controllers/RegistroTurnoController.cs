@@ -22,7 +22,8 @@ namespace PortalBahiaGas.Controllers
         private Repositorio<Ocorrencia> OcorrenciaRepositorio;
         private Repositorio<Pendencia> PendenciaRepositorio;
         private Repositorio<Odorizador> OdorizadorRepositorio;
-
+      
+ 
         public ActionResult Index(Int32 Id = 0)
         {
             if (Session["UsuarioLogado"] == null)
@@ -325,13 +326,16 @@ namespace PortalBahiaGas.Controllers
         #region[Ponto de entrega]
         private RegistroTurno CadastrarPontoEntrega(FormCollection pFormulario)
         {
+            
             PontoEntregaRepositorio = new Repositorio<PontoEntrega>(TurnoRepositorio.Contexto);
             RegistroTurno lRegistroTurno = TurnoRepositorio.ObterPorId(Convert.ToInt32(pFormulario["IdRegistroTurno"]));
+           
             for (int i = 0; i < pFormulario.GetValues("PontoEntrega").Length; i++)
             {
                 if (lRegistroTurno.RegistrosPontoEntrega.Any(x => x.Id == Convert.ToInt32(pFormulario.GetValues("IdPontoEntrega")[i])) && !pFormulario.GetValues("IdPontoEntrega")[i].Equals("0"))
                     foreach (RegistroPontoEntrega item in lRegistroTurno.RegistrosPontoEntrega.Where(x => x.Id == Convert.ToInt32(pFormulario.GetValues("IdPontoEntrega")[i])))
                     {
+                       
                         item.Id = Convert.ToInt32(pFormulario.GetValues("IdPontoEntrega")[i]);
                         item.RegistroTurno = lRegistroTurno;
                         item.PontoEntrega = PontoEntregaRepositorio.ObterPorId(Convert.ToInt32(pFormulario.GetValues("PontoEntrega")[i]));
@@ -364,10 +368,10 @@ namespace PortalBahiaGas.Controllers
                             (String.IsNullOrEmpty(pFormulario.GetValues("VazaoEntrada")[i])) ? null : (Decimal?)Convert.ToDecimal(pFormulario.GetValues("VazaoEntrada")[i]),
                             (String.IsNullOrEmpty(pFormulario.GetValues("VazaoSaida")[i])) ? null : (Decimal?)Convert.ToDecimal(pFormulario.GetValues("VazaoSaida")[i]),
                             (String.IsNullOrEmpty(pFormulario.GetValues("Hora")[i])) ? null : (DateTime?)Convert.ToDateTime(lRegistroTurno.Data.ToShortDateString() + " " + pFormulario.GetValues("Hora")[i])))
+                    }
 
-                    });
+                    );
             }
-
             return TurnoRepositorio.Editar(lRegistroTurno);
         }
 

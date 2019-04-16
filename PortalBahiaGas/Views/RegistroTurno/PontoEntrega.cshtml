@@ -165,16 +165,18 @@
                         </div>
                     </div>
                 }
-                <div class="row">
-                    <div class="col-sm-7 col-header"><span style="float:right;">TOTAL</span></div>
-                    <div class="col-sm-2 col-header">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoEntrada))</div>
-                    <div class="col-sm-3 col-header">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoSaida))</div>
-                </div>
+                    <div class="row">
+                        <div class="col-sm-7 col-header"><span style="float:right;">TOTAL</span></div>
+                        <div class="col-sm-2 col-header">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoEntrada))</div>
+                        <div class="col-sm-3 col-header">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoSaida))</div>
+                        <div class="col-sm-7 col-header"><span style="float:right;">Fator de correção</span></div>
+                        @*<div class="col-sm-2 col-header">@Html.TextBox(item.PressaoEntrada, "{0:n2}", new { @class = "input-grid decimal text-right" })</div>*@
+                    </div>
             </div>
         </div>
     </div>
     <div class="btn-group pull-right">
-        <button type="button" class="btn btn-success" onclick="this.disabled = 'true';SalvarPontoEntrega('formPontoEntrega');">Salvar</button>
+        <button type="button" class="btn btn-success" onclick="SalvarPontoEntrega('formPontoEntrega');">Salvar</button>
         <button type="button" class="btn btn-danger" onclick="window.location = '@Url.Action("Index","Home")';">Voltar</button>
     </div>
 </form>

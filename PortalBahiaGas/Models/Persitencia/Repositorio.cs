@@ -50,6 +50,7 @@ namespace PortalBahiaGas.Models.Persistencia
 
         public void Remover(T pObjeto)
         {
+            
             Contexto.Set<T>().Remove(pObjeto);
             Contexto.SaveChanges();
         }

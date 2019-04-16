@@ -123,7 +123,7 @@ function SalvarPontoEntrega(pForm) {
                 $(document).find("#abaCliente").tab('show');
             });
         }
-        $(".btn btn-success").disable = 'false';
+        $(".btn btn-success").disable = 'true';
         alert(data.Mensagem);
     });
 }

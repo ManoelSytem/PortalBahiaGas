@@ -13,6 +13,7 @@ namespace PortalBahiaGas.Models.Entidade
         public virtual PontoEntrega PontoEntrega { get; set; }
         public DateTime? Hora { get; set; }
         public Decimal? PressaoEntrada { get; set; }
+        public Decimal? FatorCorrecao { get; set; }
         public Decimal? PressaoSaida { get; set; }
         public Decimal? VazaoEntrada { get; set; }
         public Decimal? VazaoSaida { get; set; }
@@ -78,7 +79,9 @@ namespace PortalBahiaGas.Models.Entidade
         public static decimal CalcularDesvioPorRegiao(decimal pVazaoProgramada, decimal pVazaoRetirada)
         {
             decimal lDesvio = 0;
+            if(pVazaoProgramada !=0 || pVazaoRetirada != 0) {
             lDesvio = (Convert.ToInt32(Convert.ToDecimal(pVazaoRetirada / pVazaoProgramada) * 100)) - 100;
+            }
             return lDesvio;
         }
         public static bool CalcularPenalidade(decimal? pDesvio)
