@@ -146,13 +146,13 @@
                             @Html.TextBox("Hora", item.Hora, "{0:HH:mm}", new { @class = "input-grid text-center hora" })
                         </div>
                         <div class="col-sm-1 col-detail">
-                            @Html.TextBox("PressaoEntrada", item.PressaoEntrada, "{0:n2}", new { @class = "input-grid decimal text-right" })
+                            @Html.TextBox("PressaoEntrada", item.PressaoEntrada, "{0:n2}", new { @class = "input-grid decimal text-right", })
                         </div>
                         <div class="col-sm-1 col-detail">
                             @Html.TextBox("PressaoSaida", item.PressaoSaida, "{0:n2}", new { @class = "input-grid decimal text-right" })
                         </div>
                         <div class="col-sm-2 col-detail">
-                            @Html.TextBox("VazaoEntrada", item.VazaoEntrada, "{0:0,0}", new { @class = "input-grid vazao text-right" + ((item.RegistroTurno.Turno != PortalBahiaGas.Models.Entidade.Enuns.ETurno.De7as15) ? " readonly" : "") })
+                            @Html.TextBox("VazaoEntrada", item.VazaoEntrada, "{0:0,0}", new { @onchange="CalcularTotalVazaoRetirada()", @class = "input-grid vazao text-right" + ((item.RegistroTurno.Turno != PortalBahiaGas.Models.Entidade.Enuns.ETurno.De7as15) ? " readonly" : "") })
                         </div>
                         <div class="col-sm-2 col-detail">
                             @Html.TextBox("VazaoSaida", item.VazaoSaida, "{0:0,0}", new { @class = "input-grid vazao text-right" })
@@ -167,10 +167,17 @@
                 }
                     <div class="row">
                         <div class="col-sm-7 col-header"><span style="float:right;">TOTAL</span></div>
+                        <div id="totalVazaoEntrada" class="col-sm-2 col-header">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoEntrada))</div>
+                        <div class="col-sm-3 col-header">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoSaida))</div>
+                        <div class="col-sm-7 col-header"><span style="float:right;">Corrigido</span></div>
                         <div class="col-sm-2 col-header">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoEntrada))</div>
                         <div class="col-sm-3 col-header">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoSaida))</div>
-                        <div class="col-sm-7 col-header"><span style="float:right;">Fator de correção</span></div>
-                        @*<div class="col-sm-2 col-header">@Html.TextBox(item.PressaoEntrada, "{0:n2}", new { @class = "input-grid decimal text-right" })</div>*@
+                        <div class="col-sm-7 col-header"><span style="float:right;">Fator correção</span></div>
+                        @if (Model.FatorCorrecao == null)
+                        {
+                            Model.FatorCorrecao = 0;
+                        }
+                        <div class="col-sm-2 col-header">@Html.TextBox("FatorCorrecao", Model.FatorCorrecao, "{0:n2}", new { @class = "input-grid decimal text-right" })</div>
                     </div>
             </div>
         </div>

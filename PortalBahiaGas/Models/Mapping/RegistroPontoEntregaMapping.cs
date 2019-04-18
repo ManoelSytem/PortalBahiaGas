@@ -19,7 +19,7 @@ namespace PortalBahiaGas.Models.Mapping
             Property(x => x.VazaoSaida).HasColumnName("rpe_dec_vazaoSaida");
             Property(x => x.Desvio).HasColumnName("rpe_dec_desvio");
             Property(x => x.Penalidade).HasColumnName("rpe_bit_penalidade");
-            Property(x => x.FatorCorrecao).HasColumnName("rpe_dec_fatorCorrecao");
+           
         }
     }
 }

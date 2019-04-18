@@ -14,6 +14,7 @@ namespace PortalBahiaGas.Models.Mapping
             Property(x => x.Turno).HasColumnName("rtu_int_turno").IsRequired();
             Property(x => x.Bloqueado).HasColumnName("rtu_bit_bloqueado").IsRequired();
             Property(x => x.HoraMedicao).HasColumnName("rtu_dat_horaMedicao").IsOptional();
+            Property(x => x.FatorCorrecao).HasColumnName("rtu_dec_fatorCorrecao").IsOptional();
             Property(x => x.OperadorMedicao).HasColumnName("rtu_str_operadorMedicao").HasColumnType("VARCHAR2").IsOptional();
             HasMany(x => x.RegistrosGasoduto);
             HasMany(x => x.RegistrosPontoEntrega);

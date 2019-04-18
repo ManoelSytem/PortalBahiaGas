@@ -39,6 +39,7 @@ namespace PortalBahiaGas.Models.Entidade
         public DateTime? DataCriacao { get; set; }
         public String UsuarioAlteracao { get; set; }
         public DateTime? DataAlteracao { get; set; }
+        public Decimal? FatorCorrecao { get; set; }
 
         public ETurma? ObterTurma(string codigo)
         {

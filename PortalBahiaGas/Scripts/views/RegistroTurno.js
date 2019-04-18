@@ -272,6 +272,49 @@ function PopUp(pIdOcorrencia, pIdRegistroTurno) {
     });
 }
 
+
+function CalcularTotalVazaoRetirada() {
+    var elements = document.getElementsByClassName("input-grid vazao");
+    var total = 0;
+    var existeVazio = false;
+    for (var i = 0; i < elements.length; i++) {
+        if (!elements[i].value) {
+            existeVazio = true;
+        } 
+    }
+
+    if (!existeVazio){
+        for (var i = 0; i < elements.length; i++) {
+            if (!elements[i].value) {
+                existeVazio = true;
+            } else {
+                total += elements[i].value.replace(".", "");
+            }
+        }
+
+        $.ajax({
+            url: '../../RegistroTurno/ObterTotalMetroCubico',
+            changeMonth: true,
+            changeYear: true,
+            dataType: 'json',
+            type: 'get',
+            data: { vazaoEntrada: total },
+            success: function (data) {
+                for (var i = 0; data.length > i; i++) {
+                    var totalformatado = data[i];
+                }
+                $("#totalVazaoEntrada").html("");
+                $("#totalVazaoEntrada").html(totalformatado);;
+            }
+        });
+    }
+
+}
+
+
+
+
+
 function PopUpPendencia(pIdPendencia, pIdRegistroTurno) {
     var dados = { id: pIdPendencia, idRegistroTurno: pIdRegistroTurno };
     $.ajax({

@@ -329,13 +329,13 @@ namespace PortalBahiaGas.Controllers
             
             PontoEntregaRepositorio = new Repositorio<PontoEntrega>(TurnoRepositorio.Contexto);
             RegistroTurno lRegistroTurno = TurnoRepositorio.ObterPorId(Convert.ToInt32(pFormulario["IdRegistroTurno"]));
-           
+            lRegistroTurno.FatorCorrecao = Convert.ToDecimal(pFormulario["FatorCorrecao"]);
             for (int i = 0; i < pFormulario.GetValues("PontoEntrega").Length; i++)
             {
                 if (lRegistroTurno.RegistrosPontoEntrega.Any(x => x.Id == Convert.ToInt32(pFormulario.GetValues("IdPontoEntrega")[i])) && !pFormulario.GetValues("IdPontoEntrega")[i].Equals("0"))
                     foreach (RegistroPontoEntrega item in lRegistroTurno.RegistrosPontoEntrega.Where(x => x.Id == Convert.ToInt32(pFormulario.GetValues("IdPontoEntrega")[i])))
                     {
-                       
+
                         item.Id = Convert.ToInt32(pFormulario.GetValues("IdPontoEntrega")[i]);
                         item.RegistroTurno = lRegistroTurno;
                         item.PontoEntrega = PontoEntregaRepositorio.ObterPorId(Convert.ToInt32(pFormulario.GetValues("PontoEntrega")[i]));
@@ -348,8 +348,11 @@ namespace PortalBahiaGas.Controllers
                         item.Penalidade = CalcularPenalidade(lRegistroTurno.Turno, item.Desvio);
                     }
                 else
+                    
                     lRegistroTurno.RegistrosPontoEntrega.Add(new RegistroPontoEntrega()
                     {
+                  
+
                         Id = Convert.ToInt32(pFormulario.GetValues("IdPontoEntrega")[i]),
                         RegistroTurno = lRegistroTurno,
                         PontoEntrega = PontoEntregaRepositorio.ObterPorId(Convert.ToInt32(pFormulario.GetValues("PontoEntrega")[i])),
@@ -372,6 +375,7 @@ namespace PortalBahiaGas.Controllers
 
                     );
             }
+
             return TurnoRepositorio.Editar(lRegistroTurno);
         }
 
@@ -651,6 +655,24 @@ namespace PortalBahiaGas.Controllers
             return PartialView("PopUpPendencia", lPendencia);
         }
 
+
+        [HttpGet]
+        public JsonResult ObterTotalMetroCubico(double vazaoEntrada)
+        {
+            try
+            {
+                List<string> VazaoEntradaRetiradaTotal = new List<string>();
+                string vazaoEntradaTotal = String.Format("{0:0,0}", vazaoEntrada);
+                VazaoEntradaRetiradaTotal.Add(vazaoEntradaTotal);
+
+                return Json(VazaoEntradaRetiradaTotal, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(new { msg = e.Message, erro = true });
+            }
+        }
+
         private RegistroTurno CadastrarPendencia(FormCollection pFormulario)
         {
             PendenciaRepositorio = new Repositorio<Pendencia>(TurnoRepositorio.Contexto);
@@ -734,6 +756,7 @@ namespace PortalBahiaGas.Controllers
                 }
             }
             lRegistroTurno = TurnoRepositorio.Editar(lRegistroTurno);
+            lRegistroTurno.FatorCorrecao = Convert.ToDecimal(pFormulario["FatorCorrecao"]);
             return lRegistroTurno;
         }
 
