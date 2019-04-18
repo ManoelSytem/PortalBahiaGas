@@ -170,8 +170,8 @@
                         <div id="totalVazaoEntrada" class="col-sm-2 col-header">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoEntrada))</div>
                         <div class="col-sm-3 col-header">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoSaida))</div>
                         <div class="col-sm-7 col-header"><span style="float:right;">Corrigido</span></div>
-                        <div class="col-sm-2 col-header">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoEntrada))</div>
-                        <div class="col-sm-3 col-header">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoSaida))</div>
+                        <div class="col-sm-2 col-header">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoEntrada) * Model.FatorCorrecao)</div>
+                        <div class="col-sm-3 col-header">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoSaida) * Model.FatorCorrecao)</div>
                         <div class="col-sm-7 col-header"><span style="float:right;">Fator correção</span></div>
                         @if (Model.FatorCorrecao == null)
                         {

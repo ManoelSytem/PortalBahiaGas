@@ -89,7 +89,6 @@
                         PONTO DE ENTREGA BAHIAGÁS
                         <div class="row-fluid">
                             <div class="col-xs-8 col-filho">&nbsp;</div>
-                            <div class="col-xs-8 col-filho">Regiao</div>
                         </div>
                     </div>
                     <div class="col-xs-1 col-header text-center">
@@ -166,12 +165,15 @@
                     }
                 </div>
                         }
-
                 <div class="row-fluid">
                     <div class="col-xs-6 col-border-left text-right"><span style="float:right;">TOTAL</span></div>
                     <div class="col-xs-2 text-right">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoEntrada))</div>
                     <div class="col-xs-2 text-right">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoSaida)) </div>
-                    <div class="col-xs-2">&nbsp;</div>
+                    <div class="col-xs-2 text-center"><b>Fator de correção</b></div>
+                    <div class="col-xs-6 col-border-left text-right"><span style="float:right;">CORRIGIDO</span></div>
+                    <div class="col-xs-2 text-right">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoEntrada) * Model.FatorCorrecao)</div>
+                    <div class="col-xs-2 text-right">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoSaida) * Model.FatorCorrecao) </div>
+                    <div class="col-xs-2 text-center">@Model.FatorCorrecao&nbsp;</div>
                 </div>
             </div>
         }
