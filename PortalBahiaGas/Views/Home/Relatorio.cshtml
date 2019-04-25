@@ -137,8 +137,8 @@
                             <div class="col-xs-1 col-header text-center">&nbsp;</div>
                             <div class="col-xs-1 col-header text-right">&nbsp;</div>
                             <div class="col-xs-1 col-header text-right">&nbsp;</div>
-                            <div class="col-xs-2 col-header text-right">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.ToList().FindAll(x => x.PontoEntrega.Regiao == item.PontoEntrega.Regiao).Sum(x => x.VazaoEntrada))</div>
-                            <div class="col-xs-2 col-header text-right">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.ToList().FindAll(x => x.PontoEntrega.Regiao == item.PontoEntrega.Regiao).Sum(x => x.VazaoSaida))</div>
+                            <div class="col-xs-2 col-header text-right">&nbsp;</div>
+                            <div class="col-xs-2 col-header text-right">&nbsp;</div>
                             <div class="col-xs-1 col-header text-right">@String.Format("{0:n2}", PortalBahiaGas.Models.Entidade.RegistroPontoEntrega.CalcularDesvioPorRegiao(
                                                                        Convert.ToDecimal(Model.RegistrosPontoEntrega.ToList().FindAll(x => x.PontoEntrega.Regiao == item.PontoEntrega.Regiao).Sum(x => x.VazaoEntrada)), 
                                                                        Convert.ToDecimal(Model.RegistrosPontoEntrega.ToList().FindAll(x => x.PontoEntrega.Regiao == item.PontoEntrega.Regiao).Sum(x => x.VazaoSaida))))</div>
@@ -169,14 +169,17 @@
                     <div class="col-xs-6 col-border-left text-right"><span style="float:right;">TOTAL</span></div>
                     <div class="col-xs-2 text-right">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoEntrada))</div>
                     <div class="col-xs-2 text-right">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoSaida)) </div>
-                    <div class="col-xs-2 text-center"><b>Fator de correção</b></div>
-                    <div class="col-xs-6 col-border-left text-right"><span style="float:right;">CORRIGIDO</span></div>
-                    <div class="col-xs-2 text-right">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoEntrada) * Model.FatorCorrecao)</div>
-                    <div class="col-xs-2 text-right">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoSaida) * Model.FatorCorrecao) </div>
-                    <div class="col-xs-2 text-center">@Model.FatorCorrecao&nbsp;</div>
-                </div>
+                    @if (Model.Turno == PortalBahiaGas.Models.Entidade.Enuns.ETurno.De23as7)
+                    { 
+                        <div class="col-xs-2 text-center"><b>Fator de correção</b></div>
+                        <div class="col-xs-6 col-border-left text-right"><span style="float:right;">CORRIGIDO</span></div>
+                        <div class="col-xs-2 text-right">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoEntrada) * Model.FatorCorrecao)</div>
+                        <div class="col-xs-2 text-right">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoSaida) * Model.FatorCorrecao) </div>
+                        <div class="col-xs-2 text-center">@Model.FatorCorrecao&nbsp;</div>
+                    }
+                    </div>
             </div>
-        }
+                        }
         <!-- GRANDES CLIENTES -->
         @if (Model.RegistrosCliente.Count() > 0)
         {

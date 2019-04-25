@@ -72,6 +72,7 @@ namespace PortalBahiaGas.Controllers
                     item.InfraestruturaObj = OperadorRepositorio.ObterPorCodigoInfraestruturaDoProtheus(item.Infraestrutura).FirstOrDefault();
                 }
             }
+
             foreach (Ocorrencia item in lRegistroTurno.OutrasOcorrencias)
             {
                 if (!String.IsNullOrEmpty(item.Cliente))
@@ -127,9 +128,6 @@ namespace PortalBahiaGas.Controllers
                     }
        
                 }
-
-               
-
             }
 
             Repositorio<Cliente> ClienteRepositorio = new Repositorio<Cliente>();
@@ -148,6 +146,7 @@ namespace PortalBahiaGas.Controllers
                     Odorizador = x
                 }));
 
+            lRegistroTurno.OutrasOcorrencias.Clear();
             return View("Relatorio", lRegistroTurno);
         }
 

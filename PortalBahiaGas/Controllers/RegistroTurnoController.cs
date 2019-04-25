@@ -548,6 +548,7 @@ namespace PortalBahiaGas.Controllers
             if (lOcorrencia == null)
             {
                 lModel.RegistroTurno = lRegistroTurno;
+                lRegistroTurno.Ocorrencias.Clear();
                 lRegistroTurno.Ocorrencias.Add(lModel);
             }
             else

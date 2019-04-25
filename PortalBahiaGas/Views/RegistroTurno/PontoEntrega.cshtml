@@ -177,7 +177,10 @@
                         {
                             Model.FatorCorrecao = 0;
                         }
-                        <div class="col-sm-2 col-header">@Html.TextBox("FatorCorrecao", Model.FatorCorrecao, "{0:n2}", new { @class = "input-grid decimal text-right" })</div>
+                         @if(Model.Turno == PortalBahiaGas.Models.Entidade.Enuns.ETurno.De23as7) {
+                        <div class="col-sm-2 col-header">@Html.TextBox("FatorCorrecao", Model.FatorCorrecao, "{0:n2}", new {@class = "input-grid decimal text-right" })</div>
+                         }
+                         else { <div class="col-sm-2 col-header">@Html.TextBox("FatorCorrecao", Model.FatorCorrecao, "{0:n2}", new { @class = "input-grid decimal text-right", @disabled = "disabled" })</div>}
                     </div>
             </div>
         </div>
