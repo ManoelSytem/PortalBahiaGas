@@ -268,6 +268,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Util\Extension.cs" />
     <Compile Include="Util\Utilitario.cs" />
+    <Compile Include="ViewModel\VmPontoEntrega.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-datetimepicker.css" />

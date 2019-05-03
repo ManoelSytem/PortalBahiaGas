@@ -25,8 +25,8 @@ namespace PortalBahiaGas.Controllers
                     Login = "Visitante"
                 };
             }
-            ViewData.Add("perfil", lUsuario.Perfil);
 
+            ViewData.Add("perfil", lUsuario.Perfil);
             return View(RegistroTurno.Listar(x => x.Data >= DateTime.Today.AddDays(-15)));
         }
 

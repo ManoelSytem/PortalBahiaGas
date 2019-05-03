@@ -56,9 +56,12 @@ function Editar(linha) {
 }
 
 function Salvar(linha) {
+    var codRegiao = $("#codregiao").val();
+    alert(codRegiao);
     var usuario = {
         Id: $(linha).parent().parent().find("input[name='id']").val(),
-        Nome: $(linha).parent().parent().find("input[name='nome']").val()
+        Nome: $(linha).parent().parent().find("input[name='nome']").val(),
+        Regiao: codRegiao
     };
 
     $.ajax({
@@ -72,6 +75,7 @@ function Salvar(linha) {
         }
     });
 }
+
 
 function Remover(linha) {
     var usuario = {

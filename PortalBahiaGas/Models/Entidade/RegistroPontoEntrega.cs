@@ -1,4 +1,5 @@
 ﻿using PortalBahiaGas.Models.Entidade.Enuns;
+using PortalBahiaGas.Models.Persistencia;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +10,7 @@ namespace PortalBahiaGas.Models.Entidade
 {
     public class RegistroPontoEntrega : AEntidade
     {
+        public static Repositorio<Regiao> RegiaoRepositorio = new Repositorio<Regiao>();
         public virtual RegistroTurno RegistroTurno { get; set; }
         public virtual PontoEntrega PontoEntrega { get; set; }
         public DateTime? Hora { get; set; }
@@ -91,23 +93,13 @@ namespace PortalBahiaGas.Models.Entidade
             else lPenalidade = false;
             return lPenalidade;
         }
+
         public static string ObterRegiao(int codigo)
         {
             string regiaodesc = "";
-            switch (codigo)
-            {
-                case 1:
-                    regiaodesc = ERegiao.Reg1.ObterDescricao();
-                    break;
-                case 2:
-                    regiaodesc = ERegiao.Reg2.ObterDescricao();
-                    break;
-                case 3:
-                    regiaodesc = ERegiao.Reg3.ObterDescricao();
-                    break;
-            }
-
-            return regiaodesc;
+            Regiao regiao = new Regiao();
+            regiao = RegiaoRepositorio.ObterPorId(codigo);
+            return regiao.Nome;
         }
 
     }
