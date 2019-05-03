@@ -52,12 +52,16 @@ function Editar(linha) {
     $(linha).parent().parent().find("input,select").each(function () {
         $(this).prop('disabled', false);
     });
+
+    $(linha).parent().parent().find("select").each(function () {
+        $(this).prop('visibility', "visible");
+    });
+
     MudarBotoes(linha);
 }
 
 function Salvar(linha) {
-    var codRegiao = $("#codregiao").val();
-    alert(codRegiao);
+    var codRegiao = $("#codregiao").val()
     var usuario = {
         Id: $(linha).parent().parent().find("input[name='id']").val(),
         Nome: $(linha).parent().parent().find("input[name='nome']").val(),
@@ -73,7 +77,7 @@ function Salvar(linha) {
         if (!data.Erro) {
             location.reload();
         }
-    });
+        });
 }
 
 

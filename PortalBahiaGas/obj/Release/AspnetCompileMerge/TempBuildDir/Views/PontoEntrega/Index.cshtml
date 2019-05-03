@@ -24,32 +24,45 @@
                             <span style="font-weight: bold;">NOVO</span>
                         </a>
                     </div>
-                    <div class="col-sm-10 col-header">Nome</div>
+                    <div class="col-sm-4 col-header">Nome</div>
+                    <div class="col-sm-4 col-header">Região</div>
                 </div>
                 @if (Model.Count() > 0)
                 {
                     foreach (PortalBahiaGas.Models.Entidade.PontoEntrega item in Model)
                     {
-                        <div class="row">
-                            @Html.Hidden("id", item.Id)
-                            <div class="col-sm-2 col-header">
-                                <a href="#" onclick="Salvar(this);" class="invisivel">
-                                    <span class="glyphicon glyphicon-ok"></span>
-                                </a>
-                                <a href="#" onclick="Cancelar(this);" class="invisivel">
-                                    <span class="glyphicon glyphicon-remove-circle"></span>
-                                </a>
-                                <a href="#" onclick="Editar(this);" class="visivel">
-                                    <span class="glyphicon glyphicon-pencil"></span>
-                                </a>
-                                <a href="#" onclick="Remover(this);" class="visivel">
-                                    <span class="glyphicon glyphicon-remove"></span>
-                                </a>
-                            </div>
-                            <div class="col-sm-10 col-detail">
-                                <input type="text" class="input-grid" name="nome" disabled="disabled" value="@item.Nome" />
-                            </div>
-                        </div>
+                <div class="row">
+                    @Html.Hidden("id", item.Id)
+                    <input  style="visibility:hidden" name="codregiao" type="text" id="codregiao" value="0">
+                    <div class="col-sm-2 col-header">
+                        <a href="#" onclick="Salvar(this);" class="invisivel">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </a>
+                        <a href="#" onclick="Cancelar(this);" class="invisivel">
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                        </a>
+                        <a href="#" onclick="Editar(this);" class="visivel">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                        <a href="#" onclick="Remover(this);" class="visivel">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </a>
+                    </div>
+                    <div class="col-sm-4 col-detail">
+                        <input type="text" class="input-grid" name="nome" disabled="disabled" value="@item.Nome" />
+                    </div>
+                    <div class="col-sm-4 col-detail">
+                        @foreach (var regiao in ViewData["RegiaoPorMunicipio"] as List<PortalBahiaGas.ViewModel.VmPontoEntrega>)
+                        {
+                            if (regiao.Id == item.Regiao)
+                            {
+                        <label id="MunicipioPorRegiao">&nbsp;@regiao.Regiao</label>
+                                break;
+                            }
+                        }
+                        @Html.DropDownList("Regiao", new SelectList((System.Collections.IEnumerable)ViewData["Regiao"], "Id", "Nome"), new {  @class = "Regiao", @display = "none" })
+                    </div>
+                </div>
                     }
                 }
                 else
@@ -63,3 +76,9 @@
     </div>
 </form>
 @Scripts.Render("~/Scripts/views/PontoEntrega.js")
+<script type="text/javascript">
+    $('select').on('change', function () {
+        var valor = this.value;
+        $('#codregiao').val(valor);
+    });
+</script>

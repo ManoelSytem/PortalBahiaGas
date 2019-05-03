@@ -52,13 +52,17 @@ function Editar(linha) {
     $(linha).parent().parent().find("input,select").each(function () {
         $(this).prop('disabled', false);
     });
+
+    document.getElementById("Regiao").style.visibility = "visible";
     MudarBotoes(linha);
 }
 
 function Salvar(linha) {
+    var codRegiao = $("#codregiao").val()
     var usuario = {
         Id: $(linha).parent().parent().find("input[name='id']").val(),
-        Nome: $(linha).parent().parent().find("input[name='nome']").val()
+        Nome: $(linha).parent().parent().find("input[name='nome']").val(),
+        Regiao: codRegiao
     };
 
     $.ajax({
@@ -70,8 +74,9 @@ function Salvar(linha) {
         if (!data.Erro) {
             location.reload();
         }
-    });
+        });
 }
+
 
 function Remover(linha) {
     var usuario = {

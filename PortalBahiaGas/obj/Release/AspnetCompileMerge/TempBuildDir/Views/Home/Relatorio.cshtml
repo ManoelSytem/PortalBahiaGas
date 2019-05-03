@@ -139,9 +139,11 @@
                             <div class="col-xs-1 col-header text-right">&nbsp;</div>
                             <div class="col-xs-2 col-header text-right">&nbsp;</div>
                             <div class="col-xs-2 col-header text-right">&nbsp;</div>
-                            <div class="col-xs-1 col-header text-right">@String.Format("{0:n2}", PortalBahiaGas.Models.Entidade.RegistroPontoEntrega.CalcularDesvioPorRegiao(
-                                                                       Convert.ToDecimal(Model.RegistrosPontoEntrega.ToList().FindAll(x => x.PontoEntrega.Regiao == item.PontoEntrega.Regiao).Sum(x => x.VazaoEntrada)), 
-                                                                       Convert.ToDecimal(Model.RegistrosPontoEntrega.ToList().FindAll(x => x.PontoEntrega.Regiao == item.PontoEntrega.Regiao).Sum(x => x.VazaoSaida))))</div>
+                            <div class="col-xs-1 col-header text-right">
+                                &nbsp;@*@String.Format("{0:n2}", PortalBahiaGas.Models.Entidade.RegistroPontoEntrega.CalcularDesvioPorRegiao(
+        Convert.ToDecimal(Model.RegistrosPontoEntrega.ToList().FindAll(x => x.PontoEntrega.Regiao == item.PontoEntrega.Regiao).Sum(x => x.VazaoEntrada)),
+        Convert.ToDecimal(Model.RegistrosPontoEntrega.ToList().FindAll(x => x.PontoEntrega.Regiao == item.PontoEntrega.Regiao).Sum(x => x.VazaoSaida))))*@
+                            </div>
                             <div class="col-xs-1 col-header text-right">
                                 @(PortalBahiaGas.Models.Entidade.RegistroPontoEntrega.CalcularPenalidade(
                                         PortalBahiaGas.Models.Entidade.RegistroPontoEntrega.CalcularDesvioPorRegiao(

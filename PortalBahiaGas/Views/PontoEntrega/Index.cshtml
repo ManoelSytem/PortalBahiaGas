@@ -25,7 +25,7 @@
                         </a>
                     </div>
                     <div class="col-sm-4 col-header">Nome</div>
-                    <div class="col-sm-4 col-header">Região</div>
+                    <div class="col-sm-4 col-header">Região &nbsp; &nbsp; @Html.DropDownList("Regiao", new SelectList((System.Collections.IEnumerable)ViewData["Regiao"], "Id", "Nome"), new { @class = "Regiao", @display = "none" })</div>
                 </div>
                 @if (Model.Count() > 0)
                 {
@@ -56,11 +56,11 @@
                         {
                             if (regiao.Id == item.Regiao)
                             {
-                                <label id="MunicipioPorRegiao">@regiao.Regiao</label>
+                        <label id="MunicipioPorRegiao">&nbsp;@regiao.Regiao</label>
                                 break;
                             }
                         }
-                        @Html.DropDownList("Regiao", new SelectList((System.Collections.IEnumerable)ViewData["Regiao"], "Id", "Nome"), new { @class = "Regiao", @display = "none" })
+                       
                     </div>
                 </div>
                     }
