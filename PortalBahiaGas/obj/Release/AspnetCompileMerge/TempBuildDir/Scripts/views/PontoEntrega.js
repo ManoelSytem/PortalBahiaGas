@@ -53,7 +53,10 @@ function Editar(linha) {
         $(this).prop('disabled', false);
     });
 
-    document.getElementById("Regiao").style.visibility = "visible";
+    $(linha).parent().parent().find("select").each(function () {
+        $(this).prop('visibility', "visible");
+    });
+
     MudarBotoes(linha);
 }
 

@@ -94,6 +94,20 @@ namespace PortalBahiaGas.Models.Entidade
             return lPenalidade;
         }
 
+        public static decimal CalcularAjusteDesvioPorRegiao(decimal porcentagemRegiao)
+        {
+            decimal porcentagemRegiaoAjuste = 0;
+            if (porcentagemRegiao > 5)
+            {
+                return porcentagemRegiaoAjuste =  porcentagemRegiao - 5;
+            }
+            else if(porcentagemRegiao < -5) {
+                return porcentagemRegiaoAjuste = porcentagemRegiao + 5;
+            }
+
+            return porcentagemRegiaoAjuste;
+        }
+
         public static string ObterRegiao(int codigo)
         {
             string regiaodesc = "";

@@ -270,7 +270,7 @@ namespace PortalBahiaGas.Controllers
             //if (pFormulario.GetValues("item") == null) lMensagem.AppendLine("Informe os operadores do turno.");
             if (!pFormulario.GetValues("CodigoProtheus").Any(x => x != "false")) lMensagem.AppendLine("Informe os operadores do turno.");
             if (pFormulario.GetValue("CodigoProtheus").AttemptedValue.Replace(",false", "").Replace("false,", "").Split(',').Count() != 4) lMensagem.AppendLine("O registro de turno deve possuir 4 operadores.");
-            if (pFormulario.GetValue("SalaControle").AttemptedValue.Replace(",false", "").Replace("false,", "").Split(',').Count() > 3) lMensagem.AppendLine("O registro de turno deve possuir no máximo 3 operadores para sala de controle.");
+            if (pFormulario.GetValue("SalaControle").AttemptedValue.Replace(",false", "").Replace("false,", "").Split(',').Count() > 1) lMensagem.AppendLine("O registro de turno deve possuir somente 1 operador para sala de controle.");
             if (lRegistroTurno.ObterTurma(pFormulario.GetValue("Turma").AttemptedValue).Equals(ETurma.D)) lMensagem.AppendLine("Turma não informada no registro de turno.");
             validarPeriodoTurno(lRegistroTurno, lMensagem, null);
             if (!String.IsNullOrEmpty(lMensagem.ToString())) throw new Exception(lMensagem.ToString());
