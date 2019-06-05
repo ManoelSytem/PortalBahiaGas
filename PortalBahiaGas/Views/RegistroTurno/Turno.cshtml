@@ -26,31 +26,38 @@
         </div>.
     </div>
     <div class="panel panel-default ">
-        <div class="panel-heading">Operadores</div>
+        <div class="panel-heading"></div>
         <div class="panel-body">
             <div class="container-fluid" id="grid">
                 <div class="row">
                     <div class="col-sm-1 col-header">
                         &nbsp;
                     </div>
-                    <div class="col-sm-6 col-header">Operadores</div>
-                    <div class="col-sm-2 col-header">
-                       Sala de Controle
-                    </div>
+                    <div class="col-sm-5 col-header">Operadores</div>
+                    <div class="col-sm-5 col-header">Sala controle</div>
                 </div>
-                @foreach (PortalBahiaGas.Models.Entidade.Operador item in ((List<PortalBahiaGas.Models.Entidade.Operador>)ViewData["Operadores"]).OrderBy(x => x.Localidade).ThenBy(x => x.Nome))
-                {
-                <div class="row">
-                    <div class="col-sm-1 col-header" style="height:23px;">
-                        @Html.CheckBox("CodigoProtheus", Model.OperadorRegistroTurno.Any(x => x.Operador.CodigoProtheus == item.CodigoProtheus), new { @value = item.CodigoProtheus })
-                    </div>
-                    <div class="col-sm-6 col-detail">
-                        <b>[@item.Localidade]</b> @item.Nome
-                    </div>
-                    <div class="col-sm-2 col-header" style="height:23px;align-content:center">
-                        @Html.CheckBox("SalaControle", Model.OperadorRegistroTurno.Any(x => x.Operador.CodigoProtheus == item.CodigoProtheus && x.SalaControle == true), new { @onclick = "ValidaSelectSalaControle()", @value = item.CodigoProtheus })
-                    </div>
-                </div>
+                @{
+                    var count = 0;
+                    foreach (PortalBahiaGas.Models.Entidade.Operador item in ((List<PortalBahiaGas.Models.Entidade.Operador>)ViewData["Operadores"]).OrderBy(x => x.Localidade).ThenBy(x => x.Nome))
+                    {
+                        count++;
+                        <div class="row">
+                            <div class="col-sm-1 col-header" style="height:23px;">
+                                @Html.CheckBox("CodigoProtheus", Model.OperadorRegistroTurno.Any(x => x.Operador.CodigoProtheus == item.CodigoProtheus), new { @value = item.CodigoProtheus })
+                            </div>
+                            <div class="col-sm-5 col-detail">
+                                <b>[@item.Localidade]</b> @item.Nome
+                            </div>
+
+                            @if(count <= 1) { 
+                            <div class="col-sm-5 col-detail">
+                                @Html.DropDownList("OperadorSalaControle",
+                                 (IEnumerable<SelectListItem>)ViewData["OperadoresSala"])
+                            </div>
+                            }
+                        </div>
+
+                    }
                 }
             </div>
         </div>

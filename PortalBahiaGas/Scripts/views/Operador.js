@@ -73,6 +73,43 @@ function Salvar(linha) {
     });
 }
 
+function SalvarOperadorSalaControle(pForm) {
+
+    var checkboxes = document.querySelectorAll('[name=SalaControle]');
+    var values = [];
+    var valuesFalse = [];
+    for (var i = 0; i < checkboxes.length; i++) {
+        if ($(checkboxes[i]).prop("checked")) {
+            values.push(checkboxes[i].value);
+        } else {
+          valuesFalse.push(checkboxes[i].value);
+        }
+    }
+    alert(values);
+    alert(valuesFalse);
+    $.ajax({
+        url: "Sala/SalvarOperadorSalaControle",
+        data: { codigoOperadorSalaControle: values, operadorSalaControleFalse: valuesFalse },
+        type: 'post'
+    }).done(function (data) {
+        alert(data.Mensagem);
+        if (!data.Erro) {
+            location.reload();
+        }
+    });
+}
+
+//alterar estado do checkbox
+$(document).ready(function () {
+    $('input[name="SalaControle"]').on('change', function () {
+        if ($(this).prop("checked")) {
+            $(this).prop("checked", true);
+        } else {
+            $(this).prop("checked",false);
+        }
+    });
+});
+
 function Remover(linha) {
     var usuario = {
         Id: $(linha).parent().parent().find("input[name='id']").val(),
@@ -81,7 +118,7 @@ function Remover(linha) {
     if (usuario.Id == "0") {
         $(linha).parent().parent().remove();
     } else {
-        if (confirm("Confirma a excluisão do operador: " + usuario.Nome + "?")) {
+        if (confirm("Confirma a exclusão do operador: " + usuario.Nome + "?")) {
             $.ajax({
                 url: "Operador/Remover",
                 data: usuario,

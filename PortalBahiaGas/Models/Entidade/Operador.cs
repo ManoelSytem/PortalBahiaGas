@@ -9,6 +9,7 @@ namespace PortalBahiaGas.Models.Entidade
         public virtual ICollection<RegistroTurno> RegistrosTurno { get; protected set; }
         public String CodigoProtheus { get; set; }
         public virtual String Localidade { get; set; }
+        public bool SalaControle { get; set; }
         public virtual ICollection<OperadorRegistroTurno> OperadorRegistroTurno { get; set; }
     }
 }

@@ -788,6 +788,7 @@ namespace PortalBahiaGas.Controllers
             RegiaoRepositorio = new Repositorio<Regiao>(TurnoRepositorio.Contexto);
 
             ViewData.Add("Operadores", OperadorRepositorio.ObterOperadoresDoProtheus());
+            ViewData.Add("OperadoresSala", OperadorRepositorio.ObterOperadoresDoProtheus().Select(op => new SelectListItem { Text = op.Nome, Value = op.Id.ToString() }));
             ViewData.Add("PontosEntrega", new SelectList(PontoEntregaRepositorio.Listar(), "Id", "Nome"));
             ViewData.Add("Gasodutos", new SelectList(GasodutoRepositorio.Listar(), "Id", "Nome"));
             ViewData.Add("Clientes", new SelectList(ClienteRepositorio.Listar(), "Id", "Nome"));

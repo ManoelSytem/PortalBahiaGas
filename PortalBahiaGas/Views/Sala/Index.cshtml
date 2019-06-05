@@ -1,0 +1,39 @@
+﻿@model PortalBahiaGas.Models.Entidade.Operador
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form class="form-inline" role="form" id="formTurno">
+    <div class="panel panel-default ">
+        <div class="panel-heading">Sala de controle turno</div>
+        <div class="panel-body">
+            <div class="container-fluid" id="grid">
+                <div class="row">
+                    <div class="col-sm-2 col-header">
+                       Sala de Controle
+                    </div>
+                    <div class="col-sm-6 col-header">Operadores</div>
+                </div>
+                @foreach (PortalBahiaGas.Models.Entidade.Operador item in ((List<PortalBahiaGas.Models.Entidade.Operador>)ViewData["Operadores"]).OrderBy(x => x.Localidade).ThenBy(x => x.Nome))
+                {
+                    <div class="row">
+                        <div  class="col-sm-2 col-header" style="height:23px;">
+                            @Html.CheckBox("SalaControle", false, new { @value = item.CodigoProtheus, @Id="CodigoProthues" })
+                        </div>
+                        <div class="col-sm-6 col-detail">
+                            <b>[@item.Localidade]</b> @item.Nome
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="btn-group pull-right">
+        <button type="button" class="btn btn-success" onclick="SalvarOperadorSalaControle('formTurno');">Salvar</button>
+        <button type="button" class="btn btn-danger" onclick="window.location = '@Url.Action("Index", "Home")';">Voltar</button>
+    </div>
+</form>
+@Scripts.Render("~/Scripts/views/Operador.js")
+

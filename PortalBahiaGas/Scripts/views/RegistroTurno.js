@@ -215,6 +215,7 @@ function SalvarOcorrencia(pForm) {
     });
 }
 
+
 function SalvarPendencia(pForm) {
     $(".btn-salvar").attr("disabled", true);
     $.ajax({
@@ -310,10 +311,6 @@ function CalcularTotalVazaoRetirada() {
     }
 
 }
-
-
-
-
 
 function PopUpPendencia(pIdPendencia, pIdRegistroTurno) {
     var dados = { id: pIdPendencia, idRegistroTurno: pIdRegistroTurno };

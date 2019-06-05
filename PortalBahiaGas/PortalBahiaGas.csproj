@@ -184,6 +184,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\GasodutoController.cs" />
     <Compile Include="Controllers\OcorrenciaController.cs" />
+    <Compile Include="Controllers\SalaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegistroTurnoController.cs" />
@@ -371,6 +372,7 @@
     <Content Include="Views\Pendencia\PopUpPendencia.cshtml" />
     <Content Include="Views\Odorizador\Index.cshtml" />
     <Content Include="Views\RegistroTurno\Odorizador.cshtml" />
+    <Content Include="Views\Sala\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
