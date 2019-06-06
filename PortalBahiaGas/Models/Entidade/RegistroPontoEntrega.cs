@@ -108,6 +108,17 @@ namespace PortalBahiaGas.Models.Entidade
             return porcentagemRegiaoAjuste;
         }
 
+
+        public static decimal CalcularRestoMetroCubicoRegiao(decimal pVazaoProgramada, decimal pVazaoRetirada)
+        {
+            decimal total = 0;
+            if (CalcularAjusteDesvioPorRegiao(CalcularDesvioPorRegiao(pVazaoProgramada, pVazaoRetirada)) < 0)
+            {
+              total = pVazaoProgramada - pVazaoRetirada;
+            }
+            return total;
+        }
+
         public static string ObterRegiao(int codigo)
         {
             string regiaodesc = "";

@@ -213,8 +213,14 @@ namespace PortalBahiaGas.Controllers
             foreach (var item in OperadorRepositorio.ObterOperadoresDoProtheus(pFormulario.GetValue("CodigoProtheus").AttemptedValue.Replace(",false", "").Replace("false,", "")))
             {
                 lOperador = OperadorRepositorio.Listar(x => x.CodigoProtheus == item.CodigoProtheus).FirstOrDefault();
-                if (lOperador == null) lOperador = OperadorRepositorio.Adicionar(item);
-                Operadores.Add(lOperador);
+                if (lOperador == null)
+                { lOperador = OperadorRepositorio.Adicionar(item); }
+                else
+                {
+                    lOperador.Localidade = item.Localidade;
+                    Operadores.Add(lOperador);
+                }
+                
             }
 
             if (lRegistroTurno.Id == 0)
@@ -223,11 +229,10 @@ namespace PortalBahiaGas.Controllers
                 lRegistroTurno.UsuarioCriacao = lUsuario.Login;
                 lRegistroTurno.Turma = lRegistroTurno.ObterTurma(pFormulario.GetValue("Turma").AttemptedValue);
                 Operadores.ForEach(x => lRegistroTurno.OperadorRegistroTurno.Add(new OperadorRegistroTurno() { Operador = x, Local = x.Localidade}));
-                string[] lSalaControl = pFormulario.GetValues("SalaControle");
+                string SalaControlIdUser = pFormulario.GetValue("OperadorSalaControle").AttemptedValue;
                 foreach (var opRegTurno in lRegistroTurno.OperadorRegistroTurno)
                 {
-                    foreach(string slControl in lSalaControl)
-                        if (opRegTurno.Operador.CodigoProtheus == slControl)
+                        if (opRegTurno.Operador.Id == Convert.ToInt32(SalaControlIdUser))
                             opRegTurno.SalaControle = true;
                 }
 
@@ -242,14 +247,22 @@ namespace PortalBahiaGas.Controllers
                 lRegistroTurno.Turma =  lRegistroTurno.ObterTurma(pFormulario.GetValue("Turma").AttemptedValue);
                 lRegistroTurno.OperadorRegistroTurno.Clear();
                 Operadores.ForEach(x => lRegistroTurno.OperadorRegistroTurno.Add(new OperadorRegistroTurno() { Operador = x, Local = x.Localidade}));
-                string[] lSalaControl = pFormulario.GetValues("SalaControle");
+                string SalaControlIdUser = pFormulario.GetValue("OperadorSalaControle").AttemptedValue;
+                bool SalaControleExiste = false;
                 foreach (var opRegTurno in lRegistroTurno.OperadorRegistroTurno)
                 {
-                    foreach (string slControl in lSalaControl)
-                        if (opRegTurno.Operador.CodigoProtheus == slControl)
-                            opRegTurno.SalaControle = true;
+                    if (opRegTurno.Operador.Id == Convert.ToInt32(SalaControlIdUser))
+                    {
+                        opRegTurno.SalaControle = true;
+                        SalaControleExiste = true;
+                    }
+                        
+                    
                 }
                 lRegistroTurno = TurnoRepositorio.Editar(lRegistroTurno);
+                if (!SalaControleExiste)
+                    throw new Exception("Operador não foi selecionado! Favor selecionar o operador na lista de operadores.");
+
             }
 
             return lRegistroTurno;
@@ -270,14 +283,11 @@ namespace PortalBahiaGas.Controllers
             //if (pFormulario.GetValues("item") == null) lMensagem.AppendLine("Informe os operadores do turno.");
             if (!pFormulario.GetValues("CodigoProtheus").Any(x => x != "false")) lMensagem.AppendLine("Informe os operadores do turno.");
             if (pFormulario.GetValue("CodigoProtheus").AttemptedValue.Replace(",false", "").Replace("false,", "").Split(',').Count() != 4) lMensagem.AppendLine("O registro de turno deve possuir 4 operadores.");
-            if (pFormulario.GetValue("SalaControle").AttemptedValue.Replace(",false", "").Replace("false,", "").Split(',').Count() > 1) lMensagem.AppendLine("O registro de turno deve possuir somente 1 operador para sala de controle.");
+           // if (pFormulario.GetValue("SalaControle").AttemptedValue.Replace(",false", "").Replace("false,", "").Split(',').Count() > 1) lMensagem.AppendLine("O registro de turno deve possuir somente 1 operador para sala de controle.");
             if (lRegistroTurno.ObterTurma(pFormulario.GetValue("Turma").AttemptedValue).Equals(ETurma.D)) lMensagem.AppendLine("Turma não informada no registro de turno.");
             validarPeriodoTurno(lRegistroTurno, lMensagem, null);
             if (!String.IsNullOrEmpty(lMensagem.ToString())) throw new Exception(lMensagem.ToString());
-
-
-
-
+           
         }
         #endregion
 
@@ -788,12 +798,26 @@ namespace PortalBahiaGas.Controllers
             RegiaoRepositorio = new Repositorio<Regiao>(TurnoRepositorio.Contexto);
 
             ViewData.Add("Operadores", OperadorRepositorio.ObterOperadoresDoProtheus());
-            ViewData.Add("OperadoresSala", OperadorRepositorio.ObterOperadoresDoProtheus().Select(op => new SelectListItem { Text = op.Nome, Value = op.Id.ToString() }));
             ViewData.Add("PontosEntrega", new SelectList(PontoEntregaRepositorio.Listar(), "Id", "Nome"));
             ViewData.Add("Gasodutos", new SelectList(GasodutoRepositorio.Listar(), "Id", "Nome"));
             ViewData.Add("Clientes", new SelectList(ClienteRepositorio.Listar(), "Id", "Nome"));
             //ViewData.Add("Infraestruturas", new SelectList(InfraestruturaRepositorio.Listar(), "Id", "Nome"));
             ViewData.Add("Regioes", new SelectList(RegiaoRepositorio.Listar(), "Id", "Nome"));
+
+            List<Operador> listaOperaSalaControle = new List<Operador>();
+
+            foreach (Operador operador in OperadorRepositorio.Listar())
+            {
+                foreach (Operador operadorProthues in OperadorRepositorio.ObterOperadoresDoProtheus(operador.CodigoProtheus))
+                {
+                    if(operador.SalaControle == true)
+                    {
+                      operador.Localidade = operadorProthues.Localidade; operador.Nome = operadorProthues.Nome; listaOperaSalaControle.Add(operador);
+                    }
+                }
+            }
+
+            ViewData.Add("OperadorSalaControle", new SelectList(listaOperaSalaControle,"Id", "Nome","Localidade",1));
         }
 
         private EStatus ObterStatus(String pInicio, String pAtendimento, String pConclusao)

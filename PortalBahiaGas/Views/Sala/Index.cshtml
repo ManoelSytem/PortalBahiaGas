@@ -16,11 +16,11 @@
                     </div>
                     <div class="col-sm-6 col-header">Operadores</div>
                 </div>
-                @foreach (PortalBahiaGas.Models.Entidade.Operador item in ((List<PortalBahiaGas.Models.Entidade.Operador>)ViewData["Operadores"]).OrderBy(x => x.Localidade).ThenBy(x => x.Nome))
+                @foreach (PortalBahiaGas.Models.Entidade.Operador item in ((List<PortalBahiaGas.Models.Entidade.Operador>)ViewData["OperadorSalaControle"]).OrderBy(x => x.Localidade).ThenBy(x => x.Nome))
                 {
                     <div class="row">
                         <div  class="col-sm-2 col-header" style="height:23px;">
-                            @Html.CheckBox("SalaControle", false, new { @value = item.CodigoProtheus, @Id="CodigoProthues" })
+                            @Html.CheckBox("SalaControle", item.SalaControle, new { @value = item.CodigoProtheus, @Id="CodigoProthues" })
                         </div>
                         <div class="col-sm-6 col-detail">
                             <b>[@item.Localidade]</b> @item.Nome

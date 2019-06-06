@@ -20,8 +20,19 @@ namespace PortalBahiaGas.Controllers
             if (Session["UsuarioLogado"] == null)
                 return RedirectToAction("Index", "Login");
 
+            
             OperadorRepositorio = new Repositorio<Operador>(TurnoRepositorio.Contexto);
-            ViewData.Add("Operadores", OperadorRepositorio.ObterOperadoresDoProtheus());
+            List<Operador> listaOperaSalaControle = new List<Operador>();
+
+            foreach (Operador operador in OperadorRepositorio.Listar())
+            {
+                foreach (Operador operadorProthues in OperadorRepositorio.ObterOperadoresDoProtheus(operador.CodigoProtheus))
+                {
+                  operador.Localidade = operadorProthues.Localidade; operador.Nome = operadorProthues.Nome; listaOperaSalaControle.Add(operador);
+                }
+            }
+               
+            ViewData.Add("OperadorSalaControle", listaOperaSalaControle);
             return View();
         }
 
@@ -49,6 +60,12 @@ namespace PortalBahiaGas.Controllers
                     }
                 }
 
+                foreach (var operadorBase in OperadorRepositorio.Listar())
+                {
+                    operadorBase.SalaControle = false;
+                    OperadorRepositorio.Editar(operadorBase);
+                }
+
                 foreach (var item in OperadorRepositorio.ObterOperadoresDoProtheus(codigos))
                 {
                     var OperadorSelect = OperadorRepositorio.Listar(x => x.CodigoProtheus == item.CodigoProtheus).FirstOrDefault();
@@ -62,13 +79,10 @@ namespace PortalBahiaGas.Controllers
                     {
                         OperadorSelect.SalaControle = true;
                         OperadorRepositorio.Editar(OperadorSelect);
+                        lRetorno.Mensagem = "Cadastro realizado com sucesso!";
                     }
 
-                    foreach (var operador in OperadorRepositorio.Listar(x => x.CodigoProtheus != item.CodigoProtheus))
-                    {
-                        operador.SalaControle = false;
-                        OperadorRepositorio.Editar(OperadorSelect);
-                    }
+                    
                 }
 
             }

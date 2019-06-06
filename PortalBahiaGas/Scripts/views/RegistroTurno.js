@@ -9,7 +9,7 @@ function Salvar(pForm) {
     $(".btn btn-success").disabled = 'true';
     $.ajax({
         url: "../../RegistroTurno/Cadastrar",
-        data: $("#" + pForm).serializeArray(),
+        data: $("#" + pForm).serializeArray(), 
         type: 'post'
     }).done(function (data) {
         $(".btn btn-success").disabled = 'false';

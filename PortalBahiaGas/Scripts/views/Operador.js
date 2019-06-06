@@ -77,25 +77,20 @@ function SalvarOperadorSalaControle(pForm) {
 
     var checkboxes = document.querySelectorAll('[name=SalaControle]');
     var values = [];
-    var valuesFalse = [];
     for (var i = 0; i < checkboxes.length; i++) {
         if ($(checkboxes[i]).prop("checked")) {
             values.push(checkboxes[i].value);
-        } else {
-          valuesFalse.push(checkboxes[i].value);
         }
     }
-    alert(values);
-    alert(valuesFalse);
     $.ajax({
         url: "Sala/SalvarOperadorSalaControle",
-        data: { codigoOperadorSalaControle: values, operadorSalaControleFalse: valuesFalse },
+        data: { codigoOperadorSalaControle: values },
         type: 'post'
     }).done(function (data) {
-        alert(data.Mensagem);
         if (!data.Erro) {
+            alert(data.Mensagem);
             location.reload();
-        }
+        } 
     });
 }
 
