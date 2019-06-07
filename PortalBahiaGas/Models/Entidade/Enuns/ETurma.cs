@@ -13,6 +13,7 @@ namespace PortalBahiaGas.Models.Entidade.Enuns
          B = 2,
         [Description("C")]
          C = 3,
+
        
     }
 }

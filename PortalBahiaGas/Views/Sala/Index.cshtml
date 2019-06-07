@@ -7,25 +7,43 @@
 
 <form class="form-inline" role="form" id="formTurno">
     <div class="panel panel-default ">
-        <div class="panel-heading">Sala de controle turno</div>
+        <div class="panel-heading">Salva</div>
         <div class="panel-body">
             <div class="container-fluid" id="grid">
                 <div class="row">
+                    <div class="col-sm-4 col-header">Operadores</div>
                     <div class="col-sm-2 col-header">
-                       Sala de Controle
+                        CAMAÇARI
                     </div>
-                    <div class="col-sm-6 col-header">Operadores</div>
+                    <div class="col-sm-2 col-header">
+                        FEIRA DE SANTANA
+                    </div>
+                    <div class="col-sm-2 col-header">
+                        SALVADOR
+                    </div>
+                    <div class="col-sm-2 col-header">
+                        Sala de Controle
+                    </div>
                 </div>
                 @foreach (PortalBahiaGas.Models.Entidade.Operador item in ((List<PortalBahiaGas.Models.Entidade.Operador>)ViewData["OperadorSalaControle"]).OrderBy(x => x.Localidade).ThenBy(x => x.Nome))
                 {
-                    <div class="row">
-                        <div  class="col-sm-2 col-header" style="height:23px;">
-                            @Html.CheckBox("SalaControle", item.SalaControle, new { @value = item.CodigoProtheus, @Id="CodigoProthues" })
-                        </div>
-                        <div class="col-sm-6 col-detail">
-                            <b>[@item.Localidade]</b> @item.Nome
-                        </div>
+                <div class="row">
+                    <div class="col-sm-4 col-detail">
+                         @item.Nome
                     </div>
+                    <div class="col-sm-2 col-header" style="height:23px;">
+                        @Html.RadioButton(item.Nome,  item.CodigoProtheus, item.SalaControle)
+                    </div>
+                    <div class="col-sm-2 col-header" style="height:23px;">
+                        @Html.RadioButton(item.Nome, item.CodigoProtheus, item.SalaControle)
+                    </div>
+                    <div class="col-sm-2 col-header" style="height:23px;">
+                        @Html.RadioButton(item.Nome, item.CodigoProtheus, item.SalaControle)
+                    </div>
+                    <div class="col-sm-2 col-header" style="height:23px;">
+                        @Html.RadioButton(item.Nome, item.CodigoProtheus, item.SalaControle)
+                    </div>
+                </div>
                 }
             </div>
         </div>

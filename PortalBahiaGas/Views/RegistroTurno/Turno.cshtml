@@ -27,41 +27,31 @@
     </div>
     <div class="panel panel-default ">
         <div class="panel-heading"></div>
-        <div class="panel-body">
             <div class="container-fluid" id="grid">
                 <div class="row">
-                    <div class="col-sm-1 col-header">
-                        &nbsp;
-                    </div>
-                    <div class="col-sm-5 col-header">Operadores</div>
-                    <div class="col-sm-5 col-header">Sala controle</div>
+                    <div class="col-sm-3 col-header">Salvador</div>
+                    <div class="col-sm-3 col-header">Camaçari</div>
+                    <div class="col-sm-3 col-header">Feira de Santana</div>
+                    <div class="col-sm-3 col-header">Sala controle</div>
                 </div>
-                @{
-                    var count = 0;
-                    foreach (PortalBahiaGas.Models.Entidade.Operador item in ((List<PortalBahiaGas.Models.Entidade.Operador>)ViewData["Operadores"]).OrderBy(x => x.Localidade).ThenBy(x => x.Nome))
-                    {
-                        count++;
-                        <div class="row">
-                            <div class="col-sm-1 col-header" style="height:23px;">
-                                @Html.CheckBox("CodigoProtheus", Model.OperadorRegistroTurno.Any(x => x.Operador.CodigoProtheus == item.CodigoProtheus), new { @value = item.CodigoProtheus })
-                            </div>
-                            <div class="col-sm-5 col-detail">
-                                <b>[@item.Localidade]</b> @item.Nome
-                            </div>
-
-                            @if(count <= 1) { 
-                            <div class="col-sm-5 col-detail">
-                                @Html.DropDownList("OperadorSalaControle",
-                                 (IEnumerable<SelectListItem>)ViewData["OperadorSalaControle"], "Selecione...")
-                            </div>
-                            }
+                <div class="row">
+                        @Html.DropDownList("OperadorSalaControle",
+                            (IEnumerable<SelectListItem>)ViewData["OperadorSalaControle"], "Selecione...")
+                        <div class="col-sm-3 col-detail">
+                            @Html.DropDownList("OperadorSalaControle",
+                             (IEnumerable<SelectListItem>)ViewData["OperadorSalaControle"], "Selecione...")
                         </div>
-
-                    }
-                }
+                        <div class="col-sm-3 col-detail">
+                            @Html.DropDownList("OperadorSalaControle",
+                             (IEnumerable<SelectListItem>)ViewData["OperadorSalaControle"], "Selecione...")
+                        </div>
+                        <div class="col-sm-3 col-detail">
+                            @Html.DropDownList("OperadorSalaControle",
+                             (IEnumerable<SelectListItem>)ViewData["OperadorSalaControle"], "Selecione...")
+                        </div>
+                </div>
             </div>
         </div>
-    </div>
     <div class="btn-group pull-right">
         <button type="button" class="btn btn-success" onclick="Salvar('formTurno');">Salvar</button>
         <button type="button" class="btn btn-danger" onclick="window.location = '@Url.Action("Index", "Home")';">Voltar</button>
