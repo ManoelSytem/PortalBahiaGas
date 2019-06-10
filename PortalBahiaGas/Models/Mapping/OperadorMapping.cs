@@ -14,8 +14,8 @@ namespace PortalBahiaGas.Models.Mapping
             Ignore(x => x.Localidade);
             Property(x => x.CodigoProtheus).HasColumnName("ope_str_codigoProtheus").HasColumnType("VARCHAR2");
             HasMany(x => x.OperadorRegistroTurno);
-            Property(x => x.SalaControle)
-              .HasColumnName("ope_bit_sala_controle");
+            Property(x => x.Alocacao)
+              .HasColumnName("ope_int_alocacao_operador");
             
         }
     }

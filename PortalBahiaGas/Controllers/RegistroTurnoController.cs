@@ -810,7 +810,7 @@ namespace PortalBahiaGas.Controllers
             {
                 foreach (Operador operadorProthues in OperadorRepositorio.ObterOperadoresDoProtheus(operador.CodigoProtheus))
                 {
-                    if(operador.SalaControle == true)
+                    if(operador.Alocacao == (int)ESala.Reg1)
                     {
                       operador.Localidade = operadorProthues.Localidade; operador.Nome = operadorProthues.Nome; listaOperaSalaControle.Add(operador);
                     }

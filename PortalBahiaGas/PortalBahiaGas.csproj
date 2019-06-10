@@ -215,7 +215,7 @@
     <Compile Include="Models\Entidade\Alert.cs" />
     <Compile Include="Models\Entidade\Chamado.cs" />
     <Compile Include="Models\Entidade\Enuns\EOrigemPendencia.cs" />
-    <Compile Include="Models\Entidade\Enuns\ERegiao.cs" />
+    <Compile Include="Models\Entidade\Enuns\ESala.cs" />
     <Compile Include="Models\Entidade\Enuns\EStatusComunicacao.cs" />
     <Compile Include="Models\Entidade\Enuns\ETurma.cs" />
     <Compile Include="Models\Entidade\Infraestrutura.cs" />
@@ -269,6 +269,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Util\Extension.cs" />
     <Compile Include="Util\Utilitario.cs" />
+    <Compile Include="ViewModel\VmOperador.cs" />
     <Compile Include="ViewModel\VmPontoEntrega.cs" />
   </ItemGroup>
   <ItemGroup>

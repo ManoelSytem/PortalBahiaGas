@@ -73,18 +73,21 @@ function Salvar(linha) {
     });
 }
 
-function SalvarOperadorSalaControle(pForm) {
+function SalvarAlocaoOperador(pForm) {
 
-    var checkboxes = document.querySelectorAll('[name=SalaControle]');
     var values = [];
-    for (var i = 0; i < checkboxes.length; i++) {
-        if ($(checkboxes[i]).prop("checked")) {
-            values.push(checkboxes[i].value);
+
+    var els = document.querySelectorAll("input[type='radio']");
+    for (var i = 0; i < els.length; i++) {
+        if (els[i].checked) {
+            alert(els[i].value);
+            values.push(els[i].value);
         }
     }
+
     $.ajax({
-        url: "Sala/SalvarOperadorSalaControle",
-        data: { codigoOperadorSalaControle: values },
+        url: "Sala/SalvarAlocacaoOperadores",
+        data: { valuesSelect: values},
         type: 'post'
     }).done(function (data) {
         if (!data.Erro) {

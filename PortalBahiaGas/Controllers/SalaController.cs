@@ -1,6 +1,8 @@
 ﻿using PortalBahiaGas.Models;
 using PortalBahiaGas.Models.Entidade;
+using PortalBahiaGas.Models.Entidade.Enuns;
 using PortalBahiaGas.Models.Persistencia;
+using PortalBahiaGas.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,13 +24,36 @@ namespace PortalBahiaGas.Controllers
 
             
             OperadorRepositorio = new Repositorio<Operador>(TurnoRepositorio.Contexto);
-            List<Operador> listaOperaSalaControle = new List<Operador>();
+            List<VmOperador> listaOperaSalaControle = new List<VmOperador>();
+            VmOperador operadorVm;
 
             foreach (Operador operador in OperadorRepositorio.Listar())
             {
                 foreach (Operador operadorProthues in OperadorRepositorio.ObterOperadoresDoProtheus(operador.CodigoProtheus))
                 {
-                  operador.Localidade = operadorProthues.Localidade; operador.Nome = operadorProthues.Nome; listaOperaSalaControle.Add(operador);
+                    operadorVm = new VmOperador();
+                    operadorVm.CodigoProtheus = operadorProthues.CodigoProtheus;
+                    operadorVm.Nome = operadorProthues.Nome;
+                    operadorVm.Alocacao = operador.Alocacao;
+                    operadorVm.Localidade = operadorProthues.Localidade;
+                    if ((int)ESala.Reg1 ==  operadorVm.Alocacao)
+                    {
+                        operadorVm.Camacari = true;
+                    }
+                    if ((int)ESala.Reg2 == operadorVm.Alocacao)
+                    {
+                        operadorVm.Feira = true;
+                    }
+                    if ((int)ESala.Reg3 == operadorVm.Alocacao)
+                    {
+                        operadorVm.Salvador = true;
+                    }
+                    if ((int) ESala.Reg4 == operadorVm.Alocacao)
+                    {
+                        operadorVm.SalaControle = true;
+                    }
+                   
+                    listaOperaSalaControle.Add(operadorVm);
                 }
             }
                
@@ -37,7 +62,7 @@ namespace PortalBahiaGas.Controllers
         }
 
         [HttpPost]
-        public ActionResult SalvarOperadorSalaControle(string[] codigoOperadorSalaControle, string[] operadorSalaControleFalse)
+        public ActionResult SalvarAlocacaoOperadores(string[] valuesSelect)
         {
 
             Retorno lRetorno = new Retorno();
@@ -46,44 +71,43 @@ namespace PortalBahiaGas.Controllers
             try
             {
 
-                string codigos = "";
-                foreach (string value in codigoOperadorSalaControle)
+                foreach (var operadorBase in OperadorRepositorio.Listar())
                 {
-                    string ultimoElemento = codigoOperadorSalaControle.Last();
-                    if (ultimoElemento == value)
-                    {
-                        codigos = codigos + value;
-                    }
-                    else
-                    {
-                        codigos = codigos + value + ",";
-                    }
+                    operadorBase.Alocacao = 0;
+                    OperadorRepositorio.Editar(operadorBase);
                 }
 
                 foreach (var operadorBase in OperadorRepositorio.Listar())
                 {
-                    operadorBase.SalaControle = false;
-                    OperadorRepositorio.Editar(operadorBase);
+                    foreach (string value in valuesSelect)
+                    {
+                        int position = value.IndexOf("-");
+                        string codigoProthuesAlocacao = value.Substring(0, position);
+                        if (codigoProthuesAlocacao == operadorBase.CodigoProtheus)
+                        {
+                            string Alocacao = value.Substring(position+1);
+                            if(ESala.Reg1.ObterDescricao() == Alocacao)
+                            {
+                                operadorBase.Alocacao = (int)ESala.Reg1;
+                            }
+                            if (ESala.Reg2.ObterDescricao() == Alocacao)
+                            {
+                                operadorBase.Alocacao = (int)ESala.Reg2;
+                            }
+                            if (ESala.Reg3.ObterDescricao() == Alocacao)
+                            {
+                                operadorBase.Alocacao = (int)ESala.Reg3;
+                            }
+                            if (ESala.Reg4.ObterDescricao() == Alocacao)
+                            {
+                                operadorBase.Alocacao = (int)ESala.Reg4;
+                            }
+                            OperadorRepositorio.Editar(operadorBase);
+                        }
+                    }
                 }
 
-                foreach (var item in OperadorRepositorio.ObterOperadoresDoProtheus(codigos))
-                {
-                    var OperadorSelect = OperadorRepositorio.Listar(x => x.CodigoProtheus == item.CodigoProtheus).FirstOrDefault();
-                    if (OperadorSelect == null)
-                    {
-                        item.SalaControle = true;
-                        OperadorRepositorio.Adicionar(item);
-
-                    }
-                    else
-                    {
-                        OperadorSelect.SalaControle = true;
-                        OperadorRepositorio.Editar(OperadorSelect);
-                        lRetorno.Mensagem = "Cadastro realizado com sucesso!";
-                    }
-
-                    
-                }
+                lRetorno.Mensagem = "Alocação realizada com sucesso!";
 
             }
             catch (Exception ex)

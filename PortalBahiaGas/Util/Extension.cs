@@ -1,4 +1,5 @@
 ﻿using PortalBahiaGas.Attribute;
+using PortalBahiaGas.Models.Entidade.Enuns;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,6 +30,7 @@ public static class Extension
         }
         return null;
     }
+
 
     public static SelectList ToSelectList<TEnum>(this TEnum obj, TipoFiltro tipo)
         where TEnum : struct, IComparable, IFormattable, IConvertible
