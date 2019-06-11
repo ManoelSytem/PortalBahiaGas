@@ -37,34 +37,62 @@
             <div class="row">
                 <div class="col-sm-3 col-detail">
                     @Html.DropDownList("OperadorCamacari",
-                       (IEnumerable<SelectListItem>)ViewData["OperadorCamacari"], "Selecione...", new { @class = "form-control" })
+        (IEnumerable<SelectListItem>)ViewData["OperadorCamacari"], "Selecione...", new { @class = "form-control" })
                 </div>
                 <div class="col-sm-3 col-detail">
                     @Html.DropDownList("OperadorFeira",
-                       (IEnumerable<SelectListItem>)ViewData["OperadorFeira"], "Selecione...", new { @class = "form-control" })
+        (IEnumerable<SelectListItem>)ViewData["OperadorFeira"], "Selecione...", new { @class = "form-control" })
                 </div>
                 <div class="col-sm-3 col-detail">
                     @Html.DropDownList("OperadorSalvador",
-                     (IEnumerable<SelectListItem>)ViewData["OperadorSalvador"], "Selecione...", new { @class = "form-control" })
+      (IEnumerable<SelectListItem>)ViewData["OperadorSalvador"], "Selecione...", new { @class = "form-control" })
                 </div>
                 <div class="col-sm-3 col-detail">
                     @Html.DropDownList("OperadorSalaControle",
-                     (IEnumerable<SelectListItem>)ViewData["OperadorSalaControle"], "Selecione...", new { @class = "form-control" })
+      (IEnumerable<SelectListItem>)ViewData["OperadorSalaControle"], "Selecione...", new { @class = "form-control" })
                 </div>
             </div>
         </div>
     </div>
-    <div  style="align-content:center" >
+
+    <div style="align-content:center">
         <button type="button" class="btn btn-primary" onclick="AdicionarOperador()">Adicionar operadores</button>
     </div>
-        <div class="panel panel-default ">
-            <div class="panel-heading">Alocação de operadores</div>
-            <div id="panel" class="panel-body">
-            </div>
+    <div class="panel panel-default ">
+        <div class="panel-heading">Alocação de operadores</div>
+        <div id="panel" class="panel-body">
+            @{
+
+                if ((bool)ViewData["editar"])
+                {
+                    <div class="row">
+                        <div style="display:none" class="col-sm-1 col-header">&nbsp;</div>
+                        <div class="col-sm-3 col-header">
+                            Local
+                        </div>
+                        <div class="col-sm-8 col-header">Operador</div>
+                    </div>
+                    foreach (PortalBahiaGas.Models.Entidade.OperadorRegistroTurno item in ((List<PortalBahiaGas.Models.Entidade.OperadorRegistroTurno>)ViewData["OperadoresRegistroTurno"]))
+                    {
+                        <div class="row">
+                            <div class="col-sm-1 col-header" style="height:23px;display:none;">
+                                @Html.CheckBox("CodigoProtheus", Model.Operadores.Any(x => x.CodigoProtheus == item.Operador.CodigoProtheus), new { @value = item.Operador.CodigoProtheus })
+                            </div>
+                            <div class="col-sm-3 col-detail">
+                                @item.Local
+                            </div>
+                            <div class="col-sm-8 col-detail">
+                                @item.Operador.Nome
+                            </div>
+                        </div>
+                    }
+                }
+            }
         </div>
-        <div class="btn-group pull-right">
-            <button type="button" class="btn btn-success" onclick="Salvar('formTurno');">Salvar</button>
-            <button type="button" class="btn btn-danger" onclick="window.location = '@Url.Action("Index", "Home")';">Voltar</button>
-        </div>
+    </div>
+    <div class="btn-group pull-right">
+        <button type="button" class="btn btn-success" onclick="Salvar('formTurno');">Salvar</button>
+        <button type="button" class="btn btn-danger" onclick="window.location = '@Url.Action("Index", "Home")';">Voltar</button>
+    </div>
 </form>
 @Scripts.Render("~/Scripts/views/Turno.js")

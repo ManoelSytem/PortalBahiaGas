@@ -5,7 +5,7 @@
 }
 <div class="container-fluid" id="grid">
     <div class="row">
-        <div class="col-sm-1 col-header">@Html.CheckBox("CodigoProtheus", false, new { @value = "01" })</div>
+        <div  style="display:none" class="col-sm-1 col-header">&nbsp;</div>
         <div class="col-sm-3 col-header">
             Local
         </div>
@@ -14,7 +14,9 @@
     @foreach (PortalBahiaGas.ViewModel.VmOperador item in ((List<PortalBahiaGas.ViewModel.VmOperador>)ViewData["OperadorPreSelecao"]).OrderBy(x => x.Localidade).ThenBy(x => x.Nome))
     {
     <div class="row">
-        <div class="col-sm-1 col-detail">@Html.CheckBox("CodigoProtheus", false, new { @value = item.CodigoProtheus })</div>
+        <div style="display:none" col-sm-1 col-detail">
+            @Html.CheckBox("CodigoProtheus", true, new { @value = item.CodigoProtheus })
+            </div>
         <div class="col-sm-3 col-detail">
             @item.Localidade
         </div>

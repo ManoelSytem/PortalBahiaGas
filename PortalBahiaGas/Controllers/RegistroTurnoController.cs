@@ -34,11 +34,15 @@ namespace PortalBahiaGas.Controllers
             if (Id != 0)
             {
                 ViewData["acao"] = EAcao.Editar;
+                ViewData["editar"] = true;
                 lRegistroTurno = TurnoRepositorio.ObterPorId(Id);
+                List<Operador> listaOperador = new List<Operador>();
+                ViewData.Add("OperadoresRegistroTurno", lRegistroTurno.OperadorRegistroTurno.ToList());
             }
             else
             {
                 ViewData["acao"] = EAcao.Inserir;
+                ViewData["editar"] = false;
                 if (TurnoRepositorio.Listar().Count() > 0)
                 {
                     DateTime? lData = TurnoRepositorio.Listar().Max(x => x.Data);
@@ -228,13 +232,18 @@ namespace PortalBahiaGas.Controllers
             {
                 lRegistroTurno.DataCriacao = DateTime.Now;
                 lRegistroTurno.UsuarioCriacao = lUsuario.Login;
+                
                 lRegistroTurno.Turma = lRegistroTurno.ObterTurma(pFormulario.GetValue("Turma").AttemptedValue);
                 Operadores.ForEach(x => lRegistroTurno.OperadorRegistroTurno.Add(new OperadorRegistroTurno() { Operador = x, Local = x.Localidade}));
-                string SalaControlIdUser = pFormulario.GetValue("OperadorSalaControle").AttemptedValue;
+                string operadorSalaControle = pFormulario.GetValue("OperadorSalaControle").AttemptedValue;
                 foreach (var opRegTurno in lRegistroTurno.OperadorRegistroTurno)
                 {
-                        if (opRegTurno.Operador.Id == Convert.ToInt32(SalaControlIdUser))
-                            opRegTurno.SalaControle = true;
+                    if (opRegTurno.Operador.Id == Convert.ToInt32(operadorSalaControle))
+                    {
+                        opRegTurno.SalaControle = true;
+                        opRegTurno.Local = "SALA DE CONTROLE";
+                    }
+                        
                 }
 
                 lRegistroTurno = TurnoRepositorio.Adicionar(lRegistroTurno);
@@ -248,21 +257,19 @@ namespace PortalBahiaGas.Controllers
                 lRegistroTurno.Turma =  lRegistroTurno.ObterTurma(pFormulario.GetValue("Turma").AttemptedValue);
                 lRegistroTurno.OperadorRegistroTurno.Clear();
                 Operadores.ForEach(x => lRegistroTurno.OperadorRegistroTurno.Add(new OperadorRegistroTurno() { Operador = x, Local = x.Localidade}));
-                string SalaControlIdUser = pFormulario.GetValue("OperadorSalaControle").AttemptedValue;
-                bool SalaControleExiste = false;
+                string operadorSalaControle = pFormulario.GetValue("OperadorSalaControle").AttemptedValue;
                 foreach (var opRegTurno in lRegistroTurno.OperadorRegistroTurno)
                 {
-                    if (opRegTurno.Operador.Id == Convert.ToInt32(SalaControlIdUser))
+                    if (opRegTurno.Operador.CodigoProtheus == operadorSalaControle)
                     {
                         opRegTurno.SalaControle = true;
-                        SalaControleExiste = true;
+                        opRegTurno.Local = "SALA DE CONTROLE";
                     }
-                        
-                    
+
                 }
+
                 lRegistroTurno = TurnoRepositorio.Editar(lRegistroTurno);
-                if (!SalaControleExiste)
-                    throw new Exception("Operador não foi selecionado! Favor selecionar o operador na lista de operadores.");
+                
 
             }
 
