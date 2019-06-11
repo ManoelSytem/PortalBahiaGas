@@ -119,6 +119,7 @@ namespace PortalBahiaGas.Controllers
             return Json(lRetorno);
         }
 
+
         public ActionResult ObterAbas(FormCollection pFormulario)
         {
             string aba = string.Empty;
@@ -804,7 +805,10 @@ namespace PortalBahiaGas.Controllers
             //ViewData.Add("Infraestruturas", new SelectList(InfraestruturaRepositorio.Listar(), "Id", "Nome"));
             ViewData.Add("Regioes", new SelectList(RegiaoRepositorio.Listar(), "Id", "Nome"));
 
-            List<Operador> listaOperaSalaControle = new List<Operador>();
+            List<Operador> listOperadorCamacari = new List<Operador>();
+            List<Operador> listaOperaOperadorFeira = new List<Operador>();
+            List<Operador> listaOperaOperadorSalvador = new List<Operador>();
+            List<Operador> listaOperaOperadorSalaControle = new List<Operador>();
 
             foreach (Operador operador in OperadorRepositorio.Listar())
             {
@@ -812,12 +816,27 @@ namespace PortalBahiaGas.Controllers
                 {
                     if(operador.Alocacao == (int)ESala.Reg1)
                     {
-                      operador.Localidade = operadorProthues.Localidade; operador.Nome = operadorProthues.Nome; listaOperaSalaControle.Add(operador);
+                      operador.Localidade = operadorProthues.Localidade; operador.Nome = operadorProthues.Nome; listOperadorCamacari.Add(operador);
+                    }
+                    if (operador.Alocacao == (int)ESala.Reg2)
+                    {
+                        operador.Localidade = operadorProthues.Localidade; operador.Nome = operadorProthues.Nome; listaOperaOperadorFeira.Add(operador);
+                    }
+                    if (operador.Alocacao == (int)ESala.Reg3)
+                    {
+                        operador.Localidade = operadorProthues.Localidade; operador.Nome = operadorProthues.Nome; listaOperaOperadorSalvador.Add(operador);
+                    }
+                    if (operador.Alocacao == (int)ESala.Reg4)
+                    {
+                        operador.Localidade = operadorProthues.Localidade; operador.Nome = operadorProthues.Nome; listaOperaOperadorSalaControle.Add(operador);
                     }
                 }
             }
 
-            ViewData.Add("OperadorSalaControle", new SelectList(listaOperaSalaControle,"Id", "Nome","Localidade",1));
+            ViewData.Add("OperadorCamacari", listOperadorCamacari.Select(op => new SelectListItem {Text = op.Nome, Value = op.CodigoProtheus }));
+            ViewData.Add("OperadorFeira", listaOperaOperadorFeira.Select(op => new SelectListItem { Text = op.Nome, Value = op.CodigoProtheus }));
+            ViewData.Add("OperadorSalvador", listaOperaOperadorSalvador.Select(op => new SelectListItem { Text = op.Nome, Value = op.CodigoProtheus }));
+            ViewData.Add("OperadorSalaControle", listaOperaOperadorSalaControle.Select(op => new SelectListItem { Text = op.Nome, Value = op.CodigoProtheus }));
         }
 
         private EStatus ObterStatus(String pInicio, String pAtendimento, String pConclusao)

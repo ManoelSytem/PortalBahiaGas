@@ -57,7 +57,95 @@ namespace PortalBahiaGas.Controllers
                 }
             }
                
-            ViewData.Add("OperadorSalaControle", listaOperaSalaControle);
+            ViewData.Add("OperadorSalaControle", listaOperaSalaControle.ToList());
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult AlocacaoOperador(string CodigoProthues, string Local, string NomeOperador, string CodigoProthuesF, string LocalF, string NomeOperadorF, string CodigoProthuesS, string LocalS, string NomeOperadorS, string CodigoProthuesSl, string LocalSl, string NomeOperadorSl)
+        {
+            List<VmOperador> listaOperaPreSelecionado = new List<VmOperador>();
+
+
+            listaOperaPreSelecionado = (List<VmOperador>)Session["listaOperaPreSelecionado"];
+            this.Session.Remove("listaOperaPreSelecionado");
+
+            if(listaOperaPreSelecionado != null) {
+
+                VmOperador operadorVm = new VmOperador();
+                operadorVm.CodigoProtheus = CodigoProthues;
+                operadorVm.Localidade = "Camaçari";
+                operadorVm.Nome = NomeOperador;
+
+                VmOperador operadorVF = new VmOperador();
+                operadorVF.CodigoProtheus = CodigoProthuesF;
+                operadorVF.Localidade = "Feira de Santana";
+                operadorVF.Nome = NomeOperadorF;
+               
+
+                VmOperador operadorVS = new VmOperador();
+                operadorVS.CodigoProtheus = CodigoProthuesS;
+                operadorVS.Localidade = "Salvador";
+                operadorVS.Nome = NomeOperadorS;
+              
+
+                VmOperador operadorVSL = new VmOperador();
+                operadorVSL.CodigoProtheus = CodigoProthuesSl;
+                operadorVSL.Localidade = "Sala de Controle";
+                operadorVSL.Nome = NomeOperadorSl;
+              
+                if (!listaOperaPreSelecionado.Any(op => op.CodigoProtheus == operadorVm.CodigoProtheus))
+                {
+                    listaOperaPreSelecionado.Add(operadorVm);
+                }
+                if (!listaOperaPreSelecionado.Any(op => op.CodigoProtheus == operadorVF.CodigoProtheus))
+                {
+                    listaOperaPreSelecionado.Add(operadorVF);
+                }
+                if (!listaOperaPreSelecionado.Any(op => op.CodigoProtheus == operadorVS.CodigoProtheus))
+                {
+                    listaOperaPreSelecionado.Add(operadorVS);
+                }
+                if (!listaOperaPreSelecionado.Any(op => op.CodigoProtheus == operadorVS.CodigoProtheus))
+                {
+                    listaOperaPreSelecionado.Add(operadorVSL);
+                }
+
+                this.Session.Add("listaOperaPreSelecionado", listaOperaPreSelecionado);
+                ViewData.Add("OperadorPreSelecao", listaOperaPreSelecionado.ToList());
+            }
+            else {
+
+                List<VmOperador> listaOperaPreSelecionadoNew = new List<VmOperador>();
+                VmOperador operadorVm = new VmOperador();
+                operadorVm.CodigoProtheus = CodigoProthues;
+                operadorVm.Localidade = "Camaçari";
+                operadorVm.Nome = NomeOperador;
+                listaOperaPreSelecionadoNew.Add(operadorVm);
+
+                VmOperador operadorVF = new VmOperador();
+                        operadorVF.CodigoProtheus = CodigoProthuesF;
+                        operadorVF.Localidade = "Feira de Santana";
+                        operadorVF.Nome = NomeOperadorF;
+                listaOperaPreSelecionadoNew.Add(operadorVF);
+
+                     VmOperador operadorVS = new VmOperador();
+                        operadorVS.CodigoProtheus = CodigoProthuesS;
+                        operadorVS.Localidade = "Salvador";
+                        operadorVS.Nome = NomeOperadorS;
+                listaOperaPreSelecionadoNew.Add(operadorVS);
+
+                     VmOperador operadorVSL = new VmOperador();
+                        operadorVSL.CodigoProtheus = CodigoProthuesSl;
+                        operadorVSL.Localidade = "Sala de Controle";
+                        operadorVSL.Nome = NomeOperadorSl;
+                listaOperaPreSelecionadoNew.Add(operadorVSL);
+                this.Session.Add("listaOperaPreSelecionado", listaOperaPreSelecionadoNew);
+
+                ViewData.Add("OperadorPreSelecao", listaOperaPreSelecionadoNew.ToList());
+            }
+
+            
             return View();
         }
 

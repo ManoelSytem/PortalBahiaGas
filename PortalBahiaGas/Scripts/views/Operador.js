@@ -80,7 +80,6 @@ function SalvarAlocaoOperador(pForm) {
     var els = document.querySelectorAll("input[type='radio']");
     for (var i = 0; i < els.length; i++) {
         if (els[i].checked) {
-            alert(els[i].value);
             values.push(els[i].value);
         }
     }
@@ -104,6 +103,31 @@ $(document).ready(function () {
             $(this).prop("checked", true);
         } else {
             $(this).prop("checked",false);
+        }
+    });
+});
+
+
+function LimparRadioButton(pForm) {
+
+    var els = document.querySelectorAll("input[type='radio']");
+    for (var i = 0; i < els.length; i++) {
+        if (els[i].checked) {
+            els[i].checked = false;
+        }
+    }
+
+}
+
+
+
+//alterar estado do checkbox
+$(document).ready(function () {
+    $('input[name="SalaControle"]').on('change', function () {
+        if ($(this).prop("checked")) {
+            $(this).prop("checked", true);
+        } else {
+            $(this).prop("checked", false);
         }
     });
 });

@@ -1,0 +1,26 @@
+﻿@model PortalBahiaGas.Models.Entidade.Operador
+@{
+   
+    Layout = null;
+}
+<div class="container-fluid" id="grid">
+    <div class="row">
+        <div class="col-sm-1 col-header">@Html.CheckBox("CodigoProtheus", false, new { @value = "01" })</div>
+        <div class="col-sm-3 col-header">
+            Local
+        </div>
+        <div class="col-sm-8 col-header">Operador</div>
+    </div>
+    @foreach (PortalBahiaGas.ViewModel.VmOperador item in ((List<PortalBahiaGas.ViewModel.VmOperador>)ViewData["OperadorPreSelecao"]).OrderBy(x => x.Localidade).ThenBy(x => x.Nome))
+    {
+    <div class="row">
+        <div class="col-sm-1 col-detail">@Html.CheckBox("CodigoProtheus", false, new { @value = item.CodigoProtheus })</div>
+        <div class="col-sm-3 col-detail">
+            @item.Localidade
+        </div>
+        <div class="col-sm-8 col-detail">
+            @item.Nome
+        </div>
+    </div>
+    }
+</div>

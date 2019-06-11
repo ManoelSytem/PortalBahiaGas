@@ -27,34 +27,44 @@
     </div>
     <div class="panel panel-default ">
         <div class="panel-heading"></div>
-            <div class="container-fluid" id="grid">
-                <div class="row">
-                    <div class="col-sm-3 col-header">Salvador</div>
-                    <div class="col-sm-3 col-header">Camaçari</div>
-                    <div class="col-sm-3 col-header">Feira de Santana</div>
-                    <div class="col-sm-3 col-header">Sala controle</div>
+        <div class="container-fluid" id="grid">
+            <div class="row">
+                <div class="col-sm-3 col-header">Camaçari</div>
+                <div class="col-sm-3 col-header">Feira de Santana</div>
+                <div class="col-sm-3 col-header">Salvador</div>
+                <div class="col-sm-3 col-header">Sala controle</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 col-detail">
+                    @Html.DropDownList("OperadorCamacari",
+                       (IEnumerable<SelectListItem>)ViewData["OperadorCamacari"], "Selecione...", new { @class = "form-control" })
                 </div>
-                <div class="row">
-                        @Html.DropDownList("OperadorSalaControle",
-                            (IEnumerable<SelectListItem>)ViewData["OperadorSalaControle"], "Selecione...")
-                        <div class="col-sm-3 col-detail">
-                            @Html.DropDownList("OperadorSalaControle",
-                             (IEnumerable<SelectListItem>)ViewData["OperadorSalaControle"], "Selecione...")
-                        </div>
-                        <div class="col-sm-3 col-detail">
-                            @Html.DropDownList("OperadorSalaControle",
-                             (IEnumerable<SelectListItem>)ViewData["OperadorSalaControle"], "Selecione...")
-                        </div>
-                        <div class="col-sm-3 col-detail">
-                            @Html.DropDownList("OperadorSalaControle",
-                             (IEnumerable<SelectListItem>)ViewData["OperadorSalaControle"], "Selecione...")
-                        </div>
+                <div class="col-sm-3 col-detail">
+                    @Html.DropDownList("OperadorFeira",
+                       (IEnumerable<SelectListItem>)ViewData["OperadorFeira"], "Selecione...", new { @class = "form-control" })
+                </div>
+                <div class="col-sm-3 col-detail">
+                    @Html.DropDownList("OperadorSalvador",
+                     (IEnumerable<SelectListItem>)ViewData["OperadorSalvador"], "Selecione...", new { @class = "form-control" })
+                </div>
+                <div class="col-sm-3 col-detail">
+                    @Html.DropDownList("OperadorSalaControle",
+                     (IEnumerable<SelectListItem>)ViewData["OperadorSalaControle"], "Selecione...", new { @class = "form-control" })
                 </div>
             </div>
         </div>
-    <div class="btn-group pull-right">
-        <button type="button" class="btn btn-success" onclick="Salvar('formTurno');">Salvar</button>
-        <button type="button" class="btn btn-danger" onclick="window.location = '@Url.Action("Index", "Home")';">Voltar</button>
     </div>
+    <div  style="align-content:center" >
+        <button type="button" class="btn btn-primary" onclick="AdicionarOperador()">Adicionar operadores</button>
+    </div>
+        <div class="panel panel-default ">
+            <div class="panel-heading">Alocação de operadores</div>
+            <div id="panel" class="panel-body">
+            </div>
+        </div>
+        <div class="btn-group pull-right">
+            <button type="button" class="btn btn-success" onclick="Salvar('formTurno');">Salvar</button>
+            <button type="button" class="btn btn-danger" onclick="window.location = '@Url.Action("Index", "Home")';">Voltar</button>
+        </div>
 </form>
 @Scripts.Render("~/Scripts/views/Turno.js")
