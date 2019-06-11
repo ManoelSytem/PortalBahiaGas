@@ -73,6 +73,65 @@ function Salvar(linha) {
     });
 }
 
+function SalvarAlocaoOperador(pForm) {
+
+    var values = [];
+
+    var els = document.querySelectorAll("input[type='radio']");
+    for (var i = 0; i < els.length; i++) {
+        if (els[i].checked) {
+            values.push(els[i].value);
+        }
+    }
+
+    $.ajax({
+        url: "Sala/SalvarAlocacaoOperadores",
+        data: { valuesSelect: values},
+        type: 'post'
+    }).done(function (data) {
+        if (!data.Erro) {
+            alert(data.Mensagem);
+            location.reload();
+        } 
+    });
+}
+
+//alterar estado do checkbox
+$(document).ready(function () {
+    $('input[name="SalaControle"]').on('change', function () {
+        if ($(this).prop("checked")) {
+            $(this).prop("checked", true);
+        } else {
+            $(this).prop("checked",false);
+        }
+    });
+});
+
+
+function LimparRadioButton(pForm) {
+
+    var els = document.querySelectorAll("input[type='radio']");
+    for (var i = 0; i < els.length; i++) {
+        if (els[i].checked) {
+            els[i].checked = false;
+        }
+    }
+
+}
+
+
+
+//alterar estado do checkbox
+$(document).ready(function () {
+    $('input[name="SalaControle"]').on('change', function () {
+        if ($(this).prop("checked")) {
+            $(this).prop("checked", true);
+        } else {
+            $(this).prop("checked", false);
+        }
+    });
+});
+
 function Remover(linha) {
     var usuario = {
         Id: $(linha).parent().parent().find("input[name='id']").val(),
@@ -81,7 +140,7 @@ function Remover(linha) {
     if (usuario.Id == "0") {
         $(linha).parent().parent().remove();
     } else {
-        if (confirm("Confirma a excluisão do operador: " + usuario.Nome + "?")) {
+        if (confirm("Confirma a exclusão do operador: " + usuario.Nome + "?")) {
             $.ajax({
                 url: "Operador/Remover",
                 data: usuario,

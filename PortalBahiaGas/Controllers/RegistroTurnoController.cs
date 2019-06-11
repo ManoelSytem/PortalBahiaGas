@@ -222,7 +222,7 @@ namespace PortalBahiaGas.Controllers
                 { lOperador = OperadorRepositorio.Adicionar(item); }
                 else
                 {
-                    lOperador.Localidade = item.Localidade;
+                    lOperador.Localidade = ObterDescricaoAlocacao(lOperador.Alocacao);
                     Operadores.Add(lOperador);
                 }
                 
@@ -234,7 +234,7 @@ namespace PortalBahiaGas.Controllers
                 lRegistroTurno.UsuarioCriacao = lUsuario.Login;
                 
                 lRegistroTurno.Turma = lRegistroTurno.ObterTurma(pFormulario.GetValue("Turma").AttemptedValue);
-                Operadores.ForEach(x => lRegistroTurno.OperadorRegistroTurno.Add(new OperadorRegistroTurno() { Operador = x, Local = x.Localidade}));
+                Operadores.ForEach(x => lRegistroTurno.OperadorRegistroTurno.Add(new OperadorRegistroTurno() { Operador = x, Local = x.Localidade }));
                 string operadorSalaControle = pFormulario.GetValue("OperadorSalaControle").AttemptedValue;
                 foreach (var opRegTurno in lRegistroTurno.OperadorRegistroTurno)
                 {
@@ -297,6 +297,7 @@ namespace PortalBahiaGas.Controllers
             if (!String.IsNullOrEmpty(lMensagem.ToString())) throw new Exception(lMensagem.ToString());
            
         }
+
         #endregion
 
         #region[Gasoduto]
@@ -949,6 +950,23 @@ namespace PortalBahiaGas.Controllers
                 pMensagem.AppendLine("A data Conslusão deve ser posterior à data Início!");
             }
 
+        }
+
+        private static string ObterDescricaoAlocacao(int valor)
+        {
+            switch (valor)
+            {
+                case 1:
+                    return "CAMAÇARI";
+                case 2:
+                    return "FEIRA DE SANTANA";
+                case 3:
+                    return "SALVADOR";
+                case 4:
+                    return "SALA DE CONTROLE";
+            }
+
+            return "Não definido";
         }
 
     }

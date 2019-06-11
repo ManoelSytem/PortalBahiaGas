@@ -81,7 +81,7 @@ function Remover(linha) {
     if (usuario.Id == "0") {
         $(linha).parent().parent().remove();
     } else {
-        if (confirm("Confirma a excluisão da região: " + usuario.Nome + "?")) {
+        if (confirm("Confirma a exclusão da região: " + usuario.Nome + "?")) {
             $.ajax({
                 url: "Regiao/Remover",
                 data: usuario,

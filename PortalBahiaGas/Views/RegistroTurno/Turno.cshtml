@@ -22,34 +22,32 @@
         </div>
         <div class="form-group">
             @Html.Label("Turma:")
-            @Html.DropDownListFor(x => x.Turma, PortalBahiaGas.Models.Entidade.Enuns.ETurma.D.ToSelectList(), new { @class = "form-control" })
+            @Html.DropDownListFor(x => x.Turma, PortalBahiaGas.Models.Entidade.Enuns.ETurma.E.ToSelectList(), new { @class = "form-control" })
         </div>.
     </div>
     <div class="panel panel-default ">
         <div class="panel-heading"></div>
         <div class="container-fluid" id="grid">
             <div class="row">
-                <div class="col-sm-3 col-header">Camaçari</div>
-                <div class="col-sm-3 col-header">Feira de Santana</div>
-                <div class="col-sm-3 col-header">Salvador</div>
-                <div class="col-sm-3 col-header">Sala controle</div>
-            </div>
-            <div class="row">
-                <div class="col-sm-3 col-detail">
+                <div class="col-md-3 col-sm-4">
+                    <label for="DataInicio">Camaçari</label>
                     @Html.DropDownList("OperadorCamacari",
-        (IEnumerable<SelectListItem>)ViewData["OperadorCamacari"], "Selecione...", new { @class = "form-control" })
+         (IEnumerable<SelectListItem>)ViewData["OperadorCamacari"], "Selecione...", new { @style= "width:250px", @class = "form-control" })
                 </div>
-                <div class="col-sm-3 col-detail">
+                <div class="col-md-3 col-sm-4">
+                    <label for="DataFim">Feira de Santana</label>
                     @Html.DropDownList("OperadorFeira",
-        (IEnumerable<SelectListItem>)ViewData["OperadorFeira"], "Selecione...", new { @class = "form-control" })
+      (IEnumerable<SelectListItem>)ViewData["OperadorFeira"], "Selecione...", new { @style = "width:250px", @class = "form-control" })
                 </div>
-                <div class="col-sm-3 col-detail">
+                <div class="col-md-3 col-sm-4">
+                    <label for="Filial">Salvador</label>
                     @Html.DropDownList("OperadorSalvador",
-      (IEnumerable<SelectListItem>)ViewData["OperadorSalvador"], "Selecione...", new { @class = "form-control" })
+   (IEnumerable<SelectListItem>)ViewData["OperadorSalvador"], "Selecione...", new { @style = "width:250px", @class = "form-control" })
                 </div>
-                <div class="col-sm-3 col-detail">
+                <div class="col-md-3 col-sm-4">
+                    <label for="Filial">Sala de Controle</label>
                     @Html.DropDownList("OperadorSalaControle",
-      (IEnumerable<SelectListItem>)ViewData["OperadorSalaControle"], "Selecione...", new { @class = "form-control" })
+        (IEnumerable<SelectListItem>)ViewData["OperadorSalaControle"], "Selecione...", new { @style = "width:250px", @class = "form-control" })
                 </div>
             </div>
         </div>

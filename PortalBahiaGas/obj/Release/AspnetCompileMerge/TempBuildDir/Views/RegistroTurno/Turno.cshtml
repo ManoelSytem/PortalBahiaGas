@@ -26,33 +26,68 @@
         </div>.
     </div>
     <div class="panel panel-default ">
-        <div class="panel-heading">Operadores</div>
-        <div class="panel-body">
-            <div class="container-fluid" id="grid">
-                <div class="row">
-                    <div class="col-sm-1 col-header">
-                        &nbsp;
-                    </div>
-                    <div class="col-sm-6 col-header">Operadores</div>
-                    <div class="col-sm-2 col-header">
-                       Sala de Controle
-                    </div>
-                </div>
-                @foreach (PortalBahiaGas.Models.Entidade.Operador item in ((List<PortalBahiaGas.Models.Entidade.Operador>)ViewData["Operadores"]).OrderBy(x => x.Localidade).ThenBy(x => x.Nome))
-                {
-                <div class="row">
-                    <div class="col-sm-1 col-header" style="height:23px;">
-                        @Html.CheckBox("CodigoProtheus", Model.OperadorRegistroTurno.Any(x => x.Operador.CodigoProtheus == item.CodigoProtheus), new { @value = item.CodigoProtheus })
-                    </div>
-                    <div class="col-sm-6 col-detail">
-                        <b>[@item.Localidade]</b> @item.Nome
-                    </div>
-                    <div class="col-sm-2 col-header" style="height:23px;align-content:center">
-                        @Html.CheckBox("SalaControle", Model.OperadorRegistroTurno.Any(x => x.Operador.CodigoProtheus == item.CodigoProtheus && x.SalaControle == true), new { @onclick = "ValidaSelectSalaControle()", @value = item.CodigoProtheus })
-                    </div>
-                </div>
-                }
+        <div class="panel-heading"></div>
+        <div class="container-fluid" id="grid">
+            <div class="row">
+                <div class="col-sm-3 col-header">Camaçari</div>
+                <div class="col-sm-3 col-header">Feira de Santana</div>
+                <div class="col-sm-3 col-header">Salvador</div>
+                <div class="col-sm-3 col-header">Sala controle</div>
             </div>
+            <div class="row">
+                <div class="col-sm-3 col-detail">
+                    @Html.DropDownList("OperadorCamacari",
+        (IEnumerable<SelectListItem>)ViewData["OperadorCamacari"], "Selecione...", new { @class = "form-control" })
+                </div>
+                <div class="col-sm-3 col-detail">
+                    @Html.DropDownList("OperadorFeira",
+        (IEnumerable<SelectListItem>)ViewData["OperadorFeira"], "Selecione...", new { @class = "form-control" })
+                </div>
+                <div class="col-sm-3 col-detail">
+                    @Html.DropDownList("OperadorSalvador",
+      (IEnumerable<SelectListItem>)ViewData["OperadorSalvador"], "Selecione...", new { @class = "form-control" })
+                </div>
+                <div class="col-sm-3 col-detail">
+                    @Html.DropDownList("OperadorSalaControle",
+      (IEnumerable<SelectListItem>)ViewData["OperadorSalaControle"], "Selecione...", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="align-content:center">
+        <button type="button" class="btn btn-primary" onclick="AdicionarOperador()">Adicionar operadores</button>
+    </div>
+    <div class="panel panel-default ">
+        <div class="panel-heading">Alocação de operadores</div>
+        <div id="panel" class="panel-body">
+            @{
+
+                if ((bool)ViewData["editar"])
+                {
+                    <div class="row">
+                        <div style="display:none" class="col-sm-1 col-header">&nbsp;</div>
+                        <div class="col-sm-3 col-header">
+                            Local
+                        </div>
+                        <div class="col-sm-8 col-header">Operador</div>
+                    </div>
+                    foreach (PortalBahiaGas.Models.Entidade.OperadorRegistroTurno item in ((List<PortalBahiaGas.Models.Entidade.OperadorRegistroTurno>)ViewData["OperadoresRegistroTurno"]))
+                    {
+                        <div class="row">
+                            <div class="col-sm-1 col-header" style="height:23px;display:none;">
+                                @Html.CheckBox("CodigoProtheus", Model.Operadores.Any(x => x.CodigoProtheus == item.Operador.CodigoProtheus), new { @value = item.Operador.CodigoProtheus })
+                            </div>
+                            <div class="col-sm-3 col-detail">
+                                @item.Local
+                            </div>
+                            <div class="col-sm-8 col-detail">
+                                @item.Operador.Nome
+                            </div>
+                        </div>
+                    }
+                }
+            }
         </div>
     </div>
     <div class="btn-group pull-right">

@@ -11,5 +11,11 @@ namespace PortalBahiaGas.Models.Entidade
         public virtual String Localidade { get; set; }
         public int Alocacao { get; set; }
         public virtual ICollection<OperadorRegistroTurno> OperadorRegistroTurno { get; set; }
+
+       
     }
+
+    
+
+
 }

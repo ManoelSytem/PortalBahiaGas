@@ -19,4 +19,7 @@ namespace PortalBahiaGas.Models.Entidade.Enuns
         Reg4 = 4
     }
 
+
+
+
 }

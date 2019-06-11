@@ -5,11 +5,39 @@
     }
 });
 
+
+function AdicionarOperador() {
+
+    var OperadorCamacariText = $("#OperadorCamacari option:selected").text();
+    var OperadorCamacariValor = $("#OperadorCamacari option:selected").val();
+
+    var OperadorFeiraText = $("#OperadorFeira option:selected").text();
+    var OperadorFeiraValor = $("#OperadorFeira option:selected").val();
+
+    var OperadorSalvadorText = $("#OperadorSalvador option:selected").text();
+    var OperadorSalvadorVal = $("#OperadorSalvador option:selected").val();
+
+ 
+    var OperadorSalaControleText = $("#OperadorSalaControle option:selected").text();
+    var OperadorSalaControleValor = $("#OperadorSalaControle option:selected").val();
+
+
+    $.ajax({
+        url: "../../Sala/AlocacaoOperador",
+        data: { codigoProthues: OperadorCamacariValor, local: OperadorCamacariText, nomeOperador: OperadorCamacariText, codigoProthuesF: OperadorFeiraValor, localF: OperadorFeiraValor, nomeOperadorF: OperadorFeiraText, codigoProthuesS: OperadorSalvadorVal, localS: OperadorSalvadorText, nomeOperadorS: OperadorSalvadorText, codigoProthuesSl: OperadorSalaControleValor, localSl: OperadorSalaControleText, nomeOperadorSl: OperadorSalaControleText },
+        type: 'get'
+    }).done(function (data) {
+        $("#panel").html(data);
+    });
+
+}
+
+
 function Salvar(pForm) {
     $(".btn btn-success").disabled = 'true';
     $.ajax({
         url: "../../RegistroTurno/Cadastrar",
-        data: $("#" + pForm).serializeArray(),
+        data: $("#" + pForm).serializeArray(), 
         type: 'post'
     }).done(function (data) {
         $(".btn btn-success").disabled = 'false';
@@ -215,6 +243,7 @@ function SalvarOcorrencia(pForm) {
     });
 }
 
+
 function SalvarPendencia(pForm) {
     $(".btn-salvar").attr("disabled", true);
     $.ajax({
@@ -310,10 +339,6 @@ function CalcularTotalVazaoRetirada() {
     }
 
 }
-
-
-
-
 
 function PopUpPendencia(pIdPendencia, pIdRegistroTurno) {
     var dados = { id: pIdPendencia, idRegistroTurno: pIdRegistroTurno };

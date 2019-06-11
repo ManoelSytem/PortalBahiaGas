@@ -16,10 +16,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/08/2019 16:20:12</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>05/03/2019 12:45:53</publishTime>
+      <publishTime>06/11/2019 15:00:42</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>05/03/2019 12:45:53</publishTime>
+      <publishTime>06/11/2019 15:00:42</publishTime>
     </File>
     <File Include="bin/de/Microsoft.ReportViewer.WebForms.resources.dll">
       <publishTime>06/13/2016 18:24:48</publishTime>
@@ -103,10 +103,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/08/2019 16:20:22</publishTime>
     </File>
     <File Include="bin/PortalBahiaGas.dll">
-      <publishTime>05/03/2019 12:45:40</publishTime>
+      <publishTime>06/11/2019 15:00:17</publishTime>
     </File>
     <File Include="bin/PortalBahiaGas.pdb">
-      <publishTime>05/03/2019 12:45:40</publishTime>
+      <publishTime>06/11/2019 15:00:17</publishTime>
     </File>
     <File Include="bin/pt/Microsoft.ReportViewer.WebForms.resources.dll">
       <publishTime>06/13/2016 18:24:49</publishTime>
@@ -220,7 +220,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/08/2019 16:20:12</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>05/03/2019 12:45:42</publishTime>
+      <publishTime>06/11/2019 15:00:23</publishTime>
     </File>
     <File Include="Scripts/bootstrap-datepicker.js">
       <publishTime>04/08/2019 16:19:53</publishTime>
@@ -418,16 +418,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Scripts/views/Operador.js">
-      <publishTime>04/08/2019 16:19:55</publishTime>
+      <publishTime>06/10/2019 17:58:03</publishTime>
     </File>
     <File Include="Scripts/views/PontoEntrega.js">
       <publishTime>05/03/2019 12:19:44</publishTime>
     </File>
     <File Include="Scripts/views/Regiao.js">
-      <publishTime>04/08/2019 16:19:55</publishTime>
+      <publishTime>06/10/2019 11:21:30</publishTime>
     </File>
     <File Include="Scripts/views/RegistroTurno.js">
-      <publishTime>04/17/2019 17:38:56</publishTime>
+      <publishTime>06/11/2019 09:47:38</publishTime>
     </File>
     <File Include="Scripts/views/Turno.js">
       <publishTime>04/08/2019 16:19:55</publishTime>
@@ -493,7 +493,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Views/Home/Relatorio.cshtml">
-      <publishTime>05/03/2019 09:42:31</publishTime>
+      <publishTime>06/06/2019 19:34:28</publishTime>
     </File>
     <File Include="Views/Login/Index.cshtml">
       <publishTime>04/08/2019 16:19:55</publishTime>
@@ -535,7 +535,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/08/2019 16:19:55</publishTime>
     </File>
     <File Include="Views/PontoEntrega/Index.cshtml">
-      <publishTime>05/03/2019 12:25:48</publishTime>
+      <publishTime>05/03/2019 15:12:04</publishTime>
     </File>
     <File Include="Views/Regiao/Index.cshtml">
       <publishTime>04/08/2019 16:19:55</publishTime>
@@ -568,10 +568,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/08/2019 16:19:56</publishTime>
     </File>
     <File Include="Views/RegistroTurno/Turno.cshtml">
-      <publishTime>04/10/2019 13:41:03</publishTime>
+      <publishTime>06/11/2019 14:57:40</publishTime>
     </File>
     <File Include="Views/RegistroTurno/_Abas.cshtml">
       <publishTime>04/08/2019 16:19:56</publishTime>
+    </File>
+    <File Include="Views/Sala/AlocacaoOperador.cshtml">
+      <publishTime>06/11/2019 14:15:10</publishTime>
+    </File>
+    <File Include="Views/Sala/Index.cshtml">
+      <publishTime>06/10/2019 18:53:14</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>04/08/2019 16:19:56</publishTime>
@@ -580,7 +586,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/11/2015 09:34:01</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>04/08/2019 16:19:56</publishTime>
+      <publishTime>06/04/2019 15:38:04</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>03/11/2015 09:34:02</publishTime>
