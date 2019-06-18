@@ -6,8 +6,8 @@
 });
 
 
-function AdicionarOperador() {
-
+function AdicionarOperador(id) {
+    
     var OperadorCamacariText = $("#OperadorCamacari option:selected").text();
     var OperadorCamacariValor = $("#OperadorCamacari option:selected").val();
 
@@ -24,7 +24,7 @@ function AdicionarOperador() {
 
     $.ajax({
         url: "../../Sala/AlocacaoOperador",
-        data: { codigoProthues: OperadorCamacariValor, local: OperadorCamacariText, nomeOperador: OperadorCamacariText, codigoProthuesF: OperadorFeiraValor, localF: OperadorFeiraValor, nomeOperadorF: OperadorFeiraText, codigoProthuesS: OperadorSalvadorVal, localS: OperadorSalvadorText, nomeOperadorS: OperadorSalvadorText, codigoProthuesSl: OperadorSalaControleValor, localSl: OperadorSalaControleText, nomeOperadorSl: OperadorSalaControleText },
+        data: { codigoProthues: OperadorCamacariValor, local: "CAMAÇARI", nomeOperador: OperadorCamacariText, codigoProthuesF: OperadorFeiraValor, localF: "FEIRA DE SANTANA", nomeOperadorF: OperadorFeiraText, codigoProthuesS: OperadorSalvadorVal, localS: "SALVADOR", nomeOperadorS: OperadorSalvadorText, codigoProthuesSl: OperadorSalaControleValor, localSl: "SALA DE CONTROLE", nomeOperadorSl: OperadorSalaControleText, registroTurnoCodigo: id},
         type: 'get'
     }).done(function (data) {
         $("#panel").html(data);

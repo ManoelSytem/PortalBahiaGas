@@ -62,11 +62,12 @@ namespace PortalBahiaGas.Controllers
         }
 
         [HttpGet]
-        public ActionResult AlocacaoOperador(string CodigoProthues, string Local, string NomeOperador, string CodigoProthuesF, string LocalF, string NomeOperadorF, string CodigoProthuesS, string LocalS, string NomeOperadorS, string CodigoProthuesSl, string LocalSl, string NomeOperadorSl)
+        public ActionResult AlocacaoOperador(string CodigoProthues, string Local, string NomeOperador, string CodigoProthuesF, string LocalF, string NomeOperadorF, string CodigoProthuesS, string LocalS, string NomeOperadorS, string CodigoProthuesSl, string LocalSl, string NomeOperadorSl, string registroTurnoCodigo)
         {
-           
+            if (registroTurnoCodigo == "0") { 
 
                 List<VmOperador> listaOperaPreSelecionadoNew = new List<VmOperador>();
+              
 
                 VmOperador operadorVm = new VmOperador();
                 operadorVm.CodigoProtheus = CodigoProthues;
@@ -97,6 +98,127 @@ namespace PortalBahiaGas.Controllers
                 listaOperaPreSelecionadoNew.Add(operadorVSL);
 
                 ViewData.Add("OperadorPreSelecao", listaOperaPreSelecionadoNew.ToList());
+            }
+            else
+            {
+                List<VmOperador> listaOperaPreSelecionadoNew = new List<VmOperador>();
+                RegistroTurno turno;
+                turno = TurnoRepositorio.ObterPorId(Convert.ToInt32(registroTurnoCodigo));
+
+                OperadorRepositorio = new Repositorio<Operador>(TurnoRepositorio.Contexto);
+                foreach (OperadorRegistroTurno RturnooP in turno.OperadorRegistroTurno.ToList())
+                {
+
+                    VmOperador operadorvM = new VmOperador();
+                    Operador operador = new Operador();
+                    operadorvM.CodigoProtheus = RturnooP.Operador.CodigoProtheus;
+                    operadorvM.Localidade = RturnooP.Local;
+                    foreach (Operador operadorProthues in OperadorRepositorio.ObterOperadoresDoProtheus(RturnooP.Operador.CodigoProtheus))
+                    {
+                        operadorvM.Nome = operadorProthues.Nome;
+
+                    }   
+                    listaOperaPreSelecionadoNew.Add(operadorvM);
+                }
+
+                
+                VmOperador operadorCamaçari = new VmOperador();
+                VmOperador operadorFeira = new VmOperador();
+                VmOperador operadorSalvador = new VmOperador();
+                VmOperador operadorSala = new VmOperador();
+                VmOperador NovoCam = new VmOperador();
+                VmOperador NovoFeira = new VmOperador();
+                VmOperador NovoSalvador= new VmOperador();
+                VmOperador NovoSala = new VmOperador();
+
+                foreach (VmOperador OperadoViewModel in listaOperaPreSelecionadoNew)
+                {
+                    if(OperadoViewModel.Localidade == Local && CodigoProthues != "")
+                    {
+                        operadorCamaçari = OperadoViewModel;
+                        VmOperador operadorVm = new VmOperador();
+                        operadorVm.CodigoProtheus = CodigoProthues;
+                        operadorVm.Localidade = "CAMAÇARI";
+                        operadorVm.Nome = NomeOperador;
+                        NovoCam = operadorVm;
+
+
+                    }
+                    if (OperadoViewModel.Localidade == LocalF && CodigoProthuesF != "")
+                    {
+                        operadorFeira = OperadoViewModel;
+                        VmOperador operadorVF = new VmOperador();
+                        operadorVF.CodigoProtheus = CodigoProthuesF;
+                        operadorVF.Localidade = "FEIRA DE SANTANA";
+                        operadorVF.Nome = NomeOperadorF;
+                        NovoFeira = operadorVF;
+
+
+                    }
+
+                    if (OperadoViewModel.Localidade == LocalS && CodigoProthuesS != "")
+                    {
+                        operadorSalvador = OperadoViewModel;
+                        VmOperador operadorVS = new VmOperador();
+                        operadorVS.CodigoProtheus = CodigoProthuesS;
+                        operadorVS.Localidade = "SALVADOR";
+                        operadorVS.Nome = NomeOperadorS;
+                        NovoSalvador = operadorVS;
+                    }
+
+                    if (OperadoViewModel.Localidade == LocalSl && CodigoProthuesSl != "")
+                    {
+                        operadorSala = OperadoViewModel;
+                        VmOperador operadorVSL = new VmOperador();
+                        operadorVSL.CodigoProtheus = CodigoProthuesSl;
+                        operadorVSL.Localidade = "SALA DE CONTROLE";
+                        operadorVSL.Nome = NomeOperadorSl;
+                        NovoSala = operadorVSL;
+                    }
+
+                    
+                }
+
+                if(operadorCamaçari.CodigoProtheus != null)
+                {
+                    int index = listaOperaPreSelecionadoNew.IndexOf(operadorCamaçari);
+                    listaOperaPreSelecionadoNew.RemoveAt(index);
+                }
+                if (operadorFeira.CodigoProtheus != null)
+                {
+                    int index = listaOperaPreSelecionadoNew.IndexOf(operadorFeira);
+                    listaOperaPreSelecionadoNew.RemoveAt(index);
+                }
+                if (operadorSalvador.CodigoProtheus != null)
+                {
+                    int index = listaOperaPreSelecionadoNew.IndexOf(operadorSalvador);
+                    listaOperaPreSelecionadoNew.RemoveAt(index);
+                }
+                if (operadorSala.CodigoProtheus != null)
+                {
+                    int index = listaOperaPreSelecionadoNew.IndexOf(operadorSala);
+                    listaOperaPreSelecionadoNew.RemoveAt(index);
+                }
+                if(NovoCam.CodigoProtheus != null)
+                {
+                    listaOperaPreSelecionadoNew.Add(NovoCam);
+                }
+                if (NovoFeira.CodigoProtheus != null)
+                {
+                    listaOperaPreSelecionadoNew.Add(NovoFeira);
+                }
+                if (NovoSalvador.CodigoProtheus != null)
+                {
+                    listaOperaPreSelecionadoNew.Add(NovoSalvador);
+                }
+                if (NovoSala.CodigoProtheus != null)
+                {
+                    listaOperaPreSelecionadoNew.Add(NovoSala);
+                }
+
+                ViewData.Add("OperadorPreSelecao", listaOperaPreSelecionadoNew.ToList());
+            }
+
             
             return View();
         }

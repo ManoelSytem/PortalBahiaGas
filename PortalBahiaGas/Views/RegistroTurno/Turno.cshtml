@@ -54,7 +54,7 @@
     </div>
 
     <div style="align-content:center">
-        <button type="button" class="btn btn-primary" onclick="AdicionarOperador()">Adicionar operadores</button>
+        <button type="button" class="btn btn-primary" onclick="AdicionarOperador(@Model.Id)">Adicionar operadores</button>
     </div>
     <div class="panel panel-default ">
         <div class="panel-heading">Alocação de operadores</div>
@@ -76,7 +76,7 @@
                             <div class="col-sm-1 col-header" style="height:23px;display:none;">
                                 @Html.CheckBox("CodigoProtheus", Model.Operadores.Any(x => x.CodigoProtheus == item.Operador.CodigoProtheus), new { @value = item.Operador.CodigoProtheus })
                             </div>
-                            <div class="col-sm-3 col-detail">
+                            <div  class="col-sm-3 col-detail">
                                 @item.Local
                             </div>
                             <div class="col-sm-8 col-detail">
