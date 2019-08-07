@@ -29,8 +29,9 @@ namespace PortalBahiaGas.Controllers
 
             foreach (Operador operador in OperadorRepositorio.Listar())
             {
-                foreach (Operador operadorProthues in OperadorRepositorio.ObterOperadoresDoProtheus(operador.CodigoProtheus))
+                foreach (Operador operadorProthues in OperadorRepositorio.ObterOperadoresDoRM(operador.CodigoProtheus))
                 {
+                    List<string> list = new List<string>();
                     operadorVm = new VmOperador();
                     operadorVm.CodigoProtheus = operadorProthues.CodigoProtheus;
                     operadorVm.Nome = operadorProthues.Nome;

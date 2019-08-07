@@ -363,6 +363,113 @@ namespace PortalBahiaGas.Models.Persistencia
             return lClientes;
         }
 
+        public List<Operador> ObterOperadoresDoRM()
+        {
+            string connString = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=bgasxl01.intranet.bahiagas.com.br)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=ap12hml)));User Id=rm;Password=rm";
+
+            String lQuery = $@"SELECT	PFUNC.CHAPA AS CODIGO,
+                         PFUNC.NOME AS NOME,
+                         CASE
+                         WHEN PFUNC.CODFILIAL = '01' THEN 'SALVADOR'
+                         WHEN PFUNC.CODFILIAL = '03' THEN 'FEIRA DE SANTANA'
+                         WHEN PFUNC.CODFILIAL = '04' THEN 'CAMAÇARI'
+                         ELSE 'OUTRO'
+                         END LOCALIDADE
+                         FROM rm.PFUNC
+                         INNER JOIN rm.PFRATEIOFIXO ON PFUNC.CODCOLIGADA = PFRATEIOFIXO.CODCOLIGADA
+                           AND PFUNC.CHAPA = PFRATEIOFIXO.CHAPA
+                           AND PFRATEIOFIXO.CODCCUSTO = '1012'
+                           WHERE PFUNC.CODSITUACAO IN('A','F','P','T') 
+                           AND PFUNC.JORNADAMENSAL = 10800
+                         ORDER BY LOCALIDADE";
+            //String lQuery = "SELECT RA.RA_FILIAL || RA.RA_MAT AS CODIGO, RA_NOME AS NOME FROM AP6.SRA010 RA WHERE D_E_L_E_T_ = ' ' AND RA.RA_CC = '1012' AND RA.RA_TURREV = 'S' and (RA.RA_SITFOLH = ' ' OR RA.RA_SITFOLH = 'F')";
+
+            OracleDataReader lDR;
+            List<Operador> lClientes = new List<Operador>();
+            OracleConnection lOracleCon = new OracleConnection();
+            lOracleCon.ConnectionString = connString;
+            lOracleCon.Open();
+            try
+            {
+                OracleCommand lComando = new OracleCommand(lQuery, lOracleCon);
+                using (lComando)
+                {
+                    lDR = lComando.ExecuteReader();
+                    while (lDR.Read())
+                    {
+                        lClientes.Add(new Operador()
+                        {
+                            CodigoProtheus = lDR["CODIGO"].ToString().Trim(),
+                            Localidade = lDR["LOCALIDADE"].ToString().Trim(),
+                            Nome = lDR["NOME"].ToString().Trim()
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                lOracleCon.Close();
+            }
+
+            return lClientes;
+        }
+
+        public List<Operador> ObterOperadoresDoRM(String pCodigos)
+        {
+            string connString = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=bgasxl01.intranet.bahiagas.com.br)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=ap12hml)));User Id=rm;Password=rm";
+
+            String lQuery = $@"SELECT PFUNC.CHAPA AS Codigo,
+                            PFUNC.NOME AS Nome,  
+                            CASE
+                            WHEN PFUNC.CODFILIAL = '01' THEN 'SALVADOR'
+                            WHEN PFUNC.CODFILIAL = '03' THEN 'FEIRA DE SANTANA'
+                            WHEN PFUNC.CODFILIAL = '04' THEN 'CAMAÇARI'
+                            ELSE 'OUTRO'
+                            END LOCALIDADE
+                            FROM rm.PFUNC
+                            INNER JOIN rm.PFRATEIOFIXO ON PFUNC.CODCOLIGADA = PFRATEIOFIXO.CODCOLIGADA 
+                            AND PFUNC.CHAPA = PFRATEIOFIXO.CHAPA
+                            AND PFRATEIOFIXO.CODCCUSTO='1012'
+                            WHERE PFUNC.CODSITUACAO IN ('A','F','P','T') AND PFUNC.CHAPA IN("+pCodigos+")  AND PFUNC.JORNADAMENSAL = 10800 ORDER BY LOCALIDADE";
+
+            OracleDataReader lDR;
+            List<Operador> lClientes = new List<Operador>();
+            OracleConnection lOracleCon = new OracleConnection();
+            lOracleCon.ConnectionString = connString;
+            lOracleCon.Open();
+            try
+            {
+                OracleCommand lComando = new OracleCommand(lQuery, lOracleCon);
+                using (lComando)
+                {
+                    lDR = lComando.ExecuteReader();
+                    while (lDR.Read())
+                    {
+                        lClientes.Add(new Operador()
+                        {
+                            CodigoProtheus = lDR["CODIGO"].ToString().Trim(),
+                            Localidade = lDR["LOCALIDADE"].ToString().Trim(),
+                            Nome = lDR["NOME"].ToString().Trim()
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                lOracleCon.Close();
+            }
+
+            return lClientes;
+        }
+
         public List<Operador> ObterOperadoresDoProtheus(String pCodigos)
         {
             String lQuery = "SELECT RA.RA_FILIAL || RA.RA_MAT AS CODIGO, RA_NOME AS NOME,  Case Ra.Ra_Filial When '01' Then 'SALVADOR' When '03' Then 'FEIRA DE SANTANA' When '04' Then 'CAMAÇARI' ELSE 'OUTRO' END AS LOCALIDADE FROM AP6.SRA010 RA WHERE D_E_L_E_T_ = ' ' AND RA.RA_CC = '1012' AND RA.RA_TURREV = 'S'  and (RA.RA_SITFOLH = ' ' OR RA.RA_SITFOLH = 'F' Or Ra.Ra_Sitfolh = 'A') AND  RA.RA_FILIAL || RA.RA_MAT IN(" + pCodigos + ")";
