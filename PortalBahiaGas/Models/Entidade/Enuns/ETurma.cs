@@ -6,7 +6,7 @@ namespace PortalBahiaGas.Models.Entidade.Enuns
     public enum ETurma
     {
         [Description("Selecione...")]
-         E = 1,
+         Z = 1,
         [Description("A")]
          A = 2,
         [Description("B")]
@@ -14,7 +14,9 @@ namespace PortalBahiaGas.Models.Entidade.Enuns
         [Description("C")]
          C = 4,
         [Description("D")]
-         D = 5
+         D = 5,
+        [Description("E")]
+         E = 6
 
     }
 }

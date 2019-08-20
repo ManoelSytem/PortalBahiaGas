@@ -36,6 +36,16 @@ namespace PortalBahiaGas.Models.Persistencia
             return Contexto.Set<T>().Where(pExpressao.Compile()).ToList();
         }
 
+        public ICollection<RegistroTurno> ListarPesquisa(DateTime? inicio, DateTime? fim)
+        {
+            return Contexto.Set<RegistroTurno>().Where(dt => dt.Data >= inicio && dt.Data <= fim).ToList();
+        }
+
+        public ICollection<T> ListarPorExpressao(Expression<Func<T, bool>> pExpressao)
+        {
+            return Contexto.Set<T>().Take(50).OrderByDescending(x => x.Id).ToList();
+        }
+
         public Boolean VerificarExistencia(Expression<Func<T, bool>> pExpressao)
         {
             return Contexto.Set<T>().Any(pExpressao);

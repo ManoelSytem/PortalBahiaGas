@@ -27,7 +27,7 @@ namespace PortalBahiaGas.Controllers
             }
 
             ViewData.Add("perfil", lUsuario.Perfil);
-            return View(RegistroTurno.Listar(x => x.Data >= DateTime.Today.AddDays(-15)));
+            return View(RegistroTurno.ListarPorExpressao(x => x.Data >= DateTime.Today.AddDays(-7)).Where(x => x.Data >= DateTime.Today.AddDays(-7)));
         }
 
         public ActionResult Liberar(Int32 Id)
@@ -179,7 +179,7 @@ namespace PortalBahiaGas.Controllers
                     ViewData.Add("Conclusao", lDataFinal);
                 }
                 ViewData.Add("perfil", lUsuario.Perfil);
-                return View("Index", RegistroTurno.Listar(lParam).ToList());
+                return View("Index", RegistroTurno.ListarPesquisa(lDataInicial, lDataFinal).ToList());
             }
         }
 
