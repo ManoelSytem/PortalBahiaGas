@@ -46,27 +46,35 @@ namespace PortalBahiaGas.Controllers
                 if (TurnoRepositorio.Listar().Count() > 0)
                 {
                     DateTime? lData = TurnoRepositorio.Listar().Max(x => x.Data);
-                    ETurno? lTurno = TurnoRepositorio.Listar(x => x.Data == lData).Max(x => x.Turno);
+                    ETurno lTurno = ETurno.De7as15;
 
-                    switch (lTurno)
+                    DateTime dataHora = DateTime.Now;
+
+                    TimeSpan hora = TimeSpan.Parse(dataHora.Hour.ToString() + ":" + dataHora.Minute.ToString());
+
+                    TimeSpan Sete = TimeSpan.Parse("07:00");
+                    TimeSpan Quinze = TimeSpan.Parse("15:00");
+                    TimeSpan VinteTrez = TimeSpan.Parse("23:00");
+                    
+
+                    if (hora>= Sete && hora<= Quinze)
                     {
-                        case ETurno.De7as15:
-                            lTurno = ETurno.De15as23;
-                            break;
-                        case ETurno.De15as23:
-                            lTurno = ETurno.De23as7;
-                            break;
-                        case ETurno.De23as7:
-                            lData = lData.Value.AddDays(1);
-                            lTurno = ETurno.De7as15;
-                            break;
+                        lTurno = ETurno.De7as15;
+                    }
+                    else if(hora>=Quinze && hora <= VinteTrez)
+                    {
+                        lTurno = ETurno.De15as23;
+                    }
+                    else
+                    {
+                        lTurno = ETurno.De23as7;
                     }
 
                     lRegistroTurno = new RegistroTurno()
                     {
-                        Data = lData.Value,
-                        Turno = lTurno.Value,
-                        Turma = ETurma.E
+                        Data = DateTime.Today,
+                        Turno = lTurno,
+                        Turma = ETurma.Z
                         
                     };
                 }
@@ -167,8 +175,10 @@ namespace PortalBahiaGas.Controllers
                     else
                         foreach (var item in lRegistroTurno.RegistrosPontoEntrega)
                         {
+                            if(lRegistroTurnoAnterior != null) {
                             if (item.PontoEntrega != null && lRegistrosPontosEntrega.Any(y => y.PontoEntrega.Id == item.PontoEntrega.Id))
                                 item.VazaoEntrada = lRegistrosPontosEntrega.FirstOrDefault(y => y.PontoEntrega.Id == item.PontoEntrega.Id).VazaoEntrada;
+                            }
                         }
                     break;
                 case "abaCliente":

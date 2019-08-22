@@ -124,11 +124,14 @@ namespace PortalBahiaGas.Controllers
             {
                 foreach (var item in lRegistroTurno.RegistrosPontoEntrega)
                 {
-                    if (item.PontoEntrega != null && lRegistrosPontosEntrega.Any(y => y.PontoEntrega.Id == item.PontoEntrega.Id))
+                    if (lRegistroTurnoAnterior != null)
                     {
-                        item.VazaoEntrada = lRegistrosPontosEntrega.FirstOrDefault(y => y.PontoEntrega.Id == item.PontoEntrega.Id).VazaoEntrada;
+                        if (item.PontoEntrega != null && lRegistrosPontosEntrega.Any(y => y.PontoEntrega.Id == item.PontoEntrega.Id))
+                        {
+                            item.VazaoEntrada = lRegistrosPontosEntrega.FirstOrDefault(y => y.PontoEntrega.Id == item.PontoEntrega.Id).VazaoEntrada;
+                        }
+
                     }
-       
                 }
             }
 
@@ -148,7 +151,6 @@ namespace PortalBahiaGas.Controllers
                     Odorizador = x
                 }));
 
-            lRegistroTurno.OutrasOcorrencias.Clear();
             return View("Relatorio", lRegistroTurno);
         }
 

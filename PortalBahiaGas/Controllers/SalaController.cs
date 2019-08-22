@@ -68,7 +68,15 @@ namespace PortalBahiaGas.Controllers
             if (registroTurnoCodigo == "0") { 
 
                 List<VmOperador> listaOperaPreSelecionadoNew = new List<VmOperador>();
-              
+
+
+
+                VmOperador operadorVSL = new VmOperador();
+                operadorVSL.CodigoProtheus = CodigoProthuesSl;
+                operadorVSL.Localidade = "Sala de Controle";
+                operadorVSL.Nome = NomeOperadorSl;
+                if (operadorVSL.CodigoProtheus != "")
+                    listaOperaPreSelecionadoNew.Add(operadorVSL);
 
                 VmOperador operadorVm = new VmOperador();
                 operadorVm.CodigoProtheus = CodigoProthues;
@@ -91,12 +99,6 @@ namespace PortalBahiaGas.Controllers
             if (operadorVS.CodigoProtheus != "")
                 listaOperaPreSelecionadoNew.Add(operadorVS);
 
-                     VmOperador operadorVSL = new VmOperador();
-                        operadorVSL.CodigoProtheus = CodigoProthuesSl;
-                        operadorVSL.Localidade = "Sala de Controle";
-                        operadorVSL.Nome = NomeOperadorSl;
-            if (operadorVSL.CodigoProtheus != "")
-                listaOperaPreSelecionadoNew.Add(operadorVSL);
 
                 ViewData.Add("OperadorPreSelecao", listaOperaPreSelecionadoNew.ToList());
             }
@@ -134,7 +136,18 @@ namespace PortalBahiaGas.Controllers
 
                 foreach (VmOperador OperadoViewModel in listaOperaPreSelecionadoNew)
                 {
-                    if(OperadoViewModel.Localidade == Local && CodigoProthues != "")
+
+                    if (OperadoViewModel.Localidade == LocalSl && CodigoProthuesSl != "")
+                    {
+                        operadorSala = OperadoViewModel;
+                        VmOperador operadorVSL = new VmOperador();
+                        operadorVSL.CodigoProtheus = CodigoProthuesSl;
+                        operadorVSL.Localidade = "SALA DE CONTROLE";
+                        operadorVSL.Nome = NomeOperadorSl;
+                        NovoSala = operadorVSL;
+                    }
+
+                    if (OperadoViewModel.Localidade == Local && CodigoProthues != "")
                     {
                         operadorCamaçari = OperadoViewModel;
                         VmOperador operadorVm = new VmOperador();
@@ -167,20 +180,18 @@ namespace PortalBahiaGas.Controllers
                         NovoSalvador = operadorVS;
                     }
 
-                    if (OperadoViewModel.Localidade == LocalSl && CodigoProthuesSl != "")
-                    {
-                        operadorSala = OperadoViewModel;
-                        VmOperador operadorVSL = new VmOperador();
-                        operadorVSL.CodigoProtheus = CodigoProthuesSl;
-                        operadorVSL.Localidade = "SALA DE CONTROLE";
-                        operadorVSL.Nome = NomeOperadorSl;
-                        NovoSala = operadorVSL;
-                    }
+                  
 
                     
                 }
 
-                if(operadorCamaçari.CodigoProtheus != null)
+
+                if (operadorSala.CodigoProtheus != null)
+                {
+                    int index = listaOperaPreSelecionadoNew.IndexOf(operadorSala);
+                    listaOperaPreSelecionadoNew.RemoveAt(index);
+                }
+                if (operadorCamaçari.CodigoProtheus != null)
                 {
                     int index = listaOperaPreSelecionadoNew.IndexOf(operadorCamaçari);
                     listaOperaPreSelecionadoNew.RemoveAt(index);
@@ -195,12 +206,14 @@ namespace PortalBahiaGas.Controllers
                     int index = listaOperaPreSelecionadoNew.IndexOf(operadorSalvador);
                     listaOperaPreSelecionadoNew.RemoveAt(index);
                 }
-                if (operadorSala.CodigoProtheus != null)
+
+
+                if (NovoSala.CodigoProtheus != null)
                 {
-                    int index = listaOperaPreSelecionadoNew.IndexOf(operadorSala);
-                    listaOperaPreSelecionadoNew.RemoveAt(index);
+                    listaOperaPreSelecionadoNew.Add(NovoSala);
                 }
-                if(NovoCam.CodigoProtheus != null)
+
+                if (NovoCam.CodigoProtheus != null)
                 {
                     listaOperaPreSelecionadoNew.Add(NovoCam);
                 }
@@ -212,11 +225,13 @@ namespace PortalBahiaGas.Controllers
                 {
                     listaOperaPreSelecionadoNew.Add(NovoSalvador);
                 }
-                if (NovoSala.CodigoProtheus != null)
-                {
-                    listaOperaPreSelecionadoNew.Add(NovoSala);
-                }
 
+                List<VmOperador> listaOrdenada = new List<VmOperador>();
+
+                foreach (VmOperador op in listaOperaPreSelecionadoNew.ToList())
+                {
+                   
+                }
                 ViewData.Add("OperadorPreSelecao", listaOperaPreSelecionadoNew.ToList());
             }
 
