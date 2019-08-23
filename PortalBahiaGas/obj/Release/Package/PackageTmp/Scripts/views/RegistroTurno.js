@@ -5,9 +5,34 @@
     }
 });
 
+function lazyLoad(response) {
+
+    if (!response.Erro) {
+        $("#loadMe").modal("hide");
+
+        $("#modalmensagem").modal({
+            backdrop: "static", //remove ability to close modal with click
+            keyboard: false, //remove option to close with keyboard
+            show: true //Display loader!
+        });
+        $("#modalmensagem .modal-body").text(response.Mensagem);
+    } else {
+        $("#loadMe").modal("hide");
+
+        $("#modalmensagem").modal({
+            backdrop: "static", //remove ability to close modal with click
+            keyboard: false, //remove option to close with keyboard
+            show: true //Display loader!
+        });
+          
+        $("#modalmensagem .modal-body").text(response.Mensagem);
+    }
+
+}
+
 
 function AdicionarOperador(id) {
-    
+
     var OperadorCamacariText = $("#OperadorCamacari option:selected").text();
     var OperadorCamacariValor = $("#OperadorCamacari option:selected").val();
 
@@ -17,14 +42,14 @@ function AdicionarOperador(id) {
     var OperadorSalvadorText = $("#OperadorSalvador option:selected").text();
     var OperadorSalvadorVal = $("#OperadorSalvador option:selected").val();
 
- 
+
     var OperadorSalaControleText = $("#OperadorSalaControle option:selected").text();
     var OperadorSalaControleValor = $("#OperadorSalaControle option:selected").val();
 
 
     $.ajax({
         url: "../../Sala/AlocacaoOperador",
-        data: { codigoProthues: OperadorCamacariValor, local: "CAMAÇARI", nomeOperador: OperadorCamacariText, codigoProthuesF: OperadorFeiraValor, localF: "FEIRA DE SANTANA", nomeOperadorF: OperadorFeiraText, codigoProthuesS: OperadorSalvadorVal, localS: "SALVADOR", nomeOperadorS: OperadorSalvadorText, codigoProthuesSl: OperadorSalaControleValor, localSl: "SALA DE CONTROLE", nomeOperadorSl: OperadorSalaControleText, registroTurnoCodigo: id},
+        data: { codigoProthues: OperadorCamacariValor, local: "CAMAÇARI", nomeOperador: OperadorCamacariText, codigoProthuesF: OperadorFeiraValor, localF: "FEIRA DE SANTANA", nomeOperadorF: OperadorFeiraText, codigoProthuesS: OperadorSalvadorVal, localS: "SALVADOR", nomeOperadorS: OperadorSalvadorText, codigoProthuesSl: OperadorSalaControleValor, localSl: "SALA DE CONTROLE", nomeOperadorSl: OperadorSalaControleText, registroTurnoCodigo: id },
         type: 'get'
     }).done(function (data) {
         $("#panel").html(data);
@@ -34,10 +59,17 @@ function AdicionarOperador(id) {
 
 
 function Salvar(pForm) {
+
+    $("#loadMe").modal({
+        backdrop: "static", //remove ability to close modal with click
+        keyboard: false, //remove option to close with keyboard
+        show: true //Display loader!
+    });
+
     $(".btn btn-success").disabled = 'true';
     $.ajax({
         url: "../../RegistroTurno/Cadastrar",
-        data: $("#" + pForm).serializeArray(), 
+        data: $("#" + pForm).serializeArray(),
         type: 'post'
     }).done(function (data) {
         $(".btn btn-success").disabled = 'false';
@@ -96,7 +128,7 @@ function Salvar(pForm) {
                 $("#abaOdorizador").hide();
             }
         }
-        alert(data.Mensagem);
+        lazyLoad(data);
     });
 }
 
@@ -124,7 +156,7 @@ function SalvarGasoduto(pForm) {
                 $(document).find("#abaPontoEntrega").tab('show');
             });
         }
-        alert(data.Mensagem);
+        lazyLoad(data);
     });
 }
 
@@ -152,7 +184,7 @@ function SalvarPontoEntrega(pForm) {
             });
         }
         $(".btn btn-success").disable = 'true';
-        alert(data.Mensagem);
+        lazyLoad(data);
     });
 }
 
@@ -190,7 +222,7 @@ function SalvarCliente(pForm) {
                 });
             }
         }
-        alert(data.Mensagem);
+        lazyLoad(data);
     });
 }
 
@@ -217,7 +249,7 @@ function SalvarOdorizador(pForm) {
                 $(document).find("#abaOcorrencia").tab('show');
             });
         }
-        alert(data.Mensagem);
+        lazyLoad(data);
     });
 }
 
@@ -263,7 +295,8 @@ function SalvarPendencia(pForm) {
             $('#PendenciaModal').modal('toggle');
             $('.modal-backdrop').remove();
         }
-    });
+        });
+
 }
 
 function ObterAba(dados, funcao) {
@@ -309,10 +342,10 @@ function CalcularTotalVazaoRetirada() {
     for (var i = 0; i < elements.length; i++) {
         if (!elements[i].value) {
             existeVazio = true;
-        } 
+        }
     }
 
-    if (!existeVazio){
+    if (!existeVazio) {
         for (var i = 0; i < elements.length; i++) {
             if (!elements[i].value) {
                 existeVazio = true;

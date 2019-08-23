@@ -105,7 +105,7 @@ namespace PortalBahiaGas.Controllers
                         lRetorno.Objeto = new { Id = CadastrarGasoduto(pFormulario).Id };
                         break;
                     case "pontoEntrega":
-                        lRetorno.Objeto = new { Id = CadastrarPontoEntrega(pFormulario).Id };
+                        lRetorno.Objeto = new { Id = CadastrarPontoEntrega(pFormulario).Id};
                         break;
                     case "cliente":
                         lRetorno.Objeto = new { Id = CadastrarCliente(pFormulario).Id };
@@ -161,6 +161,18 @@ namespace PortalBahiaGas.Controllers
                     break;
                 case "abaPontoEntrega":
                     aba = "PontoEntrega";
+                    List<RegistroTurno> listRegistroTurno = TurnoRepositorio.ListarPorExpressao(x => x.Data >= DateTime.Today.AddDays(-7)).Where(x => x.Data == lRegistroTurno.Data).ToList();
+                    foreach (RegistroTurno regTurno in listRegistroTurno)
+                    {
+                        if (regTurno.FatorCorrecao > 0)
+                        {
+                            ViewData.Add("FatorCorrecao", regTurno.FatorCorrecao);
+                        }
+                        else
+                        {
+                            ViewData.Add("FatorCorrecao", 0);
+                        }
+                    }
                     RegistroTurno lRegistroTurnoAnterior = TurnoRepositorio.Listar(x => x.Turno == ETurno.De7as15 && x.Data == lRegistroTurno.Data).FirstOrDefault();
                     List<RegistroPontoEntrega> lRegistrosPontosEntrega = null;
                     if (lRegistroTurnoAnterior != null) lRegistrosPontosEntrega = lRegistroTurnoAnterior.RegistrosPontoEntrega.ToList();
@@ -208,7 +220,10 @@ namespace PortalBahiaGas.Controllers
                     lRegistroTurno.Pendencias = PendenciaRepositorio.Listar(x => x.Status != EStatus.Concluído || x.RegistroTurno.Id == lRegistroTurno.Id).ToList();
                     break;
             }
+
             PopularCampos();
+            ViewData["editar"] = true;
+            ViewData.Add("OperadoresRegistroTurno", lRegistroTurno.OperadorRegistroTurno.ToList());
             return PartialView(aba, lRegistroTurno);
         }
 
@@ -297,6 +312,31 @@ namespace PortalBahiaGas.Controllers
             RegistroTurno lRegistroTurno = new RegistroTurno();
             TryUpdateModel<RegistroTurno>(lRegistroTurno, pFormulario);
 
+            if(lRegistroTurno.Id == 0) {
+            foreach (var key in pFormulario.AllKeys)
+            {
+
+                if (key == "OperadorCamacari" || key == "OperadorFeira"  || key == "OperadorSalvador" || key == "OperadorSalaControle" )
+                {
+                    var value = pFormulario[key];
+                    if (value == "")
+                    {
+                        throw new Exception("Adicione os operadores! O registro de turno deve possuir 4 operadores. ");
+                    }
+                }else if(key == "Turma")
+                {
+                    var value = pFormulario[key];
+                    if (value == "1")
+                    {
+                        throw new Exception("Turma não informada no registro de turno.");
+                    }
+                }
+                
+            }
+
+            }
+
+
             if (TurnoRepositorio.VerificarExistencia(x => x.Data == lRegistroTurno.Data && x.Turno == lRegistroTurno.Turno && x.Id != lRegistroTurno.Id)) lMensagem.AppendLine("Turno já cadastrado.");
             //if (pFormulario.GetValues("item") == null) lMensagem.AppendLine("Informe os operadores do turno.");
             if (!pFormulario.GetValues("CodigoProtheus").Any(x => x != "false")) lMensagem.AppendLine("Informe os operadores do turno.");
@@ -358,14 +398,32 @@ namespace PortalBahiaGas.Controllers
             
             PontoEntregaRepositorio = new Repositorio<PontoEntrega>(TurnoRepositorio.Contexto);
             RegistroTurno lRegistroTurno = TurnoRepositorio.ObterPorId(Convert.ToInt32(pFormulario["IdRegistroTurno"]));
-            string valor = pFormulario.GetValue("FatorCorrecao").AttemptedValue;
-            if(valor == "")
+            
+            if(lRegistroTurno.Turno == ETurno.De7as15)
             {
-                lRegistroTurno.FatorCorrecao = 0;
+                string valor = pFormulario.GetValue("FatorCorrecao").AttemptedValue;
+                if (valor == "")
+                {
+                    lRegistroTurno.FatorCorrecao = 0;
+                }
+                else
+                {
+                    lRegistroTurno.FatorCorrecao = Convert.ToDecimal(pFormulario.GetValue("FatorCorrecao").AttemptedValue);
+                }
             }
             else
             {
-                lRegistroTurno.FatorCorrecao = Convert.ToDecimal(pFormulario.GetValue("FatorCorrecao").AttemptedValue);
+                List<RegistroTurno>  listRegistroTurno = TurnoRepositorio.ListarPorExpressao(x => x.Data >= DateTime.Today.AddDays(-7)).Where(x => x.Data == lRegistroTurno.Data).ToList();
+                 foreach(RegistroTurno regTurno in listRegistroTurno){
+                         if(regTurno.FatorCorrecao > 0)
+                    {
+                        lRegistroTurno.FatorCorrecao = regTurno.FatorCorrecao;
+                    }
+                    else
+                    {
+                        lRegistroTurno.FatorCorrecao = 0;
+                    }
+                }
             }
   
             for (int i = 0; i < pFormulario.GetValues("PontoEntrega").Length; i++)
@@ -659,16 +717,18 @@ namespace PortalBahiaGas.Controllers
         private void ValidarOcorrencia(Ocorrencia pOcorrencia, FormCollection pFormulario, RegistroTurno lRegistroTurno)
         {
             StringBuilder lMensagem = new StringBuilder();
-            if (pOcorrencia.Origem == null) lMensagem.AppendLine("Informe a Origem.");
-            if (pOcorrencia.Local == null) lMensagem.AppendLine("Informe o Local.");
-            if ((ELocal.Cliente.Equals(pOcorrencia.Local) && String.IsNullOrEmpty(pFormulario["SelectIdCliente"]))) lMensagem.AppendLine("Ao selecionar o local Cliente, é necessário que este seja pesquisado na base do Protheus.");
-            if ((ELocal.Infraestrutura.Equals(pOcorrencia.Local) && String.IsNullOrEmpty(pFormulario["SelectIdInfraestrutura"]))) lMensagem.AppendLine("Ao selecionar o local Infraestrutura, é necessário que este seja pesquisado na base do Protheus.");
-            if ((ELocal.Outro.Equals(pOcorrencia.Local) && String.IsNullOrEmpty(pFormulario["Outro"]))) lMensagem.AppendLine("Ao selecionar o local Outro, é necessário Preencher o campo Outro.");
-            if (pOcorrencia.Tipo == null) lMensagem.AppendLine("Informe o Tipo.");
+            if (pOcorrencia.Atendimento == null && pOcorrencia.Justificativa != "") { throw new Exception("Não é permitido justificativa sem início de atendimento."); }
+            if (pOcorrencia.Origem == null) throw new Exception("Informe a Origem.");  
+            if (pOcorrencia.Local == null) throw new Exception("Informe o Local."); 
+            if ((ELocal.Cliente.Equals(pOcorrencia.Local) && String.IsNullOrEmpty(pFormulario["SelectIdCliente"]))) throw new Exception("Ao selecionar o local Cliente, é necessário que este seja pesquisado na base do RM."); 
+            if ((ELocal.Infraestrutura.Equals(pOcorrencia.Local) && String.IsNullOrEmpty(pFormulario["SelectIdInfraestrutura"]))) throw new Exception(lMensagem.AppendLine("Ao selecionar o local Infraestrutura, é necessário que este seja pesquisado na base do Protheus.").ToString());
+            if ((ELocal.Outro.Equals(pOcorrencia.Local) && String.IsNullOrEmpty(pFormulario["Outro"]))) throw new Exception(lMensagem.AppendLine("Ao selecionar o local Outro, é necessário Preencher o campo Outro.").ToString());
+            if (pOcorrencia.Tipo == null) throw new Exception(lMensagem.AppendLine("Informe o Tipo.").ToString());
             if (String.IsNullOrEmpty(pOcorrencia.Atendente)) lMensagem.AppendLine("Informe o Atendente.");
-            if (pOcorrencia.Inicio == null) lMensagem.AppendLine("Informe a hora de início.");
-            if (String.IsNullOrEmpty(pOcorrencia.Descricao)) lMensagem.AppendLine("Informe a Descrição.");
-            if (pOcorrencia.Conclusao != null && String.IsNullOrEmpty(pOcorrencia.Justificativa)) lMensagem.AppendLine("Informe a justificativa de conclusão.");
+            if (pOcorrencia.Inicio == null) throw new Exception(lMensagem.AppendLine("Informe a hora de início.").ToString());
+            if (String.IsNullOrEmpty(pOcorrencia.Descricao)) throw new Exception(lMensagem.AppendLine("Informe a Descrição.").ToString());
+            if (pOcorrencia.Conclusao != null && String.IsNullOrEmpty(pOcorrencia.Justificativa)) throw new Exception(lMensagem.AppendLine("Informe a justificativa de conclusão.").ToString());
+          
             validarPeriodoTurno(lRegistroTurno, lMensagem, pOcorrencia);
             validarPeriodoOcorrencia(pOcorrencia, lMensagem);
 
