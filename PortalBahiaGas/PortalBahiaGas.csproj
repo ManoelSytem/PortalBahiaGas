@@ -285,6 +285,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\datepicker.css" />
+    <Content Include="Content\modalazyload.css" />
     <Content Include="Content\Relatorio.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -325,6 +326,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\views\Cliente.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\views\Operador.js" />
     <Content Include="Scripts\views\PontoEntrega.js" />
     <Content Include="Scripts\views\Odorizador.js" />

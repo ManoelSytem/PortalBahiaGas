@@ -24,8 +24,8 @@ namespace PortalBahiaGas
                       "~/Scripts/bootstrap-select.js",
                       "~/Scripts/bootstrap.min.js",
                       "~/Scripts/bootstrap-datetimepicker.min.js",
-                      "~/Scripts/locales/bootstrap-datetimepicker.pt-BR.js"
-                      ));
+                      "~/Scripts/locales/bootstrap-datetimepicker.pt-BR.js",
+                      "~/Scripts/locales/lazyload.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
@@ -34,8 +34,8 @@ namespace PortalBahiaGas
                       "~/Content/bootstrap-select.css",
                       "~/Content/site.css",
                       "~/Content/bootstrap.min.css",
-                      "~/Content/bootstrap-datetimepicker.min.css"
-                      ));
+                      "~/Content/bootstrap-datetimepicker.min.css",
+                      "~/Content/modalazyload.css"));
         }
     }
 }
