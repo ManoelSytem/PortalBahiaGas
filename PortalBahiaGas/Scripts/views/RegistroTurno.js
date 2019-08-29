@@ -177,7 +177,6 @@ function SalvarPontoEntrega(pForm) {
             });
         }
         $(".btn btn-success").disable = 'true';
-        lazyLoad(data);
     });
 }
 

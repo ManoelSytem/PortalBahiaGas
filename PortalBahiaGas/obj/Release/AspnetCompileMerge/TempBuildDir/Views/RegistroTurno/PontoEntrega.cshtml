@@ -152,18 +152,23 @@
                             @Html.TextBox("PressaoSaida", item.PressaoSaida, "{0:n2}", new { @class = "input-grid decimal text-right" })
                         </div>
                         <div class="col-sm-2 col-detail">
-                            @Html.TextBox("VazaoEntrada", item.VazaoEntrada, "{0:0,0}", new { @onchange="CalcularTotalVazaoRetirada()", @class = "input-grid vazao text-right" + ((item.RegistroTurno.Turno != PortalBahiaGas.Models.Entidade.Enuns.ETurno.De15as23) ? " readonly" : "") })
+                            @if (Model.Turno == PortalBahiaGas.Models.Entidade.Enuns.ETurno.De23as7 || Model.Turno == PortalBahiaGas.Models.Entidade.Enuns.ETurno.De15as23)
+                            {
+                                @Html.TextBox("VazaoEntrada", item.VazaoEntrada, "{0:0,0}", new { @onchange = "CalcularTotalVazaoRetirada()", @readonly = "readonly", @class = "input-grid vazao text-right" })
+                            }else
+                            { @Html.TextBox("VazaoEntrada", item.VazaoEntrada, "{0:0,0}", new { @onchange = "CalcularTotalVazaoRetirada()", @class = "input-grid vazao text-right"})}
                         </div>
-                        <div class="col-sm-2 col-detail">
-                            @Html.TextBox("VazaoSaida", item.VazaoSaida, "{0:0,0}", new { @class = "input-grid vazao text-right" })
-                        </div>
-                        <div class="col-sm-1 col-detail">
-                            @Html.Label("Desvio", String.Format("{0:G}", item.Desvio ?? 0), new { @class = "input-grid text-right", style = "height: 16px;" })
-                        </div>
-                        <div class="col-sm-1 col-detail">
-                            <span class="grid">@(item.Penalidade == null ? "SD" : (item.Penalidade == true ? "Sim" : "Não"))</span>
-                        </div>
+                    <div class="col-sm-2 col-detail">
+                        @Html.TextBox("VazaoSaida", item.VazaoSaida, "{0:0,0}", new { @class = "input-grid vazao text-right" })
                     </div>
+                    <div class="col-sm-1 col-detail">
+                        @Html.Label("Desvio", String.Format("{0:G}", item.Desvio ?? 0), new { @class = "input-grid text-right", style = "height: 16px;" })
+                    </div>
+                    <div class="col-sm-1 col-detail">
+                        <span class="grid">@(item.Penalidade == null ? "SD" : (item.Penalidade == true ? "Sim" : "Não"))</span>
+                    </div>
+                </div>
+          
                 }
                     <div class="row">
                         <div class="col-sm-7 col-header"><span style="float:right;">TOTAL</span></div>
@@ -177,10 +182,10 @@
                         {
                             Model.FatorCorrecao = 0;
                         }
-                         @*@if(Model.Turno == PortalBahiaGas.Models.Entidade.Enuns.ETurno.De23as7) {*@
-                        <div class="col-sm-2 col-header">@Html.TextBox("FatorCorrecao", Model.FatorCorrecao, "{0:n2}", new {@class = "input-grid decimal text-right" })</div>
-                         @*}
-                         else { <div class="col-sm-2 col-header">@Html.TextBox("FatorCorrecao", Model.FatorCorrecao, "{0:n2}", new { @class = "input-grid decimal text-right", @disabled = "disabled" })</div>}*@
+                         @if(Model.Turno == PortalBahiaGas.Models.Entidade.Enuns.ETurno.De23as7 || Model.Turno == PortalBahiaGas.Models.Entidade.Enuns.ETurno.De15as23) {
+                        <div class="col-sm-2 col-header">@String.Format("{0:n2}",ViewData["FatorCorrecao"])</div>
+                         }
+                         else { <div class="col-sm-2 col-header">@Html.TextBox("FatorCorrecao", Model.FatorCorrecao,"{0:n2}", new { @class = "input-grid decimal text-right" })</div>}
                     </div>
             </div>
         </div>

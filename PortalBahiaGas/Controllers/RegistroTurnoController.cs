@@ -161,19 +161,27 @@ namespace PortalBahiaGas.Controllers
                     break;
                 case "abaPontoEntrega":
                     aba = "PontoEntrega";
-                    List<RegistroTurno> listRegistroTurno = TurnoRepositorio.ListarPorExpressao(x => x.Data >= DateTime.Today.AddDays(-7)).Where(x => x.Data == lRegistroTurno.Data).ToList();
+                    List<RegistroTurno> listRegistroTurno = TurnoRepositorio.ListarPorExpressaoPontoDeEntrega(x => x.Data >= DateTime.Today.AddDays(-7)).Where(x => x.Data == lRegistroTurno.Data).ToList();
+
+                    decimal? fatorCorrecao = 0;
                     foreach (RegistroTurno regTurno in listRegistroTurno)
                     {
                         if (regTurno.FatorCorrecao > 0)
                         {
-                            ViewData.Add("FatorCorrecao", regTurno.FatorCorrecao);
-                        }
-                        else
-                        {
-                            ViewData.Add("FatorCorrecao", 0);
+                            fatorCorrecao = regTurno.FatorCorrecao;
                         }
                     }
-                    RegistroTurno lRegistroTurnoAnterior = TurnoRepositorio.Listar(x => x.Turno == ETurno.De7as15 && x.Data == lRegistroTurno.Data).FirstOrDefault();
+
+                    if(fatorCorrecao > 0)
+                    {
+                        ViewData.Add("FatorCorrecao", fatorCorrecao);
+                    }
+                    else
+                    {
+                        ViewData.Add("FatorCorrecao", 0);
+                    }
+
+                    RegistroTurno lRegistroTurnoAnterior = TurnoRepositorio.ListarTurnoAnterior(x => x.Turno == ETurno.De7as15 && x.Data == lRegistroTurno.Data).FirstOrDefault();
                     List<RegistroPontoEntrega> lRegistrosPontosEntrega = null;
                     if (lRegistroTurnoAnterior != null) lRegistrosPontosEntrega = lRegistroTurnoAnterior.RegistrosPontoEntrega.ToList();
 
@@ -213,7 +221,7 @@ namespace PortalBahiaGas.Controllers
                     break;
                 case "abaOcorrencia":
                     aba = "Ocorrencia";
-                    lRegistroTurno.OutrasOcorrencias.AddRange(OcorrenciaRepositorio.Listar(x => x.Status != EStatus.Concluído && x.RegistroTurno.Id != lRegistroTurno.Id));
+                    lRegistroTurno.OutrasOcorrencias.AddRange(OcorrenciaRepositorio.Listar(x => x.Status != EStatus.Concluído && x.RegistroTurno.Id != lRegistroTurno.Id).Take(50));
                     break;
                 case "abaPendencia":
                     aba = "Pendencia";
@@ -643,7 +651,7 @@ namespace PortalBahiaGas.Controllers
             if (lOcorrencia == null)
             {
                 lModel.RegistroTurno = lRegistroTurno;
-                lRegistroTurno.Ocorrencias.Clear();
+                //lRegistroTurno.Ocorrencias.Clear();
                 lRegistroTurno.Ocorrencias.Add(lModel);
             }
             else
@@ -709,8 +717,6 @@ namespace PortalBahiaGas.Controllers
             }
 
             lRegistroTurno = TurnoRepositorio.Editar(lRegistroTurno);
-            lRegistroTurno.OutrasOcorrencias.AddRange(OcorrenciaRepositorio.Listar(x => x.Status != EStatus.Concluído && x.RegistroTurno.Id != lRegistroTurno.Id));
-
             return lRegistroTurno;
         }
 
@@ -729,7 +735,7 @@ namespace PortalBahiaGas.Controllers
             if (String.IsNullOrEmpty(pOcorrencia.Descricao)) throw new Exception(lMensagem.AppendLine("Informe a Descrição.").ToString());
             if (pOcorrencia.Conclusao != null && String.IsNullOrEmpty(pOcorrencia.Justificativa)) throw new Exception(lMensagem.AppendLine("Informe a justificativa de conclusão.").ToString());
           
-            validarPeriodoTurno(lRegistroTurno, lMensagem, pOcorrencia);
+            //validarPeriodoTurno(lRegistroTurno, lMensagem, pOcorrencia);
             validarPeriodoOcorrencia(pOcorrencia, lMensagem);
 
 

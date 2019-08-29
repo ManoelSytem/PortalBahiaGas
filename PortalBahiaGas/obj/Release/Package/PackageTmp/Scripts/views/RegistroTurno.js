@@ -59,13 +59,6 @@ function AdicionarOperador(id) {
 
 
 function Salvar(pForm) {
-
-    $("#loadMe").modal({
-        backdrop: "static", //remove ability to close modal with click
-        keyboard: false, //remove option to close with keyboard
-        show: true //Display loader!
-    });
-
     $(".btn btn-success").disabled = 'true';
     $.ajax({
         url: "../../RegistroTurno/Cadastrar",
@@ -254,6 +247,13 @@ function SalvarOdorizador(pForm) {
 }
 
 function SalvarOcorrencia(pForm) {
+
+    $("#loadMe").modal({
+        backdrop: "static", //remove ability to close modal with click
+        keyboard: false, //remove option to close with keyboard
+        show: true //Display loader!
+    });
+
     $(".btn-salvar").attr("disabled", true);
     $.ajax({
         url: "../../RegistroTurno/Cadastrar",
@@ -261,22 +261,31 @@ function SalvarOcorrencia(pForm) {
         type: 'post'
     }).done(function (data) {
         $(".btn-salvar").attr("disabled", false);
-        alert(data.Mensagem);
         if (!data.Erro) {
             ObterAba({
                 id: $("#" + pForm).find("#IdRegistroTurno").val(),
                 aba: "abaOcorrencia"
             }, function (data) {
                 $('#conteudoOcorrencia').html(data);
+                $("#loadMe").modal("hide");
             });
             $('#OcorrenciaModal').modal('toggle');
             $('.modal-backdrop').remove();
+        } else {
+            lazyLoad(data);
         }
     });
 }
 
 
 function SalvarPendencia(pForm) {
+
+    $("#loadMe").modal({
+        backdrop: "static", //remove ability to close modal with click
+        keyboard: false, //remove option to close with keyboard
+        show: true //Display loader!
+    });
+
     $(".btn-salvar").attr("disabled", true);
     $.ajax({
         url: "../../RegistroTurno/Cadastrar",
@@ -284,32 +293,41 @@ function SalvarPendencia(pForm) {
         type: 'post'
     }).done(function (data) {
         $(".btn-salvar").attr("disabled", false);
-        alert(data.Mensagem);
         if (!data.Erro) {
             ObterAba({
                 id: $("#" + pForm).find("#IdRegistroTurno").val(),
                 aba: "abaPendencia"
             }, function (data) {
                 $('#conteudoPendencia').html(data);
+                $("#loadMe").modal("hide");
             });
             $('#PendenciaModal').modal('toggle');
             $('.modal-backdrop').remove();
+        } else {
+            lazyLoad(data);
         }
         });
-
 }
 
 function ObterAba(dados, funcao) {
+    $("#loadMe").modal({
+        backdrop: "static", //remove ability to close modal with click
+        keyboard: false, //remove option to close with keyboard
+        show: true //Display loader!
+    });
+
     $.ajax({
         url: "../../RegistroTurno/ObterAbas",
         data: dados,
         type: 'post'
     }).done(function (data) {
+       
         funcao(data);
     });
 }
 
 function SelecionarAba(pAba) {
+  
     var div = $(pAba).attr('href');
     var id = $(div).find('#IdRegistroTurno').val();
 
@@ -318,19 +336,36 @@ function SelecionarAba(pAba) {
         aba: $(pAba).attr("id")
     }, function (data) {
         $(div).html(data);
+        $("#loadMe").modal("hide");
         $(this).tab('show');
     });
 }
 
 function PopUp(pIdOcorrencia, pIdRegistroTurno) {
+    $("#loadMe").modal({
+        backdrop: "static", //remove ability to close modal with click
+        keyboard: false, //remove option to close with keyboard
+        show: true //Display loader!
+    });
+
+   
     var dados = { id: pIdOcorrencia, idRegistroTurno: pIdRegistroTurno };
     $.ajax({
         url: '../../RegistroTurno/PopUpOcorrencia',
         data: dados,
         type: 'post'
     }).done(function (data) {
-        $('#modalWrapper').html(data);
-        $('#OcorrenciaModal').modal();
+        if (!data.Erro) {
+            $("#loadMe").modal("hide");
+            $('#modalWrapper').html(data);
+            $("#OcorrenciaModal").modal({
+                backdrop: "static", //remove ability to close modal with click
+                keyboard: false,
+                show: true //remove option to close with keyboard
+            });
+        } else {
+            $("#modalmensagem .modal-body").text(response.Mensagem);
+        }
     });
 }
 
@@ -374,13 +409,24 @@ function CalcularTotalVazaoRetirada() {
 }
 
 function PopUpPendencia(pIdPendencia, pIdRegistroTurno) {
+    $("#loadMe").modal({
+        backdrop: "static", //remove ability to close modal with click
+        keyboard: false, //remove option to close with keyboard
+        show: true //Display loader!
+    });
+
     var dados = { id: pIdPendencia, idRegistroTurno: pIdRegistroTurno };
     $.ajax({
         url: '../../RegistroTurno/PopUpPendencia',
         data: dados,
         type: 'post'
     }).done(function (data) {
+        $("#loadMe").modal("hide");
         $('#modalWrapperPendencia').html(data);
-        $('#PendenciaModal').modal();
+        $("#PendenciaModal").modal({
+            backdrop: "static", //remove ability to close modal with click
+            keyboard: false, //remove option to close with keyboard
+            show: true //Display loader!
+        });
     });
 }
