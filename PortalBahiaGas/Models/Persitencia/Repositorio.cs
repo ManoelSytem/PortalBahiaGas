@@ -47,6 +47,11 @@ namespace PortalBahiaGas.Models.Persistencia
             return Contexto.Set<Pendencia>().Where(x => x.Inicio >= periodo && x.Status != EStatus.Concluído || x.RegistroTurno.Id == registroTurno.Id).ToList();
         }
 
+        public ICollection<RegistroTurno> ListarTurnoAnterior(ETurno turno, RegistroTurno registroTurno)
+        {
+            return Contexto.Set<RegistroTurno>().Where(x => x.Turno == turno && x.Data == registroTurno.Data).ToList();
+        }
+
         public ICollection<T> ListarTurnoAnterior(Expression<Func<T, bool>> pExpressao)
         {
             return Contexto.Set<T>().Where(pExpressao.Compile()).ToList();
@@ -65,6 +70,11 @@ namespace PortalBahiaGas.Models.Persistencia
         public ICollection<T> ListarPorExpressaoPontoDeEntrega(Expression<Func<T, bool>> pExpressao)
         {
             return Contexto.Set<T>().OrderByDescending(x => x.Id).ToList();
+        }
+
+        public ICollection<RegistroTurno> ObterDadosPontoDeEntrega(DateTime? fim, RegistroTurno RegistroTurno)
+        {
+            return Contexto.Set<RegistroTurno>().Where(x => x.Data >= fim && x.Data == RegistroTurno.Data).ToList();
         }
 
         public Boolean VerificarExistencia(Expression<Func<T, bool>> pExpressao)

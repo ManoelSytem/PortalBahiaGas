@@ -59,7 +59,12 @@ function AdicionarOperador(id) {
 
 function Salvar(pForm) {
 
-    $("#loadMe").modal("show");
+    $("#loadMe").modal({
+        backdrop: "static", //remove ability to close modal with click
+        keyboard: false, //remove option to close with keyboard
+        show: true //Display loader!
+    });
+
     $(".btn btn-success").disabled = 'true';
     $.ajax({
         url: "../../RegistroTurno/Cadastrar",
@@ -312,18 +317,20 @@ function SalvarPendencia(pForm) {
 }
 
 function ObterAba(dados, funcao) {
+
     $("#loadMe").modal({
         backdrop: "static", //remove ability to close modal with click
         keyboard: false, //remove option to close with keyboard
         show: true //Display loader!
     });
 
+
     $.ajax({
         url: "../../RegistroTurno/ObterAbas",
         data: dados,
         type: 'post'
     }).done(function (data) {
-       
+        $("#loadMe").modal("hide");
         funcao(data);
     });
 }
@@ -338,7 +345,6 @@ function SelecionarAba(pAba) {
         aba: $(pAba).attr("id")
     }, function (data) {
         $(div).html(data);
-        $("#loadMe").modal("hide");
         $(this).tab('show');
     });
 }

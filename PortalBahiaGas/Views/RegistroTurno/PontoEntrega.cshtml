@@ -160,7 +160,8 @@
                     <div class="col-sm-2 col-detail">
                         @if (Model.Turno == PortalBahiaGas.Models.Entidade.Enuns.ETurno.De23as7 || Model.Turno == PortalBahiaGas.Models.Entidade.Enuns.ETurno.De15as23)
                         {
-                            @Html.Label("VazaoEntrada", String.Format("{0:0,0}", item.VazaoEntrada ?? 0), new { @class = "input-grid text-right", style = "height: 16px;" })
+                            @Html.Hidden("VazaoEntrada", item.VazaoEntrada)
+                        <span style="float:right;" class="grid">@String.Format("{0:0,0}", item.VazaoEntrada ?? 0) </span>
                         }
                         else
                         { @Html.TextBox("VazaoEntrada", item.VazaoEntrada, "{0:0,0}", new { @onchange = "CalcularTotalVazaoRetirada()", @class = "input-grid vazao text-right" })}
@@ -170,7 +171,7 @@
                     </div>
 
                     <div class="col-sm-1 col-detail">
-                        @Html.Label("Desvio", String.Format("{0:G}", item.Desvio ?? 0), new { @class = "input-grid text-right", style = "height: 16px;" })
+                        @Html.Label("Desvio", String.Format("{0:G}", item.Desvio ?? 0), new { @class = "input-grid text-right", style = "height: 16px; text-align:center"})
                     </div>
                     @if (Model.Turno == PortalBahiaGas.Models.Entidade.Enuns.ETurno.De23as7)
                     {
@@ -196,7 +197,7 @@
                         <div class="col-sm-4 col-header"><span style="float:right;">@String.Format("{0:n2}", ViewData["FatorCorrecao"])</span></div>
                     }
                     else
-                    { <div class="col-sm-4 col-header"><span style="float:right;">@Html.TextBox("FatorCorrecao", Model.FatorCorrecao, "{0:n2}", new { @class = "input-grid decimal text-right" })</span></div>}
+                    { <div class="col-sm-4 col-header"><span style="float:right;">@Html.TextBox("FatorCorrecao", Model.FatorCorrecao, "{0:n2}", new { @class = "input-grid decimal text-right", @size = "4"})</span></div>}
                     <div class="col-sm-6 col-header"><span style="float:right;">Corrigido</span></div>
                     <div class="col-sm-2 col-header"><span style="float:right;">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoEntrada) * Model.FatorCorrecao)</span></div>
                     <div class="col-sm-2 col-header"><span style="float:right;">@String.Format("{0:0,0}", Model.RegistrosPontoEntrega.Sum(x => x.VazaoSaida) * Model.FatorCorrecao)</span></div>

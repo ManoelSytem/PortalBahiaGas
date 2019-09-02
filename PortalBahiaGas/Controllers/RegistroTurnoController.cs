@@ -161,7 +161,7 @@ namespace PortalBahiaGas.Controllers
                     break;
                 case "abaPontoEntrega":
                     aba = "PontoEntrega";
-                    List<RegistroTurno> listRegistroTurno = TurnoRepositorio.ListarPorExpressaoPontoDeEntrega(x => x.Data >= DateTime.Today.AddDays(-7)).Where(x => x.Data == lRegistroTurno.Data).ToList();
+                    List<RegistroTurno> listRegistroTurno = TurnoRepositorio.ObterDadosPontoDeEntrega(DateTime.Today.AddDays(-7), lRegistroTurno).ToList();
 
                     decimal? fatorCorrecao = 0;
                     foreach (RegistroTurno regTurno in listRegistroTurno)
@@ -181,7 +181,7 @@ namespace PortalBahiaGas.Controllers
                         ViewData.Add("FatorCorrecao", 0);
                     }
 
-                    RegistroTurno lRegistroTurnoAnterior = TurnoRepositorio.ListarTurnoAnterior(x => x.Turno == ETurno.De7as15 && x.Data == lRegistroTurno.Data).FirstOrDefault();
+                    RegistroTurno lRegistroTurnoAnterior = TurnoRepositorio.ListarTurnoAnterior(ETurno.De7as15, lRegistroTurno).FirstOrDefault();
                     List<RegistroPontoEntrega> lRegistrosPontosEntrega = null;
                     if (lRegistroTurnoAnterior != null) lRegistrosPontosEntrega = lRegistroTurnoAnterior.RegistrosPontoEntrega.ToList();
 
