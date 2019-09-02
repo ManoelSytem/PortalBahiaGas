@@ -1,5 +1,6 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using PortalBahiaGas.Models.Entidade;
+using PortalBahiaGas.Models.Entidade.Enuns;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -34,6 +35,16 @@ namespace PortalBahiaGas.Models.Persistencia
         public ICollection<T> Listar(Expression<Func<T, bool>> pExpressao)
         {
             return Contexto.Set<T>().Where(pExpressao.Compile()).ToList();
+        }
+
+        public ICollection<Ocorrencia> ObterOcorrenciasAnteriores(RegistroTurno registroTurno, DateTime periodo)
+        {
+            return Contexto.Set<Ocorrencia>().Where(x => x.Inicio >= periodo && x.Status != EStatus.Concluído && x.RegistroTurno.Id != registroTurno.Id).ToList();
+        }
+
+        public ICollection<Pendencia> ObterPendenciasAnteriores(RegistroTurno registroTurno, DateTime periodo)
+        {
+            return Contexto.Set<Pendencia>().Where(x => x.Inicio >= periodo && x.Status != EStatus.Concluído || x.RegistroTurno.Id == registroTurno.Id).ToList();
         }
 
         public ICollection<T> ListarTurnoAnterior(Expression<Func<T, bool>> pExpressao)

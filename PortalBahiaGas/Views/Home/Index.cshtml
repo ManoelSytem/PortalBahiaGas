@@ -43,7 +43,7 @@
             <button type="submit" class="btn btn-default form-alinhado" onclick="return onSubmit();">Pesquisar</button>
         </div>
         <div style="text-align:end">
-            @if (((PortalBahiaGas.Models.Entidade.Usuario)Session["UsuarioLogado"]).Perfil != PortalBahiaGas.Models.Entidade.Enuns.EPerfil.Visitante)
+            @if (((PortalBahiaGas.Models.Entidade.Usuario)Session["UsuarioLogado"]).Perfil != PortalBahiaGas.Models.Entidade.Enuns.EPerfil.Visitante && ((PortalBahiaGas.Models.Entidade.Usuario)Session["UsuarioLogado"]).Perfil != PortalBahiaGas.Models.Entidade.Enuns.EPerfil.Administrador)
             {
                 <a href="@Url.Action("", "RegistroTurno")" class="btn btn-primary" role="button">Novo turno</a>
             }

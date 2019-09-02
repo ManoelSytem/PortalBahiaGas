@@ -27,7 +27,6 @@ function lazyLoad(response) {
           
         $("#modalmensagem .modal-body").text(response.Mensagem);
     }
-
 }
 
 
@@ -59,6 +58,8 @@ function AdicionarOperador(id) {
 
 
 function Salvar(pForm) {
+
+    $("#loadMe").modal("show");
     $(".btn btn-success").disabled = 'true';
     $.ajax({
         url: "../../RegistroTurno/Cadastrar",
@@ -121,6 +122,7 @@ function Salvar(pForm) {
                 $("#abaOdorizador").hide();
             }
         }
+
         lazyLoad(data);
     });
 }
@@ -177,7 +179,8 @@ function SalvarPontoEntrega(pForm) {
             });
         }
         $(".btn btn-success").disable = 'true';
-    });
+        lazyLoad(data);
+        });
 }
 
 function SalvarCliente(pForm) {
