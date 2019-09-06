@@ -1,5 +1,6 @@
 ﻿using PortalBahiaGas.Models.Entidade.Enuns;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace PortalBahiaGas.Models.Entidade
 {

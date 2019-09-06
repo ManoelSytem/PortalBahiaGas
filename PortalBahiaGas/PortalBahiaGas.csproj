@@ -264,7 +264,9 @@
     <Compile Include="Models\Mapping\RegistroGasodutoMapping.cs" />
     <Compile Include="Models\Mapping\RegistroPontoEntregaMapping.cs" />
     <Compile Include="Models\Mapping\RegistroTurnoMapping.cs" />
+    <Compile Include="Models\ModelDaaper\OcorrenciaDapper.cs" />
     <Compile Include="Models\Persitencia\Contexto.cs" />
+    <Compile Include="Models\Persitencia\OcorrenciaRepositorio.cs" />
     <Compile Include="Models\Persitencia\Parametro.cs" />
     <Compile Include="Models\Persitencia\Repositorio.cs" />
     <Compile Include="Models\Retorno.cs" />

@@ -16,10 +16,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/08/2019 16:20:12</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>09/02/2019 17:10:47</publishTime>
+      <publishTime>09/06/2019 17:05:57</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>09/02/2019 17:10:46</publishTime>
+      <publishTime>09/06/2019 17:05:57</publishTime>
     </File>
     <File Include="bin/Dapper.dll">
       <publishTime>03/30/2019 17:21:38</publishTime>
@@ -106,10 +106,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/08/2019 16:20:22</publishTime>
     </File>
     <File Include="bin/PortalBahiaGas.dll">
-      <publishTime>09/02/2019 17:10:30</publishTime>
+      <publishTime>09/06/2019 17:05:13</publishTime>
     </File>
     <File Include="bin/PortalBahiaGas.pdb">
-      <publishTime>09/02/2019 17:10:30</publishTime>
+      <publishTime>09/06/2019 17:05:14</publishTime>
     </File>
     <File Include="bin/pt/Microsoft.ReportViewer.WebForms.resources.dll">
       <publishTime>06/13/2016 18:24:49</publishTime>
@@ -226,7 +226,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/07/2019 17:04:53</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>09/02/2019 17:10:34</publishTime>
+      <publishTime>09/06/2019 17:05:26</publishTime>
     </File>
     <File Include="Scripts/bootstrap-datepicker.js">
       <publishTime>04/08/2019 16:19:53</publishTime>
@@ -526,7 +526,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/11/2015 09:34:01</publishTime>
     </File>
     <File Include="Views/Ocorrencia/Index.cshtml">
-      <publishTime>04/08/2019 16:19:55</publishTime>
+      <publishTime>09/03/2019 17:43:53</publishTime>
     </File>
     <File Include="Views/Ocorrencia/PopUpOcorrencia.cshtml">
       <publishTime>08/23/2019 14:42:41</publishTime>

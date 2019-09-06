@@ -37,8 +37,10 @@ namespace PortalBahiaGas.Models.Persistencia
             return Contexto.Set<T>().Where(pExpressao.Compile()).ToList();
         }
 
+       
         public ICollection<Ocorrencia> ObterOcorrenciasAnteriores(RegistroTurno registroTurno, DateTime periodo)
         {
+           
             return Contexto.Set<Ocorrencia>().Where(x => x.Inicio >= periodo && x.Status != EStatus.Concluído && x.RegistroTurno.Id != registroTurno.Id).ToList();
         }
 

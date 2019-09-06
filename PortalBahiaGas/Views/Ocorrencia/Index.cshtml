@@ -11,6 +11,7 @@
     ViewBag.MenuOperador = "";
     ViewBag.MenuOdorizador = "";
 }
+
 <h3>Ocorrências</h3>
 @using (Html.BeginForm("Pesquisar", "Ocorrencia", FormMethod.Post, new { @class = "form-inline", @role = "form", @id = "form1" }))
 {
@@ -125,7 +126,7 @@
                     </div>
                     <div class="col-sm-3 col-detail" style="padding:0;">
                         <span class="grid">@String.Format("{0:dd/MM/yyyy}", item.RegistroTurno.Data) @item.RegistroTurno.Turno.ObterDescricao()</span>
-                       <!--- <span class="grid">@((item.Regiao == null) ? "" : item.Regiao.Nome)</span>-->
+                        <!--- <span class="grid">@((item.Regiao == null) ? "" : item.Regiao.Nome)</span>-->
                     </div>
                     <div class="col-sm-2 col-detail text-center" style="padding:0;">
                         <span class="grid">@String.Format("{0:dd/MM/yyyy HH:mm}", item.Inicio)</span>
@@ -232,14 +233,23 @@
     }
 
     function onSubmit() {
-        var dataInicial = new Date($("#DataFinal").val());
-        var dataFinal = new Date($("#DataInicial").val());
+        var dataFinal = new Date($("#DataFinal").val());
+        var dataInicial = new Date($("#DataInicial").val());
+
+        var dataFinal = new Date($("#DataFinal").val());
+        var dataInicial = new Date($("#DataInicial").val());
+        var date = dataFinal;
+
         if (dataFinal < dataInicial) {
-            alert("Data final não pode ser menor que data inicial.");
+            $("#modalmensagem").modal({
+                backdrop: "static", //remove ability to close modal with click
+                keyboard: false, //remove option to close with keyboard
+                show: true //Display loader!
+            });
+            $("#modalmensagem .modal-body").text("Data final não pode ser menor que a data inicial.");
             return;
         }
-
-        $('#form1').submit();
         return true;
     }
+
 </script>

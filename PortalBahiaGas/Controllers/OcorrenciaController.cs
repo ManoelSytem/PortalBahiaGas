@@ -15,6 +15,8 @@ namespace PortalBahiaGas.Controllers
 
         public ActionResult Index()
         {
+
+            ViewData.Add("ValidateDateBack", false);
             if (Session["UsuarioLogado"] == null) return RedirectToAction("Index", "Login");
             PopularCampos();
             return View(new List<Ocorrencia>());
@@ -32,6 +34,7 @@ namespace PortalBahiaGas.Controllers
             String lNomeInfraestrutura = null;
             String lDescricao = null;
 
+
             if (!String.IsNullOrEmpty((pFormulario["Regiao"]))) lRegiao = Convert.ToInt32(pFormulario["Regiao"]);
             if (!String.IsNullOrEmpty((pFormulario["DataInicial"]))) lDataInicial = Convert.ToDateTime(pFormulario["DataInicial"]);
             if (!String.IsNullOrEmpty((pFormulario["DataFinal"]))) lDataFinal = Convert.ToDateTime(pFormulario["DataFinal"]);
@@ -46,13 +49,22 @@ namespace PortalBahiaGas.Controllers
 
             if (lDataInicial.HasValue)
             {
-                lParam = lParam.And(x => x.Inicio >= lDataInicial);
+                ViewData.Add("DataInicio", lDataInicial);
+            }
+            else
+            {
+                lDataInicial = DateTime.Now;
                 ViewData.Add("DataInicio", lDataInicial);
             }
 
             if (lDataFinal.HasValue)
             {
                 lDataFinal = lDataFinal.Value.Date.AddHours(23).AddMinutes(59).AddSeconds(59);
+                ViewData.Add("DataFim", lDataFinal);
+            }
+            else
+            {
+                lDataFinal = DateTime.Now;
                 lParam = lParam.And(x => x.Inicio <= lDataFinal);
                 ViewData.Add("DataFim", lDataFinal);
             }
@@ -79,22 +91,24 @@ namespace PortalBahiaGas.Controllers
                 lParam = lParam.And(x => x.Infraestrutura == lInfraestrutura);
                 ViewData.Add("Infraestrutura", lNomeInfraestrutura);
             }
+            ETurno lTurno = ETurno.De7as15;
             if (!String.IsNullOrEmpty(pFormulario["ViewData[Turno]"]))
             {
-                ETurno lTurno = (ETurno)Enum.Parse(typeof(ETurno), pFormulario["ViewData[Turno]"]);
+                lTurno = (ETurno)Enum.Parse(typeof(ETurno), pFormulario["ViewData[Turno]"]);
                 lParam = lParam.And(x => x.RegistroTurno.Turno == lTurno);
                 ViewData.Add("Turno", Convert.ToInt32(lTurno));
             }
+            ETipoOcorrencia lTipoOcorrencia = ETipoOcorrencia.Outros;
             if (!String.IsNullOrEmpty(pFormulario["ViewData[Tipo]"]))
             {
-                ETipoOcorrencia lTipoOcorrencia = (ETipoOcorrencia)Enum.Parse(typeof(ETipoOcorrencia), pFormulario["ViewData[Tipo]"]);
+                lTipoOcorrencia = (ETipoOcorrencia)Enum.Parse(typeof(ETipoOcorrencia), pFormulario["ViewData[Tipo]"]);
                 lParam = lParam.And(x => x.Tipo == lTipoOcorrencia);
                 ViewData.Add("Tipo", Convert.ToInt32(lTipoOcorrencia));
             }
 
             if (!String.IsNullOrEmpty(pFormulario["ViewData[Origem]"]))
             {
-                EOrigem lOrigem = (EOrigem)Enum.Parse(typeof(EOrigem), pFormulario["ViewData[Origem]"]);
+                EOrigem  lOrigem = (EOrigem)Enum.Parse(typeof(EOrigem), pFormulario["ViewData[Origem]"]);
                 lParam = lParam.And(x => x.Origem == lOrigem);
                 ViewData.Add("Origem", Convert.ToInt32(lOrigem));
             }
@@ -108,11 +122,12 @@ namespace PortalBahiaGas.Controllers
             if (!String.IsNullOrEmpty(pFormulario["ViewData[Status]"]))
             {
                 EStatus lStatus = (EStatus)Enum.Parse(typeof(EStatus), pFormulario["ViewData[Status]"]);
-                lParam = lParam.And(x => x.Status == lStatus);
                 ViewData.Add("Status", Convert.ToInt32(lStatus));
             }
 
-            List<Ocorrencia> Ocorrencias = Repositorio.Listar(lParam).ToList();
+            OcorrenciaRepositorio ocorrenciaRepositorio = new OcorrenciaRepositorio();
+            List<Ocorrencia> Ocorrencias = ocorrenciaRepositorio.ListarOcorrencia(lDataInicial, lDataFinal, lOperador, lRegiao, lCliente, pFormulario["ViewData[Turno]"],pFormulario["ViewData[Tipo]"],pFormulario["ViewData[Origem]"]
+                , lDescricao, pFormulario["ViewData[Status]"], lInfraestrutura).ToList();
 
             PopularCampos();
             return View("Index", Ocorrencias);
