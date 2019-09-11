@@ -43,9 +43,7 @@ namespace PortalBahiaGas.Controllers
             {
                 ViewData["acao"] = EAcao.Inserir;
                 ViewData["editar"] = false;
-                if (TurnoRepositorio.Listar().Count() > 0)
-                {
-                    DateTime? lData = TurnoRepositorio.Listar().Max(x => x.Data);
+               
                     ETurno lTurno = ETurno.De7as15;
 
                     DateTime dataHora = DateTime.Now;
@@ -77,15 +75,7 @@ namespace PortalBahiaGas.Controllers
                         Turma = ETurma.Z
                         
                     };
-                }
-                else
-                {
-                    lRegistroTurno = new RegistroTurno()
-                    {
-                        Data = DateTime.Today,
-                        Turno = ETurno.De7as15
-                    };
-                }
+                
             }
             PopularCampos();
             return View(lRegistroTurno);

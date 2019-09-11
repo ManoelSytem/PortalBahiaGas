@@ -61,7 +61,8 @@ namespace PortalBahiaGas.Controllers
 
             lRegistroTurno.Operadores.Clear();
             lOperadores.ForEach(x => lRegistroTurno.Operadores.Add(x));
-            lRegistroTurno.OutrasOcorrencias.AddRange(OcorrenciaRepositorio.Listar(x => x.Status != EStatus.Concluído && x.RegistroTurno.Id != lRegistroTurno.Id && x.Inicio <= inicioTurno));
+
+            lRegistroTurno.OutrasOcorrencias.AddRange(OcorrenciaRepositorio.ObterOcorrenciasAnteriores(lRegistroTurno, DateTime.Now.AddDays(-60)));
 
             foreach (Ocorrencia item in lRegistroTurno.Ocorrencias)
             {
@@ -109,7 +110,7 @@ namespace PortalBahiaGas.Controllers
                 }));
 
             Repositorio<PontoEntrega> PontoEntregaRepositorio = new Repositorio<PontoEntrega>();
-            RegistroTurno lRegistroTurnoAnterior = RegistroTurno.Listar(x => x.Turno == ETurno.De7as15 && x.Data == lRegistroTurno.Data).FirstOrDefault();
+            RegistroTurno lRegistroTurnoAnterior = RegistroTurno.ListarTurnoAnterior(ETurno.De7as15, lRegistroTurno).FirstOrDefault();
             List<RegistroPontoEntrega> lRegistrosPontosEntrega = null;
             if (lRegistroTurnoAnterior != null) lRegistrosPontosEntrega = lRegistroTurnoAnterior.RegistrosPontoEntrega.ToList();
 

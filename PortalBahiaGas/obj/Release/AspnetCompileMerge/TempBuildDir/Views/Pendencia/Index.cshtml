@@ -234,13 +234,18 @@
     }
 
     function onSubmit() {
-        var dataInicial = new Date($("#DataFinal").val());
-        var dataFinal = new Date($("#DataInicial").val());
+        var dataFinal = new Date($("#DataFinal").val());
+        var dataInicial = new Date($("#DataInicial").val());
+
         if (dataFinal < dataInicial) {
-            alert("Data final não pode ser menor que data inicial.");
+            $("#modalmensagem").modal({
+                backdrop: "static", //remove ability to close modal with click
+                keyboard: false, //remove option to close with keyboard
+                show: true //Display loader!
+            });
+            $("#modalmensagem .modal-body").text("Data final não pode ser menor que a data inicial.");
             return;
         }
-
         $('#form1').submit();
         return true;
     }
