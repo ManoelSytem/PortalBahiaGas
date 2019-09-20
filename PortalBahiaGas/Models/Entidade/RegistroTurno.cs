@@ -47,16 +47,24 @@ namespace PortalBahiaGas.Models.Entidade
             switch (codigo)
             {
                 case "1":
-                    turma = ETurma.A;
+                    turma = ETurma.Z;
                     break;
                 case "2":
-                    turma = ETurma.B;
+                    turma = ETurma.A;
                     break;
                 case "3":
+                    turma = ETurma.B;
+                    break;
+                case "4":
                     turma = ETurma.C;
                     break;
+                case "5":
+                    turma = ETurma.D;
+                    break;
+                case "6":
+                    turma = ETurma.E;
+                    break;
             }
-
             return turma;
         }
 

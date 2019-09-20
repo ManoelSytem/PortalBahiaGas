@@ -243,7 +243,9 @@ namespace PortalBahiaGas.Controllers
             {
                 lOperador = OperadorRepositorio.Listar(x => x.CodigoProtheus == item.CodigoProtheus).FirstOrDefault();
                 if (lOperador == null)
-                { lOperador = OperadorRepositorio.Adicionar(item); }
+                {
+                   lOperador = OperadorRepositorio.Adicionar(item);
+                }
                 else
                 {
                     lOperador.Localidade = ObterDescricaoAlocacao(lOperador.Alocacao);
