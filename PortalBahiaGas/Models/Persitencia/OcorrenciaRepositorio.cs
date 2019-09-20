@@ -68,7 +68,7 @@ namespace PortalBahiaGas.Models.Persitencia
                 if (!string.IsNullOrEmpty(Infraestrutura))
                     sql.AppendLine($" AND \"Ocorrencia\".\"oco_str_infraestrutura\" LIKE '{Infraestrutura.Trim()}'");
                 if (!string.IsNullOrEmpty(turno))
-                    sql.AppendLine($" AND V$DWH_TURNO.ID_TURNO.ID_TURNO = {turno}");
+                    sql.AppendLine($" AND V$DWH_TURNO.ID_TURNO = {turno}");
                 if (!string.IsNullOrEmpty(TipoOcorrencia))
                     sql.AppendLine($" AND \"Ocorrencia\".\"oco_int_tipo\" = {TipoOcorrencia}");
                 if (!string.IsNullOrEmpty(lOrigem))
