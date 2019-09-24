@@ -290,12 +290,24 @@
                                 <legend style="border:none; font-size:14px;font-weight:bold; width:auto;">Horários</legend>
                                 <div class="form-group">
                                     @Html.LabelForModel("Hora da ocorrência:")<br />
-                                    <div class="input-group input-append date" id="data">
-                                        @Html.TextBox("Inicio", Model.Inicio, "{0:dd/MM/yyyy HH:mm}", new { @class = "input-sm form-control form-alinhado", style = "width: 140px;" })
-                                        <span class="input-group-addon add-on" style="padding: 6px;">
-                                            <span class="glyphicon glyphicon-th"></span>
-                                        </span>
-                                    </div>
+                                    @if (Model.Inicio == null)
+                                    {
+                                        <div class="input-group input-append date" id="data">
+                                            @Html.TextBox("Inicio", Model.Inicio, "{0:dd/MM/yyyy HH:mm}", new { @class = "input-sm form-control form-alinhado", style = "width: 140px;" })
+                                            <span class="input-group-addon add-on" style="padding: 6px;">
+                                                <span class="glyphicon glyphicon-th"></span>
+                                            </span>
+                                        </div>
+                                    }
+                                    else
+                                    { 
+                                        <div class="input-group input-append date" id="data">
+                                            @Html.TextBox("Inicio", Model.Inicio, "{0:dd/MM/yyyy HH:mm}", new { @class = "input-sm form-control form-alinhado", disabled = true, style = "width: 140px;" })
+                                            <span class="input-group-addon add-on" style="padding: 6px;">
+                                                <span class="glyphicon glyphicon-th"></span>
+                                            </span>
+                                        </div>
+                                    }
                                 </div>
                                 <div class="form-group">
                                     @Html.LabelForModel("Início de atendimento:")<br />

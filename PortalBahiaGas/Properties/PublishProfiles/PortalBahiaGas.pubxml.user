@@ -16,10 +16,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/12/2019 16:52:38</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>09/20/2019 16:16:11</publishTime>
+      <publishTime>09/24/2019 14:12:34</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>09/20/2019 16:16:10</publishTime>
+      <publishTime>09/24/2019 14:12:33</publishTime>
     </File>
     <File Include="bin/Dapper.dll">
       <publishTime>09/12/2019 16:52:38</publishTime>
@@ -106,10 +106,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/12/2019 16:52:53</publishTime>
     </File>
     <File Include="bin/PortalBahiaGas.dll">
-      <publishTime>09/20/2019 16:15:56</publishTime>
+      <publishTime>09/24/2019 14:11:58</publishTime>
     </File>
     <File Include="bin/PortalBahiaGas.pdb">
-      <publishTime>09/20/2019 16:15:56</publishTime>
+      <publishTime>09/24/2019 14:11:58</publishTime>
     </File>
     <File Include="bin/pt/Microsoft.ReportViewer.WebForms.resources.dll">
       <publishTime>06/13/2016 18:24:49</publishTime>
@@ -226,7 +226,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/12/2019 16:52:37</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>09/20/2019 16:15:59</publishTime>
+      <publishTime>09/24/2019 14:12:07</publishTime>
     </File>
     <File Include="Scripts/bootstrap-datepicker.js">
       <publishTime>09/12/2019 16:52:09</publishTime>
@@ -436,7 +436,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/12/2019 16:52:12</publishTime>
     </File>
     <File Include="Scripts/views/RegistroTurno.js">
-      <publishTime>09/12/2019 16:52:12</publishTime>
+      <publishTime>09/24/2019 10:42:16</publishTime>
     </File>
     <File Include="Scripts/views/Turno.js">
       <publishTime>09/12/2019 16:52:12</publishTime>
@@ -529,7 +529,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/12/2019 16:52:12</publishTime>
     </File>
     <File Include="Views/Ocorrencia/PopUpOcorrencia.cshtml">
-      <publishTime>09/12/2019 16:52:12</publishTime>
+      <publishTime>09/24/2019 10:39:23</publishTime>
     </File>
     <File Include="Views/Odorizador/Index.cshtml">
       <publishTime>09/12/2019 16:52:12</publishTime>
@@ -571,7 +571,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/12/2019 16:52:13</publishTime>
     </File>
     <File Include="Views/RegistroTurno/PopUpOcorrencia.cshtml">
-      <publishTime>09/12/2019 16:52:13</publishTime>
+      <publishTime>09/24/2019 10:44:55</publishTime>
     </File>
     <File Include="Views/RegistroTurno/PopUpPendencia.cshtml">
       <publishTime>09/12/2019 16:52:13</publishTime>
@@ -610,7 +610,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/12/2019 16:52:14</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/17/2019 10:32:56</publishTime>
+      <publishTime>09/24/2019 11:46:26</publishTime>
     </File>
   </ItemGroup>
 </Project>

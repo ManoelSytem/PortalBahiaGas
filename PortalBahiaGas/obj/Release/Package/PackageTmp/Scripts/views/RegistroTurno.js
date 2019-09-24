@@ -335,7 +335,7 @@ function ObterAba(dados, funcao) {
     });
 }
 
-function SelecionarAba(pAba) {
+function SelecionarAbaSelecionarAba(pAba) {
   
     var div = $(pAba).attr('href');
     var id = $(div).find('#IdRegistroTurno').val();

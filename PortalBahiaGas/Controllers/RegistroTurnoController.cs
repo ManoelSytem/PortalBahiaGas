@@ -712,7 +712,6 @@ namespace PortalBahiaGas.Controllers
                     lOcorrencia.Outro = lModel.Outro;
                 }
             }
-
             lRegistroTurno = TurnoRepositorio.Editar(lRegistroTurno);
             return lRegistroTurno;
         }
@@ -732,7 +731,7 @@ namespace PortalBahiaGas.Controllers
             if (String.IsNullOrEmpty(pOcorrencia.Descricao)) throw new Exception(lMensagem.AppendLine("Informe a Descrição.").ToString());
             if (pOcorrencia.Conclusao != null && String.IsNullOrEmpty(pOcorrencia.Justificativa)) throw new Exception(lMensagem.AppendLine("Informe a justificativa de conclusão.").ToString());
           
-            //validarPeriodoTurno(lRegistroTurno, lMensagem, pOcorrencia);
+            validarPeriodoTurno(lRegistroTurno, lMensagem, pOcorrencia);
             validarPeriodoOcorrencia(pOcorrencia, lMensagem);
 
 
@@ -995,7 +994,7 @@ namespace PortalBahiaGas.Controllers
                     fimTurno = fimTurno.AddHours(7);
                 }
 
-                if(mOcorrencia != null) {
+              if(mOcorrencia != null) {
                 if (DateTime.Compare(inicioTurno, Convert.ToDateTime(mOcorrencia.Inicio)) == 1 || DateTime.Compare(fimTurno, Convert.ToDateTime(mOcorrencia.Inicio)) == -1)
                 {
                     pMensagem.AppendLine("A data/ocorrência ou hora/ocorrência é inválida!");
