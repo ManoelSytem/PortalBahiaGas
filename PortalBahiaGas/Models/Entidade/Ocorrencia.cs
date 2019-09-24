@@ -37,5 +37,7 @@ namespace PortalBahiaGas.Models.Entidade
         public EModalidade? Modalidade { get; set; }
         public ETipoOcorrencia? Tipo { get; set; }
         public ETipoMedicao? TipoMedicao { get; set; }
+        public Int32? CodOcorrenciaRevisada { get; set; }
+        public Int32? Revisao { get; set; }
     }
 }

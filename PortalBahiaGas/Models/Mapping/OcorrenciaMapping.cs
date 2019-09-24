@@ -38,6 +38,8 @@ namespace PortalBahiaGas.Models.Mapping
             Property(x => x.Status).HasColumnName("oco_int_status");
             Property(x => x.Modalidade).HasColumnName("oco_int_modalidade");
             Property(x => x.Outro).HasColumnName("oco_str_outro");
+            Property(x => x.CodOcorrenciaRevisada).HasColumnName("CodOcorrenciaRevisada");
+            Property(x => x.Revisao).HasColumnName("Revisao");
             Ignore(x => x.ClienteObj);
             Ignore(x => x.InfraestruturaObj);
         }

@@ -711,6 +711,7 @@ namespace PortalBahiaGas.Controllers
                     OcorrenciaRepositorio.Editar(lOcorrencia);
                     lOcorrencia.Outro = lModel.Outro;
                 }
+               
             }
             lRegistroTurno = TurnoRepositorio.Editar(lRegistroTurno);
             return lRegistroTurno;
